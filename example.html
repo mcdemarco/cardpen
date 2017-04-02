@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <script type="text/javascript" src="lib/mustache.min.js"></script>
+    <script type="text/javascript" src="lib/papaparse.min.js"></script>
+    <script type="text/javascript" src="lib/hccdo.js"></script>
+    <style>/*letter size*/
+      body {
+        height: 215.9mm; 
+        width: 279.4mm;
+      }
+
+      @media print {
+        margin: 20mm 10mm;
+      }
+
+      .page {
+        border: 0mm;
+        page-break-after: always;    
+        display:block;        
+        clear: both;
+      }
+      
+      .card {
+        margin: 0.5mm;
+        border-style: solid;
+        border-width: 0.8mm;
+        border-color: black;
+        border-radius: 3mm;
+        width: 63mm;
+        height: 88mm;
+      }
+    </style>
+
+    <!-- you can customize the rest of the header as you like -->
+    <link href="https://fonts.googleapis.com/css?family=Cherry+Swash&effect=shadow-multiple" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+<script id="template" type="x-tmpl-mustache">
+  {{#card}}
+	<div class="card">
+	  <!-- YOUR CUSTOM CODE STARTS HERE -->
+        
+			<div class="wrapper">
+				<div class="corner">{{Number}}</div>
+
+				<div class="main font-effect-shadow-multiple">
+					<div>{{Number}}</div>
+				</div>
+			</div>
+
+	  <!-- YOUR CUSTOM CODE ENDS HERE -->
+	</div>
+      {{/card}}
+</script>
+
+<div id="hccdoutput">
+	<h1>Load Your CSV File</h1>
+	<div>
+		Select a csv file: 
+		<input type="file" id="fileInput">
+	</div>
+</div>
+</body>
+</html>
