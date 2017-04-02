@@ -38,8 +38,7 @@
     </style>
 
     <!-- you can customize the rest of the header as you like -->
-    <link href="https://fonts.googleapis.com/css?family=Cherry+Swash&effect=shadow-multiple" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Cabin|Cherry+Swash|Fontdiner+Swanky|Italianno|Raleway|Sriracha" rel="stylesheet">
 </head>
 
 <body>
@@ -48,25 +47,37 @@
 	<div class="card">
 	  <!-- YOUR CUSTOM CODE STARTS HERE -->
         
-			<div class="wrapper">
-				<div class="corner">{{Number}}</div>
-
-				<div class="main font-effect-shadow-multiple">
-					<div>{{Number}}</div>
+			<div class="wrapper {{Devisor}}">
+				<div class="info">
+ {{#Special}}
+					<div class="uncolored special">{{Special}}</div>
+ {{/Special}}
+ {{#Couples}}
+					<div class="uncolored"><span class="count">{{Couples}}</span>-couple</div>      
+ {{/Couples}}
+ {{#Devisor}}
+					<div class="devisor {{Devisor}}">{{Devisor}}</div>
+ {{/Devisor}}
+ {{#Tempo}}
+					<div class="uncolored tempo {{Tempo}}">{{Tempo}}</div>
+ {{/Tempo}}
+ {{^Tempo}}{{#Couples}}{{#Devisor}}
+					<div>dances</div>
+ {{/Devisor}}{{/Couples}}{{/Tempo}}
+ {{^Tempo}}{{^Couples}}{{#Devisor}}
+					<div>dances</div>
+ {{/Devisor}}{{/Couples}}{{/Tempo}}
+ {{^Tempo}}{{#Couples}}{{^Devisor}}
+					<div>dances</div>
+ {{/Devisor}}{{/Couples}}{{/Tempo}}
 				</div>
 			</div>
 
 	  <!-- YOUR CUSTOM CODE ENDS HERE -->
 	</div>
-      {{/card}}
+  {{/card}}
 </script>
 
-<div id="hccdoutput">
-	<h1>Load Your CSV File</h1>
-	<div>
-		Select a csv file: 
-		<input type="file" id="fileInput">
-	</div>
-</div>
+<div id="hccdoutput"></div>
 </body>
 </html>

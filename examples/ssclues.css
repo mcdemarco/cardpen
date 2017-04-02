@@ -1,0 +1,108 @@
+.wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: Raleway, sans-serif;
+    font-size: 14pt;
+    width: 100%;
+    height: 100%;
+    background-image: url(ssclues_bg.svg);
+    background-size: 72mm 72mm; 
+    background-repeat: no-repeat;
+    background-position: -16mm 19mm; /* horizontal vertical */
+}
+
+.wrapper.Drewry {
+    color: blue;
+    background-image: url(ssclues_bg_blue.svg);
+}
+.wrapper.Foss {
+    color: green;
+    background-image: url(ssclues_bg_green.svg);
+}
+.wrapper.Goldring {
+    color: red;
+    background-image: url(ssclues_bg_red.svg);
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Jigs.tempo {
+    font-family: 'Fontdiner Swanky', cursive;
+    font-size: 18pt;
+}
+
+.Strathspeys.tempo {
+    font-family: Italianno, cursive;
+    font-weight: bold;
+    font-size: 28pt;
+}
+
+.Reels.tempo {
+    font-family: 'Cherry Swash', cursive;
+    font-weight: bold;
+    font-size: 22pt;
+}
+
+/*
+.tempo {
+    text-shadow: 4px 4px 4px #aaa;
+}
+.count, .devisor {
+    text-shadow: 2px 2px 2px #ccc;
+}
+*/
+
+.Drewry.corner::after {
+    content: 'D';
+}
+.Foss.corner::after {
+    content: 'F';
+}
+.Goldring.corner::after {
+    content: 'G';
+}
+
+.text {
+    font-size: 16pt;
+}
+
+.devisor {
+    font-family: Cabin, sans-serif;
+    font-size: 16pt;
+}
+
+/*
+.Drewry.devisor::before {
+    content: 'John ';
+}
+
+.Foss.devisor::before {
+    content: 'Hugh ';
+}
+
+.Goldring.devisor::before {
+    content: 'Roy ';
+}
+*/
+
+.count {
+    font-size: 20pt;
+    font-weight: 500;
+}
+
+.uncolored {
+    color: black;
+}
+
+.special {
+    font-family: Sriracha, cursive;
+    font-size: 16pt;
+    line-height: 0.8;
+}
