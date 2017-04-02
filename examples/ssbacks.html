@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <script type="text/javascript" src="lib/mustache.min.js"></script>
+    <script type="text/javascript" src="lib/papaparse.min.js"></script>
+    <script type="text/javascript" src="lib/hccdo.js"></script>
+    <style>
+      body {
+        height: 215.9mm; /*letter size*/
+        width: 279.4mm;
+      }
+
+      #hccdoutput {
+        display: block;
+      }
+
+      .page {
+        margin-top: 15mm;
+        border: 0mm;
+        page-break-after: always;    
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .card {
+        margin: 0.5mm; /* remove this to remove gutters between cards  */
+        border-style: solid;
+        border-width: 0.8mm;  /* card border width */
+        border-color: black;
+        border-radius: 3mm;
+        width: 63mm;  /* 63.5mm is poker; bridge would be 56mm (2.5 in vs 2.25 in) */
+        height: 88mm; /* 88.9mm = 3.5 in */
+      }
+    </style>
+
+    <!-- you can customize the rest of the header as you like -->
+		<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+</head>
+
+<body>
+<script id="template" type="x-tmpl-mustache">
+  {{#card}}
+	<div class="card">
+	  <!-- YOUR CUSTOM CODE STARTS HERE -->
+        
+			<div class="wrapper back{{Back}}">
+				<div class="glass">
+ Scottish Sleuth
+ <div class="subtitle">{{Info}}</div>
+				</div>
+			</div>
+
+	  <!-- YOUR CUSTOM CODE ENDS HERE -->
+	</div>
+  {{/card}}
+</script>
+
+<div id="hccdoutput"></div>
+</body>
+</html>
