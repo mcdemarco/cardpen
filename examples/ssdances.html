@@ -5,31 +5,35 @@
     <script type="text/javascript" src="lib/mustache.min.js"></script>
     <script type="text/javascript" src="lib/papaparse.min.js"></script>
     <script type="text/javascript" src="lib/hccdo.js"></script>
-    <style>/*letter size*/
+    <style>
       body {
-        height: 215.9mm; 
+        height: 215.9mm; /*letter size*/
         width: 279.4mm;
       }
 
-      @media print {
-        margin: 20mm 10mm;
+      #hccdoutput {
+        display: block;
       }
 
       .page {
+        margin-top: 15mm;
         border: 0mm;
         page-break-after: always;    
-        display:block;        
-        clear: both;
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        align-items: center;
+        justify-content: center;
       }
       
       .card {
-        margin: 0.5mm;
+        margin: 0.5mm; /* remove this to remove gutters between cards  */
         border-style: solid;
-        border-width: 0.8mm;
+        border-width: 0.8mm;  /* card border width */
         border-color: black;
         border-radius: 3mm;
-        width: 63mm;
-        height: 88mm;
+        width: 63mm;  /* 63.5mm is poker; bridge would be 56mm (2.5 in vs 2.25 in) */
+        height: 88mm; /* 88.9mm = 3.5 in */
       }
     </style>
 
@@ -58,7 +62,7 @@
 
 	  <!-- YOUR CUSTOM CODE ENDS HERE -->
 	</div>
-      {{/card}}
+  {{/card}}
 </script>
 
 <div id="hccdoutput">
