@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #1E2028;
+    color: white;
+    font-family: Raleway, sans-serif;
+}
+main {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+}
+main div {
+    flex: 1 0 auto;
+}
+iframe {
+    flex: 4;
+    background-color: white;
+    color: black;
+}
+textarea {
+    width: 15rem;
+    height:5rem;
+}

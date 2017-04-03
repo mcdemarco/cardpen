@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <script type="text/javascript" src="lib/mustache.min.js"></script>
+    <script type="text/javascript" src="lib/papaparse.min.js"></script>
+    <script type="text/javascript" src="lib/dom-to-image.min.js"></script>
+    <script type="text/javascript" src="lib/hccdo.js"></script>
+		<link href="css/hccdoUI.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+	<main>
+		<div id="hccdoIcon">
+			<h1>HCCDo</h1>
+			Project name: <input type="text" id="hccdoProjectName" value=""/><br/>
+			Extra stylesheet: <input type="text" id="extCSS" value=""/><br /> (e.g.,&nbsp;Google&nbsp;Fonts URL)
+		</div>
+
+		<div id="hccdoTMPL">
+			<h4>Your template</h4>
+			<textarea id="tmplStoredTextarea">
+			</textarea>
+		</div>
+
+		<div id="hccdoCSV">
+			<h4>Your cards</h4>
+				<textarea id="csvStoredTextarea"></textarea>
+				<br/>
+				Upload csv:
+				<input type="file" id="csvFileInput">
+			</div>
+		</div>
+
+		<div id="hccdoCSS">
+			<h4>Your styles (optional)</h4>
+				<textarea id="cssStoredTextarea"></textarea>
+				<br/>
+				Upload css:
+				<input type="file" id="cssFileInput">
+			</div>
+		</div>
+	</main>
+	<iframe id="hccdoOutput" style="width:100%;height:80%;"></iframe>
+</body>
+</html>
