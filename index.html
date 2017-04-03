@@ -12,35 +12,46 @@
 
 <body>
 	<main>
-		<div id="hccdoIcon">
-			<h1>HCCDo</h1>
-			Project name: <input type="text" id="hccdoProjectName" value=""/><br/>
-			Extra stylesheet: <input type="text" id="extCSS" value=""/><br /> (e.g.,&nbsp;Google&nbsp;Fonts URL)
-		</div>
+		<section id="header">
+			<div>
+				<span id="hccdoIcon">HCCDo</span><br/>
+				an online HTML+CSS card generator
+			</div>
+			<div>
+				<h4>Project name</h4>
+				<input type="text" id="hccdoProjectName" value=""/><br/>
+			</div>
+			<div>
+				<h4>Extra stylesheet <span class="unh4">(e.g., Google Fonts URL)</span></h4>
+				<input type="text" id="extCSS" value=""/><br />
+			</div>
+		</section>
 
-		<div id="hccdoTMPL">
-			<h4>Your template</h4>
-			<textarea id="tmplStoredTextarea">
-			</textarea>
-		</div>
-
-		<div id="hccdoCSV">
-			<h4>Your cards</h4>
+		<section>
+			<div id="hccdoTMPL">
+				<h4>Your template</h4>
+				<textarea id="tmplStoredTextarea">
+				</textarea>
+				<button type="button" id="generate">Generate HTML</button>
+				<button type="button" id="imagine">Generate Images</button>
+			</div>
+			
+			<div id="hccdoCSV">
+				<h4>Your cards</h4>
 				<textarea id="csvStoredTextarea"></textarea>
 				<br/>
 				Upload csv:
 				<input type="file" id="csvFileInput">
 			</div>
-		</div>
-
-		<div id="hccdoCSS">
-			<h4>Your styles (optional)</h4>
+			
+			<div id="hccdoCSS">
+				<h4>Your styles (optional)</h4>
 				<textarea id="cssStoredTextarea"></textarea>
 				<br/>
 				Upload css:
 				<input type="file" id="cssFileInput">
 			</div>
-		</div>
+		</section>
 	</main>
 	<iframe id="hccdoOutput" style="width:100%;height:80%;"></iframe>
 </body>
