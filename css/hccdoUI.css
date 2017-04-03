@@ -6,21 +6,49 @@ body {
     color: white;
     font-family: Raleway, sans-serif;
 }
+
 main {
+    padding: 0 0 1em 1em;
+}
+
+main section {
     display: flex;
-    flex: 1;
+    flex: 2;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
-main div {
-    flex: 1 0 auto;
+section#header {
+    flex: 1;
 }
+
+main section div {
+    flex: 1 0 0;
+}
+
+#hccdoIcon {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
 iframe {
-    flex: 4;
+    flex: 5;
     background-color: white;
     color: black;
 }
 textarea {
-    width: 15rem;
+    width: 90%;
     height:5rem;
+}
+
+input#hccdoProjectName, input#extCSS {
+    width:90%;
+}
+
+h4 {
+    margin-bottom: 0;
+}
+.unh4 {
+    font-size:normal;
+    font-weight:normal;
 }
