@@ -4,7 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
     <script type="text/javascript" src="lib/mustache.min.js"></script>
     <script type="text/javascript" src="lib/papaparse.min.js"></script>
-    <script type="text/javascript" src="lib/dom-to-image.min.js"></script>
     <script type="text/javascript" src="lib/hccdo.js"></script>
 		<link href="css/hccdoUI.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -19,37 +18,38 @@
 			</div>
 			<div>
 				<h4>Project name</h4>
-				<input type="text" id="hccdoProjectName" value=""/><br/>
+				<input type="text" id="hccdoProjectName" class="hccdoForm" value=""/><br/>
 			</div>
 			<div>
 				<h4>Extra stylesheet <span class="unh4">(e.g., Google Fonts URL)</span></h4>
-				<input type="text" id="extCSS" value=""/><br />
+				<input type="text" id="extCSS" class="hccdoForm" value=""/><br />
 			</div>
 		</section>
 
 		<section>
 			<div id="hccdoTMPL">
 				<h4>Your template</h4>
-				<textarea id="tmplStoredTextarea">
+				<textarea id="tmplStoredTextarea" class="hccdoForm">
 				</textarea>
 				<button type="button" id="generate">Generate HTML</button>
 				<button type="button" id="imagine">Generate Images</button>
+				<button type="button" id="clear">Clear Form</button>
 			</div>
 			
 			<div id="hccdoCSV">
 				<h4>Your cards</h4>
-				<textarea id="csvStoredTextarea"></textarea>
+				<textarea id="csvStoredTextarea" class="hccdoForm"></textarea>
 				<br/>
 				Upload csv:
-				<input type="file" id="csvFileInput">
+				<input type="file" id="csvUpload">
 			</div>
 			
 			<div id="hccdoCSS">
 				<h4>Your styles (optional)</h4>
-				<textarea id="cssStoredTextarea"></textarea>
+				<textarea id="cssStoredTextarea" class="hccdoForm"></textarea>
 				<br/>
 				Upload css:
-				<input type="file" id="cssFileInput">
+				<input type="file" id="cssUpload">
 			</div>
 		</section>
 	</main>

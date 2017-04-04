@@ -3,6 +3,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background-color: #1E2028;
+    background-image: url('ep_naturalblack.png');
     color: white;
     font-family: Raleway, sans-serif;
 }

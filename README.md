@@ -28,5 +28,5 @@ hccdo uses [mustache](https://mustache.github.io) for templating and [Papa Parse
 
 The main example makes very simple cards for the game [Pico](https://boardgamegeek.com/boardgame/2051/pico).  The examples directory contains three examples, all intended for a retheme of the game [Sleuth](https://boardgamegeek.com/boardgame/594/sleuth).
 
-Some images in the examples are from [Game-icons.net](http://game-icons.net).
+Some images in the examples are from [Game-icons.net](http://game-icons.net).  The UI background is EP Natural Black from [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/ep-natural-black/).
 
