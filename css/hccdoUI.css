@@ -12,18 +12,19 @@ main {
     padding: 0 0 1em 1em;
 }
 
-main section {
+section#header, section#thin {
+    flex:1;
+}
+
+section {
     display: flex;
     flex: 2;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-section#header {
-    flex: 1;
-}
 
-main section div {
+section div {
     flex: 1 0 0;
 }
 

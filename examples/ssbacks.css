@@ -18,11 +18,12 @@
 
 .wrapper.back2 {
     background-image: url(examples/ssbacks_2.jpg);
-/*    background-size: 100mm 100mm; 
-    background-position: 33mm 22mm;
-    background-position: -10mm 0mm;*/
+    background-size: 100mm 100mm;
+    background-position: 8mm 12mm;
+/*  background-position: 33mm 22mm;
+    background-position: -10mm 0mm;
     background-size: 60mm 60mm; 
-    background-position: 10mm 5mm; 
+    background-position: 10mm 5mm; */
 }
 
 .glass {
