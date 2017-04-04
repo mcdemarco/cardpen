@@ -29,8 +29,12 @@
 		<section>
 			<div id="hccdoTMPL">
 				<h4>Your template</h4>
-				<textarea id="tmplStoredTextarea" class="hccdoForm">
+				<textarea id="mustacheTextarea" class="hccdoForm">
 				</textarea>
+				<br/>
+				Upload template:
+				<input type="file" id="mustacheUpload" class="upload" data-type="mustache">
+				<br/>
 				<button type="button" id="generate">Generate HTML</button>
 				<button type="button" id="imagine">Generate Images</button>
 				<button type="button" id="clear">Clear Form</button>
@@ -38,18 +42,18 @@
 			
 			<div id="hccdoCSV">
 				<h4>Your cards</h4>
-				<textarea id="csvStoredTextarea" class="hccdoForm"></textarea>
+				<textarea id="csvTextarea" class="hccdoForm"></textarea>
 				<br/>
 				Upload csv:
-				<input type="file" id="csvUpload">
+				<input type="file" id="csvUpload" class="upload" data-type="csv">
 			</div>
 			
 			<div id="hccdoCSS">
 				<h4>Your styles (optional)</h4>
-				<textarea id="cssStoredTextarea" class="hccdoForm"></textarea>
+				<textarea id="cssTextarea" class="hccdoForm"></textarea>
 				<br/>
 				Upload css:
-				<input type="file" id="cssUpload">
+				<input type="file" id="cssUpload" class="upload" data-type="css">
 			</div>
 		</section>
 	</main>

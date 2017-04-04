@@ -11,15 +11,18 @@
 }
 
 .wrapper.back1 {
-    background-image: url(ssbacks_1.jpg);
+    background-image: url(examples/ssbacks_1.jpg);
     background-size: 100mm 100mm; 
     background-position: 20mm 34mm; 
 }
 
 .wrapper.back2 {
-    background-image: url(ssbacks_2.jpg);
-    background-size: 100mm 100mm; 
-    background-position: 33mm 22mm; 
+    background-image: url(examples/ssbacks_2.jpg);
+/*    background-size: 100mm 100mm; 
+    background-position: 33mm 22mm;
+    background-position: -10mm 0mm;*/
+    background-size: 60mm 60mm; 
+    background-position: 10mm 5mm; 
 }
 
 .glass {
@@ -30,18 +33,18 @@
     text-align:center;
     width: 100%;
     height: 100%;
-    background-image: url(ssbacks_glass.svg);
+    background-image: url(examples/ssbacks_glass.svg);
     background-size: 80mm 80mm; 
     background-repeat: no-repeat;
     background-position: -21mm 13mm; /* horizontal vertical */
 }
 
 .back1 .glass {
-    background-image: url(ssbacks_glass1.svg);
+    background-image: url(examples/ssbacks_glass1.svg);
 }
 
 .back2 .glass {
-    background-image: url(ssbacks_glass2.svg);
+    background-image: url(examples/ssbacks_glass2.svg);
 }
 
 .subtitle {
