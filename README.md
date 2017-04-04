@@ -24,7 +24,7 @@ usage
 credits
 ---------
 
-hccdo uses [mustache](https://mustache.github.io) for templating and [Papa Parse](http://papaparse.com) for csv parsing.
+hccdo uses [mustache](https://mustache.github.io) for templating, [Papa Parse](http://papaparse.com) for csv parsing, and [dom-to-image](https://github.com/tsayen/dom-to-image/) (with [pr#103 for dpi settings](https://github.com/tsayen/dom-to-image/pull/103) for image generation.
 
 The main example makes very simple cards for the game [Pico](https://boardgamegeek.com/boardgame/2051/pico).  The examples directory contains three examples, all intended for a retheme of the game [Sleuth](https://boardgamegeek.com/boardgame/594/sleuth).
 
