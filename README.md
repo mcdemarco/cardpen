@@ -24,9 +24,9 @@ usage
 credits
 ---------
 
-hccdo uses [mustache](https://mustache.github.io) for templating, [Papa Parse](http://papaparse.com) for csv parsing, and [dom-to-image](https://github.com/tsayen/dom-to-image/) (with [pr#103 for dpi settings](https://github.com/tsayen/dom-to-image/pull/103) for image generation.
+hccdo uses [mustache](https://mustache.github.io) for templating, [Papa Parse](http://papaparse.com) for csv parsing, [dom-to-image](https://github.com/tsayen/dom-to-image/) (with [pr#103 for dpi settings](https://github.com/tsayen/dom-to-image/pull/103) for image generation, and [FileSaver](https://github.com/eligrey/FileSaver.js) for saving.
 
-The main example makes very simple cards for the game [Pico](https://boardgamegeek.com/boardgame/2051/pico).  The examples directory contains three examples, all intended for a retheme of the game [Sleuth](https://boardgamegeek.com/boardgame/594/sleuth).
+The main example makes very simple cards for the game [Pico](https://boardgamegeek.com/boardgame/2051/pico).  The examples directory contains three examples, all for retheme of the game [Sleuth](https://boardgamegeek.com/boardgame/594/sleuth).
 
 Some images in the examples are from [Game-icons.net](http://game-icons.net).  The UI background is EP Natural Black from [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/ep-natural-black/).
 
