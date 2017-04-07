@@ -12,28 +12,46 @@
 <body>
 	<main>
 		<section id="header">
-			<div id="hccdoIcon">HCCDo</div>
-			<div>
+			<div><span id="hccdoIcon">HCCDo</span><br />
 				an online HTML+CSS card generator
+			</div>
+			<div>
+				<h4>Project name:
+					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
+				</h4>
+			</div>
+			<div>
+				<h4>DPI:  <span class="unh4">
+					<input type="text" id="dpi" class="hccdoForm" style="width:3rem;" value="96"/> (e.g., 300)
+				</span></h4>
+			</div>
+			<div>
+				<h4>Page size:  <span class="unh4">
+					<input type="radio" id="letter" name="pageSize" checked><label for="letter">Letter</label>
+					<input type="radio" id="a4" name="pageSize"><label for="a4">A4</label>
+				</span></h4> 
 			</div>
 		</section>
 
 		<section id="thin">
 			<div>
-				<h4>Settings</h4>
-				DPI: <input type="text" id="dpi" class="hccdoForm" style="width:3rem;" value="96"/> (e.g., 300 for PrinterStudio.com)
+				<h4>Card size: <span class="unh4">poker (portrait)</span></h4>
 			</div>
 			<div>
-				<h4>Project name</h4>
-				<input type="text" id="hccdoProjectName" class="hccdoForm" value=""/><br/>
-			</div>
-			<div>
-				<h4>Extra stylesheet <span class="unh4">(e.g., Google Fonts URL)</span></h4>
+				<h4>Externtal stylesheet <span class="unh4">(e.g., Google Fonts URL)</span></h4>
 				<input type="text" id="extCSS" class="hccdoForm" value=""/><br />
 			</div>
 		</section>
 
 		<section>
+			<div id="hccdoCSV">
+				<h4>Your cards</h4>
+				<textarea id="csvTextarea" class="hccdoForm"></textarea>
+				<br/>
+				Upload csv:
+				<input type="file" id="csvUpload" class="upload" data-type="csv">
+			</div>
+			
 			<div id="hccdoTMPL">
 				<h4>Your template</h4>
 				<textarea id="mustacheTextarea" class="hccdoForm">
@@ -41,14 +59,6 @@
 				<br/>
 				Upload template:
 				<input type="file" id="mustacheUpload" class="upload" data-type="mustache">
-			</div>
-			
-			<div id="hccdoCSV">
-				<h4>Your cards</h4>
-				<textarea id="csvTextarea" class="hccdoForm"></textarea>
-				<br/>
-				Upload csv:
-				<input type="file" id="csvUpload" class="upload" data-type="csv">
 			</div>
 			
 			<div id="hccdoCSS">
