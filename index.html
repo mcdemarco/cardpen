@@ -4,80 +4,28 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
     <script type="text/javascript" src="lib/mustache.min.js"></script>
     <script type="text/javascript" src="lib/papaparse.min.js"></script>
-    <script type="text/javascript" src="lib/hccdo.js"></script>
+    <!-- script type="text/javascript" src="lib/hccdo.js"></script> -->
 		<link href="css/hccdoUI.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 
 <body>
-	<main>
-		<section id="header">
-			<div><span id="hccdoIcon">HCCDo</span><br />
-				an online HTML+CSS card generator
-			</div>
-			<div>
-				<h4>Project name:
-					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
-				</h4>
-			</div>
-			<div>
-				<h4>DPI:  <span class="unh4">
-					<input type="text" id="dpi" class="hccdoForm" style="width:3rem;" value="96"/> (e.g., 300)
-				</span></h4>
-			</div>
-			<div>
-				<h4>Page size:  <span class="unh4">
-					<input type="radio" id="letter" name="pageSize" checked><label for="letter">Letter</label>
-					<input type="radio" id="a4" name="pageSize"><label for="a4">A4</label>
-				</span></h4> 
-			</div>
-		</section>
 
-		<section id="thin">
-			<div>
-				<h4>Card size: <span class="unh4">poker (portrait)</span></h4>
-			</div>
-			<div>
-				<h4>Externtal stylesheet <span class="unh4">(e.g., Google Fonts URL)</span></h4>
-				<input type="text" id="extCSS" class="hccdoForm" value=""/><br />
-			</div>
-		</section>
+	<hccdo></hccdo>
+  <script src="lib/hccdo.tag" type="riot/tag"></script>
+  <script src="lib/riot%2Bcompiler.min.js" type="text/javascript"></script>
 
-		<section>
-			<div id="hccdoCSV">
-				<h4>Your cards</h4>
-				<textarea id="csvTextarea" class="hccdoForm"></textarea>
-				<br/>
-				Upload csv:
-				<input type="file" id="csvUpload" class="upload" data-type="csv">
-			</div>
-			
-			<div id="hccdoTMPL">
-				<h4>Your template</h4>
-				<textarea id="mustacheTextarea" class="hccdoForm">
-				</textarea>
-				<br/>
-				Upload template:
-				<input type="file" id="mustacheUpload" class="upload" data-type="mustache">
-			</div>
-			
-			<div id="hccdoCSS">
-				<h4>Your styles (optional)</h4>
-				<textarea id="cssTextarea" class="hccdoForm"></textarea>
-				<br/>
-				Upload css:
-				<input type="file" id="cssUpload" class="upload" data-type="css">
-			</div>
-		</section>
-		<section>
-			<div>
-				<button type="button" id="generate">Generate HTML</button>
-				<button type="button" id="imagine">Generate Images</button>
-				<button type="button" id="clear">Clear Form</button>
-			</div>
-		</section>
+  <script>
+    riot.mount('hccdo', {
+      inputs: [
+        { title: 'Project Name', done: true },
+        { title: 'Hidden item',  hidden: true },
+        { title: 'Be less provocative'  },
+        { title: 'Be nice to people' }
+      ]
+    })
+  </script>
 
-	</main>
 	<iframe id="hccdoOutput" style="width:100%;height:80%;"></iframe>
 </body>
 </html>
