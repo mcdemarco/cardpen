@@ -9,16 +9,7 @@ body {
 }
 
 main {
-    padding: 0 0 1em 1em;
-}
-
-section#header, section#thin {
-    flex:1;
-}
-
-section#buttons {
-    padding-top: 1em;
-    text-align:center;
+    padding: 0 .5em .5em .5em;
 }
 
 section {
@@ -29,12 +20,30 @@ section {
     flex-wrap: wrap;
 }
 
+section#header, section#thin {
+    flex:1;
+}
+
+section#textareas {
+    padding-bottom: 1em;
+}
+
+section#buttons {
+    text-align:center;
+    align-items: space-around;
+}
+
 section div {
     flex: 1 0 0;
 }
 
 .hccdoIcon {
     font-size: xx-large;
+    font-weight: bold;
+}
+
+section#buttons .hccdoIcon {
+    font-size: large;
     font-weight: bold;
 }
 
