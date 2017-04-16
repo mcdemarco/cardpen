@@ -20,7 +20,7 @@ section {
     flex-wrap: wrap;
 }
 
-section#header, section#thin {
+section.thin {
     flex:1;
 }
 

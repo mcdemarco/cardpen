@@ -13,23 +13,25 @@
 
 <body>
 	<main>
-		<section id="header">
+		<section id="header" class="thin">
 			<div><span class="hccdoIcon">HCCDo</span><br />
 				an online HTML+CSS card generator
 			</div>
 			<div>
-				<h4>Project name:
-					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
+				<h4>Card size: 
+					<select id="csize"></select>
 				</h4>
+				<h4>Orientation:  <span class="unh4">
+					<span class="nw">
+						<input type="radio" id="portrait" value="portrait" name="cori" checked>
+						<label for="portrait">Portrait</label>
+					</span>
+					<span class="nw">
+						<input type="radio" id="landscape" value="landscape" name="cori">
+						<label for="landscape">Landscape</label>
+					</span>
+				</span></h4> 
 			</div>
-			<div>
-				<h4>DPI:  <span class="unh4">
-					<input type="text" id="dpi" class="hccdoForm" style="width:3rem;" value="96"/> (e.g., 300)
-				</span></h4>
-			</div>
-		</section>
-
-		<section id="thin">
 			<div>
 				<h4>Page size:  <span class="unh4">
 					<span class="nw">
@@ -52,24 +54,26 @@
 					</span>
 				</span></h4> 
 			</div>
+		</section>
+
+		<section class="thin">
 			<div>
-				<h4>Card size: 
-					<select id="csize"></select>
+				<h4>Project name:
+					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
 				</h4>
-				<h4>Orientation:  <span class="unh4">
-					<span class="nw">
-						<input type="radio" id="portrait" value="portrait" name="cori" checked>
-						<label for="portrait">Portrait</label>
-					</span>
-					<span class="nw">
-						<input type="radio" id="landscape" value="landscape" name="cori">
-						<label for="landscape">Landscape</label>
-					</span>
-				</span></h4> 
+				<h4>Gutters:
+					<input type="text" id="gsize" size="4" value=""/>
+					<input type="radio" name="gunit" value="mm" checked><label>mm</label>
+					<input type="radio" name="gunit" value="in"><label>in</label>
+				</h4>
+			</div>
+			<div>
+				<h4>Bleed:</h4>
+				<h4>Borders:</h4>
 			</div>
 			<div>
 				<h4>Externtal stylesheet <span class="unh4">(e.g., Google Fonts URL)</span></h4>
-				<input type="text" id="extCSS" class="hccdoForm" value=""/><br />
+				<input type="text" id="extCSS" value=""/><br />
 			</div>
 		</section>
 
@@ -110,8 +114,11 @@
 			</div>
 			<div>
 				<button type="button" id="generate">Generate HTML</button>
-				<button type="button" id="imagine">Generate Images</button>
 				<button type="button" id="print">Print</button>
+			</div>
+			<div>
+				<button type="button" id="imagine">Generate Images</button>
+				<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" style="width:3rem;" value="96"/> (e.g., 300)
 			</div>
 		</section>
 
