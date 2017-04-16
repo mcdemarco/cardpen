@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<title>HCCDo</title>
-    <script type="text/javascript" src="lib/bind.js"></script>
+    <script type="text/javascript" src="lib/bind.min.js"></script>
     <script type="text/javascript" src="lib/mustache.min.js"></script>
     <script type="text/javascript" src="lib/papaparse.min.js"></script>
     <script type="text/javascript" src="lib/underscore-min.js"></script>
@@ -33,11 +33,11 @@
 			<div>
 				<h4>Page size:  <span class="unh4">
 					<span class="nw">
-						<input type="radio" id="letter" value="letter" name="paper" checked>
+						<input type="radio" id="letter" value="letter" name="psize" checked>
 						<label for="letter">Letter</label>
 					</span>
 					<span class="nw">
-						<input type="radio" id="a4" value="a4" name="paper">
+						<input type="radio" id="a4" value="a4" name="psize">
 						<label for="a4">A4</label>
 					</span>
 				</span></h4> 
@@ -53,7 +53,14 @@
 				</span></h4> 
 			</div>
 			<div>
-				<h4>Card size: <span class="unh4">poker</span></h4>
+				<h4>Card size: 
+					<select id="csize">
+						<option value="poker" selected>poker</option>
+						<option value="bridge">bridge</option>
+						<option value="mini">mini</option>
+						<option value="square">square</option>
+					</select>
+				</h4>
 				<h4>Orientation:  <span class="unh4">
 					<span class="nw">
 						<input type="radio" id="portrait" value="portrait" name="cori" checked>
