@@ -61,18 +61,24 @@
 				<h4>Project name:
 					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
 				</h4>
-				<h4>Gutters:
+				<h4>Gutters: 
 					<input type="text" id="gsize" size="4" value=""/>
-					<input type="radio" name="gunit" value="mm" checked><label>mm</label>
-					<input type="radio" name="gunit" value="in"><label>in</label>
+					<span class="unh4"> 
+						<input type="radio" name="gunit" value="mm" checked><label>mm</label>
+						<input type="radio" name="gunit" value="in"><label>in</label>
+					</span>
 				</h4>
 			</div>
 			<div>
 				<h4>Bleed:</h4>
-				<h4>Borders:</h4>
+				<h4>Borders: <span class="unh4"> 
+					<input type="radio" name="border" value="on" checked><label>on</label>
+					<input type="radio" name="border" value="off"><label>off</label>
+					&nbsp;(style under <em>Your styles</em>)</span>
+				</h4>
 			</div>
 			<div>
-				<h4>Externtal stylesheet <span class="unh4">(e.g., Google Fonts URL)</span></h4>
+				<h4>Externtal stylesheet <span class="unh4">&nbsp;(e.g., Google Fonts URL)</span></h4>
 				<input type="text" id="extCSS" value=""/><br />
 			</div>
 		</section>
@@ -113,12 +119,12 @@
 				<button type="button" id="eg">Reload Example</button>
 			</div>
 			<div>
-				<button type="button" id="generate">Generate HTML</button>
-				<button type="button" id="print">Print</button>
+				<button type="button" id="imagine">Generate Images</button>
+				<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" size="5" value="96"/> (e.g., 300)
 			</div>
 			<div>
-				<button type="button" id="imagine">Generate Images</button>
-				<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" style="width:3rem;" value="96"/> (e.g., 300)
+				<button type="button" id="generate">Generate HTML</button>
+				<button type="button" id="print">Print</button>
 			</div>
 		</section>
 
