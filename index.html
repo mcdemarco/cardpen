@@ -2,82 +2,136 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<title>HCCDo</title>
+    <script type="text/javascript" src="lib/bind.min.js"></script>
     <script type="text/javascript" src="lib/mustache.min.js"></script>
     <script type="text/javascript" src="lib/papaparse.min.js"></script>
-    <script type="text/javascript" src="lib/hccdo.js"></script>
+    <script type="text/javascript" src="lib/underscore-min.js"></script>
 		<link href="css/hccdoUI.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 
 <body>
 	<main>
-		<section id="header">
-			<div><span id="hccdoIcon">HCCDo</span><br />
+		<section id="header" class="thin">
+			<div><span class="hccdoIcon">HCCDo</span><br />
 				an online HTML+CSS card generator
 			</div>
 			<div>
-				<h4>Project name:
-					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
+				<h4>Card size: 
+					<select id="csize"></select>
 				</h4>
-			</div>
-			<div>
-				<h4>DPI:  <span class="unh4">
-					<input type="text" id="dpi" class="hccdoForm" style="width:3rem;" value="96"/> (e.g., 300)
-				</span></h4>
+				<h4>Orientation:  <span class="unh4">
+					<span class="nw">
+						<input type="radio" id="portrait" value="portrait" name="cori" checked>
+						<label for="portrait">Portrait</label>
+					</span>
+					<span class="nw">
+						<input type="radio" id="landscape" value="landscape" name="cori">
+						<label for="landscape">Landscape</label>
+					</span>
+				</span></h4> 
 			</div>
 			<div>
 				<h4>Page size:  <span class="unh4">
-					<input type="radio" id="letter" name="pageSize" checked><label for="letter">Letter</label>
-					<input type="radio" id="a4" name="pageSize"><label for="a4">A4</label>
+					<span class="nw">
+						<input type="radio" id="letter" value="letter" name="psize" checked>
+						<label for="letter">Letter</label>
+					</span>
+					<span class="nw">
+						<input type="radio" id="a4" value="a4" name="psize">
+						<label for="a4">A4</label>
+					</span>
+				</span></h4> 
+				<h4>Orientation:  <span class="unh4">
+					<span class="nw">
+						<input type="radio" id="portrait" value="portrait" name="pori">
+						<label for="portrait">Portrait</label>
+					</span>
+					<span class="nw">
+						<input type="radio" id="landscape" value="landscape" name="pori" checked>
+						<label for="landscape">Landscape</label>
+					</span>
 				</span></h4> 
 			</div>
 		</section>
 
-		<section id="thin">
+		<section class="thin">
 			<div>
-				<h4>Card size: <span class="unh4">poker (portrait)</span></h4>
+				<h4>Project name:
+					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
+				</h4>
+				<h4>Gutters: 
+					<input type="text" id="gsize" size="4" value=""/>
+					<span class="unh4"> 
+						<input type="radio" name="gunit" value="mm" checked><label>mm</label>
+						<input type="radio" name="gunit" value="in"><label>in</label>
+					</span>
+				</h4>
 			</div>
 			<div>
-				<h4>Externtal stylesheet <span class="unh4">(e.g., Google Fonts URL)</span></h4>
-				<input type="text" id="extCSS" class="hccdoForm" value=""/><br />
+				<h4>Bleed:</h4>
+				<h4>Borders: <span class="unh4"> 
+					<input type="radio" name="border" value="on" checked><label>on</label>
+					<input type="radio" name="border" value="off"><label>off</label>
+					&nbsp;(style under <em>Your styles</em>)</span>
+				</h4>
+			</div>
+			<div>
+				<h4>Externtal stylesheet <span class="unh4">&nbsp;(e.g., Google Fonts URL)</span></h4>
+				<input type="text" id="extCSS" value=""/><br />
 			</div>
 		</section>
 
-		<section>
+		<section id="textareas">
 			<div id="hccdoCSV">
 				<h4>Your cards</h4>
-				<textarea id="csvTextarea" class="hccdoForm"></textarea>
-				<br/>
-				Upload csv:
-				<input type="file" id="csvUpload" class="upload" data-type="csv">
+				<textarea id="csv"></textarea>
+				<span class="nw up">Upload csv: 
+					<input type="file" id="csvUpload" class="upload" data-type="csv">
+				</span>
 			</div>
 			
 			<div id="hccdoTMPL">
 				<h4>Your template</h4>
-				<textarea id="mustacheTextarea" class="hccdoForm">
-				</textarea>
-				<br/>
-				Upload template:
-				<input type="file" id="mustacheUpload" class="upload" data-type="mustache">
+				<textarea id="mustache"></textarea>
+				<span class="nw up">Upload template:
+					<input type="file" id="mustacheUpload" class="upload" data-type="mustache"> 
+				</span>
 			</div>
 			
 			<div id="hccdoCSS">
 				<h4>Your styles (optional)</h4>
-				<textarea id="cssTextarea" class="hccdoForm"></textarea>
-				<br/>
-				Upload css:
-				<input type="file" id="cssUpload" class="upload" data-type="css">
+				<textarea id="css"></textarea>
+				<span class="nw up">Upload css:
+					<input type="file" id="cssUpload" class="upload" data-type="css">
+				</span>
 			</div>
 		</section>
-		<section>
+		<section id="buttons">
+			<div class="show" style="display:none;text-align:left;">
+				<span class="hccdoIcon">HCCDo</span>
+			</div>
+			<div>				
+				<button type="button" id="hide">Hide Form</button>
+				<button type="button" id="show" class="show" style="display:none">Show Form</button>
+				<button type="button" id="clear">Clear Form</button>
+				<button type="button" id="eg">Reload Example</button>
+			</div>
+			<div>
+				<button type="button" id="imagine">Generate Images</button>
+				<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" size="5" value="96"/> (e.g., 300)
+			</div>
 			<div>
 				<button type="button" id="generate">Generate HTML</button>
-				<button type="button" id="imagine">Generate Images</button>
-				<button type="button" id="clear">Clear Form</button>
+				<button type="button" id="print">Print</button>
 			</div>
 		</section>
 
 	</main>
 	<iframe id="hccdoOutput" style="width:100%;height:80%;"></iframe>
+
+    <script type="text/javascript" src="lib/hccdo.js"></script>
+
 </body>
 </html>

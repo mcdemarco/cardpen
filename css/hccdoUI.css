@@ -3,17 +3,13 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background-color: #1E2028;
-    background-image: url('ep_naturalblack.png');
+    background-image: url('low_contrast_linen.png');
     color: white;
     font-family: Raleway, sans-serif;
 }
 
 main {
-    padding: 0 0 1em 1em;
-}
-
-section#header, section#thin {
-    flex:1;
+    padding: 0 .5em .5em .5em;
 }
 
 section {
@@ -24,12 +20,30 @@ section {
     flex-wrap: wrap;
 }
 
+section.thin {
+    flex:1;
+}
+
+section#textareas {
+    padding-bottom: 1em;
+}
+
+section#buttons {
+    text-align:center;
+    align-items: space-around;
+}
+
 section div {
     flex: 1 0 0;
 }
 
-#hccdoIcon {
+.hccdoIcon {
     font-size: xx-large;
+    font-weight: bold;
+}
+
+section#buttons .hccdoIcon {
+    font-size: large;
     font-weight: bold;
 }
 
@@ -50,7 +64,24 @@ input#hccdoProjectName, input#extCSS {
 h4 {
     margin-bottom: 0;
 }
+h4 + h4 {
+    margin-top: .5rem;
+}
 .unh4 {
     font-size:normal;
     font-weight:normal;
+}
+.nw {
+    white-space: nowrap;
+    padding: 0 .5rem 0 0;
+}
+.up {
+    font-size:smaller;
+}
+
+
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  body {
+    background-image: url('low_contrast_linen@2x.png');
+  }
 }
