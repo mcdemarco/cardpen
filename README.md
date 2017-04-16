@@ -24,9 +24,9 @@ Everything works in Chrome.  The image exporter doesn't work in Safari or iOS, b
 credits
 ---------
 
-hccdo uses [mustache](https://mustache.github.io) for templating, [Papa Parse](http://papaparse.com) for csv parsing, [dom-to-image](https://github.com/tsayen/dom-to-image/) (with [pr#103 for dpi settings](https://github.com/tsayen/dom-to-image/pull/103) for image generation, and [FileSaver](https://github.com/eligrey/FileSaver.js) for saving.
+hccdo uses [mustache](https://mustache.github.io) for templating, [Papa Parse](http://papaparse.com) for csv parsing, [dom-to-image](https://github.com/tsayen/dom-to-image/) (with [pr#103 for dpi settings](https://github.com/tsayen/dom-to-image/pull/103)) for image generation, [FileSaver](https://github.com/eligrey/FileSaver.js) for saving, and [bind](https://github.com/remy/bind.js) and [underscore](http://underscorejs.org) under the hood.
 
 The basic example makes very simple cards for the game [Pico](https://boardgamegeek.com/boardgame/2051/pico).  The examples directory contains three more complicated examples, all for retheme of the game [Sleuth](https://boardgamegeek.com/boardgame/594/sleuth).  (There are also some examples included in the original [hccd](https://github.com/vaemendis/hccd/), if you want to see more.)
 
-Some images in the examples are from [Game-icons.net](http://game-icons.net).  The UI background is EP Natural Black from [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/ep-natural-black/).
+Some images in the examples are from [Game-icons.net](http://game-icons.net).  The UI background is Low Contrast Linen by Jordan Pittman from [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/low-contrast-linen/).
 

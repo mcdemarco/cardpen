@@ -3,7 +3,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background-color: #1E2028;
-    background-image: url('ep_naturalblack.png');
+    background-image: url('low_contrast_linen.png');
     color: white;
     font-family: Raleway, sans-serif;
 }
@@ -14,6 +14,11 @@ main {
 
 section#header, section#thin {
     flex:1;
+}
+
+section#buttons {
+    padding-top: 1em;
+    text-align:center;
 }
 
 section {
@@ -28,7 +33,7 @@ section div {
     flex: 1 0 0;
 }
 
-#hccdoIcon {
+.hccdoIcon {
     font-size: xx-large;
     font-weight: bold;
 }
@@ -50,7 +55,24 @@ input#hccdoProjectName, input#extCSS {
 h4 {
     margin-bottom: 0;
 }
+h4 + h4 {
+    margin-top: .5rem;
+}
 .unh4 {
     font-size:normal;
     font-weight:normal;
+}
+.nw {
+    white-space: nowrap;
+    padding: 0 .5rem 0 0;
+}
+.up {
+    font-size:smaller;
+}
+
+
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  body {
+    background-image: url('low_contrast_linen@2x.png');
+  }
 }
