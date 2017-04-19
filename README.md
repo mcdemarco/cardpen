@@ -14,7 +14,7 @@ usage
 2. Edit the example or upload your own mustache template, csv file, and/or css file.  (You only need to upload once.  The css is optional and can be deleted.)
 3. The csv file should have a header row plus a row for each card.  The header names for the columns are used in the template.  
 3. Click the Generate HTML button for HTML.  Print the frame, being sure to turn off any scaling, headers, and footers.
-4. Click the Generate Images button for images.  A Zip Images appears above the images (and the original HTML in the frame); when all images have appeared, click it to download a zip file of the images.  You can also right-click and save the images individually from the frame if you prefer.
+4. Click the Generate Images button for images.  A Zip Images button appears above the images (which are above the original HTML in the frame); when all images have appeared, click it to download a zip file of the images.  You can also right-click and save the images individually from the frame if you prefer.
 
 caveats
 ---------

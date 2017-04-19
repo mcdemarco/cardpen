@@ -2,23 +2,32 @@
 
 ## What
 
-HCCDo generates simple HTML pages of cards for printing cards up yourself,
-or it can convert your cards to images at any DPI for uploading to a printing service like ArtsCow.
-(Note that some printers require inDesign or other formats, and HCCDo won't help you there.)
-
-## Why
-
-HCCDo assumes that you know your way around HTML but not around inDesign or [nanDECK](http://www.nand.it/nandeck/)
-(which can do [some very cool things](https://boardgamegeek.com/blogpost/39003/nandeck-metrotsuro-hex-tile) for you).
-Maybe you can't afford Adobe products and don't have a Windows machine handy to run nanDECK on,
-or your layout is simple and your project too casual to invest the time in learning a more powerful tool.
-But you know HTML already.
+HCCDo (*HTML+CSS Card Designer online*) generates simple HTML pages of cards for printing cards up yourself,
+or it can convert your cards to images at any DPI for uploading to a printing service like ArtsCow that accepts PNGs.
 
 ## Where
 
 The *o* is for online; HCCDo is available online at [hccdo.mcdemarco.net](http://hccdo.mcdemarco.net/).
 You can also download the project from github and run it locally,
-but you may need to serve it from a local webserver for browser security reasons.
+though you may need to serve it from a local webserver for browser security reasons.
+
+## Why
+
+HCCDo assumes that you know your way around HTML but not around inDesign or [nanDECK](http://www.nand.it/nandeck/).
+Maybe you can't afford Adobe products and don't have a Windows machine handy to run nanDECK on,
+or your layout is simple and your project too casual to invest the time in learning a more powerful tool.
+But you know HTML already, and maybe even Mustache.
+
+### Why Not
+
+Note that some printers require inDesign or other professional file formats, and HCCDo won't help you there.
+Mustache (the templating engine) is not a scripting language
+and cannot do some [very cool things](https://boardgamegeek.com/blogpost/39003/nandeck-metrotsuro-hex-tile) that other tools can.
+
+If you don't know HTML and CSS already, or don't feel like hacking your way around Mustache,
+you may want to spend your time learning more appropriate tools for the job.
+
+Also, if you're not willing to run it in a modern browser, HCCDo may not work well for you.
 
 ## How
 
@@ -26,23 +35,29 @@ To see your current cards (or the example set of Pico cards), click *Generate HT
 To see this help page again, click *Help*.
 
 Your cards are assembled from a card list, a Mustache template, and (optionally) additional CSS styles.
+You can upload these, cut and paste them in, or type them in.
+The text boxes are expandable (in modern browsers); if you want to see more, just drag on the lower right corner.
 
 ### The Card List
 
-You can upload a CSV file containing all the information about your cards, or type them in manually.
+You can upload a CSV file containing all the information about your cards, or enter the data manually.
 
 The first line of your card list should be a header with short names for each of your columns.
 Each remaining line should have the same number of columns (you can leave some blank), and should describe one card from your set.
 
 ### The Template
 
-You can upload a Mustache template or type it in manually.
+You can upload a Mustache template or enter it manually.
 
-The template is mostly plain HTML laying out a single card from your set.  To insert card-specific information, use Mustache braces around one of your column titles from your card list.  In the Pico example, there is only one column, named *Number*, and the card's number is inserted in three places on the card: the center and the two corners.
+The template is mostly plain HTML laying out a single card from your set.
+To insert card-specific information, use Mustache braces around one of your column titles from your card list.
+
+In the Pico example, there is only one column, named *Number*, and the card's number is inserted in three places on the card: the center and the two corners.
+For more hints on how to set up your Mustache template, see the additional examples, [the examples from hccd](https://github.com/vaemendis/hccd/tree/master/examples), and/or .
 
 ### The Styles
 
-You can upload a CSS file or type it in manually.
+You can upload a CSS file or enter CSS styles manually.
 
 The example uses flexbox styles to position the card elements, but you can use tables or any other approach you like.
 You can put all styling information inline in the template, or set classes on your template and define them here.
@@ -86,6 +101,7 @@ When generating images, choose an adequate DPI (300 is most printers' minimum), 
 
 * When in doubt, the size is poker.
 * Sometimes poker size is described as "Standard Game" or "Standard Card Game", and bridge size as "Standard American" or "American Board Game" for the purposes of sleeving, but these are not to be confused with the actual panoply of weird "game" sizes.
+* Magic the Gathering cards are poker size.
 * Euro Mini (44mm x 67mm) is sometimes listed in US sizes as 1.73" x 2.64".
 * Skinny Mini is the Fantasy Flight/DriveThruCards size of 1 5/8" x 2 1/2", also known as Mini American; more commonly Mini means 1 3/4" x 2 1/2" instead.  (Bicycle claims "mini" is actually 1 11/16" x 2 3/8", but no one prints that size.)
 * Game is the size of, *e.g.*, Fluxx cards, and is sometimes listed in US sizes as 2.20472" x 3.4252".
@@ -109,10 +125,14 @@ Some sizes are listed because sleeves for them are common, while no one prints t
 
 ### Sleeves
 
-Sleeves are a cheap way to mock up a card game.  Sleeve your printouts in front of actual cards, or use thicker paper or opaque sleeves for the best results.
+Sleeves are a cheap way to mock up a card game.
+Sleeve your printouts in front of actual cards, or use thicker paper or opaque sleeves for the best results.
+, and the bigger sleeve manufacturers support all sorts of weird sizes
 
-* [Fantasy Flight sleeves](https://www.fantasyflightgames.com/en/products/fantasy-flight-supply/)
-* [Mayday Games' sleeves](https://www.maydaygames.com/collections/card-sleeves)
+* [Dragon Shield sleeves](http://www.arcanetinmen.dk/products/board-game-sleeves) aren't just for Magic anymore.
+* [Fantasy Flight sleeves](https://www.fantasyflightgames.com/en/products/fantasy-flight-supply/) are not the cheapest.
+* [KMC sleeves](http://kmcsleeves.com) are still mostly for Magic; beware the minis that aren't really mini!
+* [Mayday Games' sleeves](https://www.maydaygames.com/collections/card-sleeves) are not, rumor has it, always of consistent quality.
 * [Ultimate Guard sleeves](http://www.ultimateguard.com/en/card-sleeves.html)
 * [Ultra PRO sleeves](http://www.ultrapro.com/product_list.php?cPath=70) are called *deck protectors*.
 
@@ -121,6 +141,8 @@ Sleeves are a cheap way to mock up a card game.  Sleeve your printouts in front 
 HCCDo is by M. C. DeMarco ([fiddly_bits](https://www.boardgamegeek.com/user/fiddly_bits) at BGG);
 it was inspired by [hccd](https://github.com/vaemendis/hccd/).
 The code and more details are available at [bitbucket](https://bitbucket.org/mcdemarco/hccdo/overview).
+
+HCCDo is licensed under the GNU General Public License v3.0.
 
 ## When
 
