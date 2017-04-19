@@ -48,7 +48,7 @@ The text boxes are expandable (in modern browsers); if you want to see more, jus
 
 ### The Card List
 
-You can upload a CSV file containing all the information about your cards, or enter the data manually.
+You can upload a CSV file containing all the information about your cards, or enter the data manually.  In either case, the CSV delimiter (usually a comma or semicolon) will be detected automatically.
 
 The first line of your card list should be a header with short names for each of your columns.
 Each remaining line should have the same number of columns (you can leave some blank), and should describe one card from your set.
