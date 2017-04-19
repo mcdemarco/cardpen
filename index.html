@@ -18,24 +18,31 @@
 				an online HTML+CSS card generator
 			</div>
 			<div>
-				<h4>Card size: 
+				<h4 id="csizeWrapper">Card size: 
 					<select id="csize"></select>
+					<span class="nw unh4" id="customize" style="display:none;">
+						<input id="cwidth" placeholder="width" type="text" size="6"> x <input id="cheight" placeholder="height" type="text" size="6">
+						<input type="radio" id="cmm" value="mm" name="cunit"><label for="cmm">mm</label>
+						<input type="radio" id="cin" value="in" name="cunit"><label for="cin">in</label>
+					</span>
 				</h4>
-				<h4>Orientation:  <span class="unh4">
-					<span class="nw">
-						<input type="radio" id="portrait" value="portrait" name="cori" checked>
-						<label for="portrait">Portrait</label>
+				<h4>Orientation:  
+					<span class="unh4">
+						<span class="nw">
+							<input type="radio" id="cportrait" value="portrait" name="cori">
+							<label for="cportrait">Portrait</label>
+						</span>
+						<span class="nw">
+							<input type="radio" id="clandscape" value="landscape" name="cori">
+							<label for="clandscape">Landscape</label>
+						</span>
 					</span>
-					<span class="nw">
-						<input type="radio" id="landscape" value="landscape" name="cori">
-						<label for="landscape">Landscape</label>
-					</span>
-				</span></h4> 
+				</h4>
 			</div>
 			<div>
 				<h4>Page size:  <span class="unh4">
 					<span class="nw">
-						<input type="radio" id="letter" value="letter" name="psize" checked>
+						<input type="radio" id="letter" value="letter" name="psize">
 						<label for="letter">Letter</label>
 					</span>
 					<span class="nw">
@@ -45,12 +52,12 @@
 				</span></h4> 
 				<h4>Orientation:  <span class="unh4">
 					<span class="nw">
-						<input type="radio" id="portrait" value="portrait" name="pori">
-						<label for="portrait">Portrait</label>
+						<input type="radio" id="pportrait" value="portrait" name="pori">
+						<label for="pportrait">Portrait</label>
 					</span>
 					<span class="nw">
-						<input type="radio" id="landscape" value="landscape" name="pori" checked>
-						<label for="landscape">Landscape</label>
+						<input type="radio" id="plandscape" value="landscape" name="pori">
+						<label for="plandscape">Landscape</label>
 					</span>
 				</span></h4> 
 			</div>
@@ -64,8 +71,8 @@
 				<h4>Gutters: 
 					<input type="text" id="gsize" size="4" value=""/>
 					<span class="unh4"> 
-						<input type="radio" name="gunit" value="mm" checked><label>mm</label>
-						<input type="radio" name="gunit" value="in"><label>in</label>
+						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
+						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
 					</span>
 				</h4>
 			</div>
