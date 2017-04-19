@@ -2,8 +2,11 @@
 
 ## What
 
-HCCDo (*HTML+CSS Card Designer online*) generates simple HTML pages of cards for printing cards up yourself,
-or it can convert your cards to images at any DPI for uploading to a printing service like ArtsCow that accepts PNGs.
+HCCDo (*HTML+CSS Card Designer online*) generates simple HTML pages of cards for printing them up yourself,
+or it can convert your cards to images at any DPI for uploading to card printing services that accept PNGs.
+
+HCCDo includes presets for most common (and many uncommon) card sizes, custom sizes, circular cards,
+bleed, and zipping of your generated images.
 
 ## Where
 
@@ -68,17 +71,29 @@ You should use print units like *in*, *mm*, or *pt* (points) in order to keep yo
 
 You can add Google Fonts or other fonts (*e.g.*, [FontAwesome](https://www.bootstrapcdn.com/fontawesome/)) using the *External Stylesheet* setting.  [FontCDN](http://fontcdn.org) is a handy way to search for Google Fonts.  The Pico example also uses a [Google font effect](https://developers.google.com/fonts/docs/getting_started#enabling_font_effects_beta) for the text shadow.  (If you don't see it, you may not be using a browser that supports their font effects.)
 
-### The Settings
+### Art
 
-The most important setting is card size, which defaults to *poker*.
+You can include URLs for background images in your CSS, and trigger different ones using classes in your template.
+For foreground images, you can include the URLs as part of the card list and put the url into an *img* tag in your template.
 
+HCCDo needs to be able to find your images "online".
+For a small number of images that aren't already available online,
+you can use a image hosting site like [Google Photos](https://www.google.com/photos/about/) or [Unsee](https://unsee.cc).
+For more images you may want to run HCCDo locally and put your images in the images directory.
+
+### More Settings
+
+The most important setting is card size, which defaults to *poker (2.5"x3.5")*.
 You can change the orientation of your cards to *landscape*; the default is *portrait*.
+You can also set the spacing (gutter) between the cards, and add a bleed region around the card (required by card printing services).
+
+You don't have to keep all the units (millimeters or inches) in sync, but your results may be more accurate if you do.
 
 ### Printing or Saving
 
 HCCDo stores your current card setup in local storage, so you can come back to it in the same browser later on (but not forever).
 
-### Printing HTML
+#### Printing HTML
 
 Before printing, choose the page size for your paper.  Your cards may fit better in one direction than the other, so try switching from landscape to portrait or back before printing.
 
