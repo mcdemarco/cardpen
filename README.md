@@ -16,6 +16,8 @@ usage
 3. Click the Generate HTML button for HTML.  Print the frame, being sure to turn off any scaling, headers, and footers.
 4. Click the Generate Images button for images.  A Zip Images button appears above the images (which are above the original HTML in the frame); when all images have appeared, click it to download a zip file of the images.  You can also right-click and save the images individually from the frame if you prefer.
 
+For more information, see [the documentation](doc/index.md).
+
 caveats
 ---------
 

@@ -22,8 +22,9 @@
 					<select id="csize"></select>
 					<span class="nw unh4" id="customize" style="display:none;">
 						<input id="cwidth" placeholder="width" type="text" size="6"> x <input id="cheight" placeholder="height" type="text" size="6">
-						<input type="radio" id="cmm" value="mm" name="cunit"><label for="cmm">mm</label>
 						<input type="radio" id="cin" value="in" name="cunit"><label for="cin">in</label>
+						<input type="radio" id="cmm" value="mm" name="cunit"><label for="cmm">mm</label>
+						<input type="checkbox" id="ccircle"><label for="ccircle">circular</label>
 					</span>
 				</h4>
 				<h4>Orientation:  
@@ -68,24 +69,42 @@
 				<h4>Project name:
 					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
 				</h4>
-				<h4>Gutters: 
-					<input type="text" id="gsize" size="4" value=""/>
-					<span class="unh4"> 
-						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
-						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
-					</span>
-				</h4>
-			</div>
-			<div>
-				<h4>Bleed:</h4>
 				<h4>Borders: 
 					<span class="unh4">
 						<input type="checkbox" id="border">
 						&nbsp;(style under <em>Your styles</em>)
 					</span>
 				</h4>
+				<h4>Overlay:
+					<span class="unh4">
+						<input type="checkbox" id="overlay">
+					</span>
+				</h4>
 			</div>
 			<div>
+				<h4>Bleed:
+					<input type="text" id="blsize" size="4" value=""/>
+					<span class="unh4"> 
+						<input type="radio" id="blin" value="in" name="blunit"><label for="blin">in</label>
+						<input type="radio" id="blmm" value="mm" name="blunit"><label for="blmm">mm</label>
+					</span>
+				</h4>
+				<h4>Safe:
+					<input type="text" id="ssize" size="4" value=""/>
+					<span class="unh4"> 
+						<input type="radio" id="sin" value="in" name="sunit"><label for="sin">in</label>
+						<input type="radio" id="smm" value="mm" name="sunit"><label for="sqmm">mm</label>
+					</span>
+				</h4>
+			</div>
+			<div>
+				<h4>Gutters: 
+					<input type="text" id="gsize" size="4" value=""/>
+					<span class="unh4">
+						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
+						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
+					</span>
+				</h4>
 				<h4>Externtal stylesheet <span class="unh4">&nbsp;(e.g., Google Fonts URL)</span></h4>
 				<input type="text" id="extCSS" value=""/><br />
 			</div>
