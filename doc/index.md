@@ -16,16 +16,21 @@ though you may need to serve it from a local webserver for browser security reas
 
 ## Why
 
-HCCDo assumes that you know your way around HTML but not around inDesign or [nanDECK](http://www.nand.it/nandeck/).
+HCCDo assumes that you know your way around HTML but not around inDesign or nanDECK.
 Maybe you can't afford Adobe products and don't have a Windows machine handy to run nanDECK on,
 or your layout is simple and your project too casual to invest the time in learning a more powerful tool.
 But you know HTML already, and maybe even Mustache.
 
+If you've used hccd, you might find it worth switching to HCCDo for new options like bleed.
+
 ### Why Not
 
 Note that some printers require inDesign or other professional file formats, and HCCDo won't help you there.
+
 Mustache (the templating engine) is not a scripting language
-and cannot do some [very cool things](https://boardgamegeek.com/blogpost/39003/nandeck-metrotsuro-hex-tile) that other tools can.
+and cannot do some of the [very cool things](https://boardgamegeek.com/blogpost/39003/nandeck-metrotsuro-hex-tile) that other tools do.
+If you're tempted by [nanDECK](http://www.nand.it/nandeck/), there are some similar options out there that aren't Windows-only:
+[Squib](http://squib.rocks) is Ruby-based, and [MultiDeck](http://multideck.blogspot.com) runs on MacOS.
 
 If you don't know HTML and CSS already, or don't feel like hacking your way around Mustache,
 you may want to spend your time learning more appropriate tools for the job.
