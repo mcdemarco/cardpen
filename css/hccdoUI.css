@@ -37,6 +37,10 @@ section div {
     flex: 1 0 0;
 }
 
+div#buttonIcon {
+    flex: 0 1 auto;
+}
+
 .hccdoIcon {
     font-size: xx-large;
     font-weight: bold;

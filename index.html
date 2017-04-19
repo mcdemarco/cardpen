@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<title>HCCDo</title>
-    <script type="text/javascript" src="lib/bind.min.js"></script>
+    <script type="text/javascript" src="lib/bind.js"></script>
     <script type="text/javascript" src="lib/mustache.min.js"></script>
     <script type="text/javascript" src="lib/papaparse.min.js"></script>
     <script type="text/javascript" src="lib/underscore-min.js"></script>
@@ -71,10 +71,11 @@
 			</div>
 			<div>
 				<h4>Bleed:</h4>
-				<h4>Borders: <span class="unh4"> 
-					<input type="radio" name="border" value="on" checked><label>on</label>
-					<input type="radio" name="border" value="off"><label>off</label>
-					&nbsp;(style under <em>Your styles</em>)</span>
+				<h4>Borders: 
+					<span class="unh4">
+						<input type="checkbox" id="border">
+						&nbsp;(style under <em>Your styles</em>)
+					</span>
 				</h4>
 			</div>
 			<div>
@@ -108,8 +109,9 @@
 				</span>
 			</div>
 		</section>
+
 		<section id="buttons">
-			<div class="show" style="display:none;text-align:left;">
+			<div id="buttonIcon" class="show" style="display:none;text-align:left;">
 				<span class="hccdoIcon">HCCDo</span>
 			</div>
 			<div>				
@@ -124,6 +126,7 @@
 			</div>
 			<div>
 				<button type="button" id="generate">Generate HTML</button>
+				<span class="nw"><input type="checkbox" id="live"> automatically</span>
 				<button type="button" id="print">Print</button>
 			</div>
 		</section>
