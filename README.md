@@ -24,7 +24,7 @@ Everything works in Chrome.  The image exporter doesn't work in Safari or iOS, b
 credits
 ---------
 
-hccdo uses [mustache](https://mustache.github.io) for templating, [Papa Parse](http://papaparse.com) for csv parsing, [dom-to-image](https://github.com/tsayen/dom-to-image/) (with [pr#103 for dpi settings](https://github.com/tsayen/dom-to-image/pull/103)) for image generation, [FileSaver](https://github.com/eligrey/FileSaver.js) for saving, and [bind](https://github.com/remy/bind.js) ([commit 0cdcdb36f3](https://github.com/remy/bind.js/tree/0cdcdb36f3207191527c6de5367a518334f08d48) with [pr#16](https://github.com/remy/bind.js/pull/16/files)) and [underscore](http://underscorejs.org) under the hood.
+HCCDo was inspired by [hccd](https://github.com/vaemendis/hccd/).  HCCDo uses [mustache](https://mustache.github.io) for templating, [Papa Parse](http://papaparse.com) for csv parsing, [dom-to-image](https://github.com/tsayen/dom-to-image/) (with [pr#103 for dpi settings](https://github.com/tsayen/dom-to-image/pull/103)) for image generation, [FileSaver](https://github.com/eligrey/FileSaver.js) for saving, and [bind](https://github.com/remy/bind.js) ([commit 0cdcdb36f3](https://github.com/remy/bind.js/tree/0cdcdb36f3207191527c6de5367a518334f08d48) with [pr#16](https://github.com/remy/bind.js/pull/16/files)) and [underscore](http://underscorejs.org) under the hood.
 
 The basic example makes very simple cards for the game [Pico](https://boardgamegeek.com/boardgame/2051/pico).  The examples directory contains three more complicated examples, all for retheme of the game [Sleuth](https://boardgamegeek.com/boardgame/594/sleuth).  (There are also some examples included in the original [hccd](https://github.com/vaemendis/hccd/), if you want to see more.)
 
