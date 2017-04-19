@@ -1,12 +1,26 @@
 # Help using HCCDo
 
-HCCDo generates simple HTML pages of cards for printing your cards up yourself,
+## What
+
+HCCDo generates simple HTML pages of cards for printing cards up yourself,
 or it can convert your cards to images at any DPI for uploading to a printing service like ArtsCow.
 (Note that some printers require inDesign or other formats, and HCCDo won't help you there.)
 
-HCCDo assumes that you know your way around HTML but not around inDesign.
+## Why
 
-## How To
+HCCDo assumes that you know your way around HTML but not around inDesign or [nanDECK](http://www.nand.it/nandeck/)
+(which can do [some very cool things](https://boardgamegeek.com/blogpost/39003/nandeck-metrotsuro-hex-tile) for you).
+Maybe you can't afford Adobe products and don't have a Windows machine handy to run nanDECK on,
+or your layout is simple and your project too casual to invest the time in learning a more powerful tool.
+But you know HTML already.
+
+## Where
+
+The *o* is for online; HCCDo is available online at [hccdo.mcdemarco.net](http://hccdo.mcdemarco.net/).
+You can also download the project from github and run it locally,
+but you may need to serve it from a local webserver for browser security reasons.
+
+## How
 
 To see your current cards (or the example set of Pico cards), click *Generate HTML*.
 To see this help page again, click *Help*.
@@ -37,7 +51,7 @@ You should use print units like *in*, *mm*, or *pt* (points) in order to keep yo
 
 #### Fonts
 
-You can add Google Fonts or other fonts (*e.g.*, [FontAwesome](https://www.bootstrapcdn.com/fontawesome/)) using the *External Stylesheet* setting.  [FontCDN](http://fontcdn.org) is a handy way to search for Google Fonts.
+You can add Google Fonts or other fonts (*e.g.*, [FontAwesome](https://www.bootstrapcdn.com/fontawesome/)) using the *External Stylesheet* setting.  [FontCDN](http://fontcdn.org) is a handy way to search for Google Fonts.  The Pico example also uses a [Google font effect](https://developers.google.com/fonts/docs/getting_started#enabling_font_effects_beta) for the text shadow.  (If you don't see it, you may not be using a browser that supports their font effects.)
 
 ### The Settings
 
@@ -45,9 +59,7 @@ The most important setting is card size, which defaults to *poker*.
 
 You can change the orientation of your cards to *landscape*; the default is *portrait*.
 
-
-
-## Printing or Saving
+### Printing or Saving
 
 HCCDo stores your current card setup in local storage, so you can come back to it in the same browser later on (but not forever).
 
@@ -68,7 +80,7 @@ Not all browsers can generate images; Safari will not, nor will any iOS browser.
 When generating images, choose an adequate DPI (300 is most printers' minimum), then click *Generate Images*.  The images will appear in this section of the page, with a *Zip Images* button above them.  To download them, click the button.
 
 
-## More Information
+## Which
 
 ### Card Size Clarification
 
@@ -79,17 +91,21 @@ When generating images, choose an adequate DPI (300 is most printers' minimum), 
 * Game is the size of, *e.g.*, Fluxx cards, and is sometimes listed in US sizes as 2.20472" x 3.4252".
 * Square (2.75") is sometimes listed as 2 11/16" or 70mm for the purposes of sleeving.
 * Small Memo is a larger square (3.75").
+* Business is sometimes called Biz or Question.
 
 Some sizes are listed because sleeves for them are common, while no one prints them--most notably, euroGame and euroMiniGame.
 
+## Whence
 
 ### Card Printing Services
 
-* [ArtsCow](http://www.artscow.com/) prints several formats of cards, plus memo pads (for scorepads).  [Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.
-* [DriveThruCards](http://www.drivethrucards.com)' supported formats and costs are listed [here](https://onebookshelfpublisherservice.zendesk.com/hc/en-us/articles/227867627-Printed-Card-Formats-Costs).  Beware of their skinny minis!
+* [ArtsCow](http://www.artscow.com/) prints basic card sizes, plus memo pads (for scorepads).  [Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.
+* [DriveThruCards](http://www.drivethrucards.com)' card sizes and costs are listed [here](https://onebookshelfpublisherservice.zendesk.com/hc/en-us/articles/227867627-Printed-Card-Formats-Costs).  Beware of their skinny minis!
 * [The Game Crafter](https://www.thegamecrafter.com)'s card sizes are listed [here](http://help.thegamecrafter.com/article/85-cards)
 * [Make Playing Cards](http://www.makeplayingcards.com/)' card sizes and prices are [here](http://www.makeplayingcards.com/low-price-for-bulk.aspx); they also make custom poker chips.
+* [Print & Play](https://www.printplaygames.com/)'s sizes are listed [here](https://www.printplaygames.com/product/standard_sizes), including unusual square and index card sizes.
 * [Printer's Studio](http://www.printerstudio.com/)'s card sizes are listed [here](http://www.printerstudio.com/unique-ideas/blank-playing-cards.html).  They also make a large variety of game mats.
+* [Superior Pod](http://www.superiorpod.com/) doesn't have a single list, but their sizes seem to be poker, bridge, mini, question, 3.5" square and tarot.  There's a [long BGG thread](https://boardgamegeek.com/thread/427619/superior-pod-thread/) about them.
 
 ### Sleeves
 
@@ -100,6 +116,12 @@ Sleeves are a cheap way to mock up a card game.  Sleeve your printouts in front 
 * [Ultimate Guard sleeves](http://www.ultimateguard.com/en/card-sleeves.html)
 * [Ultra PRO sleeves](http://www.ultrapro.com/product_list.php?cPath=70) are called *deck protectors*.
 
-## Credits
+## Who
 
-HCCDo was inspired by [hccd](https://github.com/vaemendis/hccd/).  The code and more details are available at [bitbucket](https://bitbucket.org/mcdemarco/hccdo/overview).
+HCCDo is by M. C. DeMarco ([fiddly_bits](https://www.boardgamegeek.com/user/fiddly_bits) at BGG);
+it was inspired by [hccd](https://github.com/vaemendis/hccd/).
+The code and more details are available at [bitbucket](https://bitbucket.org/mcdemarco/hccdo/overview).
+
+## When
+
+&copy;2017
