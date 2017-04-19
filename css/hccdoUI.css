@@ -75,7 +75,7 @@ h4 + h4 {
     margin-top: .25rem;
 }
 
-.unh4 {
+h4 span {
     font-size:normal;
     font-weight:normal;
 }
