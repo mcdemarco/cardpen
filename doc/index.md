@@ -29,13 +29,16 @@ Note that some printers require inDesign or other professional file formats, and
 
 Mustache (the templating engine) is not a scripting language
 and cannot do some of the [very cool things](https://boardgamegeek.com/blogpost/39003/nandeck-metrotsuro-hex-tile) that other tools do.
-If you're tempted by [nanDECK](http://www.nand.it/nandeck/), there are some similar options out there that aren't Windows-only:
-[Squib](http://squib.rocks) is Ruby-based, and [MultiDeck](http://multideck.blogspot.com) runs on MacOS.
 
 If you don't know HTML and CSS already, or don't feel like hacking your way around Mustache,
 you may want to spend your time learning more appropriate tools for the job.
 
 Also, if you're not willing to run it in a modern browser, HCCDo may not work well for you.
+
+#### Alternatives
+
+If you're tempted by [nanDECK](http://www.nand.it/nandeck/), there are some similar options out there that aren't all Windows-only:
+[Squib](http://squib.rocks) is Ruby-based, [MultiDeck](http://multideck.blogspot.com) runs on MacOS, [Strange Eons](http://cgjennings.ca/eons/help.html#developers) is multi-platform, [CardMaker](https://github.com/nhmkdev/cardmaker) and [Card Game Management System](http://cardbuilder.blob.core.windows.net/cardgamemanagementsystem/publish.htm) are more Windows programs, and [XXPaper](https://github.com/clearclaw/xxpaper) is for 18xx games.
 
 ## How
 
