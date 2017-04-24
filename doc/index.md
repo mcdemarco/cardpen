@@ -97,9 +97,26 @@ For more images you may want to run HCCDo locally and put your images in the ima
 
 The most important setting is card size, which defaults to *poker (2.5"x3.5")*.
 You can change the orientation of your cards to *landscape*; the default is *portrait*.
-You can also set the spacing (gutter) between the cards, and add a bleed region around the card (required by card printing services).
+You can also set the spacing (gutter) between the cards.
 
 You don't have to keep all the units (millimeters or inches) in sync, but your results may be more accurate if you do.
+
+#### Bleed
+
+You can add a bleed outside the card proper (this increases the size of your cards by the specified amount), and you can also designate a safe region inside the card proper.  Most printing services require 1/8" bleed per side and recommend a 1/8" safe zone (sometimes expressed as 36 pixels at 300 DPI rather than as 0.125" or  0.12").
+
+#### Borders
+
+The border option is to provide a cut line when printing cards yourself.  Making actual thick borders around a card is not generally recommended and so is not automated by HCCDo, though you can still make such a thing.
+
+When making your own borders around cards, The Game Crafter recommends that the border extend about 1/8" into the safe zone.
+
+#### Corners
+
+In the wild, card corner diameters vary between 1/8" and 1/4".
+You can set these in HCCDo, though leaving them off or getting them wrong will probably not matter much in the print process.
+
+Read more about corners at [Dreadful Games](http://dreadfulgames.com/rounders-your-guide-to-rounded-corner-cards-for-your-board-game/).
 
 ### Printing or Saving
 
@@ -143,12 +160,15 @@ Some sizes are listed because sleeves for them are common, while no one prints t
 ### Card Printing Services
 
 * [ArtsCow](http://www.artscow.com/) prints basic card sizes, plus memo pads (for scorepads).  [Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.
-* [DriveThruCards](http://www.drivethrucards.com)' card sizes and costs are listed [here](https://onebookshelfpublisherservice.zendesk.com/hc/en-us/articles/227867627-Printed-Card-Formats-Costs).  Beware of their skinny minis!
 * [The Game Crafter](https://www.thegamecrafter.com)'s card sizes are listed [here](http://help.thegamecrafter.com/article/85-cards)
 * [Make Playing Cards](http://www.makeplayingcards.com/)' card sizes and prices are [here](http://www.makeplayingcards.com/low-price-for-bulk.aspx); they also make custom poker chips.
-* [Print & Play](https://www.printplaygames.com/)'s sizes are listed [here](https://www.printplaygames.com/product/standard_sizes), including unusual square and index card sizes.
 * [Printer's Studio](http://www.printerstudio.com/)'s card sizes are listed [here](http://www.printerstudio.com/unique-ideas/blank-playing-cards.html).  They also make a large variety of game mats.
-* [Superior Pod](http://www.superiorpod.com/) doesn't have a single list, but their sizes seem to be poker, bridge, mini, question, 3.5" square and tarot.  There's a [long BGG thread](https://boardgamegeek.com/thread/427619/superior-pod-thread/) about them.
+* [Superior Pod](http://www.superiorpod.com/) doesn't have a single list, but their sizes seem to be poker, bridge, mini, question, 3.5" square and tarot.  There's a [long BGG thread](https://boardgamegeek.com/thread/427619/superior-pod-thread/) about them.  Their submission requirements are [somewhat unclear](http://support.superiorpod.com/customer/en/portal/articles/2727142-file-submission-guidelines-for-card-decks) but seem to include a zip file of individual image files.
+
+Although they print the rare Skinny Mini, [DriveThruCards](http://www.drivethrucards.com) doesn't actually seem to accept image files, only PDFs.  For the record, their card sizes and costs are listed [here](https://onebookshelfpublisherservice.zendesk.com/hc/en-us/articles/227867627-Printed-Card-Formats-Costs).
+
+Although they accept image files, [Print & Play](https://www.printplaygames.com/) requires that you format them in large sheets of 18 or so cards for printing.  HCCDo will not do that part for you.  For the record, their sizes are listed [here](https://www.printplaygames.com/product/standard_sizes), including unusual square and index card sizes.
+
 
 ### Sleeves
 
