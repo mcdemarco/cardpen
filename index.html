@@ -24,6 +24,7 @@
 						<input id="cwidth" placeholder="width" type="text" size="6"> x <input id="cheight" placeholder="height" type="text" size="6">
 						<input type="radio" id="cin" value="in" name="cunit"><label for="cin">in</label>
 						<input type="radio" id="cmm" value="mm" name="cunit"><label for="cmm">mm</label>
+						<input type="radio" id="cpx" value="px" name="cunit"><label for="cpx">px</label>
 						<input type="checkbox" id="ccircle"><label for="ccircle">circular</label>
 					</span>
 					<span><button type="button" id="view">View</button></span>
@@ -63,17 +64,10 @@
 				<h4>Project name:
 					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
 				</h4>
-				<h4>Switch to:
+				<h4>Switch project:
 					<select id="projects">
 						<option value="blank">new project</option>
 					</select>
-				</h4>
-				<h4>Gutters: 
-					<input type="text" id="gsize" size="4" value=""/>
-					<span>
-						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
-						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
-					</span>
 				</h4>
 			</div>
 			<div>
@@ -94,23 +88,29 @@
 					</span>
 				</h4>
 				<h4>Overlay:
-					<span>
-						<input type="checkbox" id="overlay">
-					</span>
+					<input type="checkbox" id="overlay">
+					&nbsp;	&nbsp;	&nbsp;
+					Cut line:	
+					<input type="checkbox" id="border">
 				</h4>
 			</div>
 			<div>
-				<h4>Externtal stylesheet <span>&nbsp;(e.g., Google Fonts URL)</span></h4>
-				<input type="text" id="extCSS" value=""/><br />
-				<h4>Borders: 
+				<h4>Gutters: 
 					<span>
-						<input type="checkbox" id="border">
+						<input type="text" id="gsize" size="4" value=""/>
+						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
+						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
+					</span>
+				</h4>
+				<h4>Corner radius:
+					<span>
 						<input type="text" id="bradius" size="4" value=""/>
 						<input type="radio" id="brin" value="in" name="brunit"><label for="brin">in</label>
 						<input type="radio" id="brmm" value="mm" name="brunit"><label for="brmm">mm</label>
-						&nbsp;(or style below)
 					</span>
 				</h4>
+				<h4>Externtal stylesheet <span>&nbsp;(e.g., Google Fonts URL)</span></h4>
+				<input type="text" id="extCSS" value=""/><br />
 		</section>
 
 		<section id="textareas">
