@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<title>HCCDo</title>
     <script type="text/javascript" src="lib/bind.min.js"></script>
+		<script type="text/javascript" src="lib/FileSaver.min.js"></script>
     <script type="text/javascript" src="lib/mustache.min.js"></script>
     <script type="text/javascript" src="lib/papaparse.min.js"></script>
     <script type="text/javascript" src="lib/underscore-min.js"></script>
@@ -63,11 +64,17 @@
 			<div>
 				<h4>Project name:
 					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
+					<span>
+						<button type="button" id="export" title="Export this project to a file.">Export</button>
+					</span>
 				</h4>
 				<h4>Switch project:
 					<select id="projects">
 						<option value="blank">new project</option>
 					</select>
+				</h4>
+				<h4>Import a project: 
+					<input type="file" id="import" class="upload" data-type="import">
 				</h4>
 			</div>
 			<div>
