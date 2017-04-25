@@ -79,9 +79,10 @@
 			<div>
 				<h4>Bleed:
 					<input type="text" id="blsize" size="4" value=""/>
-					<span> 
+					<span>
 						<input type="radio" id="blin" value="in" name="blunit"><label for="blin">in</label>
 						<input type="radio" id="blmm" value="mm" name="blunit"><label for="blmm">mm</label>
+						<input type="radio" id="blpx" value="px" name="blunit"><label for="blpx">px</label>
 					</span>
 				</h4>
 				<h4>Safe:
@@ -89,6 +90,7 @@
 					<span> 
 						<input type="radio" id="sin" value="in" name="sunit"><label for="sin">in</label>
 						<input type="radio" id="smm" value="mm" name="sunit"><label for="sqmm">mm</label>
+						<input type="radio" id="spx" value="px" name="sunit"><label for="spx">px</label>
 					</span>
 				</h4>
 				<h4>Overlay:
@@ -155,7 +157,7 @@
 			</div>
 			<div>
 				<button type="button" id="imagine">Generate Images</button>
-				<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" size="5" value="96"/> (e.g., 300)
+				<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" size="5" value="300"/>
 			</div>
 			<div>
 				<button type="button" id="generate">Generate HTML</button>
