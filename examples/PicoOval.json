@@ -16,7 +16,7 @@
   "blunit": "px",
   "ssize": 36,
   "sunit": "px",
-  "border": false,
+  "cutline": false,
   "bradius": 0.125,
   "brunit": "in",
   "overlay": true,
