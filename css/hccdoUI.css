@@ -60,6 +60,11 @@ textarea {
     width: 90%;
     height:5rem;
 }
+textarea#projectNotes {
+    width: 75%;
+    height:1rem;
+    vertical-align:top;
+}
 
 input#hccdoProjectName, input#extCSS {
     width:90%;
