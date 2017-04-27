@@ -113,8 +113,7 @@ When making your own borders around cards, The Game Crafter recommends that the 
 
 #### Corners
 
-In the wild, card corner diameters vary between 1/8" and 1/4".
-You can set these in HCCDo, though leaving them off or getting them wrong will probably not matter much in the print process.
+You can set the corner radius in HCCDo, though leaving it off or getting them wrong will probably not matter much in the print process.  In the wild, card corner diameters vary between 1/8" and 1/4"; The Game Crafter claims that "US Game" size tends to larger corner radius while smaller is standard.
 
 Read more about corners at [Dreadful Games](http://dreadfulgames.com/rounders-your-guide-to-rounded-corner-cards-for-your-board-game/).
 
