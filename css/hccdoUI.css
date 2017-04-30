@@ -70,6 +70,10 @@ input#hccdoProjectName, input#extCSS {
     width:90%;
 }
 
+input#username {
+    width: 7rem;
+}
+
 h4 {
     margin-bottom: 0;
 }
