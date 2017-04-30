@@ -24,6 +24,5 @@
   "extCSS": "https://fonts.googleapis.com/css?family=Cabin|Amarante",
   "css": ".card {\n\tfont-family: RennieMackintoshITC, Amarante, Cabin, sans-serif;\n\tfont-size: 18pt;\n\tbackground-repeat: repeat;\n}\n\n.card1 {\n\tbackground-image: url(examples/images/ssbacks_1.jpg);\n\tbackground-size: 100mm 100mm; \n\tbackground-position: 20mm 34mm; \n}\n\n.card2 {\n\tbackground-image: url(examples/images/ssbacks_2.jpg);\n\tbackground-size: 100mm 100mm;\n\tbackground-position: 8mm 12mm;\n\n}\n\n.bleed {\n\ttext-align:center;\n\tbackground-size: 80mm 80mm; \n\tbackground-repeat: no-repeat;\n\tbackground-position: -17.5mm 16mm;\n}\n\n.card1 .bleed {\n\tbackground-image: url(examples/images/ssbacks_glass1.svg);\n}\n\n.card2 .bleed {\n\tbackground-image: url(examples/images/ssbacks_glass2.svg);\n}\n\n.subtitle {\n\tfont-family: Cabin, sans-serif;\n\tfont-size: 12pt;\n}\n\n.safe {\n\tdisplay: flex;\n\talign-items: center;\n\tflex-direction: column;\n\tjustify-content: center;\n\tflex: 1;\n}\n",
   "csv": "Back,Info\n1,Dance Deck\n2,Clue Deck",
-  "mustache": "Scottish Sleuth\n<div class=\"subtitle\">{{Info}}</div>",
-  "border": true
+  "mustache": "Scottish Sleuth\n<div class=\"subtitle\">{{Info}}</div>"
 }
