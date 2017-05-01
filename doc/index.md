@@ -51,14 +51,14 @@ The text boxes are expandable (in modern browsers); if you want to see more, jus
 
 ### The Card List
 
-You can upload a CSV file containing all the information about your cards, or enter the data manually.  In either case, the CSV delimiter (usually a comma or semicolon) will be detected automatically.
+You can upload a CSV file containing all the information about your cards, or you can enter the data manually.  In either case, the CSV delimiter (usually a comma, semicolon, or tab) will be detected automatically.
 
 The first line of your card list should be a header with short names for each of your columns.
 Each remaining line should have the same number of columns (you can leave some blank), and should describe one card from your set.
 
 The **+** button will add a duplicate card to the end of your list.  The **-** button will remove your last card.
 
-There is a special column header, *CardClass*, which will put that CSS class onto the card, which is especially useful for adding background images when doing card bleeds.  You can omit this column; if you use it, be sure that it contains valid CSS classes---*e.g.*, only letters, numbers, hyphens and underscore characters, actual words, not starting with a number, and without any special characters beyond a hyphen.  Or you can use the default card classes for this purpose: *card* and *cardN*, where *N* is the row number of the card.
+There is a special field, *card classes* for turning a column (or multiple columns) into CSS classes on each card, which is especially useful for adding background images when doing card bleeds.  To use it, put the exact name of your css column(s) into the field.  Be sure that each column you're using this way contains valid CSS classes---*e.g.*, only letters, numbers, hyphens and underscore characters: actual words, not starting with a number, and without any special characters beyond a hyphen.  Or you can use the default card classes for this purpose: *card* and *cardN*, where *N* is the row number of the card.
 
 ### The Template
 
@@ -67,7 +67,7 @@ You can upload a Mustache template or enter it manually.
 The template is mostly plain HTML laying out a single card from your set.
 To insert card-specific information, use Mustache braces around one of your column titles from your card list.
 
-In the Pico example, there is only one column, named *Number*, and the card's number is inserted in three places on the card: the center and the two corners.
+In the Pico example, there is only one column in the CSV file, named *Number*, and the card's number is inserted in three places on the card: the center and the two corners.
 For more hints on how to set up your Mustache template, see the additional examples, [the examples from hccd](https://github.com/vaemendis/hccd/tree/master/examples), and/or [the Mustache documentation](https://mustache.github.io/mustache.5.html).
 
 ### The Styles
