@@ -147,6 +147,7 @@ When generating images, choose an adequate DPI (300 is most printers' minimum), 
 * Magic the Gathering cards are poker size.
 * Euro Mini (44mm x 67mm) is sometimes listed in US sizes as 1.73" x 2.64".
 * Skinny Mini is the Fantasy Flight/DriveThruCards size of 1 5/8" x 2 1/2", also known as Mini American; more commonly Mini means 1 3/4" x 2 1/2" instead.  (Bicycle claims "mini" is actually 1 11/16" x 2 3/8", but no one prints that size.)
+* Cow Mini is ArtsCow's weird mini size (h/t [this BGG thread](https://boardgamegeek.com/thread/759945/artscow-mini-playing-cards-size-vs-ideal-image-siz) about some old typos at ArtsCow).
 * Game is the size of, *e.g.*, Fluxx cards, and is sometimes listed in US sizes as 2.20472" x 3.4252".
 * Square (2.75") is sometimes listed as 2 11/16" or 70mm for the purposes of sleeving.
 * Small Memo is a larger square (3.75").
@@ -158,15 +159,15 @@ Some sizes are listed because sleeves for them are common, while no one prints t
 
 ### Card Printing Services
 
-* [ArtsCow](http://www.artscow.com/) prints basic card sizes, plus memo pads (for scorepads).  [Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.
+* [ArtsCow](http://www.artscow.com/) prints a handful of card sizes and shapes.  (Beware their weird minis!) They also print memo pads, which may be useful for scorepads.  [Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.
 * [The Game Crafter](https://www.thegamecrafter.com)'s card sizes are listed [here](http://help.thegamecrafter.com/article/85-cards)
 * [Make Playing Cards](http://www.makeplayingcards.com/)' card sizes and prices are [here](http://www.makeplayingcards.com/low-price-for-bulk.aspx); they also make custom poker chips.
 * [Printer's Studio](http://www.printerstudio.com/)'s card sizes are listed [here](http://www.printerstudio.com/unique-ideas/blank-playing-cards.html).  They also make a large variety of game mats.
-* [Superior Pod](http://www.superiorpod.com/) doesn't have a single list, but their sizes seem to be poker, bridge, mini, question, 3.5" square and tarot.  There's a [long BGG thread](https://boardgamegeek.com/thread/427619/superior-pod-thread/) about them.  Their submission requirements are [somewhat unclear](http://support.superiorpod.com/customer/en/portal/articles/2727142-file-submission-guidelines-for-card-decks) but seem to include a zip file of individual image files.
+* [Superior Pod](http://www.superiorpod.com/) doesn't have a single list, but their sizes seem to be poker, bridge, mini, question, 3.5" square and tarot.  Their submission requirements are [somewhat unclear](http://support.superiorpod.com/customer/en/portal/articles/2727142-file-submission-guidelines-for-card-decks) but seem to include a zip file of individual image files.  There's a [long BGG thread](https://boardgamegeek.com/thread/427619/superior-pod-thread/) about them you might want to read first.
 
 Although they print the rare Skinny Mini, [DriveThruCards](http://www.drivethrucards.com) doesn't actually seem to accept image files, only PDFs.  For the record, their card sizes and costs are listed [here](https://onebookshelfpublisherservice.zendesk.com/hc/en-us/articles/227867627-Printed-Card-Formats-Costs).
 
-Although they accept image files, [Print & Play](https://www.printplaygames.com/) requires that you format them in large sheets of 18 or so cards for printing.  HCCDo will not do that part for you.  For the record, their sizes are listed [here](https://www.printplaygames.com/product/standard_sizes), including unusual square and index card sizes.
+Although they accept image files, [Print & Play](https://www.printplaygames.com/) requires that you format them in large sheets of 18 or so cards for printing.  HCCDo will not do that part automatically for you, though you may be able to do it yourself.  For the record, their sizes are listed [here](https://www.printplaygames.com/product/standard_sizes), including unusual square and index card sizes.
 
 
 ### Sleeves
