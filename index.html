@@ -168,21 +168,23 @@
 		</section>
 
 		<section id="buttons">
-			<div id="buttonIcon" class="show" style="display:none;text-align:left;">
-				<span class="hccdoIcon">HCCDo</span>
-			</div>
 			<div>
+				<span id="buttonIcon" style="display:none;float:left;" class="show hccdoIcon">HCCDo</span>
 				<button type="button" id="hide">Hide Form</button>
 				<button type="button" id="show" class="show" style="display:none">Show Form</button>
 				<button type="button" id="help">Show Help</button>
 			</div>
 			<div>
-				<button type="button" id="imagine">Generate Images</button>
-				<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" size="5" value="300"/>
+				<span class="nw">
+					<button type="button" id="imagine">Generate Images</button>
+					<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" size="5" value="300"/>
+				</span>
 			</div>
 			<div>
-				<button type="button" id="generate">Generate HTML</button>
-				<span class="nw"><input type="checkbox" id="live"> automatically</span>
+				<span class="nw">
+					<button type="button" id="generate">Generate HTML</button>
+					<input type="checkbox" id="live"> live
+				</span>
 				<button type="button" id="print">Print</button>
 			</div>
 		</section>

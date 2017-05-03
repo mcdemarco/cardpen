@@ -34,11 +34,15 @@ section#buttons {
 }
 
 section div {
-    flex: 1 0 0;
+    flex: 1 0 33%;
+    min-width: 340px;
+    margin-bottom: 10px;
 }
 
-div#buttonIcon {
-    flex: 0 1 auto;
+section#buttons div {
+    flex: 1 0 33%;
+    min-width: 222px;
+    margin-bottom: 5px;
 }
 
 .hccdoIcon {
