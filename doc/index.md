@@ -38,7 +38,7 @@ Also, if you're not willing to run it in a modern browser, HCCDo may not work we
 #### Alternatives
 
 If you're tempted by [nanDECK](http://www.nand.it/nandeck/), there are some similar options out there that aren't all Windows-only:
-[Squib](http://squib.rocks) is Ruby-based, [MultiDeck](http://multideck.blogspot.com) runs on MacOS, [Strange Eons](http://cgjennings.ca/eons/help.html#developers) is multi-platform, [CardMaker](https://github.com/nhmkdev/cardmaker) and [Card Game Management System](http://cardbuilder.blob.core.windows.net/cardgamemanagementsystem/publish.htm) are more Windows programs, and [XXPaper](https://github.com/clearclaw/xxpaper) is for 18xx games.
+[Squib](http://squib.rocks) is Ruby-based, [MultiDeck](http://multideck.blogspot.com) runs on MacOS, [Strange Eons](http://cgjennings.ca/eons/help.html#developers) is multi-platform, [CardMaker](https://github.com/nhmkdev/cardmaker) and [Card Game Management System](http://cardbuilder.blob.core.windows.net/cardgamemanagementsystem/publish.htm) are more Windows programs, and [XXPaper](https://github.com/clearclaw/xxpaper) is makes bits for 18xx games.
 
 ## How
 
