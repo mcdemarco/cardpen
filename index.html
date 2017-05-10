@@ -81,13 +81,31 @@
 					</span>
 				</h4>
 				<h4>
-						<span class="nw up">Upload project:&nbsp;<input type="file" id="import" class="upload" data-type="import"></span>
+						<span class="nw up">Load project file:&nbsp;<input type="file" id="import" class="upload" data-type="import"></span>
 					</span>
 				</h4>
 				<h4 id="idkSection" style="display:none;">BGG username: 
 					<input type="text" id="username" placeholder="BGG username" value=""/> 
 					<button type="button" id="idkFetch" title="Fetch your BGG collection as CSV for I Don't Know, What Do You Want To Play? or other purposes.">Get Games</button>
 				</h4>
+			</div>
+			<div>
+				<h4>Gutters: 
+					<span>
+						<input type="text" id="gsize" size="4" value=""/>
+						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
+						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
+					</span>
+				</h4>
+				<h4>Corner radius:
+					<span>
+						<input type="text" id="bradius" size="4" value=""/>
+						<input type="radio" id="brin" value="in" name="brunit"><label for="brin">in</label>
+						<input type="radio" id="brmm" value="mm" name="brunit"><label for="brmm">mm</label>
+					</span>
+				</h4>
+				<h4>Externtal stylesheet <span>&nbsp;(e.g., Google Fonts URL)</span></h4>
+				<input type="text" id="extCSS" value=""/><br />
 			</div>
 			<div>
 				<h4>Bleed:
@@ -113,23 +131,6 @@
 					<input type="checkbox" id="cutline">
 				</h4>
 			</div>
-			<div>
-				<h4>Gutters: 
-					<span>
-						<input type="text" id="gsize" size="4" value=""/>
-						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
-						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
-					</span>
-				</h4>
-				<h4>Corner radius:
-					<span>
-						<input type="text" id="bradius" size="4" value=""/>
-						<input type="radio" id="brin" value="in" name="brunit"><label for="brin">in</label>
-						<input type="radio" id="brmm" value="mm" name="brunit"><label for="brmm">mm</label>
-					</span>
-				</h4>
-				<h4>Externtal stylesheet <span>&nbsp;(e.g., Google Fonts URL)</span></h4>
-				<input type="text" id="extCSS" value=""/><br />
 		</section>
 
 		<section id="textareas">
@@ -141,8 +142,16 @@
 					</span>
 				</h4>
 				<textarea id="csv"></textarea>
-				<span class="nw up">Upload csv: 
+				<span class="nw up">Load csv: 
 					<input type="file" id="csvUpload" class="upload" data-type="csv">
+				</span>
+			</div>
+			
+			<div id="hccdoCSS">
+				<h4>Your styles (optional)</h4>
+				<textarea id="css"></textarea>
+				<span class="nw up">Load css:
+					<input type="file" id="cssUpload" class="upload" data-type="css">
 				</span>
 			</div>
 			
@@ -153,42 +162,38 @@
 					</span>
 				</h4>
 				<textarea id="mustache"></textarea>
-				<span class="nw up">Upload template:
+				<span class="nw up">Load template:
 					<input type="file" id="mustacheUpload" class="upload" data-type="mustache"> 
-				</span>
-			</div>
-			
-			<div id="hccdoCSS">
-				<h4>Your styles (optional)</h4>
-				<textarea id="css"></textarea>
-				<span class="nw up">Upload css:
-					<input type="file" id="cssUpload" class="upload" data-type="css">
 				</span>
 			</div>
 		</section>
 
 		<section id="buttons">
-			<div id="buttonIcon" class="show" style="display:none;text-align:left;">
-				<span class="hccdoIcon">HCCDo</span>
-			</div>
 			<div>
+				<span id="buttonIcon" style="display:none;float:left;" class="show hccdoIcon">HCCDo</span>
 				<button type="button" id="hide">Hide Form</button>
 				<button type="button" id="show" class="show" style="display:none">Show Form</button>
 				<button type="button" id="help">Show Help</button>
 			</div>
 			<div>
-				<button type="button" id="imagine">Generate Images</button>
-				<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" size="5" value="300"/>
+				<span class="nw">
+					<button type="button" id="imagine">Generate Images</button>
+					<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" size="5" value="300"/>
+				</span>
 			</div>
 			<div>
-				<button type="button" id="generate">Generate HTML</button>
-				<span class="nw"><input type="checkbox" id="live"> automatically</span>
+				<span class="nw">
+					<button type="button" id="generate">Generate HTML</button>
+					<input type="checkbox" id="live"> live
+				</span>
 				<button type="button" id="print">Print</button>
 			</div>
 		</section>
 
 	</main>
-	<iframe id="hccdoOutput" style="width:100%;height:80%;"></iframe>
+	<output>
+		<iframe id="hccdoOutput"></iframe>
+	</output>
 
   <script type="text/javascript" src="lib/hccdoConst.js"></script>
   <script type="text/javascript" src="lib/hccdo.js"></script>
