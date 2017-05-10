@@ -1,0 +1,89 @@
+/* Styles for the help page, derived from Firefox reading mode */
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 1.6em;
+  line-height: 1.25em;
+}
+
+h2 {
+  font-size: 1.2em;
+  line-height: 1.51em;
+}
+
+h3 {
+  font-size: 1em;
+  line-height: 1.66em;
+}
+
+a {
+  text-decoration: underline;
+  font-weight: normal;
+}
+
+a,
+a:hover,
+a:active {
+  color: #0081C2;
+}
+
+a:visited {
+  color: #626262;
+}
+
+
+* {
+  max-width: 100%;
+  height: auto;
+}
+
+p,
+code,
+pre,
+blockquote {
+  margin: 0 0 25px 0;
+}
+
+ul,
+ol,
+li {
+  margin: 0 0 15px 0;
+}
+
+code,
+pre {
+  white-space: pre-wrap;
+}
+
+blockquote {
+  padding: 0;
+  -webkit-padding-start: 16px;
+}
+
+ul,
+ol {
+  padding: 0;
+}
+
+ul {
+  -webkit-padding-start: 30px;
+  list-style: disc;
+}
+
+ol {
+  -webkit-padding-start: 30px;
+  list-style: decimal;
+}
+
+body {
+    max-width: 630px;
+    margin: auto;
+    color: #1E2028;
+    background-image: url('fabric_plaid.png');
+    font-family: Raleway, sans-serif;
+}

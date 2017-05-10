@@ -27,7 +27,7 @@ Although it is possible to open it without one, HCCDo should be served by a webs
 
 > `npm install`
 > `npm run build`
-> `npm run serve`
+> `npm run server`
 
 The last command will return the new URL for your local HCCDo (most likely [http://localhost:8080](http://localhost:8080)).
 
@@ -42,5 +42,6 @@ HCCDo uses the [BoardGameGeek API](https://boardgamegeek.com/wiki/page/BGG_XML_A
 
 The basic example makes very simple cards for the game [Pico](https://boardgamegeek.com/boardgame/2051/pico).  The examples directory contains a copy of the Pico example, an oval version of the Pico example, three more complicated examples for a retheme of the game [Sleuth](https://boardgamegeek.com/boardgame/594/sleuth), and copies of the [IDKWDYWTP](https://boardgamegeek.com/boardgame/28567/i-dont-know-what-do-you-want-play) examples. (There are also [a couple of examples](https://github.com/vaemendis/hccd/tree/master/examples) included with the original [hccd](https://github.com/vaemendis/hccd/).)
 
-The UI background is Low Contrast Linen by Jordan Pittman from [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/low-contrast-linen/).  Some images in the examples are from [Game-icons.net](http://game-icons.net).
+The UI backgrounds are is Low Contrast Linen by Jordan Pittman and Fabric (Plaid) by James Basoo  from [Subtle](https://www.toptal.com/designers/subtlepatterns/low-contrast-linen/) [Patterns](https://www.toptal.com/designers/subtlepatterns/fabric-plaid/).  Some images in the examples are from [Game-icons.net](http://game-icons.net).
+
 
