@@ -1,2 +1,4 @@
 syntax: glob
 examples/lib
+index.html
+2-body.html

@@ -1,0 +1,20 @@
+{
+  "name": "HCCDo",
+  "version": "1.0.0",
+  "repository": {
+    "type": "hg",
+    "url": "ssh://hg@bitbucket.org/mcdemarco/hccdo"
+  },
+  "license": "GPL-3.0",
+  "scripts": {
+    "build:markdown": "marked doc/index.md -o util/2-body.html",
+    "build:html": "concat util/*.html -o doc/index.html",
+    "build": "npm run build:markdown && npm run build:html",
+    "server": "http-server -a localhost"
+  },
+  "devDependencies": {
+    "concat-glob-cli": "latest",
+    "http-server": "latest",
+    "marked": "latest"
+  }
+}

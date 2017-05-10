@@ -34,11 +34,15 @@ section#buttons {
 }
 
 section div {
-    flex: 1 0 0;
+    flex: 1 0 33%;
+    min-width: 340px;
+    margin-bottom: 10px;
 }
 
-div#buttonIcon {
-    flex: 0 1 auto;
+section#buttons div {
+    flex: 1 0 33%;
+    min-width: 222px;
+    margin-bottom: 5px;
 }
 
 .hccdoIcon {
@@ -51,11 +55,6 @@ section#buttons .hccdoIcon {
     font-weight: bold;
 }
 
-iframe {
-    flex: 5;
-    background-color: white;
-    color: black;
-}
 textarea {
     width: 90%;
     height:5rem;
@@ -94,6 +93,19 @@ h4 span {
 }
 .up {
     font-size:smaller;
+}
+
+output {
+    width: 100%;
+    height: 100vh;
+    min-height:500px;
+}
+
+iframe {
+    background-color: white;
+    color: black;
+    width:100%;
+    height:100%;
 }
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {

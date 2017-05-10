@@ -2,17 +2,16 @@
 
 ## What
 
-HCCDo (*HTML+CSS Card Designer online*) generates simple HTML pages of cards for printing them up yourself,
-or it can convert your cards to images at any DPI for uploading to card printing services that accept PNGs.
+HCCDo (*HTML+CSS Card Designer online*) generates simple HTML pages of cards for printing up yourself,
+and it can convert your HTML cards to PNG images at any DPI for uploading to card printing services that accept PNGs.
 
-HCCDo includes presets for most common (and many uncommon) card sizes, custom sizes, circular cards,
+HCCDo includes presets for most common (and many uncommon) card sizes, as well as custom sizes, circular cards,
 bleed, and zipping of your generated images.
 
 ## Where
 
-The *o* is for online; HCCDo is available online at [hccdo.mcdemarco.net](http://hccdo.mcdemarco.net/).
-You can also download the project from github and run it locally,
-though you may need to serve it from a local webserver for browser security reasons.
+The *o* is for *online*; HCCDo is available online at [hccdo.mcdemarco.net](http://hccdo.mcdemarco.net/).
+You can also download the project from github and run it locally.
 
 ## Why
 
@@ -21,7 +20,8 @@ Maybe you can't afford Adobe products and don't have a Windows machine handy to 
 or your layout is simple and your project too casual to invest the time in learning a more powerful tool.
 But you know HTML already, and maybe even Mustache.
 
-If you've used hccd, you might find it worth switching to HCCDo for new options like bleed.
+If you've used [hccd](https://github.com/vaemendis/hccd/) before,
+you might find it worth switching to HCCDo for new options like bleed.
 
 ### Why Not
 
@@ -38,7 +38,7 @@ Also, if you're not willing to run it in a modern browser, HCCDo may not work we
 #### Alternatives
 
 If you're tempted by [nanDECK](http://www.nand.it/nandeck/), there are some similar options out there that aren't all Windows-only:
-[Squib](http://squib.rocks) is Ruby-based, [MultiDeck](http://multideck.blogspot.com) runs on MacOS, [Strange Eons](http://cgjennings.ca/eons/help.html#developers) is multi-platform, [CardMaker](https://github.com/nhmkdev/cardmaker) and [Card Game Management System](http://cardbuilder.blob.core.windows.net/cardgamemanagementsystem/publish.htm) are more Windows programs, and [XXPaper](https://github.com/clearclaw/xxpaper) is for 18xx games.
+[Squib](http://squib.rocks) is Ruby-based, [MultiDeck](http://multideck.blogspot.com) runs on MacOS, [Strange Eons](http://cgjennings.ca/eons/help.html#developers) is multi-platform, [CardMaker](https://github.com/nhmkdev/cardmaker) and [Card Game Management System](http://cardbuilder.blob.core.windows.net/cardgamemanagementsystem/publish.htm) are more Windows programs, and [XXPaper](https://github.com/clearclaw/xxpaper) makes bits for 18xx games.
 
 ## How
 
@@ -49,6 +49,8 @@ Your cards are assembled from a card list, a Mustache template, and (optionally)
 You can upload these, cut and paste them in, or type them in.
 The text boxes are expandable (in modern browsers); if you want to see more, just drag on the lower right corner.
 
+You can also load an existing project file; there are several of these in the `examples/` directory.
+
 ### The Card List
 
 You can upload a CSV file containing all the information about your cards, or you can enter the data manually.  In either case, the CSV delimiter (usually a comma, semicolon, or tab) will be detected automatically.
@@ -58,40 +60,51 @@ Each remaining line should have the same number of columns (you can leave some b
 
 The **+** button will add a duplicate card to the end of your list.  The **-** button will remove your last card.
 
-There is a special field, *card classes* for turning a column (or multiple columns) into CSS classes on each card, which is especially useful for adding background images when doing card bleeds.  To use it, put the exact name of your css column(s) into the field.  Be sure that each column you're using this way contains valid CSS classes---*e.g.*, only letters, numbers, hyphens and underscore characters: actual words, not starting with a number, and without any special characters beyond a hyphen.  Or you can use the default card classes for this purpose: *card* and *cardN*, where *N* is the row number of the card.
+There is a special field, *card classes* for turning a column (or multiple columns) into CSS classes on each card, which is especially useful for adding background images when doing card bleeds.  (Because the card wrapper itself does not appear in your Mustache template, you can't put a CSS class on it directly.)
+
+To use the *card classes* field, put the exact name(s) of your csv column(s) into the field.  Be sure that the *contents* of each column you're using this way are all valid CSS class names---*e.g.*, single words, not starting with a number, and without any special characters beyond a hyphen or underscore.  For more than one class/column, separate them with spaces.
+
+You can also use the built-in card classes: *card* and *cardN*, where *N* is the row number of the card.
 
 ### The Template
 
 You can upload a Mustache template or enter it manually.
 
 The template is mostly plain HTML laying out a single card from your set.
-To insert card-specific information, use Mustache braces around one of your column titles from your card list.
+To insert card-specific information, use Mustache braces around one of your column titles from your card list:  `{{YourColumnNameHere}}`.
 
-In the Pico example, there is only one column in the CSV file, named *Number*, and the card's number is inserted in three places on the card: the center and the two corners.
+In the Pico example, there are only two columns in the CSV file, named *Number* and *Score*.  The card's number is inserted in five places on the card: the center and the four corners.  The card's score is used as part of a CSS class that inserts the scoring pips.
+
+There is a special Mustache tag that you can use to change your template based on whether you are generating cards as HTML or as images: `{{cardImage}}`.  To turn a section of the template on when you are generating card images, put it between two tags `{{#cardImage}}` and `{{/cardImage}}`.  To turn a section off, put it between `{{^cardImage}}` and `{{/cardImage}}`.  For an example of this, click the IDKWDYWTP button and scroll down to the bottom of that template.  (The code is adding a proxy to the BoardGameGeek image URL when generating images because BGG is not set up correctly for CORS.  You can also use these tags to compensate for unwanted differences between your HTML and image output.)
+
 For more hints on how to set up your Mustache template, see the additional examples, [the examples from hccd](https://github.com/vaemendis/hccd/tree/master/examples), and/or [the Mustache documentation](https://mustache.github.io/mustache.5.html).
 
 ### The Styles
 
-You can upload a CSS file or enter CSS styles manually.
+You can upload a CSS file, enter CSS styles manually, or skip this section of the form altogether; it's possible to put your styles inline on elements in your template instead (though not within `<style>` tags).
 
-The example uses flexbox styles to position the card elements, but you can use tables or any other approach you like.
-You can put all styling information inline in the template, or set classes on your template and define them here.
+The examples use flexbox and some CSS transforms to position the card elements, but you can use tables or any other approach you like.
 
-You should use print units like *in*, *mm*, or *pt* (points) in order to keep your output true to the chosen card size.
+When styling your cards, you should use print units like *in*, *mm*, or *pt* (points) in order to keep your output true to the chosen card size.
 
 #### Fonts
 
 You can add Google Fonts or other fonts (*e.g.*, [FontAwesome](https://www.bootstrapcdn.com/fontawesome/)) using the *External Stylesheet* setting.  [FontCDN](http://fontcdn.org) is a handy way to search for Google Fonts.  The Pico example also uses a [Google font effect](https://developers.google.com/fonts/docs/getting_started#enabling_font_effects_beta) for the text shadow.  (If you don't see it, you may not be using a browser that supports their font effects.)
 
+The Pico example uses two Google Fonts; see the CSS for how they are invoked.
+
 ### Art
 
-You can include URLs for background images in your CSS, and trigger different ones using classes in your template.
-For foreground images, you can include the URLs as part of the card list and put the url into an *img* tag in your template.
+You can include URLs for background images in your CSS, and trigger different ones using classes in your template.  (This is done in all the Scottish Sleuth examples.)
 
-HCCDo needs to be able to find your images "online".
-For a small number of images that aren't already available online,
-you can use a image hosting site like [Google Photos](https://www.google.com/photos/about/) or [Unsee](https://unsee.cc).
-For more images you may want to run HCCDo locally and put your images in the images directory.
+For foreground images, you can include the URLs as part of the card list and put the url into an *img* tag in your template.  (See the IDKWDYWTP example for a foreground image.)  If your foreground image never changes, you can put it into your template directly instead.
+
+HCCDo needs to be able to find your images "online".  You can use public URLs of images that are already available online
+or that you've uploaded to an image hosting site like [Google Photos](https://www.google.com/photos/about/) or [Unsee](https://unsee.cc), but note that some public images may not work with HCCDo due to CORS issues.  Click the `IDKWDYWTP` button for an example of using a CORS proxy to work around CORS issues.
+
+If you have many images or if you're having CORS issues, you may want to run HCCDo locally.
+If you put your images in the images directory, you can refer to them as the examples do.
+(See `IDKWDYWTPLocalImages.json` for an example.)
 
 ### More Settings
 
@@ -99,7 +112,7 @@ The most important setting is card size, which defaults to *poker (2.5"x3.5")*.
 You can change the orientation of your cards to *landscape*; the default is *portrait*.
 You can also set the spacing (gutter) between the cards.
 
-You don't have to keep all the units (millimeters or inches) in sync, but your results may be more accurate if you do.
+You don't have to keep all the units (millimeters or inches) in sync, but it can't hurt.
 
 #### Bleed
 
@@ -117,13 +130,19 @@ You can set the corner radius in HCCDo, though leaving it off or getting them wr
 
 Read more about corners at [Dreadful Games](http://dreadfulgames.com/rounders-your-guide-to-rounded-corner-cards-for-your-board-game/).
 
-### Printing or Saving
+### Saving
 
-HCCDo stores your current card setup in local storage, so you can come back to it in the same browser later on (but not forever).
+HCCDo always stores your current card setup in local storage, so you can come back to it in the same browser later on (but not forever, and not if you overwrite it with another set of cards).
+
+For longer-term storage, use the Export button to save your card project in a json file.  You can load the saved file under *Load project file*.  You can also load the extra examples in the examples directory this way.
+
+### Generating Cards
+
+You have two options when generating cards:  creating a printable HTML page (for DIY cards), or generating a zip file of individual card PNG images (for uploading to a commercial card printer's site).
 
 #### Printing HTML
 
-Before printing, choose the page size for your paper.  Your cards may fit better in one direction than the other, so try switching from landscape to portrait or back before printing.
+Before generating HTML to print, choose the appropriate page size for your paper.  Your cards may fit better in one direction than the other, so try switching from landscape to portrait or back before printing.
 
 The *Print* button prints the cards; in some browsers you can also right-click on the frame and choose Print Frame from the context menu.
 
@@ -135,10 +154,17 @@ so you may need to set that manually in the print dialog before printing.
 
 Not all browsers can generate images; Safari will not, nor will any iOS browser.  Any other version of Chrome will.
 
-When generating images, choose an adequate DPI (300 is most printers' minimum), then click *Generate Images*.  The images will appear in this section of the page, with a *Zip Images* button above them.  To download them, click the button.
+When generating images, choose an adequate DPI (300 is most printers' minimum), then click *Generate Images*.  The images will appear in this section of the page, with a *Zip Images* button above them.  Some browsers will display them very small; right-click on an image to open it in a new tab (then, additionally, zoom in if your browser is zoomed out) to see the image at its real pixel size.
+
+Image generation is a dark art that sometimes goes wrong; if something looks awry, try again.
+
+To download the images, click the *Zip Images*  button.
+The images in the zip file will be named after your project and numbered sequentially.
 
 
 ## Which
+
+The *View* button will show you all the built-in card sizes, using your current settings for bleed and orientation.
 
 ### Card Size Clarification
 
@@ -153,13 +179,15 @@ When generating images, choose an adequate DPI (300 is most printers' minimum), 
 * Small Memo is a larger square (3.75").
 * Business is sometimes called Biz or Question.
 
-Some sizes are listed because sleeves for them are common, while no one prints them--most notably, euroGame and euroMiniGame.
+Some sizes are listed because sleeves for them are common, while no one prints them---most notably, euroGame and euroMiniGame.
 
 ## Whence
 
+Not all card printing services accept PNG files, but many do.
+
 ### Card Printing Services
 
-* [ArtsCow](http://www.artscow.com/) prints a handful of card sizes and shapes.  (Beware their weird minis!) They also print memo pads, which may be useful for scorepads.  [Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.
+* [ArtsCow](http://www.artscow.com/) prints a handful of card sizes and shapes.  (Beware their weird minis!)   Not all their offerings let you set up more than one back, and some come with a pre-configured suit that you will probably need to remove from the cards.  On the bright side, they have enticing sale prices and they also print memo pads, which may be useful for scorepads.  [Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.
 * [The Game Crafter](https://www.thegamecrafter.com)'s card sizes are listed [here](http://help.thegamecrafter.com/article/85-cards)
 * [Make Playing Cards](http://www.makeplayingcards.com/)' card sizes and prices are [here](http://www.makeplayingcards.com/low-price-for-bulk.aspx); they also make custom poker chips.
 * [Printer's Studio](http://www.printerstudio.com/)'s card sizes are listed [here](http://www.printerstudio.com/unique-ideas/blank-playing-cards.html).  They also make a large variety of game mats.
@@ -174,7 +202,7 @@ Although they accept image files, [Print & Play](https://www.printplaygames.com/
 
 Sleeves are a cheap way to mock up a card game.
 Sleeve your printouts in front of actual cards, or use thicker paper or opaque sleeves for the best results.
-, and the bigger sleeve manufacturers support all sorts of weird sizes
+The bigger sleeve manufacturers support all sorts of weird sizes.
 
 * [Dragon Shield sleeves](http://www.arcanetinmen.dk/products/board-game-sleeves) aren't just for Magic anymore.
 * [Fantasy Flight sleeves](https://www.fantasyflightgames.com/en/products/fantasy-flight-supply/) are not the cheapest.
