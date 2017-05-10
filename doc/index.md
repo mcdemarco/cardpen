@@ -103,7 +103,8 @@ HCCDo needs to be able to find your images "online".  You can use public URLs of
 or that you've uploaded to an image hosting site like [Google Photos](https://www.google.com/photos/about/) or [Unsee](https://unsee.cc), but note that some public images may not work with HCCDo due to CORS issues.  Click the `IDKWDYWTP` button for an example of using a CORS proxy to work around CORS issues.
 
 If you have many images or if you're having CORS issues, you may want to run HCCDo locally.
-If you put your images in the images directory, you can refer to them as the examples do (*e.g.*, `IDKWDYWTPLocalImages.json`).
+If you put your images in the images directory, you can refer to them as the examples do.
+(See `IDKWDYWTPLocalImages.json` for an example.)
 
 ### More Settings
 
