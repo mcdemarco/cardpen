@@ -2,15 +2,15 @@
 
 ## What
 
-HCCDo (*HTML+CSS Card Designer online*) generates simple HTML pages of cards for printing them up yourself,
-or it can convert your cards to PNG images at any DPI for uploading to card printing services that accept PNGs.
+HCCDo (*HTML+CSS Card Designer online*) generates simple HTML pages of cards for printing up yourself,
+and it can convert your HTML cards to PNG images at any DPI for uploading to card printing services that accept PNGs.
 
-HCCDo includes presets for most common (and many uncommon) card sizes, custom sizes, circular cards,
+HCCDo includes presets for most common (and many uncommon) card sizes, as well as custom sizes, circular cards,
 bleed, and zipping of your generated images.
 
 ## Where
 
-The *o* is for online; HCCDo is available online at [hccdo.mcdemarco.net](http://hccdo.mcdemarco.net/).
+The *o* is for *online*; HCCDo is available online at [hccdo.mcdemarco.net](http://hccdo.mcdemarco.net/).
 You can also download the project from github and run it locally.
 
 ## Why
@@ -112,7 +112,7 @@ The most important setting is card size, which defaults to *poker (2.5"x3.5")*.
 You can change the orientation of your cards to *landscape*; the default is *portrait*.
 You can also set the spacing (gutter) between the cards.
 
-You don't have to keep all the units (millimeters or inches) in sync, but your results may be more accurate if you do.
+You don't have to keep all the units (millimeters or inches) in sync, but it can't hurt.
 
 #### Bleed
 
@@ -187,7 +187,7 @@ Not all card printing services accept PNG files, but many do.
 
 ### Card Printing Services
 
-* [ArtsCow](http://www.artscow.com/) prints a handful of card sizes and shapes.  (Beware their weird minis!) They also print memo pads, which may be useful for scorepads.  [Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.
+* [ArtsCow](http://www.artscow.com/) prints a handful of card sizes and shapes.  (Beware their weird minis!)   Not all their offerings let you set up more than one back, and some come with a pre-configured suit that you will probably need to remove from the cards.  On the bright side, they have enticing sale prices and they also print memo pads, which may be useful for scorepads.  [Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.
 * [The Game Crafter](https://www.thegamecrafter.com)'s card sizes are listed [here](http://help.thegamecrafter.com/article/85-cards)
 * [Make Playing Cards](http://www.makeplayingcards.com/)' card sizes and prices are [here](http://www.makeplayingcards.com/low-price-for-bulk.aspx); they also make custom poker chips.
 * [Printer's Studio](http://www.printerstudio.com/)'s card sizes are listed [here](http://www.printerstudio.com/unique-ideas/blank-playing-cards.html).  They also make a large variety of game mats.
