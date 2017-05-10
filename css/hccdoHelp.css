@@ -1,4 +1,4 @@
-/* Styles for the help page, derived from Firefox reading mode */
+/* Styles for the help page, inspired by Firefox's reader view. */
 
 h1,
 h2,
@@ -71,12 +71,12 @@ ol {
 }
 
 ul {
-  -webkit-padding-start: 30px;
+  -webkit-padding-start: 25px;
   list-style: disc;
 }
 
 ol {
-  -webkit-padding-start: 30px;
+  -webkit-padding-start: 25px;
   list-style: decimal;
 }
 
