@@ -87,3 +87,9 @@ body {
     background-image: url('fabric_plaid.png');
     font-family: Raleway, sans-serif;
 }
+
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  body {
+    background-image: url('fabric_plaid@2x.png');
+  }
+}
