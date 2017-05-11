@@ -30,7 +30,7 @@ section#textareas {
 
 section#buttons {
     text-align:center;
-    align-items: space-around;
+    align-content: space-around;
 }
 
 section div {
@@ -84,7 +84,7 @@ h4 + h4 {
 }
 
 h4 span {
-    font-size:normal;
+    font-size:inherit;
     font-weight:normal;
 }
 .nw {
