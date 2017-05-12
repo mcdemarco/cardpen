@@ -37,8 +37,29 @@ Also, if you're not willing to run it in a modern browser, HCCDo may not work we
 
 #### Alternatives
 
-If you're tempted by [nanDECK](http://www.nand.it/nandeck/), there are some similar options out there that aren't all Windows-only:
-[Squib](http://squib.rocks) is Ruby-based, [MultiDeck](http://multideck.blogspot.com) runs on MacOS, [Strange Eons](http://cgjennings.ca/eons/help.html#developers) is multi-platform, [CardMaker](https://github.com/nhmkdev/cardmaker) and [Card Game Management System](http://cardbuilder.blob.core.windows.net/cardgamemanagementsystem/publish.htm) are more Windows programs, and [XXPaper](https://github.com/clearclaw/xxpaper) makes bits for 18xx games.
+You can't swing a cat without hitting a card-making program.
+
+##### For Windows
+
+* [nanDECK](http://www.nand.it/nandeck/) is the father of them all, but Windows-only.
+* [CardMaker](https://github.com/nhmkdev/cardmaker) is Windows-only.
+* [Card Game Management System](http://cardbuilder.blob.core.windows.net/cardgamemanagementsystem/publish.htm) is yet another Windows Windows programs.
+
+##### For Mac
+
+* [MultiDeck](http://multideck.blogspot.com) runs on MacOS only.
+
+Multiplatform:
+
+* [Squib](http://squib.rocks) is similar in functionality to nanDECK, but Ruby-based.
+* [hccd](https://github.com/vaemendis/hccd/) is Java-based.
+* [Strange Eons](http://cgjennings.ca/eons/help.html#developers) is also multi-platform.
+* [XXPaper](https://github.com/clearclaw/xxpaper) makes bits for 18xx games.
+
+##### Online
+
+* [PnPDeliver](http://court-jus.github.io/PnPDeliver/) is "a tool to help game designers distribute their PnP games and to help PnP players to print them.  It relies on online image files (though it will work with locally-hosted image files---you can use the webserver that comes with HCCDo for this purpose).
+* [Geckos](http://gulix.github.io/geckos/) is a replacement for (not to mention an improvement over) several online Magic-style card making programs that have disappeared over the years.
 
 ## How
 
