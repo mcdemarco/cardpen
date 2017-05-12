@@ -33,13 +33,13 @@ section#buttons {
     align-content: space-around;
 }
 
-section div {
+section subsection {
     flex: 1 0 33%;
     min-width: 340px;
     margin-bottom: 10px;
 }
 
-section#buttons div {
+section#buttons subsection {
     flex: 1 0 33%;
     min-width: 222px;
     margin-bottom: 5px;

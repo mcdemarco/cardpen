@@ -16,10 +16,10 @@
 <body>
 	<main>
 		<section id="header" class="thin">
-			<div><span class="hccdoIcon">HCCDo</span><br />
+			<subsection><span class="hccdoIcon">HCCDo</span><br />
 				an online HTML+CSS card generator
-			</div>
-			<div>
+			</subsection>
+			<subsection>
 				<h4 id="csizeWrapper">Card size: 
 					<select id="csize"></select>
 					<span class="nw" id="customize" style="display:none;">
@@ -43,8 +43,8 @@
 						</span>
 					</span>
 				</h4>
-			</div>
-			<div>
+			</subsection>
+			<subsection>
 				<h4>Page size: 
 					<select id="psize"></select>
 				</h4> 
@@ -58,11 +58,11 @@
 						<label for="plandscape">Landscape</label>
 					</span>
 				</span></h4> 
-			</div>
+			</subsection>
 		</section>
 
 		<section class="thin">
-			<div>
+			<subsection>
 				<h4>Project name:
 					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
 					<span>
@@ -88,8 +88,8 @@
 					<input type="text" id="username" placeholder="BGG username" value=""/> 
 					<button type="button" id="idkFetch" title="Fetch your BGG collection as CSV for I Don't Know, What Do You Want To Play? or other purposes.">Get Games</button>
 				</h4>
-			</div>
-			<div>
+			</subsection>
+			<subsection>
 				<h4>Gutters: 
 					<span>
 						<input type="text" id="gsize" size="4" value=""/>
@@ -106,8 +106,8 @@
 				</h4>
 				<h4>Externtal stylesheet <span>&nbsp;(e.g., Google Fonts URL)</span></h4>
 				<input type="text" id="extCSS" value=""/><br />
-			</div>
-			<div>
+			</subsection>
+			<subsection>
 				<h4>Bleed:
 					<input type="text" id="blsize" size="4" value=""/>
 					<span>
@@ -130,11 +130,11 @@
 				<h4>Cut line:	
 					<input type="checkbox" id="cutline">
 				</h4>
-			</div>
+			</subsection>
 		</section>
 
 		<section id="textareas">
-			<div id="hccdoCSV">
+			<subsection id="hccdoCSV">
 				<h4>Your cards 
 					<span>
 						<button type="button" id="addCard" title="Add a card.">+</button>
@@ -145,17 +145,17 @@
 				<span class="nw up">Load csv: 
 					<input type="file" id="csvUpload" class="upload" data-type="csv">
 				</span>
-			</div>
+			</subsection>
 			
-			<div id="hccdoCSS">
+			<subsection id="hccdoCSS">
 				<h4>Your styles (optional)</h4>
 				<textarea id="css"></textarea>
 				<span class="nw up">Load css:
 					<input type="file" id="cssUpload" class="upload" data-type="css">
 				</span>
-			</div>
+			</subsection>
 			
-			<div id="hccdoTMPL">
+			<subsection id="hccdoTMPL">
 				<h4>Your template
 					<span>&nbsp;(card classes: 
 						<input type="text" id="cardClass" style="width:25%;" value=""/>&nbsp;)
@@ -165,29 +165,29 @@
 				<span class="nw up">Load template:
 					<input type="file" id="mustacheUpload" class="upload" data-type="mustache"> 
 				</span>
-			</div>
+			</subsection>
 		</section>
 
 		<section id="buttons">
-			<div>
+			<subsection>
 				<span id="buttonIcon" style="display:none;float:left;" class="show hccdoIcon">HCCDo</span>
-				<button type="button" id="hide">Hide Form</button>
-				<button type="button" id="show" class="show" style="display:none">Show Form</button>
-				<button type="button" id="help">Show Help</button>
-			</div>
-			<div>
+				<button type="button" id="hide">Hide All</button>
+				<button type="button" id="show" class="show" style="display:none">Show All</button>
+				<button type="button" id="help">Help</button>
+			</subsection>
+			<subsection>
 				<span class="nw">
 					<button type="button" id="imagine">Generate Images</button>
 					<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" size="5" value="300"/>
 				</span>
-			</div>
-			<div>
+			</subsection>
+			<subsection>
 				<span class="nw">
 					<button type="button" id="generate">Generate HTML</button>
 					<input type="checkbox" id="live"> live
 				</span>
 				<button type="button" id="print">Print</button>
-			</div>
+			</subsection>
 		</section>
 
 	</main>
