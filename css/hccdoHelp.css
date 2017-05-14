@@ -1,41 +1,62 @@
-/* Styles for the help page, inspired by Firefox's reader view. */
+/* Styles for the help page, inspired by Firefox's reader view and Edward Morbius. */
+
+html {
+  font-size: medium;
+}
+
+body {
+    color: #1E2028;
+    background-image: url('fabric_plaid.png');
+    font-family: Raleway, sans-serif;
+    margin: 2rem auto;
+    max-width: 40em;
+    padding: 0 2em;
+    width: auto;
+    font-size: 1rem;
+    line-height: 1.4;
+}
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
+  color: #656565;
   font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 1em;
+  margin-top: 2em;
 }
 
 h1 {
-  font-size: 1.6em;
-  line-height: 1.25em;
+  font-size: 2.0em;
+  text-align: center;
 }
 
 h2 {
-  font-size: 1.2em;
-  line-height: 1.51em;
+  font-size: 1.8em;
+  border-bottom: solid 0.1rem #656565;
 }
 
 h3 {
-  font-size: 1em;
-  line-height: 1.66em;
+  font-size: 1.5em;
 }
 
-a {
+h4 {
+  font-size: 1.3em;
   text-decoration: underline;
-  font-weight: normal;
 }
 
-a,
-a:hover,
-a:active {
-  color: #0081C2;
+h5 {
+  font-size: 1.2em;
+  font-style: italic;
 }
 
-a:visited {
-  color: #626262;
+h6 {
+  font-size: 1.1em;
+  margin-bottom: 0.5rem;
 }
-
 
 * {
   max-width: 100%;
@@ -80,12 +101,27 @@ ol {
   list-style: decimal;
 }
 
-body {
-    max-width: 630px;
-    margin: auto;
-    color: #1E2028;
-    background-image: url('fabric_plaid.png');
-    font-family: Raleway, sans-serif;
+a {
+  text-decoration: none;
+  font-weight: normal;
+  color: /*#1e6b8c;*/#0081C2;
+  font-size: 1em;
+  transition-delay: 0.1s;
+  transition-duration: 0.3s;
+  transition-property: color, background-color;
+  transition-timing-function: linear;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #5A2D7F;
+  font-size: 1em;
+}
+
+a:hover {
+  text-decoration: underline;
+  background: #f0f0f0;
+  font-size: 1em;
 }
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {

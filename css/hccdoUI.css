@@ -55,6 +55,13 @@ section#buttons .hccdoIcon {
     font-weight: bold;
 }
 
+section#header img {
+    height:55px;
+    margin-bottom:-7px;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
 textarea {
     width: 90%;
     height:5rem;
