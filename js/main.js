@@ -40,11 +40,15 @@ context.init = (function () {
 		//Set up the UI.
 		select(); //Should not fire the onchange.
 		activate();
-		fixTab();
 
 		//Load some data of some sort.  
 		//Generate the cards if stored data is found, else default to example and show help.
 		context.project.stored(true);
+
+		//May be safe to activate the codemirrors now.
+		_.each(mirrors, function(mirrObj,key) {
+			mirrObj.on("change", function() {hccdo.form.changeCode(key);});
+		});
 	}
 
 	//private
@@ -73,34 +77,6 @@ context.init = (function () {
 
 		_.each(document.getElementsByClassName('upload'), function(el) { 
 			el.addEventListener('change', hccdo.util.file);
-		});
-	}
-
-	function fixTab() {
-		_.each(document.querySelectorAll("textarea"), function(elt) {
-			elt.addEventListener('keydown',function(e) {
-				if (e.keyCode === 9) {
-					//Get caret
-					var start = this.selectionStart;
-					var end = this.selectionEnd;
-					
-					var target = e.target;
-					var value = target.value;
-					
-					//Set textarea to text before caret + tab + text after caret
-					var newValue = value.substring(0, start) + "\t" + value.substring(end);
-					target.value = newValue;
-
-					//Need to set this manually for bind.js b/c a change isn't fired.
-					cardForm.data[elt.id] = newValue;
-					
-					//Put caret at right position again (add one for the tab)
-					this.selectionStart = this.selectionEnd = start + 1;
-
-					//Prevent the unfocus.
-					e.preventDefault();
-				}
-			},false);
 		});
 	}
 
@@ -137,10 +113,13 @@ context.form = (function () {
 		addCard: addCard,
 		removeCard: removeCard,
 		change: change,
+		changeCode: changeCode,
 		clear: clear,
 		customSize: customSize,
 		example: example,
 		generate: generate,
+		get: get,
+		set: set,
 		toggle: toggle
 	};
 
@@ -176,8 +155,12 @@ context.form = (function () {
 		context.form.customSize(this.data);
 	};
 
+	function changeCode(type) {
+		cardForm.data[type] = mirrors[type].getValue();
+	};
+
 	function clear() {
-		context.project.set(blankForm);
+		set(blankForm);
 		//Also clear iframe.
 		clearFrame();
 	}
@@ -191,7 +174,7 @@ context.form = (function () {
 	};
 
 	function example() {
-		context.project.set(exampleForm);
+		set(exampleForm);
 		generate();
 	}
 
@@ -205,9 +188,25 @@ context.form = (function () {
 			if (e.target.getAttribute("id") == "print")
 				format = "print";
 		}
-		context.write.generate(cardForm.data,format);
+		context.write.generate(get(),format);
 		if (format == "print")
 			printFrame();
+	}
+
+	function get() {
+		//No longer handling all textareas in bind, so need a real getter/setter.
+		var data = cardForm.data;
+		_.each(mirrors, function(mirrObj,key) {
+			data[key] = mirrObj.getValue();
+		});
+		return data;
+	}
+
+	function set(data) {
+		cardForm.data = data;
+		_.each(mirrors, function(mirrObj,key) {
+			mirrObj.setValue(data[key]);
+		});
 	}
 
 	function toggle(e) {
@@ -252,9 +251,9 @@ context.idk = (function () {
 			stored();
 			form.style.display = "block";
 			//Load example.
-			context.project.set(idkForm);
+			context.form.set(idkForm);
 			//Generate.
-			context.write.generate(cardForm.data);
+			context.write.generate(context.form.get());
 		} else {
 			form.style.display = "none";
 		}
@@ -314,7 +313,9 @@ context.idk = (function () {
 			return acc + "\n" + flatten(val,csvDelimiter);
 		}, ["thing","name","year","src","minplayers","maxplayers","players","minplaytime","maxplaytime","playtime","rating","average","bayesaverage","rank"].join(csvDelimiter));
 		
+		//Should eliminate first line.
 		cardForm.data.csv = csvOutput;
+		mirrors.csv.setValue(csvOutput);
 		return;
 	}
 	
@@ -396,7 +397,6 @@ context.project = (function () {
 
 	return {
 		save: save,
-		set: set,
 		stored: stored
 	};
 
@@ -413,10 +413,6 @@ context.project = (function () {
 				console.log("Error saving to local storage.");
 			}
 		}
-	}
-
-	function set(data) {
-		cardForm.data = data;
 	}
 
 	function stored(defaultToEg) {
@@ -438,7 +434,7 @@ context.project = (function () {
 		}
 
 		if (storedProj) {
-			set(storedProj);
+			context.form.set(storedProj);
 			context.write.tryGenerate();
 		} else if (defaultToEg) {
 			context.form.example();
@@ -830,8 +826,9 @@ context.util = (function () {
 	};
 
 	function exporter(e) {
-		var sanitizedName = sanitize(cardForm.data.name);
-		var projectText = JSON.stringify(cardForm.data,null,2);
+		var data = context.form.get();
+		var sanitizedName = sanitize(data.name);
+		var projectText = JSON.stringify(data,null,2);
 		var blob = new Blob([projectText], {type: "application/json"});
 		saveAs(blob, sanitizedName + ".json");
 	}
@@ -846,12 +843,14 @@ context.util = (function () {
 			var type = uploader.getAttribute("data-type");
 			if (type == "import") {
 				//Will eventually need version control.
-				context.project.set(JSON.parse(reader.result));
+				context.form.set(JSON.parse(reader.result));
 			} else {
+				//Should eliminate first row?
 				cardForm.data[type] = reader.result;
-				context.project.save(cardForm.data);
+				mirrors[type].setValue(reader.result);
+				context.project.save(context.form.get());
 			}
-			context.write.generate(cardForm.data);
+			context.write.generate(context.form.get());
 		};
 		reader.onerror = function(e) {
 			context.write.frame("<html>Unable to generate cards.</html>");
@@ -975,7 +974,8 @@ context.write = (function () {
 	function sizes() {
 		//The page of card sizes.
 		var fullOutput = "";
-		var dpi = parseInt(cardForm.data.dpi,10);
+		var data = context.form.get();
+		var dpi = parseInt(data.dpi,10);
 		//Assemble webpage.
 		fullOutput = '<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>\n<style>\n';
 		fullOutput += '* {box-model:border-box;}\n';
@@ -988,7 +988,7 @@ context.write = (function () {
 		var cardSizeArray = [];
 		_.each(cardSizes, function(value, key) {
 			//Reorient if necessary here.
-			value = context.size.orient(value, cardForm.data.cori);
+			value = context.size.orient(value, data.cori);
 			cardSizeArray.push([key, value]);
 		});
 		var sortedSizes = _.sortBy(cardSizeArray, function(subArray) {
@@ -1007,7 +1007,7 @@ context.write = (function () {
 				if (dpi) {
 					var valuePx = context.size.convert2px(value, dpi);
 					fullOutput += formatSize(valuePx, dpi) + '<br/>(';
-					fullOutput += formatSize(context.size.bleedCard(valuePx,cardForm.data)) + ' with bleed)</p>';
+					fullOutput += formatSize(context.size.bleedCard(valuePx,data)) + ' with bleed)</p>';
 				}
 				fullOutput += '</div>';
 			}
@@ -1055,7 +1055,7 @@ context.write = (function () {
 		//A wrapper for generation from the cardForm when it might fail.
 		//Note that it can look like a transporter accident without actually triggering an error.
 		try {
-			context.write.generate(cardForm.data);
+			context.write.generate(context.form.get());
 		} catch (e) {
 			context.write.frame("<html>Card generation failed.</html>");
 		}

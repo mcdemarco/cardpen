@@ -28,6 +28,10 @@ section#textareas {
     padding-bottom: 1em;
 }
 
+section#textareas subsection {
+    padding-right: 1em;
+}
+
 section#buttons {
     text-align:center;
     align-content: space-around;
@@ -119,4 +123,13 @@ iframe {
   body {
     background-image: url('low_contrast_linen@2x.png');
   }
+  .cm-s-ambiance .CodeMirror-gutters {
+      background-image: url('low_contrast_linen@2x.png');
+  }
+}
+
+/* addition to the codemirror theme */
+
+.cm-s-ambiance .CodeMirror-gutters {
+  background-image: url('low_contrast_linen.png');
 }

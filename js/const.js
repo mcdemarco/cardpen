@@ -2,6 +2,13 @@
 
   //var corsProxy = "https://crossorigin.me/"; //has file size limitations, so switched to:
   var corsProxy = "https://cors-anywhere.herokuapp.com/";
+  CodeMirror.defaults.theme = "ambiance";
+
+  var mirrors = {};
+  mirrors.csv = CodeMirror.fromTextArea(csv, {lineNumbers: true, firstLineNumber: 0});
+  mirrors.css = CodeMirror.fromTextArea(css, {mode: "css", lineNumbers: true, firstLineNumber: 1});
+  mirrors.mustache = CodeMirror.fromTextArea(mustache, {mode: {name: "handlebars", base: "text/html"}, lineNumbers: true, firstLineNumber: 1});
+
 	var ins = "in";
 	var mms = "mm";
 	var pxs = "px";
