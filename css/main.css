@@ -74,6 +74,13 @@ textarea#projectNotes {
     width: 75%;
     height:1rem;
     vertical-align:top;
+    background-image: url('fabric_plaid.png');
+}
+
+input[type=text] {
+    border-radius: 0.25rem;
+    padding-left: 0.25rem;
+    background-image: url('fabric_plaid.png');
 }
 
 input#hccdoProjectName, input#extCSS {
@@ -82,6 +89,10 @@ input#hccdoProjectName, input#extCSS {
 
 input#username {
     width: 7rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #eee;
 }
 
 h4 {
