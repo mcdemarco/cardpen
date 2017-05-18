@@ -4,7 +4,7 @@
 //TODO: 
 // better weird card sizes (hex, heart) 
 // test firefox
-// Better collapse iconography for hide/show?  Nicer/collapsier/wizardier layout overall. (pen style)
+// Nicer/collapsier/wizardier layout overall. (pen style)
 // Switch to handlebars?
 // Set up my own cors proxy for bgg?
 // add bleed/safe to card size view (too difficult? only selected size?)
@@ -13,6 +13,7 @@
 // Add margin to page/fix print sizing margin issue (dance deck)
 // Handle printing backs like PnPDeliver
 // em dashes not converted for help (smartypants option?) (marked cli can't pass options known issue #110)
+// replace card buttons with icons
 
 // Write images to "server"?
 // rebrand to "CardPen".  Change icon to a pen or stylus on a card.
@@ -124,23 +125,33 @@ context.form = (function () {
 	};
 
 	function addCard() {
-		//Trim.
-		cardForm.data.csv = cardForm.data.csv.trim();
 		//Get the last line.
-		var lastline = cardForm.data.csv.substr(cardForm.data.csv.lastIndexOf("\n")+1);
-		//Subtract one from the count for the header.
-		var linecount = cardForm.data.csv.split("\n").length - 1;
+		var lastline = mirrors.csv.getLine(mirrors.csv.lastLine()).trim();
+		//If the last line is empty, remove it and try again.
+		if (lastline == "") {
+			removeCard();
+			addCard();
+			return;
+		}
+		//Subtract one from the count for the header (to optionally use in new line).
+		var linecount = mirrors.csv.lineCount() - 1;
+		//Calculate changed line.
 		var newline = lastline;
 		if (lastline.indexOf(linecount) === 0)
 			newline = (linecount + 1) + lastline.split(linecount)[1];
-		cardForm.data.csv += "\n" + newline;
+		//Write change.
+		mirrors.csv.replaceRange("\n" + newline,{line: Infinity});
+		//Save change in the shadow csv (todo: remove).
+		cardForm.csv = mirrors.csv.getValue();
 	};
 
 	function removeCard() {
-		//Trim.
-		cardForm.data.csv = cardForm.data.csv.trim();
-		//Get rid of the last line.
-		cardForm.data.csv = cardForm.data.csv.substr(0,cardForm.data.csv.lastIndexOf("\n"));
+		//Too complicated, but there's really no good way to do this in the API.
+		var lastline = mirrors.csv.lastLine();
+		//The strange range helps to nuke the newline at the end of the previous line.
+		mirrors.csv.replaceRange("", {line: lastline - 1}, {line: lastline});
+		//Save change in the shadow csv (todo: remove).
+		cardForm.csv = mirrors.csv.getValue();
 	};
 
 	function change() {

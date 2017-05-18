@@ -41,7 +41,7 @@
 						<input type="radio" id="cpx" value="px" name="cunit"><label for="cpx">px</label>
 						<input type="checkbox" id="ccircle"><label for="ccircle">circular</label>
 					</span>
-					<span><button type="button" id="view">View</button></span>
+					<span><button type="button" class="small" id="view">View</button></span>
 				</h4>
 				<h4>Orientation:  
 					<span>
@@ -76,7 +76,7 @@
 		<section class="thin">
 			<subsection>
 				<h4>Project name:
-					<input type="text" id="projectName" style="width:33%;" value=""/>
+					<input type="text" id="projectName" value=""/>
 					<span>
 						<button type="button" id="export" title="Export this project to a file.">Export</button>
 					</span>
@@ -86,10 +86,10 @@
 				</h4>
 				<h4>Load: 
 					<span>
-						<button type="button" id="clear">New</button>
-						<button type="button" id="stored">Recent</button>
-						<button type="button" id="eg">Example</button>
-						<button type="button" id="idkToggle">IDKWDYWTP</button>
+						<button type="button" class="small" id="clear">New</button>
+						<button type="button" class="small" id="stored">Recent</button>
+						<button type="button" class="small" id="eg">Example</button>
+						<button type="button" class="small" id="idkToggle">IDKWDYWTP</button>
 					</span>
 				</h4>
 				<h4>
@@ -170,7 +170,7 @@
 			<subsection id="hccdoTMPL">
 				<h4>Your template
 					<span>&nbsp;(card classes: 
-						<input type="text" id="cardClass" style="width:25%;" value=""/>&nbsp;)
+						<input type="text" id="cardClass" value=""/>&nbsp;)
 					</span>
 				</h4>
 				<textarea id="mustache"></textarea>
@@ -183,22 +183,22 @@
 		<section id="buttons">
 			<subsection>
 				<span id="buttonIcon" style="display:none;float:left;" class="show hccdoIcon">HCCDo</span>
-				<button type="button" id="hide">Hide All</button>
-				<button type="button" id="show" class="show" style="display:none">Show All</button>
-				<button type="button" id="help">Help</button>
+				<button type="button" class="big" id="hide">Hide All</button>
+				<button type="button" class="show big" id="show" style="display:none">Show All</button>
+				<button type="button" class="big" id="help">Help</button>
 			</subsection>
 			<subsection>
 				<span class="nw">
-					<button type="button" id="imagine">Generate Images</button>
+					<button type="button" class="big" id="imagine">Generate Images</button>
 					<b>DPI:</b>&nbsp;<input type="text" id="dpi" size="5" value="300"/>
 				</span>
 			</subsection>
 			<subsection>
 				<span class="nw">
-					<button type="button" id="generate">Generate HTML</button>
+					<button type="button" class="big" id="generate">Generate HTML</button>
 					<input type="checkbox" id="live"> live
 				</span>
-				<button type="button" id="print">Print</button>
+				<button type="button" class="big" id="print">Print</button>
 			</subsection>
 		</section>
 

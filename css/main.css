@@ -24,23 +24,24 @@ section.thin {
     flex:1;
 }
 
+section subsection {
+    flex: 1 0 33%;
+    min-width: 340px;
+    margin-bottom: 10px;
+}
+
 section#textareas {
     padding-bottom: 1em;
 }
 
-section#textareas subsection {
-    padding-right: 1em;
+section#textareas subsection h4,
+section#textareas subsection span.up {
+    padding-left: 2.5em;
 }
 
 section#buttons {
     text-align:center;
     align-content: space-around;
-}
-
-section subsection {
-    flex: 1 0 33%;
-    min-width: 340px;
-    margin-bottom: 10px;
 }
 
 section#buttons subsection {
@@ -83,8 +84,17 @@ input[type=text] {
     background-image: url('fabric_plaid.png');
 }
 
-input#hccdoProjectName, input#extCSS {
+input#cardClass {
+    width: 16em;
+    max-width:33%;
+}
+
+input#extCSS {
     width:90%;
+}
+
+input#projectName {
+    width:33%;
 }
 
 input#username {
@@ -129,6 +139,45 @@ iframe {
     width:100%;
     height:100%;
 }
+
+button.big, button.small {
+    color: #eee;
+    background-color: inherit;
+    font-weight: 600;
+    -webkit-transition: color .3s, border .3s
+    transition: color .3s, border .3s
+}
+
+button.big:hover, button.small:hover {
+    color: #FFB66E;
+}
+
+button.big {
+    padding: .5rem 1rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-radius: 6rem;
+    border-width: .2rem;
+    border: .2rem solid #eee;
+}
+
+button.small {
+    padding: .15rem .5rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    border-radius: 1rem;
+    border-width: .15rem;
+    border: .15rem solid #eee;
+}
+
+button.big:hover {
+    border: .2rem solid #FFB66E;
+}
+button.small:hover {
+    border: .15rem solid #FFB66E;
+}
+
+
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {
   body {
