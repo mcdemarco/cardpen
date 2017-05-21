@@ -146,10 +146,18 @@ button.big, button.small {
     font-weight: 600;
     -webkit-transition: color .3s, border .3s
     transition: color .3s, border .3s
+    outline: 0;
 }
 
 button.big:hover, button.small:hover {
     color: #FFB66E;
+    outline: 0;
+}
+
+button.big:active, button.small:active,
+button.big:focus, button.small:focus, 
+button.big:visited, button.small:visited {
+    outline: 0;
 }
 
 button.big {
