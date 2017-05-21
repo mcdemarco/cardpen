@@ -114,17 +114,20 @@ You can add Google Fonts or other fonts (*e.g.*, [FontAwesome](https://www.boots
 
 The Pico example uses two Google Fonts; see the CSS for how they are invoked.
 
+Please note that Google fonts may scale incorrectly when converted to images at higher DPI.  If you have this problem, you should install the fonts on your computer instead (most Google fonts are also available free elsewhere online in system font format) and run HCCDo locally.
+
 ### Art
 
 You can include URLs for background images in your CSS, and trigger different ones using classes in your template.  (This is done in all the Scottish Sleuth examples.)
 
 For foreground images, you can include the URLs as part of the card list and put the url into an *img* tag in your template.  (See the IDKWDYWTP example for a foreground image.)  If your foreground image never changes, you can put it into your template directly instead.
 
-HCCDo needs to be able to find your images "online".  You can use public URLs of images that are already available online
-or that you've uploaded to an image hosting site like [Google Photos](https://www.google.com/photos/about/) or [Unsee](https://unsee.cc), but note that some public images may not work with HCCDo due to CORS issues.  Click the `IDKWDYWTP` button for an example of using a CORS proxy to work around CORS issues.
+HCCDo needs to be able to find your images "online".
+You can use public URLs of images that are already available online
+or that you've uploaded to an image hosting site like [Google Photos](https://www.google.com/photos/about/) or [Unsee](https://unsee.cc), but note that some public images may not work with HCCDo due to CORS issues.  (Click the `IDKWDYWTP` button for an example of using a CORS proxy to work around CORS issues.)
 
-If you have many images or if you're having CORS issues, you may want to run HCCDo locally.
-If you put your images in the images directory, you can refer to them as the examples do.
+If you need lots of images or if you're having CORS issues, you should run HCCDo locally.
+Put your images in the images directory and refer to them as the examples do.
 (See `IDKWDYWTPLocalImages.json` for an example.)
 
 ### More Settings
