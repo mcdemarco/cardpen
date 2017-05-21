@@ -14,9 +14,11 @@
 // Handle printing backs like PnPDeliver
 // em dashes not converted for help (smartypants option?) (marked cli can't pass options known issue #110)
 // replace card buttons with icons
-
 // Write images to "server"?
 // rebrand to "CardPen".  Change icon to a pen or stylus on a card.
+// Some typos in dance deck.
+// General issue scaling google fonts to 300 dpi (system fonts ok)
+// fork dom-to-image for the record.
 
 //init
 //form
@@ -58,22 +60,22 @@ context.init = (function () {
 		var buttons = {
 			addCard: hccdo.form.addCard,
 			removeCard: hccdo.form.removeCard,
-			clear: hccdo.form.clear,
-			eg: hccdo.form.example,
 			export: hccdo.util.exporter,
 			help: hccdo.write.help,
 			hide: hccdo.form.toggle,
 			idkFetch: hccdo.idk.fetch,
-			idkToggle: hccdo.idk.toggle,
 			show: hccdo.form.toggle,
 			generate: hccdo.form.generate,
 			imagine: hccdo.form.generate,
 			print: hccdo.form.generate,
-			stored: hccdo.project.stored,
 			view: hccdo.write.sizes
 		};
 		_.each(buttons, function(value, key) {
 			document.getElementById(key).addEventListener('click',value);
+		});
+		_.each(document.getElementsByClassName('load'), function(el) {
+			//clear, eg, idkToggle, stored.
+			el.addEventListener('click', hccdo.form.load);
 		});
 
 		_.each(document.getElementsByClassName('upload'), function(el) { 
@@ -115,11 +117,10 @@ context.form = (function () {
 		removeCard: removeCard,
 		change: change,
 		changeCode: changeCode,
-		clear: clear,
 		customSize: customSize,
-		example: example,
 		generate: generate,
 		get: get,
+		load: load,
 		set: set,
 		toggle: toggle
 	};
@@ -156,8 +157,8 @@ context.form = (function () {
 
 	function change() {
 		//Onchange function called by bind.  Beware the context change.
-		if (typeof event == "undefined" || !event || !event.currentTarget || event.currentTarget.readyState) {
-			//Only continue for real user actions because bind, bind, FileReader respectively.
+		if (typeof event == "undefined" || !event || !event.currentTarget || event.currentTarget.readyState || (event.currentTarget.classList && event.currentTarget.classList.contains("load"))) {
+			//Only continue for real user actions because bind, bind, FileReader, load respectively.
 			return;
 		}
 		context.project.save(this.data);
@@ -211,6 +212,29 @@ context.form = (function () {
 			data[key] = mirrObj.getValue();
 		});
 		return data;
+	}
+
+	function load(e) {
+		//Load an example or other data set from a UI button (no save).
+		if (e && e.target) {
+			switch (e.target.getAttribute("id")) {
+				case "clear":
+				clear();
+				break;
+
+				case "eg":
+				example();
+				break;
+
+				case "idkToggle":
+				context.idk.toggle();
+				break;
+
+				case "stored":
+				context.project.stored();
+				break;
+			}
+		}
 	}
 
 	function set(data) {
