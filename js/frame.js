@@ -18,8 +18,10 @@ function imaginer(node) {
 		img.src = dataUrl;
 		document.getElementById("hccdoImages").appendChild(img);
 	}).catch(function (error) {
+		var msg = 'Something went wrong!  Your browser may not support image generation.';
+		document.getElementById("hccdoError").innerHTML = msg;
 		if (console) 
-			console.error('Something went wrong!  Your browser may not support image generation.', error);
+			console.error(msg, error);
 	});
 }
 	

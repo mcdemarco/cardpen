@@ -17,8 +17,9 @@
 // Write images to "server"?
 // rebrand to "CardPen".  Change icon to a pen or stylus on a card.
 // Some typos in dance deck.
-// General issue scaling google fonts to 300 dpi (system fonts ok)
+// General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
 // fork dom-to-image for the record.
+// Show expected card sizes.
 
 //init
 //form
@@ -158,13 +159,14 @@ context.form = (function () {
 	function change() {
 		//Onchange function called by bind.  Beware the context change.
 		if (typeof event == "undefined" || !event || !event.currentTarget || event.currentTarget.readyState || (event.currentTarget.classList && event.currentTarget.classList.contains("load"))) {
-			//Only continue for real user actions because bind, bind, FileReader, load respectively.
-			return;
+			//Only save for real user actions because bind, bind, FileReader, load respectively.
+		} else {
+			context.project.save(this.data);
 		}
-		context.project.save(this.data);
 		if (this.data.live)
 			context.write.generate(this.data);
 		context.form.customSize(this.data);
+		context.write.expectedSize(this.data);
 	};
 
 	function changeCode(type) {
@@ -235,6 +237,8 @@ context.form = (function () {
 				break;
 			}
 		}
+		//Not a live part of the form, so we have to update it manually.
+		context.write.expectedSize(cardForm.data);
 	}
 
 	function set(data) {
@@ -601,11 +605,13 @@ context.size = (function () {
 		return sizeArray;
 	}
 
-	function pixels(data) {
+	function pixels(data,returnBig) {
 		//Calculate a special version of the height and width of the card in pixels,
 		//in order to work around a bug in dom-to-image.
 		var dpi = parseInt(data.dpi,10);
 		var bigPixels = convert2px(card(data,true),dpi);
+		if (returnBig)
+			return bigPixels;
 
 		var newSA = [];
 		_.each([0,1],function(idx) {
@@ -905,6 +911,7 @@ context.util = (function () {
 context.write = (function () {
 
 	return {
+		expectedSize: expectedSize,
 		frame: frame,
 		generate: generate,
 		help: help,
@@ -912,6 +919,12 @@ context.write = (function () {
 		sizes: sizes,
 		tryGenerate: tryGenerate
 	};
+
+	function expectedSize(data) {
+		var sizeArray = context.size.pixels(data,true);
+		var sizeString = sizeArray[1] + " x " + sizeArray[0] + "px";
+		document.getElementById("expectedSize").innerHTML = sizeString;
+	}
 
 	function frame(doc) {
 		var ifrm = document.getElementById("hccdoOutput");
@@ -971,13 +984,15 @@ context.write = (function () {
 				'var width = ' + dims[1] + ';\n' +
 				'var projectName = "' + cleanName + '";' + 
 				'</script>\n';
-			fullOutput += "<style>#hccdoutput {display: block;}</style>\n";
+			fullOutput += "<style>#hccdoutput {display: block;}\n";
+			fullOutput += "#hccdoError {padding:5px;color:red;}</style>\n";
 		} else {
 			fullOutput += "<style>\n" + context.style.page(data,forImages) + "</style>\n";
 		}
 			fullOutput += "<style>\n" + context.style.card(data) + "</style>\n";
 		fullOutput += "<style>\n" + data.css + "</style>\n</head>\n<body>\n";
 		if (forImages) {
+			fullOutput += "<div id='hccdoError'></div>\n";
 			fullOutput += "<button type='button' onclick='zipper();'>Zip Images</button>\n";
 			fullOutput += "<div id='hccdoImages'></div>\n";
 		}
