@@ -34,9 +34,13 @@ section#textareas {
     padding-bottom: 1em;
 }
 
-section#textareas subsection h4,
 section#textareas subsection span.up {
     padding-left: 2.5em;
+}
+
+section#textareas subsection h4,
+section.indent subsection h4 {
+    padding-left: 2em;
 }
 
 section#buttons {
@@ -90,7 +94,7 @@ input#cardClass {
 }
 
 input#extCSS {
-    width:90%;
+    width:80%;
 }
 
 input#projectName {
