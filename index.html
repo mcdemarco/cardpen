@@ -52,12 +52,8 @@
 					</span>
 				</h4>
 				<h4>
-						<span class="nw up">Load project file:&nbsp;<input type="file" id="import" class="upload" data-type="import"></span>
+					<span class="nw up">Load project file:&nbsp;<input type="file" id="import" class="upload" data-type="import"></span>
 					</span>
-				</h4>
-				<h4 id="idkSection" style="display:none;">BGG username: 
-					<input type="text" id="username" placeholder="BGG username" value=""/> 
-					<button type="button" id="idkFetch" title="Fetch your BGG collection as CSV for I Don't Know, What Do You Want To Play? or other purposes.">Get Games</button>
 				</h4>
 			</subsection>
 		</section>
@@ -65,7 +61,7 @@
 		<section id="textareas">
 			<subsection id="hccdoCSV">
 				<h4>Your cards 
-					<span>
+					<span style="padding-left:50%;">
 						<button type="button" id="addCard" title="Add a card.">+</button>
 						<button type="button" id="removeCard" title="Remove the last card.">-</button>
 					</span>
@@ -93,10 +89,11 @@
 			</subsection>
 		</section>
 
-		<section class="indent thin">
+		<section class="indent thin" id="settings" style="display:none;">
 			<subsection>
 				<h4 id="csizeWrapper" class="indent">Card size: 
-					<select id="csize"></select>
+					<select id="csize" style="width:50%;"></select>
+					<button type="button" class="small" id="view">View all</button>
 					<span class="nw" id="customize" style="display:none;">
 						<input id="cwidth" placeholder="width" type="text" size="6"> x <input id="cheight" placeholder="height" type="text" size="6">
 						<input type="radio" id="cin" value="in" name="cunit"><label for="cin">in</label>
@@ -148,6 +145,10 @@
 						<input type="radio" id="brmm" value="mm" name="brunit"><label for="brmm">mm</label>
 					</span>
 				</h4>
+				<h4 id="idkSection" style="display:none;">BGG username: 
+					<input type="text" id="username" placeholder="BGG username" style="width:25%;" value=""/> 
+					<button type="button" id="idkFetch" title="Fetch your BGG collection as CSV for I Don't Know, What Do You Want To Play? or other purposes.">Get Games</button>
+				</h4>
 			</subsection>
 			<subsection>
 				<h4>Page size: 
@@ -181,10 +182,10 @@
 		<section id="buttons">
 			<subsection>
 				<span id="buttonIcon" style="display:none;float:left;" class="show hccdoIcon">HCCDo</span>
+				<button type="button" class="big" id="settingsToggle">Settings</button>
 				<button type="button" class="big" id="hide">Collapse</button>
 				<button type="button" class="show big" id="show" style="display:none">Expand</button>
 				<button type="button" class="big" id="help">Help</button>
-				<button type="button" class="big" id="view">Card Sizes</button>
 			</subsection>
 			<subsection>
 				<span class="nw">
