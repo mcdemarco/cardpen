@@ -15,11 +15,10 @@
 // em dashes not converted for help (smartypants option?) (marked cli can't pass options known issue #110)
 // replace card buttons with icons
 // Write images to "server"?
-// rebrand to "CardPen".  Change icon to a pen or stylus on a card.
-// Some typos in dance deck.
+// rebrand to "CardPen".  Change icon to a pen or stylus on a card.  Cardify buttons.
 // General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
 // fork dom-to-image for the record.
-// Show expected card sizes.
+// add UI layout options
 
 //init
 //form
@@ -69,6 +68,7 @@ context.init = (function () {
 			generate: hccdo.form.generate,
 			imagine: hccdo.form.generate,
 			print: hccdo.form.generate,
+			settingsToggle: hccdo.form.settingsToggle,
 			view: hccdo.write.sizes
 		};
 		_.each(buttons, function(value, key) {
@@ -123,6 +123,7 @@ context.form = (function () {
 		get: get,
 		load: load,
 		set: set,
+		settingsToggle: settingsToggle,
 		toggle: toggle
 	};
 
@@ -246,6 +247,20 @@ context.form = (function () {
 		_.each(mirrors, function(mirrObj,key) {
 			mirrObj.setValue(data[key]);
 		});
+	}
+
+	function settingsToggle(e) {
+		//For toggling the settings with the button.
+		var section = document.getElementById("settings");
+		var button = document.getElementById("settingsToggle");
+		var hidden = (button.innerHTML == "Settings");
+		if (hidden) {
+			section.style.display = "";
+			button.innerHTML = "Hide Settings";
+		} else {
+			section.style.display = "none";
+			button.innerHTML = "Settings";
+		}
 	}
 
 	function toggle(e) {

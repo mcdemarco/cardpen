@@ -6,10 +6,12 @@ body {
     background-image: url('low_contrast_linen.png');
     color: white;
     font-family: Raleway, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-main {
-    padding: 0 .5em .5em .5em;
+main section {
+    padding: .5em;
 }
 
 section {
@@ -18,6 +20,7 @@ section {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+    border-top: 2px solid #bcbcbc;
 }
 
 section.thin {
@@ -30,8 +33,8 @@ section subsection {
     margin-bottom: 10px;
 }
 
-section#textareas {
-    padding-bottom: 1em;
+subsection.double {
+    flex: 2 0 66%;
 }
 
 section#textareas subsection span.up {
@@ -44,6 +47,7 @@ section.indent subsection h4 {
 }
 
 section#buttons {
+    padding-top: 1em;
     text-align:center;
     align-content: space-around;
 }
