@@ -4,21 +4,19 @@
 //TODO: 
 // better weird card sizes (hex, heart) 
 // test firefox
-// Nicer/collapsier/wizardier layout overall. (pen style)
 // Switch to handlebars?
 // Set up my own cors proxy for bgg?
 // add bleed/safe to card size view (too difficult? only selected size?)
 // Refactor/make optional the bleed/safe wrappers?
 // Load project from url?
 // Add margin to page/fix print sizing margin issue (dance deck)
-// Handle printing backs like PnPDeliver
+// Handle printing backs like PnPDeliver?
 // em dashes not converted for help (smartypants option?) (marked cli can't pass options known issue #110)
 // replace card buttons with icons
 // Write images to "server"?
 // rebrand to "CardPen".  Change icon to a pen or stylus on a card.  Cardify buttons.
 // General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
-// fork dom-to-image for the record.
-// add UI layout options
+// add UI layout options (E m backwards E)
 
 //init
 //form
@@ -61,15 +59,14 @@ context.init = (function () {
 			addCard: hccdo.form.addCard,
 			removeCard: hccdo.form.removeCard,
 			export: hccdo.util.exporter,
-			help: hccdo.write.help,
-			hide: hccdo.form.toggle,
+			help: hccdo.form.help,
 			idkFetch: hccdo.idk.fetch,
-			show: hccdo.form.toggle,
 			generate: hccdo.form.generate,
 			imagine: hccdo.form.generate,
+			loadToggle: hccdo.form.loadToggle,
 			print: hccdo.form.generate,
-			settingsToggle: hccdo.form.settingsToggle,
-			view: hccdo.write.sizes
+			viewSizes: hccdo.write.sizes,
+			viewToggle: hccdo.form.viewToggle
 		};
 		_.each(buttons, function(value, key) {
 			document.getElementById(key).addEventListener('click',value);
@@ -77,6 +74,10 @@ context.init = (function () {
 		_.each(document.getElementsByClassName('load'), function(el) {
 			//clear, eg, idkToggle, stored.
 			el.addEventListener('click', hccdo.form.load);
+		});
+		_.each(document.getElementsByClassName('view'), function(el) {
+			//cardsView, editorView, settingsView
+			el.addEventListener('click', hccdo.form.view);
 		});
 
 		_.each(document.getElementsByClassName('upload'), function(el) { 
@@ -122,10 +123,12 @@ context.form = (function () {
 		example: example,
 		generate: generate,
 		get: get,
+		help: help,
 		load: load,
+		loadToggle: loadToggle,
 		set: set,
-		settingsToggle: settingsToggle,
-		toggle: toggle
+		view: view,
+		viewToggle: viewToggle
 	};
 
 	function addCard() {
@@ -178,7 +181,7 @@ context.form = (function () {
 	function clear() {
 		set(blankForm);
 		//Also clear iframe.
-		clearFrame();
+		context.write.clearFrame();
 	}
 
 	function customSize(data) {
@@ -194,6 +197,11 @@ context.form = (function () {
 		generate();
 	}
 
+	function help(e) {
+		context.write.help();
+		view(e);
+	}
+
 	function generate(e) {
 		//A wrapper that translates the event into the appropriate format setting.
 		//(See write.massage() for the reasons.)
@@ -206,7 +214,7 @@ context.form = (function () {
 		}
 		context.write.generate(get(),format);
 		if (format == "print")
-			printFrame();
+			context.util.printFrame();
 	}
 
 	function get() {
@@ -243,6 +251,16 @@ context.form = (function () {
 		context.write.expectedSize(cardForm.data);
 	}
 
+	function loadToggle(e) {
+		//For toggling the settings with the button.
+		var section = document.getElementById("loadSubsubsection");
+		if (section.style.display == "none") {
+			section.style.display = "";
+		} else {
+			section.style.display = "none";
+		}
+	}
+
 	function set(data) {
 		cardForm.data = data;
 		_.each(mirrors, function(mirrObj,key) {
@@ -250,44 +268,67 @@ context.form = (function () {
 		});
 	}
 
-	function settingsToggle(e) {
-		//For toggling the settings with the button.
-		var section = document.getElementById("settings");
-		var button = document.getElementById("settingsToggle");
-		var hidden = (button.innerHTML == "Settings");
-		if (hidden) {
-			section.style.display = "";
-			button.innerHTML = "Hide Settings";
-		} else {
-			section.style.display = "none";
-			button.innerHTML = "Settings";
-		}
-	}
-
-	function toggle(e) {
-		//For hiding most of the form with the hide/show buttons.
-		var hiding = (e && e.target && e.target.getAttribute("id") == "hide");
+	function toggle(what) {
+		//Internal function For hiding/showing most of the form.
+		var hiding = (what == "off");
 		var sectionNonArray = document.querySelectorAll("section");
+		//The major changes.
 		_.each(sectionNonArray, function(el) {
 			if (el.id != "buttons")
 				el.style.display = (hiding ? "none" : "flex");
 		});
-		document.getElementById("hide").style.display = (hiding ? "none" : "inline");
+		//Set up/take down the special collapsed view.
 		_.each(document.getElementsByClassName("show"), function(el) {
 				el.style.display = (hiding ? "" : "none");
 		});
+		if (!hiding) {
+			//Handle the settings subcase.
+			var settingsSection = document.getElementById("settings");
+			settingsSection.style.display = (what == "on" ? "flex" : "none");
+		}
+		document.getElementById("viewButtons").style.display = "none";
 	}
 
-	function printFrame() {
-		//Print iframe.
-		var ifrm = document.getElementById("hccdoOutput");
-		ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
-		ifrm.print();
+	function view(e) {
+		//Change the layout from a UI button.
+		if (e && e.target) {
+			//Remove the old selected class and add the new one.
+			document.querySelectorAll("button.view.selected")[0].classList.remove("selected");
+			e.target.classList.add("selected");
+
+			//Pass to the view changer.
+			switch (e.target.getAttribute("id")) {
+
+				case "help":
+				//The help button forcibly sets to the fullscreen view.
+				document.getElementById("cardsView").classList.add("selected");
+				case "cardsView":
+				toggle("off");
+				break;
+
+				case "back":
+				//The uncollapser resets to editor view.
+				document.getElementById("editorView").classList.add("selected");
+				case "editorView":
+				toggle("editor");
+				break;
+
+				case "settingsView":
+				toggle("on");
+				break;
+
+			}
+		}
 	}
 
-	function clearFrame() {
-		//Clear iframe.
-		context.write.frame("");
+	function viewToggle(e) {
+		//For toggling the view list with the button.
+		var section = document.getElementById("viewButtons");
+		if (section.style.display == "none") {
+			section.style.display = "";
+		} else {
+			section.style.display = "none";
+		}
 	}
 
 })();
@@ -352,7 +393,7 @@ context.idk = (function () {
 			return true;
 		} else {
 			//Clear any previous errors.
-			context.write.frame("");
+			context.write.clearFrame();
 			return false;
 		}
 	}
@@ -876,6 +917,7 @@ context.util = (function () {
 	return {
 		exporter: exporter,
 		file: file,
+		printFrame: printFrame,
 		sanitize: sanitize
 	};
 
@@ -912,6 +954,13 @@ context.util = (function () {
 		reader.readAsText(fileToLoad);
 	}
 
+	function printFrame() {
+		//Print iframe.
+		var ifrm = document.getElementById("hccdoOutput");
+		ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
+		ifrm.print();
+	}
+
 	function sanitize(fileName) {
 		var cleanName = fileName.replace(/\W+/g, '');
 		if (cleanName.length === 0)
@@ -924,6 +973,7 @@ context.util = (function () {
 context.write = (function () {
 
 	return {
+		clearFrame: clearFrame,
 		expectedSize: expectedSize,
 		frame: frame,
 		generate: generate,
@@ -932,6 +982,11 @@ context.write = (function () {
 		sizes: sizes,
 		tryGenerate: tryGenerate
 	};
+
+	function clearFrame() {
+		//Clear iframe.
+		frame("");
+	}
 
 	function expectedSize(data) {
 		var sizeArray = context.size.pixels(data,true);
@@ -1018,6 +1073,8 @@ context.write = (function () {
 	function help() {
 		//Show the help.
 		document.getElementById("hccdoOutput").src = "doc/index.html";
+		//Set the view to cards only.
+		
 	}
 
 	function massage(data,format) {

@@ -46,10 +46,11 @@ section.indent subsection h4 {
     padding-left: 2em;
 }
 
-section#buttons {
+section.buttons, subsection.buttons {
     padding-top: 1em;
     text-align:center;
     align-content: space-around;
+    justify-content: center;
 }
 
 section#buttons subsection {
@@ -81,12 +82,13 @@ textarea {
 }
 textarea#projectNotes {
     width: 75%;
-    height:1rem;
+    height:2rem;
     vertical-align:top;
     background-image: url('fabric_plaid.png');
 }
 
-input[type=text] {
+input[type=text],
+textarea#projectNotes {
     border-radius: 0.25rem;
     padding-left: 0.25rem;
     background-image: url('fabric_plaid.png');
@@ -157,7 +159,8 @@ button.big, button.small {
     outline: 0;
 }
 
-button.big:hover, button.small:hover {
+button.big:hover, button.small:hover,
+button.small.selected {
     color: #FFB66E;
     outline: 0;
 }
@@ -172,7 +175,7 @@ button.big {
     padding: .5rem 1rem;
     font-size: 0.8rem;
     text-transform: uppercase;
-    border-radius: 6rem;
+    border-radius: .5rem;
     border-width: .2rem;
     border: .2rem solid #eee;
 }
@@ -181,7 +184,7 @@ button.small {
     padding: .15rem .5rem;
     font-size: 0.7rem;
     text-transform: uppercase;
-    border-radius: 1rem;
+    border-radius: .3rem;
     border-width: .15rem;
     border: .15rem solid #eee;
 }
@@ -189,7 +192,8 @@ button.small {
 button.big:hover {
     border: .2rem solid #FFB66E;
 }
-button.small:hover {
+button.small:hover,
+button.small.selected {
     border: .15rem solid #FFB66E;
 }
 
