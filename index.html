@@ -31,6 +31,34 @@
 				<div style="display:inline-block;"><span class="hccdoIcon">HCCDo</span><br />
 					an online HTML+CSS card generator</div>
 			</subsection>
+			<subsection class="buttons">
+				<button type="button" class="big" id="viewToggle">View</button>
+				<button type="button" class="big" id="help">Help</button>
+				<h4 id="viewButtons" style="display:none;">
+					<span class="nw">
+						<button type="button" class="small view" id="cardsView">Cards Only</button>
+						<button type="button" class="small view selected" id="editorView">Editor</button>
+						<button type="button" class="small view" id="settingsView">Settings</button>
+					</span>
+				</h4>
+			</subsection>
+			<subsection class="buttons">
+				<button type="button" class="small load" id="clear">New</button>
+				<button type="button" class="small load" id="stored">Recent</button>
+				<button type="button" class="small load" id="eg">Example</button>
+				<button type="button" class="small load" id="idkToggle">IDKWDYWTP</button>
+				<button type="button" class="small load" id="loadToggle">Load</button>
+				<h4 id="loadSubsubsection" style="display:none;">
+					<span class="nw up">
+						Load project file:
+						<input type="file" id="import" class="upload" data-type="import">
+					</span>
+				</h4>
+			</subsection>
+		</section>
+
+
+		<section class="indent thin" id="settings" style="display:none;">
 			<subsection>
 				<h4>Project name:
 					<input type="text" id="projectName" value=""/>
@@ -38,62 +66,16 @@
 						<button type="button" id="export" title="Export this project to a file.">Export</button>
 					</span>
 				</h4>
+			</subsection>
+			<subsection class="double">
 				<h4>Notes:
 					<textarea id="projectNotes"></textarea>
 				</h4>
 			</subsection>
 			<subsection>
-				<h4>Load: 
-					<span>
-						<button type="button" class="small load" id="clear">New</button>
-						<button type="button" class="small load" id="stored">Recent</button>
-						<button type="button" class="small load" id="eg">Example</button>
-						<button type="button" class="small load" id="idkToggle">IDKWDYWTP</button>
-					</span>
-				</h4>
-				<h4>
-					<span class="nw up">Load project file:&nbsp;<input type="file" id="import" class="upload" data-type="import"></span>
-					</span>
-				</h4>
-			</subsection>
-		</section>
-
-		<section id="textareas">
-			<subsection id="hccdoCSV">
-				<h4>Your cards 
-					<span style="padding-left:50%;">
-						<button type="button" id="addCard" title="Add a card.">+</button>
-						<button type="button" id="removeCard" title="Remove the last card.">-</button>
-					</span>
-				</h4>
-				<textarea id="csv"></textarea>
-				<span class="nw up">Load csv: 
-					<input type="file" id="csvUpload" class="upload" data-type="csv">
-				</span>
-			</subsection>
-			
-			<subsection id="hccdoCSS">
-				<h4>Your styles (optional)</h4>
-				<textarea id="css"></textarea>
-				<span class="nw up">Load css:
-					<input type="file" id="cssUpload" class="upload" data-type="css">
-				</span>
-			</subsection>
-			
-			<subsection id="hccdoTMPL">
-				<h4>Your template</h4>
-				<textarea id="mustache"></textarea>
-				<span class="nw up">Load template:
-					<input type="file" id="mustacheUpload" class="upload" data-type="mustache"> 
-				</span>
-			</subsection>
-		</section>
-
-		<section class="indent thin" id="settings" style="display:none;">
-			<subsection>
 				<h4 id="csizeWrapper" class="indent">Card size: 
 					<select id="csize" style="width:50%;"></select>
-					<button type="button" class="small" id="view">View all</button>
+					<button type="button" class="small" id="viewSizes">Show all</button>
 					<span class="nw" id="customize" style="display:none;">
 						<input id="cwidth" placeholder="width" type="text" size="6"> x <input id="cheight" placeholder="height" type="text" size="6">
 						<input type="radio" id="cin" value="in" name="cunit"><label for="cin">in</label>
@@ -179,20 +161,50 @@
 			</subsection>
 		</section>
 
-		<section id="buttons">
-			<subsection>
-				<span id="buttonIcon" style="display:none;float:left;" class="show hccdoIcon">HCCDo</span>
-				<button type="button" class="big" id="settingsToggle">Settings</button>
-				<button type="button" class="big" id="hide">Collapse</button>
-				<button type="button" class="show big" id="show" style="display:none">Expand</button>
-				<button type="button" class="big" id="help">Help</button>
+		<section id="textareas">
+			<subsection id="hccdoCSV">
+				<h4>Your cards 
+					<span style="padding-left:50%;">
+						<button type="button" id="addCard" title="Add a card.">+</button>
+						<button type="button" id="removeCard" title="Remove the last card.">-</button>
+					</span>
+				</h4>
+				<textarea id="csv"></textarea>
+				<span class="nw up">Load csv: 
+					<input type="file" id="csvUpload" class="upload" data-type="csv">
+				</span>
+			</subsection>
+			
+			<subsection id="hccdoCSS">
+				<h4>Your styles (optional)</h4>
+				<textarea id="css"></textarea>
+				<span class="nw up">Load css:
+					<input type="file" id="cssUpload" class="upload" data-type="css">
+				</span>
+			</subsection>
+			
+			<subsection id="hccdoTMPL">
+				<h4>Your template</h4>
+				<textarea id="mustache"></textarea>
+				<span class="nw up">Load template:
+					<input type="file" id="mustacheUpload" class="upload" data-type="mustache"> 
+				</span>
+			</subsection>
+		</section>
+
+		<section id="buttons" class="buttons merge">
+			<subsection class="show" style="display:none;">
+				<span id="buttonIcon" style="float:left;" class="hccdoIcon">HCCDo</span>
+				<button type="button" class="big view" id="back">View</button>
 			</subsection>
 			<subsection>
-				<span class="nw">
-					<button type="button" class="big" id="imagine">Generate Images</button>
-					<b>DPI:</b>&nbsp;<input type="text" id="dpi" size="5" value="300"/>
-				</span>
-				<span class="nw">(<span id="expectedSize" title="Size of generated images in pixels."></span>)</span>
+				<button type="button" class="big" id="imagine">Generate Images</button>
+				<div style="display:inline-block;">
+					<span class="nw">
+						<b>DPI:</b>&nbsp;<input type="text" id="dpi" size="5" value="300"/>
+					</span>
+					<span class="nw">(<span id="expectedSize" title="Size of generated images in pixels."></span>)</span>
+				</div>
 			</subsection>
 			<subsection>
 				<span class="nw">
