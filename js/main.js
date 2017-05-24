@@ -119,6 +119,7 @@ context.form = (function () {
 		change: change,
 		changeCode: changeCode,
 		customSize: customSize,
+		example: example,
 		generate: generate,
 		get: get,
 		load: load,
@@ -476,10 +477,7 @@ context.project = (function () {
 		if (window.localStorage) {
 			try {
 				var tempProj = JSON.parse(window.localStorage["hccdo"]);
-				if (_.isArray(tempProj)) {
-					//Fix some old data by popping it.
-					storedProj = tempProj[0];
-				} else if (_.isObject(tempProj) && !_.isEmpty(tempProj)) {
+				if (_.isObject(tempProj) && !_.isEmpty(tempProj)) {
 					storedProj = tempProj;
 				}
 			} catch(e) {
