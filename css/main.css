@@ -37,6 +37,16 @@ subsection.double {
     flex: 2 0 66%;
 }
 
+section#buttons subsection {
+    flex: 1 0 10%;
+    min-width: 150px;
+    margin-bottom: 0;
+}
+
+section#buttons subsection.double {
+    flex: 2 0 40%;
+}
+
 section#textareas subsection span.up {
     padding-left: 2.5em;
 }
@@ -46,17 +56,13 @@ section.indent subsection h4 {
     padding-left: 2em;
 }
 
-section.buttons, subsection.buttons {
-    padding-top: 1em;
+section.buttons,
+section#buttons subsection,
+subsection.buttons {
     text-align:center;
     align-content: space-around;
+    align-items: center;
     justify-content: center;
-}
-
-section#buttons subsection {
-    flex: 1 0 33%;
-    min-width: 222px;
-    margin-bottom: 5px;
 }
 
 .hccdoIcon {
@@ -64,16 +70,15 @@ section#buttons subsection {
     font-weight: bold;
 }
 
-section#buttons .hccdoIcon {
-    font-size: large;
-    font-weight: bold;
-}
-
-section#header img {
+img.icon {
     height:55px;
     margin-bottom:-7px;
     border: 2px solid gray;
     border-radius: 5px;
+}
+
+#buttons img.icon {
+    margin-bottom: 0;
 }
 
 textarea {

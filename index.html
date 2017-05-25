@@ -27,27 +27,26 @@
 	<main>
 		<section id="header" class="thin">
 			<subsection>
-				<img src="css/icon-joker.svg">
+				<img class="icon" src="css/icon-joker.svg">
 				<div style="display:inline-block;"><span class="hccdoIcon">HCCDo</span><br />
 					an online HTML+CSS card generator</div>
 			</subsection>
-			<subsection class="buttons">
-				<button type="button" class="big" id="viewToggle">View</button>
-				<button type="button" class="big" id="help">Help</button>
-				<h4 id="viewButtons" style="display:none;">
+			<subsection>
+				<h4>View:</h4>
 					<span class="nw">
 						<button type="button" class="small view" id="cardsView">Cards Only</button>
 						<button type="button" class="small view selected" id="editorView">Editor</button>
-						<button type="button" class="small view" id="settingsView">Settings</button>
+						<button type="button" class="small view" id="settingsView">Advanced</button>
+						<button type="button" class="small view" id="help">Help</button>
 					</span>
-				</h4>
 			</subsection>
-			<subsection class="buttons">
+			<subsection>
+				<h4>Load:</h4>
 				<button type="button" class="small load" id="clear">New</button>
 				<button type="button" class="small load" id="stored">Recent</button>
 				<button type="button" class="small load" id="eg">Example</button>
 				<button type="button" class="small load" id="idkToggle">IDKWDYWTP</button>
-				<button type="button" class="small load" id="loadToggle">Load</button>
+				<button type="button" class="small load" id="loadToggle">File</button>
 				<h4 id="loadSubsubsection" style="display:none;">
 					<span class="nw up">
 						Load project file:
@@ -192,13 +191,15 @@
 			</subsection>
 		</section>
 
-		<section id="buttons" class="buttons merge">
+		<section id="buttons" class="buttons">
 			<subsection class="show" style="display:none;">
-				<span id="buttonIcon" style="float:left;" class="hccdoIcon">HCCDo</span>
-				<button type="button" class="big view" id="back">View</button>
+				<img class="icon" src="css/icon-joker.svg" style="float:left;">
 			</subsection>
-			<subsection>
-				<button type="button" class="big" id="imagine">Generate Images</button>
+			<subsection class="show" style="display:none;">
+				<button type="button" class="big view" id="back">Back</button>
+			</subsection>
+			<subsection class="double">
+				<button type="button" class="big" id="imagine">Images</button>
 				<div style="display:inline-block;">
 					<span class="nw">
 						<b>DPI:</b>&nbsp;<input type="text" id="dpi" size="5" value="300"/>
@@ -208,9 +209,11 @@
 			</subsection>
 			<subsection>
 				<span class="nw">
-					<button type="button" class="big" id="generate">Generate HTML</button>
-					<input type="checkbox" id="live"> live
+					<button type="button" class="big" id="generate">HTML</button>
+					<input type="checkbox" id="live" title="Update HTML rendering as you type."> live
 				</span>
+			</subsection>
+			<subsection>
 				<button type="button" class="big" id="print">Print</button>
 			</subsection>
 		</section>
