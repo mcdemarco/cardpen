@@ -133,6 +133,8 @@ context.form = (function () {
 
 	function addCard() {
 		//Get the last line.
+		if (mirrors.csv.lastLine() < 1)
+			return;
 		var lastline = mirrors.csv.getLine(mirrors.csv.lastLine()).trim();
 		//If the last line is empty, remove it and try again.
 		if (lastline == "") {
