@@ -31,31 +31,34 @@
 				<div style="display:inline-block;"><span class="hccdoIcon">HCCDo</span><br />
 					an online HTML+CSS card generator</div>
 			</subsection>
-			<subsection>
-				<h4>View:</h4>
-					<span class="nw">
-						<button type="button" class="small view" id="cardsView">Cards Only</button>
-						<button type="button" class="small view selected" id="editorView">Editor</button>
-						<button type="button" class="small view" id="settingsView">Advanced</button>
-						<button type="button" class="small view" id="help">Help</button>
-					</span>
-			</subsection>
-			<subsection>
-				<h4>Load:</h4>
-				<button type="button" class="small load" id="clear">New</button>
-				<button type="button" class="small load" id="stored">Recent</button>
-				<button type="button" class="small load" id="eg">Example</button>
-				<button type="button" class="small load" id="idkToggle">IDKWDYWTP</button>
-				<button type="button" class="small load" id="loadToggle">File</button>
-				<h4 id="loadSubsubsection" style="display:none;">
-					<span class="nw up">
-						Load project file:
-						<input type="file" id="import" class="upload" data-type="import">
-					</span>
-				</h4>
+			<subsection class="double">
+				<subsubsection>
+					<h4>View:
+						<span class="nw">
+							<button type="button" class="small view" id="cardsView">Cards Only</button>
+							<button type="button" class="small view selected" id="editorView">Editor</button>
+							<button type="button" class="small view" id="settingsView">Advanced</button>
+							<button type="button" class="small view" id="help">Help</button>
+						</span>
+					</h4>
+				</subsubsection>
+				<subsubsection>
+					<h4>Load:
+						<span class="nw">
+							<button type="button" class="small load" id="clear">New</button>
+							<button type="button" class="small load" id="stored">Last</button>
+							<button type="button" class="small load" id="eg">Example</button>
+							<button type="button" class="small load" id="idkToggle">IDKWDYWTP</button>
+							<button type="button" class="small load" id="loadToggle">File</button>
+						</span>
+						<span class="nw up" id="loadSubsubsection" style="display:none;">
+							Load project file:
+							<input type="file" id="import" class="upload" data-type="import">
+						</span>
+					</h4>
+				</subsubsection>
 			</subsection>
 		</section>
-
 
 		<section class="indent thin" id="settings" style="display:none;">
 			<subsection>

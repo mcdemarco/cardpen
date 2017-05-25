@@ -37,6 +37,21 @@ subsection.double {
     flex: 2 0 66%;
 }
 
+section#header subsection {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+section#header subsection.double {
+    flex: 2 0 50%;
+    min-width:330px;
+}
+
+subsubsection {
+    flex: 1 0 330px;
+    min-width: 330px;
+}
+
 section#buttons subsection {
     flex: 1 0 10%;
     min-width: 150px;
@@ -63,6 +78,17 @@ subsection.buttons {
     align-content: space-around;
     align-items: center;
     justify-content: center;
+}
+
+subsubsection {
+    align-content: space-around;
+    align-items: center;
+    justify-content: center;
+}
+
+subsubsection span.nw {
+    display:inline-block;
+    min-width: 350px;
 }
 
 .hccdoIcon {
