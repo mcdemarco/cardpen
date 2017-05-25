@@ -65,8 +65,7 @@ context.init = (function () {
 			imagine: hccdo.form.generate,
 			loadToggle: hccdo.form.loadToggle,
 			print: hccdo.form.generate,
-			viewSizes: hccdo.write.sizes,
-			viewToggle: hccdo.form.viewToggle
+			viewSizes: hccdo.write.sizes
 		};
 		_.each(buttons, function(value, key) {
 			document.getElementById(key).addEventListener('click',value);
@@ -127,8 +126,7 @@ context.form = (function () {
 		load: load,
 		loadToggle: loadToggle,
 		set: set,
-		view: view,
-		viewToggle: viewToggle
+		view: view
 	};
 
 	function addCard() {
@@ -253,7 +251,7 @@ context.form = (function () {
 		context.write.expectedSize(cardForm.data);
 	}
 
-	function loadToggle(e) {
+	function loadToggle() {
 		//For toggling the settings with the button.
 		var section = document.getElementById("loadSubsubsection");
 		if (section.style.display == "none") {
@@ -288,7 +286,6 @@ context.form = (function () {
 			var settingsSection = document.getElementById("settings");
 			settingsSection.style.display = (what == "on" ? "flex" : "none");
 		}
-		document.getElementById("viewButtons").style.display = "none";
 	}
 
 	function view(e) {
@@ -320,16 +317,6 @@ context.form = (function () {
 				break;
 
 			}
-		}
-	}
-
-	function viewToggle(e) {
-		//For toggling the view list with the button.
-		var section = document.getElementById("viewButtons");
-		if (section.style.display == "none") {
-			section.style.display = "";
-		} else {
-			section.style.display = "none";
 		}
 	}
 
@@ -942,6 +929,7 @@ context.util = (function () {
 			if (type == "import") {
 				//Will eventually need version control.
 				context.form.set(JSON.parse(reader.result));
+				context.form.loadToggle();
 			} else {
 				//Should eliminate first row?
 				cardForm.data[type] = reader.result;
@@ -1075,8 +1063,6 @@ context.write = (function () {
 	function help() {
 		//Show the help.
 		document.getElementById("hccdoOutput").src = "doc/index.html";
-		//Set the view to cards only.
-		
 	}
 
 	function massage(data,format) {
