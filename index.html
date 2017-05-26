@@ -35,10 +35,10 @@
 				<subsubsection>
 					<h4>View:
 						<span class="nw">
-							<button type="button" class="small view" id="cardsView">Cards Only</button>
-							<button type="button" class="small view selected" id="editorView">Editor</button>
-							<button type="button" class="small view" id="settingsView">Advanced</button>
-							<button type="button" class="small view" id="help">Help</button>
+							<button type="button" class="small view cardsView" data-view="cardsView">Cards Only</button>
+							<button type="button" class="small view selected editorView" data-view="editorView">Editor</button>
+							<button type="button" class="small view settingsView" data-view="settingsView">Advanced</button>
+							<button type="button" class="small view help" data-view="help">Help</button>
 						</span>
 					</h4>
 				</subsubsection>
@@ -213,14 +213,23 @@
 		<section id="buttons">
 			<subsection class="show" style="display:none;">
 				<span class="hccdoIcon">HCCDo</span>
-				<button type="button" class="small view" id="back">Back</button>
+			</subsection>
+			<subsection class="show buttons" style="display:none;">
+					<h4>View:
+						<span class="nw">
+							<button type="button" class="small view cardsView" data-view="cardsView">Cards Only</button>
+							<button type="button" class="small view selected editorView" data-view="editorView">Editor</button>
+							<button type="button" class="small view settingsView" data-view="settingsView">Advanced</button>
+							<button type="button" class="small view help" data-view="help">Help</button>
+						</span>
+					</h4>
 			</subsection>
 			<subsection class="buttons">
 				<h4>Output: 
 					<span class="nw">
-						<button type="button" class="small" id="imagine" title="Convert cards to PNGs.">Images</button>
-						<button type="button" class="small" id="generate" title="(Re)generate HTML output.">HTML</button>
-						<button type="button" class="small" id="print" title="Print HTML output from your browser.">Print</button>
+						<button type="button" class="small output imagine" id="imagine" title="Convert cards to PNGs.">Images</button>
+						<button type="button" class="small output html" id="generate" title="(Re)generate HTML output.">HTML</button>
+						<button type="button" class="small output print" id="print" title="Print HTML output from your browser.">Print</button>
 					</span>
 				</h4>
 			</subsection>
