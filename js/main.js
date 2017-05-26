@@ -17,6 +17,7 @@
 // rebrand to "CardPen".  Change icon to a pen or stylus on a card.  Cardify buttons.
 // General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
 // add UI layout options (E m backwards E)
+// Fix footer wrapping.
 
 //init
 //form
@@ -59,7 +60,6 @@ context.init = (function () {
 			addCard: hccdo.form.addCard,
 			removeCard: hccdo.form.removeCard,
 			export: hccdo.util.exporter,
-			help: hccdo.form.help,
 			idkFetch: hccdo.idk.fetch,
 			generate: hccdo.form.generate,
 			imagine: hccdo.form.generate,
@@ -122,10 +122,11 @@ context.form = (function () {
 		example: example,
 		generate: generate,
 		get: get,
-		help: help,
 		load: load,
 		loadToggle: loadToggle,
+		select: select,
 		set: set,
+		unselect: unselect,
 		view: view
 	};
 
@@ -197,11 +198,6 @@ context.form = (function () {
 		generate();
 	}
 
-	function help(e) {
-		context.write.help();
-		view(e);
-	}
-
 	function generate(e) {
 		//A wrapper that translates the event into the appropriate format setting.
 		//(See write.massage() for the reasons.)
@@ -230,7 +226,7 @@ context.form = (function () {
 		//Load an example or other data set from a UI button (no save).
 		if (e && e.target) {
 			//Remove the old selected class and add the new one.
-			document.querySelectorAll("button.load.selected")[0].classList.remove("selected");
+			unselect("load");
 			e.target.classList.add("selected");
 			switch (e.target.getAttribute("id")) {
 				case "clear":
@@ -262,6 +258,20 @@ context.form = (function () {
 		} else {
 			section.style.display = "none";
 		}
+	}
+
+	function select(groupClass,selecteeClass) {
+		//View buttons are duplicated.
+		_.each(document.querySelectorAll("button." + groupClass + "." + selecteeClass), function(elt) {
+			elt.classList.add("selected");
+		});
+	}
+
+	function unselect(groupClass) {
+		//View buttons are duplicated.
+		_.each(document.querySelectorAll("button." + groupClass +".selected"), function(elt) {
+			elt.classList.remove("selected");
+		});
 	}
 
 	function set(data) {
@@ -297,22 +307,22 @@ context.form = (function () {
 		//Change the layout from a UI button.
 		if (e && e.target) {
 			//Remove the old selected class and add the new one.
-			document.querySelectorAll("button.view.selected")[0].classList.remove("selected");
-			e.target.classList.add("selected");
+			unselect("view");
+			var newView = e.target.getAttribute("data-view");
+			select("view",newView);
 
 			//Pass to the view changer.
-			switch (e.target.getAttribute("id")) {
+			switch (newView) {
 
 				case "help":
-				//The help button forcibly sets to the fullscreen view.
-				document.getElementById("cardsView").classList.add("selected");
+				context.write.help();
+				toggle("off");
+				break;
+
 				case "cardsView":
 				toggle("off");
 				break;
 
-				case "back":
-				//The uncollapser resets to editor view.
-				document.getElementById("editorView").classList.add("selected");
 				case "editorView":
 				toggle("editor");
 				break;
@@ -500,7 +510,7 @@ context.project = (function () {
 			try {
 				window.localStorage["hccdo"] = stringyData;
 				//Also set the selection.
-				document.querySelectorAll("button.load.selected")[0].classList.remove("selected");
+				context.form.unselect("load");
 				document.getElementById("stored").classList.add("selected");
 			} catch(e) {
 				console.log("Error saving to local storage.");
@@ -1009,6 +1019,20 @@ context.write = (function () {
 		var fullOutput = "";
 		var forImages = (format == "image");
 		
+		//Set format in UI.
+		context.form.unselect("output");
+		switch (format) {
+			case "print":
+			context.form.select("output","print");
+			break;
+			case "image":
+			context.form.select("output","imagine");
+			break;
+			default:
+			context.form.select("output","html");
+			break;
+		}
+
 		//Massage the data.
 		var data = massage(realData,format);
 
@@ -1073,6 +1097,8 @@ context.write = (function () {
 	function help() {
 		//Show the help.
 		document.getElementById("hccdoOutput").src = "doc/index.html";
+		//Unselect all other outputs.
+		context.form.unselect("output");
 	}
 
 	function massage(data,format) {
