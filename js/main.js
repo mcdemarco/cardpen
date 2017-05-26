@@ -229,6 +229,9 @@ context.form = (function () {
 	function load(e) {
 		//Load an example or other data set from a UI button (no save).
 		if (e && e.target) {
+			//Remove the old selected class and add the new one.
+			document.querySelectorAll("button.load.selected")[0].classList.remove("selected");
+			e.target.classList.add("selected");
 			switch (e.target.getAttribute("id")) {
 				case "clear":
 				clear();
@@ -283,8 +286,10 @@ context.form = (function () {
 		});
 		if (!hiding) {
 			//Handle the settings subcase.
-			var settingsSection = document.getElementById("settings");
-			settingsSection.style.display = (what == "on" ? "flex" : "none");
+			var settingsSections = document.getElementsByClassName("settings");
+			_.each(settingsSections, function(elt) {
+				elt.style.display = (what == "on" ? "flex" : "none");
+			});
 		}
 	}
 
@@ -494,6 +499,9 @@ context.project = (function () {
 		if (window.localStorage) {
 			try {
 				window.localStorage["hccdo"] = stringyData;
+				//Also set the selection.
+				document.querySelectorAll("button.load.selected")[0].classList.remove("selected");
+				document.getElementById("stored").classList.add("selected");
 			} catch(e) {
 				console.log("Error saving to local storage.");
 			}
@@ -517,9 +525,11 @@ context.project = (function () {
 
 		if (storedProj) {
 			context.form.set(storedProj);
+			document.getElementById("stored").classList.add("selected");
 			context.write.tryGenerate();
 		} else if (defaultToEg) {
 			context.form.example();
+			document.getElementById("eg").classList.add("selected");
 			context.write.help();
 		}
 	}

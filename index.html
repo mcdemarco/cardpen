@@ -43,13 +43,13 @@
 					</h4>
 				</subsubsection>
 				<subsubsection>
-					<h4>Load:
+					<h4>Project:
 						<span class="nw">
 							<button type="button" class="small load" id="clear">New</button>
-							<button type="button" class="small load" id="stored">Last</button>
+							<button type="button" class="small load" id="stored">Saved</button>
 							<button type="button" class="small load" id="eg">Example</button>
 							<button type="button" class="small load" id="idkToggle">IDKWDYWTP</button>
-							<button type="button" class="small load" id="loadToggle">File</button>
+							<button type="button" class="small load" id="loadToggle">Load</button>
 						</span>
 						<span class="nw up" id="loadSubsubsection" style="display:none;">
 							Load project file:
@@ -60,7 +60,7 @@
 			</subsection>
 		</section>
 
-		<section class="indent thin" id="settings" style="display:none;">
+		<section class="indent thin settings" style="display:none;">
 			<subsection>
 				<h4>Project name:
 					<input type="text" id="projectName" value=""/>
@@ -86,7 +86,7 @@
 						<input type="checkbox" id="ccircle"><label for="ccircle">circular</label>
 					</span>
 				</h4>
-				<h4 class="indent">Orientation:  
+				<h4 class="indent">Orientation:
 					<span>
 						<span class="nw">
 							<input type="radio" id="cportrait" value="portrait" name="cori">
@@ -194,30 +194,35 @@
 			</subsection>
 		</section>
 
-		<section id="buttons" class="buttons">
-			<subsection class="show" style="display:none;">
-				<img class="icon" src="css/icon-joker.svg" style="float:left;">
+		<section class="indent thin settings" style="display:none;">
+			<subsection>
 			</subsection>
-			<subsection class="show" style="display:none;">
-				<button type="button" class="big view" id="back">Back</button>
-			</subsection>
-			<subsection class="double">
-				<button type="button" class="big" id="imagine">Images</button>
-				<div style="display:inline-block;">
+			<subsection>
+				<h4>Image DPI:
 					<span class="nw">
-						<b>DPI:</b>&nbsp;<input type="text" id="dpi" size="5" value="300"/>
+						<input type="text" id="dpi" size="5" value="300"/>
+						(<span id="expectedSize" title="Size of generated images in pixels."></span>)
 					</span>
-					<span class="nw">(<span id="expectedSize" title="Size of generated images in pixels."></span>)</span>
-				</div>
+				</h4>
 			</subsection>
 			<subsection>
-				<span class="nw">
-					<button type="button" class="big" id="generate">HTML</button>
-					<input type="checkbox" id="live" title="Update HTML rendering as you type."> live
-				</span>
+				<input type="checkbox" id="live" title="Update HTML rendering as you type."> live HTML
 			</subsection>
-			<subsection>
-				<button type="button" class="big" id="print">Print</button>
+		</section>
+
+		<section id="buttons">
+			<subsection class="show" style="display:none;">
+				<span class="hccdoIcon">HCCDo</span>
+				<button type="button" class="small view" id="back">Back</button>
+			</subsection>
+			<subsection class="buttons">
+				<h4>Output: 
+					<span class="nw">
+						<button type="button" class="small" id="imagine" title="Convert cards to PNGs.">Images</button>
+						<button type="button" class="small" id="generate" title="(Re)generate HTML output.">HTML</button>
+						<button type="button" class="small" id="print" title="Print HTML output from your browser.">Print</button>
+					</span>
+				</h4>
 			</subsection>
 		</section>
 
