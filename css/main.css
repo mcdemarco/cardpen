@@ -14,12 +14,25 @@ main section {
     padding: .5em;
 }
 
+section#textareas {
+    padding-top: 1em;
+}
+
 section {
     display: flex;
     flex: 2;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+section#header {
+    padding-top: .5em;
+    border-top: 2px solid #bcbcbc;
+    border-bottom: 2px solid #bcbcbc;
+}
+
+section#buttons {
     border-top: 2px solid #bcbcbc;
 }
 
@@ -47,7 +60,7 @@ section#header subsection.double {
     min-width:330px;
 }
 
-subsubsection {
+section#header subsubsection {
     flex: 1 0 330px;
     min-width: 330px;
 }
@@ -72,7 +85,6 @@ section.indent subsection h4 {
 }
 
 section.buttons,
-section#buttons subsection,
 subsection.buttons {
     text-align:center;
     align-content: space-around;
@@ -86,9 +98,9 @@ subsubsection {
     justify-content: center;
 }
 
-subsubsection span.nw {
+section#header subsubsection span.nw {
     display:inline-block;
-    min-width: 350px;
+    min-width: 360px;
 }
 
 .hccdoIcon {
@@ -96,15 +108,24 @@ subsubsection span.nw {
     font-weight: bold;
 }
 
+section#buttons .hccdoIcon {
+    font-size: large;
+    font-weight: bold;
+}
+
 img.icon {
-    height:55px;
-    margin-bottom:-7px;
     border: 2px solid gray;
     border-radius: 5px;
 }
 
+#header img.icon {
+    height:55px;
+    margin-bottom:-7px;
+    margin-right:5px;
+}
+
 #buttons img.icon {
-    margin-bottom: 0;
+    height:45px;
 }
 
 textarea {
@@ -182,17 +203,11 @@ iframe {
 }
 
 button.big, button.small {
-    color: #eee;
+    color: #ccc;
     background-color: inherit;
     font-weight: 600;
     -webkit-transition: color .3s, border .3s
     transition: color .3s, border .3s
-    outline: 0;
-}
-
-button.big:hover, button.small:hover,
-button.small.selected {
-    color: #FFB66E;
     outline: 0;
 }
 
@@ -208,7 +223,7 @@ button.big {
     text-transform: uppercase;
     border-radius: .5rem;
     border-width: .2rem;
-    border: .2rem solid #eee;
+    border: .2rem solid #ccc;
 }
 
 button.small {
@@ -217,13 +232,26 @@ button.small {
     text-transform: uppercase;
     border-radius: .3rem;
     border-width: .15rem;
-    border: .15rem solid #eee;
+    border: .15rem solid #ccc;
+}
+
+button.big:hover, button.small:hover,
+button.small.selected:hover {
+    color: white;
+    outline: 0;
+}
+button.small.selected {
+    color: #FFB66E;
+    outline: 0;
 }
 
 button.big:hover {
-    border: .2rem solid #FFB66E;
+    border: .2rem solid white;
 }
 button.small:hover,
+button.small.selected:hover {
+    border: .15rem solid white;
+}
 button.small.selected {
     border: .15rem solid #FFB66E;
 }
@@ -243,4 +271,12 @@ button.small.selected {
 
 .cm-s-ambiance .CodeMirror-gutters {
   background-image: url('low_contrast_linen.png');
+}
+
+/* undo browser crap */
+h4 {
+-webkit-margin-before: 0;
+-webkit-margin-after: 0;
+-webkit-margin-start: 0;
+-webkit-margin-end: 0;
 }
