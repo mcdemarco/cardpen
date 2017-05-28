@@ -12,6 +12,7 @@
 		<script src="mode/xml/xml.js"></script>
 		<script src="mode/htmlmixed/htmlmixed.js"></script>
 		<script src="mode/handlebars/handlebars.js"></script>
+		<script src="mode/markdown/markdown.js"></script>
 		<script src="lib/FileSaver.min.js"></script>
 		<script src="lib/idkwdywtp.js"></script>
     <script src="lib/mustache.min.js"></script>
@@ -69,7 +70,7 @@
 					</span>
 				</h4>
 				<h4>Notes:
-					<textarea id="projectNotes"></textarea>
+					<textarea id="notes"></textarea>
 				</h4>
 				<h4 id="idkSection" style="display:none;">BGG username: 
 					<input type="text" id="username" placeholder="BGG username" style="width:25%;" value=""/> 
@@ -181,11 +182,12 @@
 						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
 						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
 					</span>
+					&nbsp; &nbsp; &nbsp; 
+					<input type="checkbox" id="cutline"> Cut line
 				</h4>
 				<h4>
 					<input type="checkbox" id="overlay"> Overlay 
-				</h4>
-				<h4>
+					&nbsp; &nbsp; &nbsp; 
 					<input type="checkbox" id="live"><label title="Update HTML rendering as you type."> Live HTML</label>
 				</h4>
 			</subsection>
@@ -204,9 +206,6 @@
 							<label for="plandscape">Landscape</label>
 						</span>
 					</span>
-				</h4>
-				<h4>
-					<input type="checkbox" id="cutline"> Cut line
 				</h4>
 			</subsection>
 		</section>
