@@ -64,8 +64,7 @@ context.init = (function () {
 			generate: hccdo.form.generate,
 			imagine: hccdo.form.generate,
 			loadToggle: hccdo.form.loadToggle,
-			print: hccdo.form.generate,
-			viewSizes: hccdo.write.sizes
+			print: hccdo.form.generate
 		};
 		_.each(buttons, function(value, key) {
 			document.getElementById(key).addEventListener('click',value);
@@ -313,6 +312,11 @@ context.form = (function () {
 
 			//Pass to the view changer.
 			switch (newView) {
+
+				case "sizes":
+				context.write.sizes();
+				toggle("off");
+				break;
 
 				case "help":
 				context.write.help();

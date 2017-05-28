@@ -75,6 +75,13 @@ section#buttons subsection.double {
     flex: 2 0 40%;
 }
 
+section#textareas subsection {
+    flex-grow: 1;
+}
+section#textareas subsection#hccdoCSV {
+    flex-grow: 2;
+}
+
 section#textareas subsection span.up {
     padding-left: 2.5em;
 }
@@ -134,7 +141,7 @@ textarea {
 }
 textarea#projectNotes {
     width: 75%;
-    height:2rem;
+    height: 3rem;
     vertical-align:top;
     background-image: url('fabric_plaid.png');
 }

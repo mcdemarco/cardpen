@@ -68,16 +68,46 @@
 						<button type="button" id="export" class="small" title="Export this project to a file.">Export</button>
 					</span>
 				</h4>
-			</subsection>
-			<subsection class="double">
 				<h4>Notes:
 					<textarea id="projectNotes"></textarea>
+				</h4>
+				<h4 id="idkSection" style="display:none;">BGG username: 
+					<input type="text" id="username" placeholder="BGG username" style="width:25%;" value=""/> 
+					<button type="button" id="idkFetch" title="Fetch your BGG collection as CSV for I Don't Know, What Do You Want To Play? or other purposes.">Get Games</button>
+				</h4>
+			</subsection>
+			<subsection>
+				<h4>Bleed:
+					<input type="text" id="blsize" size="4" value=""/>
+					<span>
+						<input type="radio" id="blin" value="in" name="blunit"><label for="blin">in</label>
+						<input type="radio" id="blmm" value="mm" name="blunit"><label for="blmm">mm</label>
+						<input type="radio" id="blpx" value="px" name="blunit"><label for="blpx">px</label>
+					</span>
+				</h4>
+				<h4>Safe:
+					<input type="text" id="ssize" size="4" value=""/>
+					<span>
+						<input type="radio" id="sin" value="in" name="sunit"><label for="sin">in</label>
+						<input type="radio" id="smm" value="mm" name="sunit"><label for="sqmm">mm</label>
+						<input type="radio" id="spx" value="px" name="sunit"><label for="spx">px</label>
+					</span>
+				</h4>
+				<h4>Corner radius:
+					<span>
+						<input type="text" id="bradius" size="4" value=""/>
+						<input type="radio" id="brin" value="in" name="brunit"><label for="brin">in</label>
+						<input type="radio" id="brmm" value="mm" name="brunit"><label for="brmm">mm</label>
+					</span>
+				</h4>
+				<h4 title="Externtal stylesheet URL (e.g. Google Fonts)">
+					URL: <input type="text" id="extCSS" value=""/>
 				</h4>
 			</subsection>
 			<subsection>
 				<h4 id="csizeWrapper" class="indent">Card size: 
 					<select id="csize" style="width:50%;"></select>
-					<button type="button" class="small" id="viewSizes">Show all</button>
+					<button type="button" class="small view sizes" data-view="sizes" id="viewSizes">Show all</button>
 					<span class="nw" id="customize" style="display:none;">
 						<input id="cwidth" placeholder="width" type="text" size="6"> x <input id="cheight" placeholder="height" type="text" size="6">
 						<input type="radio" id="cin" value="in" name="cunit"><label for="cin">in</label>
@@ -98,67 +128,8 @@
 						</span>
 					</span>
 				</h4>
-				<h4>Bleed:
-					<input type="text" id="blsize" size="4" value=""/>
-					<span>
-						<input type="radio" id="blin" value="in" name="blunit"><label for="blin">in</label>
-						<input type="radio" id="blmm" value="mm" name="blunit"><label for="blmm">mm</label>
-						<input type="radio" id="blpx" value="px" name="blunit"><label for="blpx">px</label>
-					</span>
-				</h4>
-				<h4>Safe:
-					<input type="text" id="ssize" size="4" value=""/>
-					<span>
-						<input type="radio" id="sin" value="in" name="sunit"><label for="sin">in</label>
-						<input type="radio" id="smm" value="mm" name="sunit"><label for="sqmm">mm</label>
-						<input type="radio" id="spx" value="px" name="sunit"><label for="spx">px</label>
-					</span>
-				</h4>
-			</subsection>
-			<subsection>
-				<h4 title="Externtal stylesheet URL (e.g. Google Fonts)">
-					URL: <input type="text" id="extCSS" value=""/>
-				</h4>
 				<h4 class="indent">Card classes:
 					<input type="text" id="cardClass" value=""/>
-				</h4>
-				<h4>Corner radius:
-					<span>
-						<input type="text" id="bradius" size="4" value=""/>
-						<input type="radio" id="brin" value="in" name="brunit"><label for="brin">in</label>
-						<input type="radio" id="brmm" value="mm" name="brunit"><label for="brmm">mm</label>
-					</span>
-				</h4>
-				<h4 id="idkSection" style="display:none;">BGG username: 
-					<input type="text" id="username" placeholder="BGG username" style="width:25%;" value=""/> 
-					<button type="button" id="idkFetch" title="Fetch your BGG collection as CSV for I Don't Know, What Do You Want To Play? or other purposes.">Get Games</button>
-				</h4>
-			</subsection>
-			<subsection>
-				<h4>Page size: 
-					<select id="psize"></select>
-				</h4> 
-				<h4>Orientation:  
-					<span>
-						<span class="nw">
-							<input type="radio" id="pportrait" value="portrait" name="pori">
-							<label for="pportrait">Portrait</label>
-						</span>
-						<span class="nw">
-							<input type="radio" id="plandscape" value="landscape" name="pori">
-							<label for="plandscape">Landscape</label>
-						</span>
-					</span>
-				</h4>
-				<h4>Gutters: 
-					<span>
-						<input type="text" id="gsize" size="4" value=""/>
-						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
-						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
-					</span>
-				</h4>
-				<h4><input type="checkbox" id="overlay"> Overlay &nbsp; &nbsp; &nbsp;
-					<input type="checkbox" id="cutline"> Cut line
 				</h4>
 			</subsection>
 		</section>
@@ -196,8 +167,6 @@
 
 		<section class="indent thin settings" style="display:none;">
 			<subsection>
-			</subsection>
-			<subsection>
 				<h4>Image DPI:
 					<span class="nw">
 						<input type="text" id="dpi" size="5" value="300"/>
@@ -206,7 +175,39 @@
 				</h4>
 			</subsection>
 			<subsection>
-				<input type="checkbox" id="live" title="Update HTML rendering as you type."> live HTML
+				<h4>Gutters: 
+					<span>
+						<input type="text" id="gsize" size="4" value=""/>
+						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
+						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
+					</span>
+				</h4>
+				<h4>
+					<input type="checkbox" id="overlay"> Overlay 
+				</h4>
+				<h4>
+					<input type="checkbox" id="live"><label title="Update HTML rendering as you type."> Live HTML</label>
+				</h4>
+			</subsection>
+			<subsection>
+				<h4>Page size: 
+					<select id="psize"></select>
+				</h4> 
+				<h4>Orientation:  
+					<span>
+						<span class="nw">
+							<input type="radio" id="pportrait" value="portrait" name="pori">
+							<label for="pportrait">Portrait</label>
+						</span>
+						<span class="nw">
+							<input type="radio" id="plandscape" value="landscape" name="pori">
+							<label for="plandscape">Landscape</label>
+						</span>
+					</span>
+				</h4>
+				<h4>
+					<input type="checkbox" id="cutline"> Cut line
+				</h4>
 			</subsection>
 		</section>
 
