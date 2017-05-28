@@ -123,6 +123,7 @@ context.form = (function () {
 		get: get,
 		load: load,
 		loadToggle: loadToggle,
+		refresh: refresh,
 		select: select,
 		set: set,
 		unselect: unselect,
@@ -259,6 +260,13 @@ context.form = (function () {
 		}
 	}
 
+	function refresh() {
+		//Call refresh on all the mirrors when unhiding (the only obvious problem is notes).
+		_.each(mirrors, function(mirrObj,key) {
+			mirrObj.refresh();
+		});
+	}
+
 	function select(groupClass,selecteeClass) {
 		//View buttons are duplicated.
 		_.each(document.querySelectorAll("button." + groupClass + "." + selecteeClass), function(elt) {
@@ -329,10 +337,12 @@ context.form = (function () {
 
 				case "editorView":
 				toggle("editor");
+				refresh();
 				break;
 
 				case "settingsView":
 				toggle("on");
+				refresh();
 				break;
 
 			}
@@ -1218,7 +1228,7 @@ context.write = (function () {
 			callback: context.form.change
 		},
 		'data.name': '#projectName',
-		'data.notes': '#projectNotes',
+		'data.notes': '#notes',
 		'data.dpi': '#dpi',
 		'data.live': '#live',
 		'data.psize': '#psize',

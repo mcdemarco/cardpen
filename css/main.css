@@ -139,15 +139,8 @@ textarea {
     width: 90%;
     height:5rem;
 }
-textarea#projectNotes {
-    width: 75%;
-    height: 3rem;
-    vertical-align:top;
-    background-image: url('fabric_plaid.png');
-}
 
-input[type=text],
-textarea#projectNotes {
+input[type=text] {
     border-radius: 0.25rem;
     padding-left: 0.25rem;
     background-image: url('fabric_plaid.png');
@@ -263,7 +256,13 @@ button.small.selected {
     border: .15rem solid #FFB66E;
 }
 
-
+/* undo browser crap */
+h4 {
+-webkit-margin-before: 0;
+-webkit-margin-after: 0;
+-webkit-margin-start: 0;
+-webkit-margin-end: 0;
+}
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {
   body {
@@ -280,10 +279,8 @@ button.small.selected {
   background-image: url('low_contrast_linen.png');
 }
 
-/* undo browser crap */
-h4 {
--webkit-margin-before: 0;
--webkit-margin-after: 0;
--webkit-margin-start: 0;
--webkit-margin-end: 0;
+.cm-s-default.CodeMirror {
+    height: 4em;
+    border-radius: 0.25rem;
+    background-image: url('fabric_plaid.png');
 }
