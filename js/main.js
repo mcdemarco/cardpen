@@ -1,17 +1,23 @@
 // hccdo by mcdemarco
 // a pure-js, "online" version of hccd
 
-//Todo: better weird card sizes (hex, heart) 
-// adjust page size for images (drop it) and for large card sizes (increase it)
+//TODO: 
+// better weird card sizes (hex, heart) 
 // test firefox
-// Better collapse iconography for hide/show?
 // Switch to handlebars?
 // Set up my own cors proxy for bgg?
 // add bleed/safe to card size view (too difficult? only selected size?)
-// Use html 5 element names instead of classes?
 // Refactor/make optional the bleed/safe wrappers?
 // Load project from url?
-// Add margin to page
+// Add margin to page/fix print sizing margin issue (dance deck)
+// Handle printing backs like PnPDeliver?
+// em dashes not converted for help (smartypants option?) (marked cli can't pass options known issue #110)
+// replace card buttons with icons
+// Write images to "server"?
+// rebrand to "CardPen".  Change icon to a pen or stylus on a card.  Cardify buttons.
+// General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
+// add UI layout options (E m backwards E)
+// Fix footer wrapping.
 
 //init
 //form
@@ -36,23 +42,15 @@ context.init = (function () {
 		//Set up the UI.
 		select(); //Should not fire the onchange.
 		activate();
-		fixTab();
 
-		//Load some data of some sort.
+		//Load some data of some sort.  
+		//Generate the cards if stored data is found, else default to example and show help.
 		context.project.stored(true);
 
-		if (_.isEqual(cardForm.data, exampleForm)) {
-			//If we've defaulted to the example, show the help instead of the cards.
-			context.write.help();
-		} else {
-			//You've been here before!  We'll just show you your data.
-			//Not sure about data quality, so wrap the attempt to process the data.
-			try {
-				context.write.generate(cardForm.data);
-			} catch (e) {
-				context.write.frame("<html>Card generation failed.</html>");
-			}
-		}
+		//May be safe to activate the codemirrors now.
+		_.each(mirrors, function(mirrObj,key) {
+			mirrObj.on("change", function() {hccdo.form.changeCode(key);});
+		});
 	}
 
 	//private
@@ -61,54 +59,27 @@ context.init = (function () {
 		var buttons = {
 			addCard: hccdo.form.addCard,
 			removeCard: hccdo.form.removeCard,
-			clear: hccdo.form.clear,
-			eg: hccdo.form.example,
 			export: hccdo.util.exporter,
-			help: hccdo.write.help,
-			hide: hccdo.form.toggle,
 			idkFetch: hccdo.idk.fetch,
-			idkToggle: hccdo.idk.toggle,
-			show: hccdo.form.toggle,
 			generate: hccdo.form.generate,
 			imagine: hccdo.form.generate,
-			print: hccdo.form.print,
-			stored: hccdo.project.stored,
-			view: hccdo.write.sizes
+			loadToggle: hccdo.form.loadToggle,
+			print: hccdo.form.generate
 		};
 		_.each(buttons, function(value, key) {
 			document.getElementById(key).addEventListener('click',value);
 		});
+		_.each(document.getElementsByClassName('load'), function(el) {
+			//clear, eg, idkToggle, stored.
+			el.addEventListener('click', hccdo.form.load);
+		});
+		_.each(document.getElementsByClassName('view'), function(el) {
+			//cardsView, editorView, settingsView
+			el.addEventListener('click', hccdo.form.view);
+		});
 
 		_.each(document.getElementsByClassName('upload'), function(el) { 
 			el.addEventListener('change', hccdo.util.file);
-		});
-	}
-
-	function fixTab() {
-		_.each(document.querySelectorAll("textarea"), function(elt) {
-			elt.addEventListener('keydown',function(e) {
-				if (e.keyCode === 9) {
-					//Get caret
-					var start = this.selectionStart;
-					var end = this.selectionEnd;
-					
-					var target = e.target;
-					var value = target.value;
-					
-					//Set textarea to text before caret + tab + text after caret
-					var newValue = value.substring(0, start) + "\t" + value.substring(end);
-					target.value = newValue;
-
-					//Need to set this manually for bind.js b/c a change isn't fired.
-					cardForm.data[elt.id] = newValue;
-					
-					//Put caret at right position again (add one for the tab)
-					this.selectionStart = this.selectionEnd = start + 1;
-
-					//Prevent the unfocus.
-					e.preventDefault();
-				}
-			},false);
 		});
 	}
 
@@ -145,50 +116,73 @@ context.form = (function () {
 		addCard: addCard,
 		removeCard: removeCard,
 		change: change,
-		clear: clear,
+		changeCode: changeCode,
 		customSize: customSize,
 		example: example,
 		generate: generate,
-		toggle: toggle,
-		print: print
+		get: get,
+		load: load,
+		loadToggle: loadToggle,
+		refresh: refresh,
+		select: select,
+		set: set,
+		unselect: unselect,
+		view: view
 	};
 
 	function addCard() {
-		//Trim.
-		cardForm.data.csv = cardForm.data.csv.trim();
 		//Get the last line.
-		var lastline = cardForm.data.csv.substr(cardForm.data.csv.lastIndexOf("\n")+1);
-		//Subtract one from the count for the header.
-		var linecount = cardForm.data.csv.split("\n").length - 1;
+		if (mirrors.csv.lastLine() < 1)
+			return;
+		var lastline = mirrors.csv.getLine(mirrors.csv.lastLine()).trim();
+		//If the last line is empty, remove it and try again.
+		if (lastline == "") {
+			removeCard();
+			addCard();
+			return;
+		}
+		//Subtract one from the count for the header (to optionally use in new line).
+		var linecount = mirrors.csv.lineCount() - 1;
+		//Calculate changed line.
 		var newline = lastline;
 		if (lastline.indexOf(linecount) === 0)
 			newline = (linecount + 1) + lastline.split(linecount)[1];
-		cardForm.data.csv += "\n" + newline;
+		//Write change.
+		mirrors.csv.replaceRange("\n" + newline,{line: Infinity});
+		//Save change in the shadow csv (todo: remove).
+		cardForm.csv = mirrors.csv.getValue();
 	};
 
 	function removeCard() {
-		//Trim.
-		cardForm.data.csv = cardForm.data.csv.trim();
-		//Get rid of the last line.
-		cardForm.data.csv = cardForm.data.csv.substr(0,cardForm.data.csv.lastIndexOf("\n"));
+		//Too complicated, but there's really no good way to do this in the API.
+		var lastline = mirrors.csv.lastLine();
+		//The strange range helps to nuke the newline at the end of the previous line.
+		mirrors.csv.replaceRange("", {line: lastline - 1}, {line: lastline});
+		//Save change in the shadow csv (todo: remove).
+		cardForm.csv = mirrors.csv.getValue();
 	};
 
 	function change() {
 		//Onchange function called by bind.  Beware the context change.
-		if (typeof event == "undefined" || !event || !event.currentTarget || event.currentTarget.readyState) {
-			//Only continue for real user actions because bind, bind, FileReader respectively.
-			return;
+		if (typeof event == "undefined" || !event || !event.currentTarget || event.currentTarget.readyState || (event.currentTarget.classList && event.currentTarget.classList.contains("load"))) {
+			//Only save for real user actions because bind, bind, FileReader, load respectively.
+		} else {
+			context.project.save(this.data);
 		}
-		context.project.save(this.data);
 		if (this.data.live)
-			context.write.generate(this.data,false);
+			context.write.generate(this.data);
 		context.form.customSize(this.data);
+		context.write.expectedSize(this.data);
+	};
+
+	function changeCode(type) {
+		cardForm.data[type] = mirrors[type].getValue();
 	};
 
 	function clear() {
-		context.project.set(blankForm);
+		set(blankForm);
 		//Also clear iframe.
-		clearFrame();
+		context.write.clearFrame();
 	}
 
 	function customSize(data) {
@@ -200,40 +194,159 @@ context.form = (function () {
 	};
 
 	function example() {
-		context.project.set(exampleForm);
-		clearFrame();
+		set(exampleForm);
+		generate();
 	}
 
 	function generate(e) {
-		//A wrapper that translates the event into the appropriate image setting.
-		var forImage = (e && e.target && e.target.getAttribute("id") == "imagine");
-		context.write.generate(cardForm.data,forImage);
+		//A wrapper that translates the event into the appropriate format setting.
+		//(See write.massage() for the reasons.)
+		var format;
+		if (e && e.target) {
+			if (e.target.getAttribute("id") == "imagine")
+				format = "image";
+			if (e.target.getAttribute("id") == "print")
+				format = "print";
+		}
+		context.write.generate(get(),format);
+		if (format == "print")
+			context.util.printFrame();
 	}
 
-	function toggle(e) {
-		//For hiding most of the form with the hide/show buttons.
-		var hiding = (e && e.target && e.target.getAttribute("id") == "hide");
+	function get() {
+		//No longer handling all textareas in bind, so need a real getter/setter.
+		var data = cardForm.data;
+		_.each(mirrors, function(mirrObj,key) {
+			data[key] = mirrObj.getValue();
+		});
+		return data;
+	}
+
+	function load(e) {
+		//Load an example or other data set from a UI button (no save).
+		if (e && e.target) {
+			//Remove the old selected class and add the new one.
+			unselect("load");
+			e.target.classList.add("selected");
+			switch (e.target.getAttribute("id")) {
+				case "clear":
+				clear();
+				break;
+
+				case "eg":
+				example();
+				break;
+
+				case "idkToggle":
+				context.idk.toggle();
+				break;
+
+				case "stored":
+				context.project.stored();
+				break;
+			}
+		}
+		//Not a live part of the form, so we have to update it manually.
+		context.write.expectedSize(cardForm.data);
+	}
+
+	function loadToggle() {
+		//For toggling the settings with the button.
+		var section = document.getElementById("loadSubsubsection");
+		if (section.style.display == "none") {
+			section.style.display = "";
+		} else {
+			section.style.display = "none";
+		}
+	}
+
+	function refresh() {
+		//Call refresh on all the mirrors when unhiding (the only obvious problem is notes).
+		_.each(mirrors, function(mirrObj,key) {
+			mirrObj.refresh();
+		});
+	}
+
+	function select(groupClass,selecteeClass) {
+		//View buttons are duplicated.
+		_.each(document.querySelectorAll("button." + groupClass + "." + selecteeClass), function(elt) {
+			elt.classList.add("selected");
+		});
+	}
+
+	function unselect(groupClass) {
+		//View buttons are duplicated.
+		_.each(document.querySelectorAll("button." + groupClass +".selected"), function(elt) {
+			elt.classList.remove("selected");
+		});
+	}
+
+	function set(data) {
+		cardForm.data = data;
+		_.each(mirrors, function(mirrObj,key) {
+			mirrObj.setValue(data[key]);
+		});
+	}
+
+	function toggle(what) {
+		//Internal function For hiding/showing most of the form.
+		var hiding = (what == "off");
 		var sectionNonArray = document.querySelectorAll("section");
+		//The major changes.
 		_.each(sectionNonArray, function(el) {
 			if (el.id != "buttons")
 				el.style.display = (hiding ? "none" : "flex");
 		});
-		document.getElementById("hide").style.display = (hiding ? "none" : "inline");
+		//Set up/take down the special collapsed view.
 		_.each(document.getElementsByClassName("show"), function(el) {
 				el.style.display = (hiding ? "" : "none");
 		});
+		if (!hiding) {
+			//Handle the settings subcase.
+			var settingsSections = document.getElementsByClassName("settings");
+			_.each(settingsSections, function(elt) {
+				elt.style.display = (what == "on" ? "flex" : "none");
+			});
+		}
 	}
 
-	function print() {
-		//Print iframe.
-		var ifrm = document.getElementById("hccdoOutput");
-		ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
-		ifrm.print();
-	}
+	function view(e) {
+		//Change the layout from a UI button.
+		if (e && e.target) {
+			//Remove the old selected class and add the new one.
+			unselect("view");
+			var newView = e.target.getAttribute("data-view");
+			select("view",newView);
 
-	function clearFrame() {
-		//Clear iframe.
-		context.write.frame("");
+			//Pass to the view changer.
+			switch (newView) {
+
+				case "sizes":
+				context.write.sizes();
+				toggle("off");
+				break;
+
+				case "help":
+				context.write.help();
+				toggle("off");
+				break;
+
+				case "cardsView":
+				toggle("off");
+				break;
+
+				case "editorView":
+				toggle("editor");
+				refresh();
+				break;
+
+				case "settingsView":
+				toggle("on");
+				refresh();
+				break;
+
+			}
+		}
 	}
 
 })();
@@ -252,9 +365,9 @@ context.idk = (function () {
 			stored();
 			form.style.display = "block";
 			//Load example.
-			context.project.set(idkForm);
+			context.form.set(idkForm);
 			//Generate.
-			context.write.generate(cardForm.data);
+			context.write.generate(context.form.get());
 		} else {
 			form.style.display = "none";
 		}
@@ -298,7 +411,7 @@ context.idk = (function () {
 			return true;
 		} else {
 			//Clear any previous errors.
-			context.write.frame("");
+			context.write.clearFrame();
 			return false;
 		}
 	}
@@ -314,7 +427,9 @@ context.idk = (function () {
 			return acc + "\n" + flatten(val,csvDelimiter);
 		}, ["thing","name","year","src","minplayers","maxplayers","players","minplaytime","maxplaytime","playtime","rating","average","bayesaverage","rank"].join(csvDelimiter));
 		
+		//Should eliminate first line.
 		cardForm.data.csv = csvOutput;
+		mirrors.csv.setValue(csvOutput);
 		return;
 	}
 	
@@ -396,7 +511,6 @@ context.project = (function () {
 
 	return {
 		save: save,
-		set: set,
 		stored: stored
 	};
 
@@ -409,26 +523,23 @@ context.project = (function () {
 		if (window.localStorage) {
 			try {
 				window.localStorage["hccdo"] = stringyData;
+				//Also set the selection.
+				context.form.unselect("load");
+				document.getElementById("stored").classList.add("selected");
 			} catch(e) {
 				console.log("Error saving to local storage.");
 			}
 		}
 	}
 
-	function set(data) {
-		cardForm.data = data;
-	}
-
 	function stored(defaultToEg) {
-		//Retrieve the data currently in localStorage, or the default data.
+		//Populate the form with the data currently in localStorage (flag: or the default data).
+		//If it finds stored data, try to generate.  If it defaults, show the help instead.
 		var storedProj;
 		if (window.localStorage) {
 			try {
 				var tempProj = JSON.parse(window.localStorage["hccdo"]);
-				if (_.isArray(tempProj)) {
-					//Fix some old data by popping it.
-					storedProj = tempProj[0];
-				} else if (_.isObject(tempProj) && !_.isEmpty(tempProj)) {
+				if (_.isObject(tempProj) && !_.isEmpty(tempProj)) {
 					storedProj = tempProj;
 				}
 			} catch(e) {
@@ -437,9 +548,13 @@ context.project = (function () {
 		}
 
 		if (storedProj) {
-			set(storedProj);
+			context.form.set(storedProj);
+			document.getElementById("stored").classList.add("selected");
+			context.write.tryGenerate();
 		} else if (defaultToEg) {
 			context.form.example();
+			document.getElementById("eg").classList.add("selected");
+			context.write.help();
 		}
 	}
 
@@ -522,9 +637,9 @@ context.size = (function () {
 		return add(size,size);
 	}
 
-	function gutter(data,forImages) {
+	function gutter(data) {
 		//Get sizing for the gutters.
-		var marginSize = forImages ? 0 : data.gsize/2;
+		var marginSize = data.gsize/2;
 		return [marginSize,marginSize,data.gunit];
 	}
 
@@ -558,19 +673,22 @@ context.size = (function () {
 		var pageSize = data.psize;
 		if (_.contains(paperSizes,pageSize)) {
 			sizeArray = cardSizes[pageSize];
-		} else {//default to letter
-			sizeArray = [297,210,mms]; //[11,8.5,ins];//[279.4, 215.9,mms]
+		} else {
+			//default to letter
+			sizeArray = [11,8.5,ins];//[279.4, 215.9,mms]
 		}
 
 		sizeArray = orient(sizeArray,data.pori);
 		return sizeArray;
 	}
 
-	function pixels(data) {
+	function pixels(data,returnBig) {
 		//Calculate a special version of the height and width of the card in pixels,
 		//in order to work around a bug in dom-to-image.
 		var dpi = parseInt(data.dpi,10);
 		var bigPixels = convert2px(card(data,true),dpi);
+		if (returnBig)
+			return bigPixels;
 
 		var newSA = [];
 		_.each([0,1],function(idx) {
@@ -683,13 +801,14 @@ context.style = (function () {
 		page: page
 	};
 
-	function card(data,forImages) {
+	function card(data) {
 		var cardSize = context.size.card(data,true);
-		var gutterSize = context.size.gutter(data,forImages);
+		var gutterSize = context.size.gutter(data);
 		var bleedSize = context.size.bleed(data);
 		var safeSize = context.size.safe(data);
 		var brSize = context.size.radius(data,true);
-		var style = ".card {\n" +
+		var style = "card {\n" +
+					"\tdisplay: block;\n" +
 					"\tmargin: " + flatten(gutterSize,0) + ";\n" +
 					"\tpadding: 0;\n" +
 					"\tbackground-color: white;\n" +
@@ -698,11 +817,9 @@ context.style = (function () {
 					"\t" + flatten(cardSize) + "\n" +
 					"\tposition: relative;" + //for the overlays
 					"}\n";
-		style += bleed(data);
-		style += cut(data);
-		style += safe(data);
-
-
+		style += bleed(data) + "\n";
+		style += cut(data) + "\n";
+		style += safe(data) + "\n";
 
 		//Style the outer margin of the overlay.
 		var zeroSize = [0,0,cardSize[2]];
@@ -730,7 +847,7 @@ context.style = (function () {
 	}
 
 	function overlay(cardSize,shiftSize,name,borderStyle,radiusSize) {
-		var oStyle =  ".hccdOverlay" + name + " {\n" +
+		var oStyle =  "overlay.hccdo" + name + " {\n" +
 					"\tposition: absolute;\n" +
 					"\ttop:" + flatten(shiftSize,0) + ";\n" +
 					"\tleft:" + flatten(shiftSize,1) + ";\n" +
@@ -747,7 +864,8 @@ context.style = (function () {
 		var bleedSize = context.size.bleed(data);
 		var brSize = context.size.radius(data,true);
 		var style = [];
-		style.push(".bleed {");
+		style.push("bleed {");
+		style.push("display: block;");
 		style.push("margin: 0;");
 		style.push("border-radius: " + flatten(brSize,0) + ";");
 		style.push("padding: " + flatten(bleedSize,0) + ";");
@@ -762,7 +880,8 @@ context.style = (function () {
 		var safeSize = context.size.safe(data);
 		var radiusSize = context.size.radius(data);
 		var style = [];
-		style.push(".cut {");
+		style.push("cut {");
+		style.push("display: block;");
 		style.push("padding: " + flatten(safeSize,1) + ";");
 		//style.push("background-color: cornflowerblue;");
 		style.push("border-radius: " + flatten(radiusSize,0) + ";");
@@ -778,7 +897,8 @@ context.style = (function () {
 		var safeZoneSize = context.size.trim(cardSize,safeSize);
 		var brSize = context.size.radius(data);
 		var style = [];
-		style.push(".safe {");
+		style.push("safe {");
+		style.push("display: block;");
 		//style.push("background-color: pink;");
 		style.push("border-radius: " + flatten(brSize,0) + ";");
 		style.push(flatten(safeZoneSize));
@@ -794,14 +914,19 @@ context.style = (function () {
 			return "height:" + sizeArray[0] + sizeArray[2] + ";width:" + sizeArray[1] + sizeArray[2] + ";";
 	}
 
-	function page(data) {
-		var pageSize = context.size.page(data);
+	function page(data,forImages) {
 		var style = [];
+		var rolms = context.size.grid(data);
 		style.push("* {box-sizing: border-box;}");
-		style.push("body {height:" + pageSize[0] + pageSize[2] + ";width:" + pageSize[1] + pageSize[2] + ";}");
-		style.push("body {background-color:#cecece;}");
+		style.push("body {");
+		if (!forImages && rolms[0] > 0 && rolms[1] > 0) {
+			//Only restrict the page size when it's harmless to do so.
+			var pageSize = context.size.page(data);
+			style.push("height:" + pageSize[0] + pageSize[2] + ";width:" + pageSize[1] + pageSize[2] + ";");
+		}
+		style.push("background-color:#cecece;}");
 		style.push("@media print {body {background-color:white;}}");
-		style.push(".page {margin-top: 15mm;border: 0;page-break-after: always;");
+		style.push("page {margin-top: 15mm;border: 0;page-break-after: always;");
 		style.push("display:flex;flex-direction:row;flex-wrap:wrap;align-items: center;justify-content: center;}");
 		return style.join("\n");
 	}
@@ -815,12 +940,14 @@ context.util = (function () {
 	return {
 		exporter: exporter,
 		file: file,
+		printFrame: printFrame,
 		sanitize: sanitize
 	};
 
 	function exporter(e) {
-		var sanitizedName = sanitize(cardForm.data.name);
-		var projectText = JSON.stringify(cardForm.data,null,2);
+		var data = context.form.get();
+		var sanitizedName = sanitize(data.name);
+		var projectText = JSON.stringify(data,null,2);
 		var blob = new Blob([projectText], {type: "application/json"});
 		saveAs(blob, sanitizedName + ".json");
 	}
@@ -835,17 +962,27 @@ context.util = (function () {
 			var type = uploader.getAttribute("data-type");
 			if (type == "import") {
 				//Will eventually need version control.
-				context.project.set(JSON.parse(reader.result));
+				context.form.set(JSON.parse(reader.result));
+				context.form.loadToggle();
 			} else {
+				//Should eliminate first row?
 				cardForm.data[type] = reader.result;
-				context.project.save(cardForm.data);
+				mirrors[type].setValue(reader.result);
+				context.project.save(context.form.get());
 			}
-			context.write.generate(cardForm.data,false);
+			context.write.generate(context.form.get());
 		};
 		reader.onerror = function(e) {
 			context.write.frame("<html>Unable to generate cards.</html>");
 		};
 		reader.readAsText(fileToLoad);
+	}
+
+	function printFrame() {
+		//Print iframe.
+		var ifrm = document.getElementById("hccdoOutput");
+		ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
+		ifrm.print();
 	}
 
 	function sanitize(fileName) {
@@ -860,11 +997,26 @@ context.util = (function () {
 context.write = (function () {
 
 	return {
+		clearFrame: clearFrame,
+		expectedSize: expectedSize,
 		frame: frame,
 		generate: generate,
 		help: help,
-		sizes: sizes
+		massage: massage,
+		sizes: sizes,
+		tryGenerate: tryGenerate
 	};
+
+	function clearFrame() {
+		//Clear iframe.
+		frame("");
+	}
+
+	function expectedSize(data) {
+		var sizeArray = context.size.pixels(data,true);
+		var sizeString = sizeArray[1] + " x " + sizeArray[0] + "px";
+		document.getElementById("expectedSize").innerHTML = sizeString;
+	}
 
 	function frame(doc) {
 		var ifrm = document.getElementById("hccdoOutput");
@@ -874,11 +1026,29 @@ context.write = (function () {
 		ifrm.document.close();
 	}
 
-	function generate(data,forImages) {
+	function generate(realData,format) {
 		var cards, cardsParsed;
 		var externalLink = "";
 		var templateOutput = "";
 		var fullOutput = "";
+		var forImages = (format == "image");
+		
+		//Set format in UI.
+		context.form.unselect("output");
+		switch (format) {
+			case "print":
+			context.form.select("output","print");
+			break;
+			case "image":
+			context.form.select("output","imagine");
+			break;
+			default:
+			context.form.select("output","html");
+			break;
+		}
+
+		//Massage the data.
+		var data = massage(realData,format);
 
 		//Parse csv.
 		cardsParsed = Papa.parse(data.csv, {
@@ -909,7 +1079,7 @@ context.write = (function () {
 			fullOutput += '\t<script type="text/javascript" src="lib/dom-to-image.min.js"></script>\n';
 			fullOutput += '\t<script type="text/javascript" src="lib/FileSaver.min.js"></script>\n';
 			fullOutput += '\t<script type="text/javascript" src="lib/jszip.min.js"></script>\n';
-			fullOutput += '\t<script type="text/javascript" src="lib/hccdoImage.js"></script>\n';
+			fullOutput += '\t<script type="text/javascript" src="js/frame.js"></script>\n';
 
 			//Sanitize projectname.
 			var cleanName = context.util.sanitize(data.name);
@@ -920,13 +1090,15 @@ context.write = (function () {
 				'var width = ' + dims[1] + ';\n' +
 				'var projectName = "' + cleanName + '";' + 
 				'</script>\n';
-			fullOutput += "<style>#hccdoutput {display: block;}</style>\n";
+			fullOutput += "<style>#hccdoutput {display: block;}\n";
+			fullOutput += "#hccdoError {padding:5px;color:red;}</style>\n";
 		} else {
 			fullOutput += "<style>\n" + context.style.page(data,forImages) + "</style>\n";
 		}
-			fullOutput += "<style>\n" + context.style.card(data,forImages) + "</style>\n";
+			fullOutput += "<style>\n" + context.style.card(data) + "</style>\n";
 		fullOutput += "<style>\n" + data.css + "</style>\n</head>\n<body>\n";
 		if (forImages) {
+			fullOutput += "<div id='hccdoError'></div>\n";
 			fullOutput += "<button type='button' onclick='zipper();'>Zip Images</button>\n";
 			fullOutput += "<div id='hccdoImages'></div>\n";
 		}
@@ -939,12 +1111,29 @@ context.write = (function () {
 	function help() {
 		//Show the help.
 		document.getElementById("hccdoOutput").src = "doc/index.html";
+		//Unselect all other outputs.
+		context.form.unselect("output");
 	}
+
+	function massage(data,format) {
+		//Return the data slightly massaged for the output format.
+		var massageData = _.clone(data);
+		//For print and images, need to turn off overlays.
+		if (format == "image" || format == "print")
+			massageData.overlay = false;
+		//For images, need to turn off gutters (FF bug), borders, and page sizing.
+		if (format == "image") {
+			massageData.gsize = 0;
+			massageData.cutline = false;
+		}
+		return massageData;
+	};
 
 	function sizes() {
 		//The page of card sizes.
 		var fullOutput = "";
-		var dpi = parseInt(cardForm.data.dpi,10);
+		var data = context.form.get();
+		var dpi = parseInt(data.dpi,10);
 		//Assemble webpage.
 		fullOutput = '<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>\n<style>\n';
 		fullOutput += '* {box-model:border-box;}\n';
@@ -957,7 +1146,7 @@ context.write = (function () {
 		var cardSizeArray = [];
 		_.each(cardSizes, function(value, key) {
 			//Reorient if necessary here.
-			value = context.size.orient(value, cardForm.data.cori);
+			value = context.size.orient(value, data.cori);
 			cardSizeArray.push([key, value]);
 		});
 		var sortedSizes = _.sortBy(cardSizeArray, function(subArray) {
@@ -976,7 +1165,7 @@ context.write = (function () {
 				if (dpi) {
 					var valuePx = context.size.convert2px(value, dpi);
 					fullOutput += formatSize(valuePx, dpi) + '<br/>(';
-					fullOutput += formatSize(context.size.bleedCard(valuePx,cardForm.data)) + ' with bleed)</p>';
+					fullOutput += formatSize(context.size.bleedCard(valuePx,data)) + ' with bleed)</p>';
 				}
 				fullOutput += '</div>';
 			}
@@ -994,15 +1183,15 @@ context.write = (function () {
 	}
 
 	function formatter(data,cards,forImages) {
-		var templateA = '{{#hccdo}}<div class="card ' + (forImages ? ' cardImage' : ' cardHTML');
+		var templateA = '{{#hccdo}}<card class="' + (forImages ? 'cardImage' : 'cardHTML');
 		templateA +=	(data.cardClass ? ' {{' + data.cardClass + '}}' : '') + ' card'; //Card # goes here
-		var templateB = '">\n\t<div class="bleed">\n\t\t<div class="cut">\n\t\t\t<div class="safe">';
-		templateB += data.mustache + "\n\t\t\t</div>\n\t\t</div>\n\t</div>";
+		var templateB = '">\n\t<bleed>\n\t\t<cut>\n\t\t\t<safe>';
+		templateB += data.mustache + "\n\t\t\t</safe>\n\t\t</cut>\n\t</bleed>";
 		if (data.overlay || data.cutline)
-			templateB += '\n\t<div class="hccdOverlayBleed"></div>';
+			templateB += '\n\t<overlay class="hccdoBleed"></overlay>';
 		if (data.overlay)
-			templateB += '<div class="hccdOverlayCut"></div><div class="hccdOverlaySafe"></div>';
-		templateB += "\n</div>{{/hccdo}}";
+			templateB += '<overlay class="hccdoCut"></overlay><overlay class="hccdoSafe"></overlay>';
+		templateB += "\n</card>{{/hccdo}}";
 		var rolms = context.size.grid(data);
 		var rows = rolms[0];
 		var cols = rolms[1];
@@ -1010,14 +1199,24 @@ context.write = (function () {
 		for (var c = 0; c < cards.length; c++) {
 			if (c % (rows * cols) == 0) {
 				if (c > 0) {
-					formatted += '\n</div>\n';
+					formatted += '\n</page>\n';
 				}
-				formatted += '<div class="page">\n';
+				formatted += '<page>\n';
 			}
 			formatted += Mustache.to_html(templateA + (c+1) + templateB, {hccdo: cards[c]});
 		}
-		formatted += '</div></div>\n';
+		formatted += '</page></page>\n';
 		return formatted;
+	}
+
+	function tryGenerate() {
+		//A wrapper for generation from the cardForm when it might fail.
+		//Note that it can look like a transporter accident without actually triggering an error.
+		try {
+			context.write.generate(context.form.get());
+		} catch (e) {
+			context.write.frame("<html>Card generation failed.</html>");
+		}
 	}
 
 })();
@@ -1029,7 +1228,7 @@ context.write = (function () {
 			callback: context.form.change
 		},
 		'data.name': '#projectName',
-		'data.notes': '#projectNotes',
+		'data.notes': '#notes',
 		'data.dpi': '#dpi',
 		'data.live': '#live',
 		'data.psize': '#psize',

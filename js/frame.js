@@ -4,7 +4,7 @@
 var cards = [];
 
 window.onload = function() {
-	var nodes = document.getElementsByClassName("card");
+	var nodes = document.getElementsByTagName("card");
 	for (var n = 0; n < nodes.length; n++) {
 		imaginer(nodes[n]);
 	}
@@ -18,8 +18,10 @@ function imaginer(node) {
 		img.src = dataUrl;
 		document.getElementById("hccdoImages").appendChild(img);
 	}).catch(function (error) {
+		var msg = 'Something went wrong!  Your browser may not support image generation.';
+		document.getElementById("hccdoError").innerHTML = msg;
 		if (console) 
-			console.error('Something went wrong!  Your browser may not support image generation.', error);
+			console.error(msg, error);
 	});
 }
 	

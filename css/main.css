@@ -1,0 +1,286 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #1E2028;
+    background-image: url('low_contrast_linen.png');
+    color: white;
+    font-family: Raleway, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main section {
+    padding: .5em;
+}
+
+section#textareas {
+    padding-top: 1em;
+}
+
+section {
+    display: flex;
+    flex: 2;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+section#header {
+    padding-top: .5em;
+    border-top: 2px solid #bcbcbc;
+    border-bottom: 2px solid #bcbcbc;
+}
+
+section#buttons {
+    border-top: 2px solid #bcbcbc;
+}
+
+section.thin {
+    flex:1;
+}
+
+section subsection {
+    flex: 1 0 33%;
+    min-width: 340px;
+    margin-bottom: 10px;
+}
+
+subsection.double {
+    flex: 2 0 66%;
+}
+
+section#header subsection {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+section#header subsection.double {
+    flex: 2 0 50%;
+    min-width:330px;
+}
+
+section#header subsubsection {
+    flex: 1 0 330px;
+    min-width: 330px;
+}
+
+section#buttons subsection {
+    flex: 1 0 10%;
+    min-width: 150px;
+    margin-bottom: 0;
+}
+
+section#buttons subsection.double {
+    flex: 2 0 40%;
+}
+
+section#textareas subsection {
+    flex-grow: 1;
+}
+section#textareas subsection#hccdoCSV {
+    flex-grow: 2;
+}
+
+section#textareas subsection span.up {
+    padding-left: 2.5em;
+}
+
+section#textareas subsection h4,
+section.indent subsection h4 {
+    padding-left: 2em;
+}
+
+section.buttons,
+subsection.buttons {
+    text-align:center;
+    align-content: space-around;
+    align-items: center;
+    justify-content: center;
+}
+
+subsubsection {
+    align-content: space-around;
+    align-items: center;
+    justify-content: center;
+}
+
+section#header subsubsection span.nw {
+    display:inline-block;
+    min-width: 360px;
+}
+
+.hccdoIcon {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+section#buttons .hccdoIcon {
+    font-size: large;
+    font-weight: bold;
+}
+
+img.icon {
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
+#header img.icon {
+    height:55px;
+    margin-bottom:-7px;
+    margin-right:5px;
+}
+
+#buttons img.icon {
+    height:45px;
+}
+
+textarea {
+    width: 90%;
+    height:5rem;
+}
+
+input[type=text] {
+    border-radius: 0.25rem;
+    padding-left: 0.25rem;
+    background-image: url('fabric_plaid.png');
+}
+
+input#cardClass {
+    width: 16em;
+    max-width:33%;
+}
+
+input#extCSS {
+    width:80%;
+}
+
+input#projectName {
+    width:33%;
+}
+
+input#username {
+    width: 7rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #eee;
+}
+
+h4 {
+    margin-bottom: 0;
+}
+h4 + h4 {
+    margin-top: .5rem;
+}
+#header h4 {
+    margin-top: .25rem;
+}
+
+h4 span {
+    font-size:inherit;
+    font-weight:normal;
+}
+.nw {
+    white-space: nowrap;
+    padding: 0 .5rem 0 0;
+}
+.up {
+    font-size:smaller;
+}
+
+output {
+    width: 100%;
+    height: 100vh;
+    min-height:500px;
+}
+
+iframe {
+    background-color: white;
+    color: black;
+    width:100%;
+    height:100%;
+}
+
+button.big, button.small {
+    color: #ccc;
+    background-color: inherit;
+    font-weight: 600;
+    -webkit-transition: color .3s, border .3s
+    transition: color .3s, border .3s
+    outline: 0;
+}
+
+button.big:active, button.small:active,
+button.big:focus, button.small:focus, 
+button.big:visited, button.small:visited {
+    outline: 0;
+}
+
+button.big {
+    padding: .5rem 1rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-radius: .5rem;
+    border-width: .2rem;
+    border: .2rem solid #ccc;
+}
+
+button.small {
+    padding: .15rem .5rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    border-radius: .3rem;
+    border-width: .15rem;
+    border: .15rem solid #ccc;
+}
+
+button.big:hover, button.small:hover,
+button.small.selected:hover {
+    color: white;
+    outline: 0;
+}
+button.small.selected {
+    color: #FFB66E;
+    outline: 0;
+}
+
+button.big:hover {
+    border: .2rem solid white;
+}
+button.small:hover,
+button.small.selected:hover {
+    border: .15rem solid white;
+}
+button.small.selected {
+    border: .15rem solid #FFB66E;
+}
+
+/* undo browser crap */
+h4 {
+-webkit-margin-before: 0;
+-webkit-margin-after: 0;
+-webkit-margin-start: 0;
+-webkit-margin-end: 0;
+}
+
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  body {
+    background-image: url('low_contrast_linen@2x.png');
+  }
+  .cm-s-ambiance .CodeMirror-gutters {
+      background-image: url('low_contrast_linen@2x.png');
+  }
+}
+
+/* addition to the codemirror theme */
+
+.cm-s-ambiance .CodeMirror-gutters {
+  background-image: url('low_contrast_linen.png');
+}
+
+.cm-s-default.CodeMirror {
+    height: 4em;
+    border-radius: 0.25rem;
+    background-image: url('fabric_plaid.png');
+}

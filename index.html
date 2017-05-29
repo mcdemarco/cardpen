@@ -3,25 +3,112 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<title>HCCDo</title>
-    <script type="text/javascript" src="lib/bind.min.js"></script>
-		<script type="text/javascript" src="lib/FileSaver.min.js"></script>
-		<script type="text/javascript" src="lib/idkwdywtp.js"></script>
-    <script type="text/javascript" src="lib/mustache.min.js"></script>
-    <script type="text/javascript" src="lib/papaparse.min.js"></script>
-    <script type="text/javascript" src="lib/underscore-min.js"></script>
-		<link href="css/hccdoUI.css" rel="stylesheet">
+    <script src="lib/bind.min.js"></script>
+		<script src="lib/codemirror.js"></script>
+		<script src="mode/simple.js"></script>
+		<script src="mode/multiplex.js"></script>
+		<script src="mode/css/css.js"></script>
+		<script src="mode/javascript/javascript.js"></script>
+		<script src="mode/xml/xml.js"></script>
+		<script src="mode/htmlmixed/htmlmixed.js"></script>
+		<script src="mode/handlebars/handlebars.js"></script>
+		<script src="mode/markdown/markdown.js"></script>
+		<script src="lib/FileSaver.min.js"></script>
+		<script src="lib/idkwdywtp.js"></script>
+    <script src="lib/mustache.min.js"></script>
+    <script src="lib/papaparse.min.js"></script>
+    <script src="lib/underscore-min.js"></script>
+		<link href="css/codemirror.css" rel="stylesheet">
+		<link href="css/ambiance.css" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 
 <body>
 	<main>
 		<section id="header" class="thin">
-			<div><span class="hccdoIcon">HCCDo</span><br />
-				an online HTML+CSS card generator
-			</div>
-			<div>
-				<h4 id="csizeWrapper">Card size: 
-					<select id="csize"></select>
+			<subsection>
+				<img class="icon" src="css/icon-joker.svg">
+				<div style="display:inline-block;"><span class="hccdoIcon">HCCDo</span><br />
+					an online HTML+CSS card generator</div>
+			</subsection>
+			<subsection class="double">
+				<subsubsection>
+					<h4>View:
+						<span class="nw">
+							<button type="button" class="small view cardsView" data-view="cardsView">Cards Only</button>
+							<button type="button" class="small view selected editorView" data-view="editorView">Editor</button>
+							<button type="button" class="small view settingsView" data-view="settingsView">Advanced</button>
+							<button type="button" class="small view help" data-view="help">Help</button>
+						</span>
+					</h4>
+				</subsubsection>
+				<subsubsection>
+					<h4>Project:
+						<span class="nw">
+							<button type="button" class="small load" id="clear">New</button>
+							<button type="button" class="small load" id="stored">Saved</button>
+							<button type="button" class="small load" id="eg">Example</button>
+							<button type="button" class="small load" id="idkToggle">IDKWDYWTP</button>
+							<button type="button" class="small load" id="loadToggle">Load</button>
+						</span>
+						<span class="nw up" id="loadSubsubsection" style="display:none;">
+							Load project file:
+							<input type="file" id="import" class="upload" data-type="import">
+						</span>
+					</h4>
+				</subsubsection>
+			</subsection>
+		</section>
+
+		<section class="indent thin settings" style="display:none;">
+			<subsection>
+				<h4>Project name:
+					<input type="text" id="projectName" value=""/>
+					<span>
+						<button type="button" id="export" class="small" title="Export this project to a file.">Export</button>
+					</span>
+				</h4>
+				<h4>Notes:
+					<textarea id="notes"></textarea>
+				</h4>
+				<h4 id="idkSection" style="display:none;">BGG username: 
+					<input type="text" id="username" placeholder="BGG username" style="width:25%;" value=""/> 
+					<button type="button" id="idkFetch" title="Fetch your BGG collection as CSV for I Don't Know, What Do You Want To Play? or other purposes.">Get Games</button>
+				</h4>
+			</subsection>
+			<subsection>
+				<h4>Bleed:
+					<input type="text" id="blsize" size="4" value=""/>
+					<span>
+						<input type="radio" id="blin" value="in" name="blunit"><label for="blin">in</label>
+						<input type="radio" id="blmm" value="mm" name="blunit"><label for="blmm">mm</label>
+						<input type="radio" id="blpx" value="px" name="blunit"><label for="blpx">px</label>
+					</span>
+				</h4>
+				<h4>Safe:
+					<input type="text" id="ssize" size="4" value=""/>
+					<span>
+						<input type="radio" id="sin" value="in" name="sunit"><label for="sin">in</label>
+						<input type="radio" id="smm" value="mm" name="sunit"><label for="sqmm">mm</label>
+						<input type="radio" id="spx" value="px" name="sunit"><label for="spx">px</label>
+					</span>
+				</h4>
+				<h4>Corner radius:
+					<span>
+						<input type="text" id="bradius" size="4" value=""/>
+						<input type="radio" id="brin" value="in" name="brunit"><label for="brin">in</label>
+						<input type="radio" id="brmm" value="mm" name="brunit"><label for="brmm">mm</label>
+					</span>
+				</h4>
+				<h4 title="Externtal stylesheet URL (e.g. Google Fonts)">
+					URL: <input type="text" id="extCSS" value=""/>
+				</h4>
+			</subsection>
+			<subsection>
+				<h4 id="csizeWrapper" class="indent">Card size: 
+					<select id="csize" style="width:50%;"></select>
+					<button type="button" class="small view sizes" data-view="sizes" id="viewSizes">Show all</button>
 					<span class="nw" id="customize" style="display:none;">
 						<input id="cwidth" placeholder="width" type="text" size="6"> x <input id="cheight" placeholder="height" type="text" size="6">
 						<input type="radio" id="cin" value="in" name="cunit"><label for="cin">in</label>
@@ -29,9 +116,8 @@
 						<input type="radio" id="cpx" value="px" name="cunit"><label for="cpx">px</label>
 						<input type="checkbox" id="ccircle"><label for="ccircle">circular</label>
 					</span>
-					<span><button type="button" id="view">View</button></span>
 				</h4>
-				<h4>Orientation:  
+				<h4 class="indent">Orientation:
 					<span>
 						<span class="nw">
 							<input type="radio" id="cportrait" value="portrait" name="cori">
@@ -43,100 +129,16 @@
 						</span>
 					</span>
 				</h4>
-			</div>
-			<div>
-				<h4>Page size: 
-					<select id="psize"></select>
-				</h4> 
-				<h4>Orientation:  <span>
-					<span class="nw">
-						<input type="radio" id="pportrait" value="portrait" name="pori">
-						<label for="pportrait">Portrait</label>
-					</span>
-					<span class="nw">
-						<input type="radio" id="plandscape" value="landscape" name="pori">
-						<label for="plandscape">Landscape</label>
-					</span>
-				</span></h4> 
-			</div>
-		</section>
-
-		<section class="thin">
-			<div>
-				<h4>Project name:
-					<input type="text" id="projectName" style="width:33%;" class="hccdoForm" value=""/>
-					<span>
-						<button type="button" id="export" title="Export this project to a file.">Export</button>
-					</span>
+				<h4 class="indent">Card classes:
+					<input type="text" id="cardClass" value=""/>
 				</h4>
-				<h4>Notes:
-					<textarea id="projectNotes" class="hccdoForm"></textarea>
-				</h4>
-				<h4>Load: 
-					<span>
-						<button type="button" id="clear">New</button>
-						<button type="button" id="stored">Recent</button>
-						<button type="button" id="eg">Example</button>
-						<button type="button" id="idkToggle">IDKWDYWTP</button>
-					</span>
-				</h4>
-				<h4>
-						<span class="nw up">Load project file:&nbsp;<input type="file" id="import" class="upload" data-type="import"></span>
-					</span>
-				</h4>
-				<h4 id="idkSection" style="display:none;">BGG username: 
-					<input type="text" id="username" placeholder="BGG username" value=""/> 
-					<button type="button" id="idkFetch" title="Fetch your BGG collection as CSV for I Don't Know, What Do You Want To Play? or other purposes.">Get Games</button>
-				</h4>
-			</div>
-			<div>
-				<h4>Gutters: 
-					<span>
-						<input type="text" id="gsize" size="4" value=""/>
-						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
-						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
-					</span>
-				</h4>
-				<h4>Corner radius:
-					<span>
-						<input type="text" id="bradius" size="4" value=""/>
-						<input type="radio" id="brin" value="in" name="brunit"><label for="brin">in</label>
-						<input type="radio" id="brmm" value="mm" name="brunit"><label for="brmm">mm</label>
-					</span>
-				</h4>
-				<h4>Externtal stylesheet <span>&nbsp;(e.g., Google Fonts URL)</span></h4>
-				<input type="text" id="extCSS" value=""/><br />
-			</div>
-			<div>
-				<h4>Bleed:
-					<input type="text" id="blsize" size="4" value=""/>
-					<span>
-						<input type="radio" id="blin" value="in" name="blunit"><label for="blin">in</label>
-						<input type="radio" id="blmm" value="mm" name="blunit"><label for="blmm">mm</label>
-						<input type="radio" id="blpx" value="px" name="blunit"><label for="blpx">px</label>
-					</span>
-				</h4>
-				<h4>Safe:
-					<input type="text" id="ssize" size="4" value=""/>
-					<span> 
-						<input type="radio" id="sin" value="in" name="sunit"><label for="sin">in</label>
-						<input type="radio" id="smm" value="mm" name="sunit"><label for="sqmm">mm</label>
-						<input type="radio" id="spx" value="px" name="sunit"><label for="spx">px</label>
-					</span>
-				</h4>
-				<h4>Overlay:
-					<input type="checkbox" id="overlay">
-				</h4>
-				<h4>Cut line:	
-					<input type="checkbox" id="cutline">
-				</h4>
-			</div>
+			</subsection>
 		</section>
 
 		<section id="textareas">
-			<div id="hccdoCSV">
+			<subsection id="hccdoCSV">
 				<h4>Your cards 
-					<span>
+					<span style="padding-left:50%;">
 						<button type="button" id="addCard" title="Add a card.">+</button>
 						<button type="button" id="removeCard" title="Remove the last card.">-</button>
 					</span>
@@ -145,49 +147,92 @@
 				<span class="nw up">Load csv: 
 					<input type="file" id="csvUpload" class="upload" data-type="csv">
 				</span>
-			</div>
+			</subsection>
 			
-			<div id="hccdoCSS">
+			<subsection id="hccdoCSS">
 				<h4>Your styles (optional)</h4>
 				<textarea id="css"></textarea>
 				<span class="nw up">Load css:
 					<input type="file" id="cssUpload" class="upload" data-type="css">
 				</span>
-			</div>
+			</subsection>
 			
-			<div id="hccdoTMPL">
-				<h4>Your template
-					<span>&nbsp;(card classes: 
-						<input type="text" id="cardClass" style="width:25%;" value=""/>&nbsp;)
-					</span>
-				</h4>
+			<subsection id="hccdoTMPL">
+				<h4>Your template</h4>
 				<textarea id="mustache"></textarea>
 				<span class="nw up">Load template:
 					<input type="file" id="mustacheUpload" class="upload" data-type="mustache"> 
 				</span>
-			</div>
+			</subsection>
+		</section>
+
+		<section class="indent thin settings" style="display:none;">
+			<subsection>
+				<h4>Image DPI:
+					<span class="nw">
+						<input type="text" id="dpi" size="5" value="300"/>
+						(<span id="expectedSize" title="Size of generated images in pixels."></span>)
+					</span>
+				</h4>
+			</subsection>
+			<subsection>
+				<h4>Gutters: 
+					<span>
+						<input type="text" id="gsize" size="4" value=""/>
+						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
+						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
+					</span>
+					&nbsp; &nbsp; &nbsp; 
+					<input type="checkbox" id="cutline"> Cut line
+				</h4>
+				<h4>
+					<input type="checkbox" id="overlay"> Overlay 
+					&nbsp; &nbsp; &nbsp; 
+					<input type="checkbox" id="live"><label title="Update HTML rendering as you type."> Live HTML</label>
+				</h4>
+			</subsection>
+			<subsection>
+				<h4>Page size: 
+					<select id="psize"></select>
+				</h4> 
+				<h4>Orientation:  
+					<span>
+						<span class="nw">
+							<input type="radio" id="pportrait" value="portrait" name="pori">
+							<label for="pportrait">Portrait</label>
+						</span>
+						<span class="nw">
+							<input type="radio" id="plandscape" value="landscape" name="pori">
+							<label for="plandscape">Landscape</label>
+						</span>
+					</span>
+				</h4>
+			</subsection>
 		</section>
 
 		<section id="buttons">
-			<div>
-				<span id="buttonIcon" style="display:none;float:left;" class="show hccdoIcon">HCCDo</span>
-				<button type="button" id="hide">Hide Form</button>
-				<button type="button" id="show" class="show" style="display:none">Show Form</button>
-				<button type="button" id="help">Show Help</button>
-			</div>
-			<div>
-				<span class="nw">
-					<button type="button" id="imagine">Generate Images</button>
-					<b>DPI:</b>&nbsp;<input type="text" id="dpi" class="hccdoForm" size="5" value="300"/>
-				</span>
-			</div>
-			<div>
-				<span class="nw">
-					<button type="button" id="generate">Generate HTML</button>
-					<input type="checkbox" id="live"> live
-				</span>
-				<button type="button" id="print">Print</button>
-			</div>
+			<subsection class="show" style="display:none;">
+				<span class="hccdoIcon">HCCDo</span>
+			</subsection>
+			<subsection class="show buttons" style="display:none;">
+					<h4>View:
+						<span class="nw">
+							<button type="button" class="small view cardsView" data-view="cardsView">Cards Only</button>
+							<button type="button" class="small view selected editorView" data-view="editorView">Editor</button>
+							<button type="button" class="small view settingsView" data-view="settingsView">Advanced</button>
+							<button type="button" class="small view help" data-view="help">Help</button>
+						</span>
+					</h4>
+			</subsection>
+			<subsection class="buttons">
+				<h4>Output: 
+					<span class="nw">
+						<button type="button" class="small output imagine" id="imagine" title="Convert cards to PNGs.">Images</button>
+						<button type="button" class="small output html" id="generate" title="(Re)generate HTML output.">HTML</button>
+						<button type="button" class="small output print" id="print" title="Print HTML output from your browser.">Print</button>
+					</span>
+				</h4>
+			</subsection>
 		</section>
 
 	</main>
@@ -195,8 +240,8 @@
 		<iframe id="hccdoOutput"></iframe>
 	</output>
 
-  <script type="text/javascript" src="lib/hccdoConst.js"></script>
-  <script type="text/javascript" src="lib/hccdo.js"></script>
+  <script src="js/const.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 </html>
