@@ -37,8 +37,29 @@ Also, if you're not willing to run it in a modern browser, HCCDo may not work we
 
 #### Alternatives
 
-If you're tempted by [nanDECK](http://www.nand.it/nandeck/), there are some similar options out there that aren't all Windows-only:
-[Squib](http://squib.rocks) is Ruby-based, [MultiDeck](http://multideck.blogspot.com) runs on MacOS, [Strange Eons](http://cgjennings.ca/eons/help.html#developers) is multi-platform, [CardMaker](https://github.com/nhmkdev/cardmaker) and [Card Game Management System](http://cardbuilder.blob.core.windows.net/cardgamemanagementsystem/publish.htm) are more Windows programs, and [XXPaper](https://github.com/clearclaw/xxpaper) makes bits for 18xx games.
+You can't swing a cat without hitting a card-making program.
+
+##### For Windows
+
+* [nanDECK](http://www.nand.it/nandeck/) is the father of them all, but Windows-only.
+* [CardMaker](https://github.com/nhmkdev/cardmaker) is Windows-only.
+* [Card Game Management System](http://cardbuilder.blob.core.windows.net/cardgamemanagementsystem/publish.htm) is yet another Windows Windows programs.
+
+##### For Mac
+
+* [MultiDeck](http://multideck.blogspot.com) runs on MacOS only.
+
+Multiplatform:
+
+* [Squib](http://squib.rocks) is similar in functionality to nanDECK, but Ruby-based.
+* [hccd](https://github.com/vaemendis/hccd/) is Java-based.
+* [Strange Eons](http://cgjennings.ca/eons/help.html#developers) is also multi-platform.
+* [XXPaper](https://github.com/clearclaw/xxpaper) makes bits for 18xx games.
+
+##### Online
+
+* [PnPDeliver](http://court-jus.github.io/PnPDeliver/) is "a tool to help game designers distribute their PnP games and to help PnP players to print them.  It relies on online image files (though it will work with locally-hosted image files---you can use the webserver that comes with HCCDo for this purpose).
+* [Geckos](http://gulix.github.io/geckos/) is a replacement for (not to mention an improvement over) several online Magic-style card making programs that have disappeared over the years.
 
 ## How
 
@@ -93,17 +114,20 @@ You can add Google Fonts or other fonts (*e.g.*, [FontAwesome](https://www.boots
 
 The Pico example uses two Google Fonts; see the CSS for how they are invoked.
 
+Please note that Google fonts may scale incorrectly when converted to images at higher DPI.  If you have this problem, you should install the fonts on your computer instead (most Google fonts are also available free elsewhere online in system font format) and run HCCDo locally.
+
 ### Art
 
 You can include URLs for background images in your CSS, and trigger different ones using classes in your template.  (This is done in all the Scottish Sleuth examples.)
 
 For foreground images, you can include the URLs as part of the card list and put the url into an *img* tag in your template.  (See the IDKWDYWTP example for a foreground image.)  If your foreground image never changes, you can put it into your template directly instead.
 
-HCCDo needs to be able to find your images "online".  You can use public URLs of images that are already available online
-or that you've uploaded to an image hosting site like [Google Photos](https://www.google.com/photos/about/) or [Unsee](https://unsee.cc), but note that some public images may not work with HCCDo due to CORS issues.  Click the `IDKWDYWTP` button for an example of using a CORS proxy to work around CORS issues.
+HCCDo needs to be able to find your images "online".
+You can use public URLs of images that are already available online
+or that you've uploaded to an image hosting site like [Google Photos](https://www.google.com/photos/about/) or [Unsee](https://unsee.cc), but note that some public images may not work with HCCDo due to CORS issues.  (Click the `IDKWDYWTP` button for an example of using a CORS proxy to work around CORS issues.)
 
-If you have many images or if you're having CORS issues, you may want to run HCCDo locally.
-If you put your images in the images directory, you can refer to them as the examples do.
+If you need lots of images or if you're having CORS issues, you should run HCCDo locally.
+Put your images in the images directory and refer to them as the examples do.
 (See `IDKWDYWTPLocalImages.json` for an example.)
 
 ### More Settings
