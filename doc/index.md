@@ -8,12 +8,12 @@ for uploading to card printing services that accept image files.
 
 CardPen includes presets for most common (and many uncommon) card sizes,
 as well as custom sizes, circular cards, bleed support, zipping of your generated images,
-and turning your BGG game collection into cards.
+and turning your BoardGameGeek game collection into cards.
 
 ## Where
 
 CardPen is available online at [cardpen.mcdemarco.net](http://cardpen.mcdemarco.net/);
-you can also download the project from BitBucket and run it locally.
+you can also download the project [from BitBucket](https://bitbucket.org/mcdemarco/cardpen) and run it locally.
 
 ## Why
 
@@ -41,16 +41,19 @@ See the end of this file for some alternatives to CardPen.
 ## How
 
 Your cards are assembled from a card list, a Mustache template, and optional CSS styles.
+You edit these and other settings in the upper half of the CardPen window,
+while the cards themselves appear in the bottom half of the CardPen window (as does this help file).
 
 ### Projects
 
-To change your current set of cards, click one of the buttons under Project:
+Sets of cards are organized into projects.
+To change your current project, click one of the buttons under Project (at the top of the CardPen window):
 
-* *New* resets the editor to an empty project with some popular defaults.
-* *Saved* loads the last project you edited.
-* *Example* loads the Pico example.
-* *IDKWDYWTP* loads an I Don't Know, What Do You Want to Play? example.
-* *Load* opens an input for loading an existing project file.
+* **New** resets the editor to an empty project with some popular defaults.
+* **Saved** loads the last project you edited.
+* **Example** loads the Pico example.
+* **IDKWDYWTP** loads the I Don't Know, What Do You Want to Play? example.
+* **Load** opens an input for loading an existing project file.
 
 By default, CardPen will load your last project, or if you haven't used it before, the Pico example.
 In the `examples/` directory, there are several more sample project files you can load. 
@@ -59,7 +62,7 @@ In the `examples/` directory, there are several more sample project files you ca
 
 Switching between views in CardPen changes the layout of the editor (not of your cards).
 
-Individual editors for your CSV, CSS, and template are available in the *Editor* view.  The editors plus all other options are shown in the *Advanced* view.  The *Cards Only* view maximizes the section of the window devoted to your cards.  This documentation is visible in the *Help* view.
+Individual editors for your CSV, CSS, and template are available in the **Editor** view.  The editors plus all other options are shown in the **Advanced** view.  The **Cards Only** view maximizes the section of the window devoted to your cards.  This documentation is visible in the **Help** view.
 
 #### Editor View
 
@@ -67,7 +70,7 @@ The Editor view is the default view.
 
 ##### Your Card List
 
-You can upload a CSV file containing all the information about your cards, or you can enter the data manually.  In either case, the CSV delimiter (usually a comma, semicolon, or tab) will be detected automatically.
+You can upload a CSV (comma-separated value) file containing all the information about your cards, or you can enter the data manually.  In either case, the CSV delimiter (usually a comma, semicolon, or tab) will be detected automatically.
 
 The first line of your card list should be a header with short names for each of your columns.
 Each remaining line should have the same number of columns and should describe one card from your set.  You can leave some fields blank, but you should include the delimiter.  (Load the Scottish Sleuth Clue Deck example to see a card list with blank fields.)
@@ -76,9 +79,9 @@ The **+** button will add a duplicate card to the end of your list.  The **-** b
 
 ###### Card Classes
 
-There is a special setting, *card classes*, for turning one or more columns from your CSV into CSS classes on each card, which is especially useful for adding background images when doing card bleeds.  (Because the card wrapper element itself, `card`, does not appear in your Mustache template, you can't put a CSS class on it directly.)
+The **Card classes** setting turns one or more columns from your card list into CSS classes on each card, which is especially useful for adding background images when doing card bleeds.  (Because the card wrapper element itself, `card`, does not appear in your Mustache template, you can't put a CSS class on it directly.)
 
-To use the *card classes* setting, switch to the Advanced view and put the exact name(s) of your csv column(s) into the field.  Be sure that the *contents* of each column you're using this way are valid CSS class names---*e.g.*, single words, not starting with a number, and without any special characters beyond a hyphen or underscore.  (They can also be blank for some cards.)  To add more than one class/column to *card classes*, separate them with spaces.
+To use the **Card classes** setting, switch to the Advanced view and put the exact name(s) of your card list column(s) into the field.  Be sure that the *contents* of each column you're using this way are valid CSS class names---*e.g.*, single words, not starting with a number, and without any special characters beyond a hyphen or underscore.  (They can also be blank for some cards.)  To add more than one class/column to **Card classes*, separate them with spaces.
 
 There is also a built-in card class, *cardN*, for the nth card of your current list.
 
@@ -107,7 +110,7 @@ When writing your CSS, keep in mind that you can add your own card classes (as e
 
 #### Advanced View
 
-Click the *Advanced* button to change settings.
+Click the **Advanced** button to view and change your project settings.
 
 ##### Card Size
 
@@ -121,11 +124,11 @@ You don't have to keep all the units (millimeters or inches) in sync, but it cer
 
 You can add a bleed outside the card proper (which increases the size of your cards by the specified amount), and you can also designate a safe region inside the card proper.  Most printing services require 1/8" bleed per side and recommend a 1/8" safe zone (sometimes expressed as 36 pixels at 300 DPI rather than as 0.125" or  0.12").
 
-To visualize your bleed and safe areas, check the *overlay* checkbox.  The overlay only appears in the HTML view; it will not print out or be included in your card images.
+To visualize your bleed and safe areas, check the **overlay** checkbox.  The overlay only appears in the HTML view; it will not print out or be included in your card images.
 
 ##### Fonts
 
-You can add Google Fonts or other fonts (*e.g.*, [FontAwesome](https://www.bootstrapcdn.com/fontawesome/)) using the *External Stylesheet* setting.  [FontCDN](http://fontcdn.org) is a handy way to search for Google Fonts.  The Pico example also uses a [Google font effect](https://developers.google.com/fonts/docs/getting_started#enabling_font_effects_beta) for the text shadow.  (If you don't see it, you may not be using a browser that supports their font effects.)
+You can add Google Fonts or other fonts (*e.g.*, [FontAwesome](https://www.bootstrapcdn.com/fontawesome/)) using the **External Stylesheet** setting.  [FontCDN](http://fontcdn.org) is a handy way to search for Google Fonts.  The Pico example also uses a [Google font effect](https://developers.google.com/fonts/docs/getting_started#enabling_font_effects_beta) for the text shadow.  (If you don't see it, you may not be using a browser that supports their font effects.)
 
 The Pico example uses two Google Fonts; see the CSS for how they are invoked.
 
@@ -154,23 +157,24 @@ Put your images in the images directory and refer to them as the examples do.
 #### IDKWDYWTP
 
 CardPen can generate a special card list from your [BoardGameGeek](https://boardgamegeek.com) game collection.
-To generate the list, click the *IDKWDYWTP* ([I Don't Know, What Do You Want to Play?](https://boardgamegeek.com/boardgame/28567/i-dont-know-what-do-you-want-play)) button under Project.  Optionally, edit the template and CSS to set up the cards the way you want.
+To generate the list, click the **IDKWDYWTP** ([I Don't Know, What Do You Want to Play?](https://boardgamegeek.com/boardgame/28567/i-dont-know-what-do-you-want-play)) button under Project.  Optionally, edit the sample template and CSS to set up the cards the way you want.
 
-Next, open the Advanced view and enter your own username in the *BGG username* field.  Click the *Get Games* button; this will replace the sample card list with one based on your own game collection.
+Next, open the Advanced view and enter your own username in the **BGG username** field.  Click the **Get Games** button; this will replace the sample card list with one based on your own game collection.
 
 ### Output
 
 You have three card generation options under Output:
 
-* The *HTML* button generates an HTML preview.
-* The *Print* button prints the HTML page (for DIY cards).
-* The *Images* button generates individual PNG images of your cards for uploading to a commercial card printing site.
+* The **HTML** button generates an HTML preview.
+* The **Print** button prints the HTML page (for DIY cards).
+* The **Images** button generates individual PNG images of your cards for uploading to a commercial card printing site.
 
 #### Printing HTML
 
-Before generating HTML to print, choose the appropriate page size for your paper.  Your cards may fit better in one direction than the other, so try switching from landscape to portrait or back before printing.
+Before printing, choose the appropriate page size for your paper (in the Advanced view).
+Your cards may fit better in one direction than the other, so try switching from landscape to portrait or back before printing.
 
-The *Print* button prints the cards; in some browsers you can also right-click on the frame and choose Print Frame from the context menu.
+The **Print** button prints the cards; in some browsers you can also right-click on the frame and choose Print Frame from the context menu.
 
 When printing HTML, be sure to uncheck or undo any scaling as well as removing any headers/footers that the browser might add.
 Some browsers will not detect your choice of landscape or portrait for your page layout,
@@ -178,15 +182,15 @@ so you may need to set that manually in the print dialog before printing.
 
 ##### Cut Lines
 
-The *cutline* checkbox (in the Advanced view) is for adding a cut line when printing cards yourself, not for making borders.
+The **cutline** checkbox (in the Advanced view) is for adding a cut line when printing cards yourself, not for making borders.
 
-Making actual thick borders around a card is not generally recommended and so is not automated by CardPen, though you can still accomplish that using your CSS.  When making your own borders around cards anyway, some recommend that the border extend about 1/8" into the safe zone.
+(Making actual thick borders around a card is not generally recommended and so is not automated by CardPen, though you can do it using your CSS.  When making your own borders around cards despite all warnings, some recommend that the border extend about 1/8" into the safe zone.)
 
 #### Generating Images
 
 Due to browser security settings affecting the library that CardPen uses to generate images, not all browsers will generate cards as images.  Safari will not, nor will any iOS browser; Chrome generally will.
 
-When generating images, choose an adequate DPI (300 is the default and is most printers' minimum), then click the *Images* button under Output.  The images will appear in the lower section of the page, with a *Zip Images* button above them.  To download the images as a zip file, click the button.
+When generating images, choose an adequate DPI (300 is the default and is most printers' minimum), then click the **Images** button under Output.  The images will appear in the output section of the page, with a **Zip Images** button above them.  To download the images as a zip file, click the button.
 The images inside the zip file will be named after your project and numbered sequentially.
 
 Some browsers will display the images at a strangely small resolution; in that case, right-click on an image to open it in a new tab (then, additionally, zoom in if your browser is zoomed out) in order to see the image at its real pixel size.  (You don't need to do anything special to zip such images.)
@@ -198,11 +202,11 @@ if something else looks awry or if you get a failure message, try again.
 
 CardPen stores your current card edits in your browser's local storage, so you can come back to it in the same browser later on (but not forever, and not if you overwrite it with another set of cards).
 
-For longer-term storage, use the Export button (next to your project name in the Advanced view) to save your card project as a json file.  You can load the saved file again later using the *Load* button under Project.  You can also load the extra examples from the examples directory this way.
+For longer-term storage, use the **Export** button (next to your project name in the Advanced view) to save your card project as a json file.  You can load the saved file again later using the **Load** button under Project.  You can also load the extra examples from the examples directory this way.
 
 ## Which
 
-The *Show All* button next to the card sizes will show you all the built-in card sizes using your current settings for bleed and card orientation, including conversion to millimeters, inches, and pixels.  You should always double-check your card sizes rather than relying on card size names, which can vary strangely from publisher to publisher.
+The **Show All** button next to the card sizes will show you all the built-in card sizes using your current settings for bleed and card orientation, including conversion to millimeters, inches, and pixels.  You should always double-check your card sizes rather than relying on card size names, which can vary strangely from publisher to publisher.
 
 ### Card Size Clarifications
 
