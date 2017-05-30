@@ -1,16 +1,17 @@
 {
-  "name": "HCCDo",
+  "name": "CardPen",
   "version": "1.0.0",
   "repository": {
     "type": "hg",
-    "url": "ssh://hg@bitbucket.org/mcdemarco/hccdo"
+    "url": "ssh://hg@bitbucket.org/mcdemarco/cardpen"
   },
   "license": "GPL-3.0",
   "scripts": {
     "build:markdown": "marked doc/index.md -o util/2-body.html",
     "build:html": "concat util/*.html -o doc/index.html",
     "build": "npm run build:markdown && npm run build:html",
-    "server": "http-server -a localhost"
+    "server": "http-server -a localhost",
+    "all": "npm run build && npm run server"
   },
   "devDependencies": {
     "concat-glob-cli": "latest",

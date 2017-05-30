@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-		<title>HCCDo</title>
+		<title>CardPen</title>
     <script src="lib/bind.min.js"></script>
 		<script src="lib/codemirror.js"></script>
 		<script src="mode/simple.js"></script>
@@ -20,7 +20,7 @@
 		<link href="css/codemirror.css" rel="stylesheet">
 		<link href="css/ambiance.css" rel="stylesheet">
 		<link href="css/main.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
 </head>
 
 <body>
@@ -28,8 +28,8 @@
 		<section id="header" class="thin">
 			<subsection>
 				<img class="icon" src="css/icon-joker.svg">
-				<div style="display:inline-block;"><span class="hccdoIcon">HCCDo</span><br />
-					an online HTML+CSS card generator</div>
+				<div style="display:inline-block;"><span class="cpIcon">CardPen</span><br />
+					an HTML playing card generator</div>
 			</subsection>
 			<subsection class="double">
 				<subsubsection>
@@ -73,7 +73,7 @@
 				</h4>
 				<h4 id="idkSection" style="display:none;">BGG username: 
 					<input type="text" id="username" placeholder="BGG username" style="width:25%;" value=""/> 
-					<button type="button" id="idkFetch" title="Fetch your BGG collection as CSV for I Don't Know, What Do You Want To Play? or other purposes.">Get Games</button>
+					<button type="button" id="idkFetch" class="small" title="Fetch your BGG collection as CSV for I Don't Know, What Do You Want To Play? or other purposes.">Get Games</button>
 				</h4>
 			</subsection>
 			<subsection>
@@ -135,7 +135,7 @@
 		</section>
 
 		<section id="textareas">
-			<subsection id="hccdoCSV">
+			<subsection id="cpCSV">
 				<h4>Your cards 
 					<span style="padding-left:50%;">
 						<button type="button" id="addCard" title="Add a card.">+</button>
@@ -148,7 +148,7 @@
 				</span>
 			</subsection>
 			
-			<subsection id="hccdoCSS">
+			<subsection id="cpCSS">
 				<h4>Your styles (optional)</h4>
 				<textarea id="css"></textarea>
 				<span class="nw up">Load css:
@@ -156,7 +156,7 @@
 				</span>
 			</subsection>
 			
-			<subsection id="hccdoTMPL">
+			<subsection id="cpTMPL">
 				<h4>Your template</h4>
 				<textarea id="mustache"></textarea>
 				<span class="nw up">Load template:
@@ -211,7 +211,7 @@
 
 		<section id="buttons">
 			<subsection class="show" style="display:none;">
-				<span class="hccdoIcon">HCCDo</span>
+				<span class="cpIcon">CardPen</span>
 			</subsection>
 			<subsection class="show buttons" style="display:none;">
 					<h4>View:
@@ -236,7 +236,7 @@
 
 	</main>
 	<output>
-		<iframe id="hccdoOutput"></iframe>
+		<iframe id="cpOutput"></iframe>
 	</output>
 
   <script src="js/const.js"></script>

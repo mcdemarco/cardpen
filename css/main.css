@@ -75,13 +75,6 @@ section#buttons subsection.double {
     flex: 2 0 40%;
 }
 
-section#textareas subsection {
-    flex-grow: 1;
-}
-section#textareas subsection#hccdoCSV {
-    flex-grow: 2;
-}
-
 section#textareas subsection span.up {
     padding-left: 2.5em;
 }
@@ -110,12 +103,12 @@ section#header subsubsection span.nw {
     min-width: 360px;
 }
 
-.hccdoIcon {
+.cpIcon {
     font-size: xx-large;
     font-weight: bold;
 }
 
-section#buttons .hccdoIcon {
+section#buttons .cpIcon {
     font-size: large;
     font-weight: bold;
 }

@@ -7,7 +7,7 @@ html {
 body {
     color: #1E2028;
     background-image: url('fabric_plaid.png');
-    font-family: Raleway, sans-serif;
+    font-family: Montserrat, sans-serif;
     margin: 2rem auto;
     max-width: 40em;
     padding: 0 2em;
@@ -22,6 +22,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: Raleway, sans-serif;
   color: #656565;
   font-weight: bold;
   line-height: 1.2;
@@ -83,7 +84,7 @@ blockquote {
 ul,
 ol,
 li {
-  margin: 0 0 1em 0;
+  margin: 0 0 0.5em 0;
 }
 
 ul,

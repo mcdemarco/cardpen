@@ -1,6 +1,6 @@
 {
   "name": "Pico Oval",
-  "notes": "The Pico example, modified for oval cards.  Pico is an out-of-print mini game by Doris & Frank.  I picked it for the basic HCCDo example because it has only 11 (very simple) cards.  Note that there is a rebalanced sequel, Pico 2; if you need English rules for Pico, they can be inferred from the rules for Pico 2.\nPublisher site: http://doris-frank.de/GamesPico.html\nBoardGameGeek entries: https://boardgamegeek.com/boardgame/2051/pico https://boardgamegeek.com/boardgame/606/pico-2",
+  "notes": "The Pico example, modified for oval cards.  Pico is an out-of-print mini game by Doris & Frank.  I picked it for the basic CardPen example because it has only 11 (very simple) cards.  Note that there is a rebalanced sequel, Pico 2; if you need English rules for Pico, they can be inferred from the rules for Pico 2.\nPublisher site: http://doris-frank.de/GamesPico.html\nBoardGameGeek entries: https://boardgamegeek.com/boardgame/2051/pico https://boardgamegeek.com/boardgame/606/pico-2",
   "dpi": 300,
   "live": true,
   "psize": "letter",
