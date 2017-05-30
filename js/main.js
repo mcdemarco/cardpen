@@ -1,5 +1,5 @@
-// hccdo by mcdemarco
-// a pure-js, "online" version of hccd
+// cardpen by mcdemarco
+// a pure-js playing card generator
 
 //TODO: 
 // better weird card sizes (hex, heart) 
@@ -12,12 +12,11 @@
 // Add margin to page/fix print sizing margin issue (dance deck)
 // Handle printing backs like PnPDeliver?
 // em dashes not converted for help (smartypants option?) (marked cli can't pass options known issue #110)
-// replace card buttons with icons
+// replace +/- card buttons with icons
 // Write images to "server"?
-// rebrand to "CardPen".  Change icon to a pen or stylus on a card.  Cardify buttons.
+// rebrand:  Change icon to a pen or stylus on a card.
 // General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
-// add UI layout options (E m backwards E)
-// Fix footer wrapping.
+// add UI layout options (E m backwards E)?
 
 //init
 //form
@@ -28,7 +27,7 @@
 //util
 //write
 
-var hccdo = {};
+var cardpen = {};
 
 (function(context) { 
 
@@ -49,7 +48,7 @@ context.init = (function () {
 
 		//May be safe to activate the codemirrors now.
 		_.each(mirrors, function(mirrObj,key) {
-			mirrObj.on("change", function() {hccdo.form.changeCode(key);});
+			mirrObj.on("change", function() {cardpen.form.changeCode(key);});
 		});
 	}
 
@@ -57,29 +56,29 @@ context.init = (function () {
 	function activate() {
 		//Set up the buttons.
 		var buttons = {
-			addCard: hccdo.form.addCard,
-			removeCard: hccdo.form.removeCard,
-			export: hccdo.util.exporter,
-			idkFetch: hccdo.idk.fetch,
-			generate: hccdo.form.generate,
-			imagine: hccdo.form.generate,
-			loadToggle: hccdo.form.loadToggle,
-			print: hccdo.form.generate
+			addCard: cardpen.form.addCard,
+			removeCard: cardpen.form.removeCard,
+			export: cardpen.util.exporter,
+			idkFetch: cardpen.idk.fetch,
+			generate: cardpen.form.generate,
+			imagine: cardpen.form.generate,
+			loadToggle: cardpen.form.loadToggle,
+			print: cardpen.form.generate
 		};
 		_.each(buttons, function(value, key) {
 			document.getElementById(key).addEventListener('click',value);
 		});
 		_.each(document.getElementsByClassName('load'), function(el) {
 			//clear, eg, idkToggle, stored.
-			el.addEventListener('click', hccdo.form.load);
+			el.addEventListener('click', cardpen.form.load);
 		});
 		_.each(document.getElementsByClassName('view'), function(el) {
 			//cardsView, editorView, settingsView
-			el.addEventListener('click', hccdo.form.view);
+			el.addEventListener('click', cardpen.form.view);
 		});
 
 		_.each(document.getElementsByClassName('upload'), function(el) { 
-			el.addEventListener('change', hccdo.util.file);
+			el.addEventListener('change', cardpen.util.file);
 		});
 	}
 
@@ -522,7 +521,7 @@ context.project = (function () {
 		var stringyData = JSON.stringify(data);
 		if (window.localStorage) {
 			try {
-				window.localStorage["hccdo"] = stringyData;
+				window.localStorage["cardpen"] = stringyData;
 				//Also set the selection.
 				context.form.unselect("load");
 				document.getElementById("stored").classList.add("selected");
@@ -538,7 +537,7 @@ context.project = (function () {
 		var storedProj;
 		if (window.localStorage) {
 			try {
-				var tempProj = JSON.parse(window.localStorage["hccdo"]);
+				var tempProj = JSON.parse(window.localStorage["cardpen"]);
 				if (_.isObject(tempProj) && !_.isEmpty(tempProj)) {
 					storedProj = tempProj;
 				}
@@ -847,7 +846,7 @@ context.style = (function () {
 	}
 
 	function overlay(cardSize,shiftSize,name,borderStyle,radiusSize) {
-		var oStyle =  "overlay.hccdo" + name + " {\n" +
+		var oStyle =  "overlay.cardpen" + name + " {\n" +
 					"\tposition: absolute;\n" +
 					"\ttop:" + flatten(shiftSize,0) + ";\n" +
 					"\tleft:" + flatten(shiftSize,1) + ";\n" +
@@ -980,7 +979,7 @@ context.util = (function () {
 
 	function printFrame() {
 		//Print iframe.
-		var ifrm = document.getElementById("hccdoOutput");
+		var ifrm = document.getElementById("cpOutput");
 		ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
 		ifrm.print();
 	}
@@ -1019,7 +1018,7 @@ context.write = (function () {
 	}
 
 	function frame(doc) {
-		var ifrm = document.getElementById("hccdoOutput");
+		var ifrm = document.getElementById("cpOutput");
 		ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
 		ifrm.document.open();
 		ifrm.document.write(doc);
@@ -1090,17 +1089,17 @@ context.write = (function () {
 				'var width = ' + dims[1] + ';\n' +
 				'var projectName = "' + cleanName + '";' + 
 				'</script>\n';
-			fullOutput += "<style>#hccdoutput {display: block;}\n";
-			fullOutput += "#hccdoError {padding:5px;color:red;}</style>\n";
+			fullOutput += "<style>#cpOutput {display: block;}\n";
+			fullOutput += "#cpError {padding:5px;color:red;}</style>\n";
 		} else {
 			fullOutput += "<style>\n" + context.style.page(data,forImages) + "</style>\n";
 		}
 			fullOutput += "<style>\n" + context.style.card(data) + "</style>\n";
 		fullOutput += "<style>\n" + data.css + "</style>\n</head>\n<body>\n";
 		if (forImages) {
-			fullOutput += "<div id='hccdoError'></div>\n";
+			fullOutput += "<div id='cpError'></div>\n";
 			fullOutput += "<button type='button' onclick='zipper();'>Zip Images</button>\n";
-			fullOutput += "<div id='hccdoImages'></div>\n";
+			fullOutput += "<div id='cpImages'></div>\n";
 		}
 		fullOutput += templateOutput + "\n</body>\n</html>\n";
 
@@ -1110,7 +1109,7 @@ context.write = (function () {
 
 	function help() {
 		//Show the help.
-		document.getElementById("hccdoOutput").src = "doc/index.html";
+		document.getElementById("cpOutput").src = "doc/index.html";
 		//Unselect all other outputs.
 		context.form.unselect("output");
 	}
@@ -1183,15 +1182,15 @@ context.write = (function () {
 	}
 
 	function formatter(data,cards,forImages) {
-		var templateA = '{{#hccdo}}<card class="' + (forImages ? 'cardImage' : 'cardHTML');
+		var templateA = '{{#cardpen}}<card class="' + (forImages ? 'cardImage' : 'cardHTML');
 		templateA +=	(data.cardClass ? ' {{' + data.cardClass + '}}' : '') + ' card'; //Card # goes here
 		var templateB = '">\n\t<bleed>\n\t\t<cut>\n\t\t\t<safe>';
 		templateB += data.mustache + "\n\t\t\t</safe>\n\t\t</cut>\n\t</bleed>";
 		if (data.overlay || data.cutline)
-			templateB += '\n\t<overlay class="hccdoBleed"></overlay>';
+			templateB += '\n\t<overlay class="cardpenBleed"></overlay>';
 		if (data.overlay)
-			templateB += '<overlay class="hccdoCut"></overlay><overlay class="hccdoSafe"></overlay>';
-		templateB += "\n</card>{{/hccdo}}";
+			templateB += '<overlay class="cardpenCut"></overlay><overlay class="cardpenSafe"></overlay>';
+		templateB += "\n</card>{{/cardpen}}";
 		var rolms = context.size.grid(data);
 		var rows = rolms[0];
 		var cols = rolms[1];
@@ -1203,7 +1202,7 @@ context.write = (function () {
 				}
 				formatted += '<page>\n';
 			}
-			formatted += Mustache.to_html(templateA + (c+1) + templateB, {hccdo: cards[c]});
+			formatted += Mustache.to_html(templateA + (c+1) + templateB, {cardpen: cards[c]});
 		}
 		formatted += '</page></page>\n';
 		return formatted;
@@ -1256,6 +1255,6 @@ context.write = (function () {
 		'data.cardClass': '#cardClass'
 	});
 
-})(hccdo);
+})(cardpen);
 
-window.onload = hccdo.init.start;
+window.onload = cardpen.init.start;
