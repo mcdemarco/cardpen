@@ -1,6 +1,6 @@
 {
-  "name": "IDKWDYWTP Example (Local Images)",
-  "notes": "This is a set of ten preloaded games to show you how your own collection will look. Fill in your username and click the Get Games button (possibly twice), then Generate HTML to see your own games here.",
+  "name": "BGG Example (Local Images)",
+  "notes": "This is a variant of the BGG/IDKWDYWTP example that uses local copies of the images instead of the ones at BGG.",
   "dpi": 300,
   "live": true,
   "psize": "letter",
