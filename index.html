@@ -7,12 +7,14 @@
 		<script src="lib/codemirror.js"></script>
 		<script src="mode/simple.js"></script>
 		<script src="mode/multiplex.js"></script>
+		<script src="mode/matchbrackets.js"></script>
 		<script src="mode/css/css.js"></script>
 		<script src="mode/javascript/javascript.js"></script>
 		<script src="mode/xml/xml.js"></script>
 		<script src="mode/htmlmixed/htmlmixed.js"></script>
 		<script src="mode/handlebars/handlebars.js"></script>
 		<script src="mode/markdown/markdown.js"></script>
+		<script src="mode/spreadsheet/spreadsheet.js"></script>
 		<script src="lib/FileSaver.min.js"></script>
     <script src="lib/mustache.min.js"></script>
     <script src="lib/papaparse.min.js"></script>
@@ -210,27 +212,22 @@
 		</section>
 
 		<section id="buttons">
-			<subsection class="show" style="display:none;">
-				<span class="cpIcon">CardPen</span>
-			</subsection>
-			<subsection class="show buttons" style="display:none;">
-					<h4>View:
-						<span class="nw">
-							<button type="button" class="small view cardsView" data-view="cardsView">Cards Only</button>
-							<button type="button" class="small view selected editorView" data-view="editorView">Editor</button>
-							<button type="button" class="small view settingsView" data-view="settingsView">Advanced</button>
-							<button type="button" class="small view help" data-view="help">Help</button>
-						</span>
+			<subsection class="double buttons">
+				<subsubsection class="show" style="display:none;">
+					<h4 class="nw">View:
+						<button type="button" class="small view cardsView" data-view="cardsView">Cards Only</button>
+						<button type="button" class="small view selected editorView" data-view="editorView">Editor</button>
+						<button type="button" class="small view settingsView" data-view="settingsView">Advanced</button>
+						<button type="button" class="small view help" data-view="help">Help</button>
 					</h4>
-			</subsection>
-			<subsection class="buttons">
-				<h4>Output: 
-					<span class="nw">
+				</subsubsection>
+				<subsubsection id="outputButtons">
+					<h4 class="nw">Output: 
 						<button type="button" class="small output imagine" id="imagine" title="Convert cards to PNGs.">Images</button>
 						<button type="button" class="small output html" id="generate" title="(Re)generate HTML output.">HTML</button>
 						<button type="button" class="small output print" id="print" title="Print HTML output from your browser.">Print</button>
-					</span>
-				</h4>
+					</h4>
+				</subsubsection>
 			</subsection>
 		</section>
 

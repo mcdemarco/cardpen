@@ -5,7 +5,7 @@
   CodeMirror.defaults.theme = "ambiance";
 
   var mirrors = {};
-  mirrors.csv = CodeMirror.fromTextArea(csv, {lineNumbers: true, firstLineNumber: 0});
+  mirrors.csv = CodeMirror.fromTextArea(csv, {mode: "spreadsheet", lineNumbers: true, firstLineNumber: 0});
   mirrors.css = CodeMirror.fromTextArea(css, {mode: "css", lineNumbers: true, firstLineNumber: 1});
   mirrors.mustache = CodeMirror.fromTextArea(mustache, {mode: {name: "handlebars", base: "text/html"}, lineNumbers: true, firstLineNumber: 1});
   mirrors.notes = CodeMirror.fromTextArea(notes, {mode: "markdown", lineWrapping: true, theme: "default"});

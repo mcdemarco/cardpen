@@ -17,6 +17,8 @@
 // rebrand:  Change icon to a pen or stylus on a card.
 // General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
 // add UI layout options (E m backwards E)?
+// Rename IDK section to Games
+// add/define euro poker size https://www.thegamecrafter.com/publish/product/EuroPokerDeck 63 x 88mm
 
 //init
 //form

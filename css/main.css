@@ -46,33 +46,28 @@ section subsection {
     margin-bottom: 10px;
 }
 
+section#buttons subsection {
+    margin-bottom: 0;
+}
+
 subsection.double {
     flex: 2 0 66%;
 }
 
-section#header subsection {
+section#header subsection,
+section#buttons subsection {
     display:flex;
     flex-wrap: wrap;
 }
 
-section#header subsection.double {
+subsection.double {
     flex: 2 0 50%;
     min-width:330px;
 }
 
-section#header subsubsection {
+subsubsection {
     flex: 1 0 330px;
     min-width: 330px;
-}
-
-section#buttons subsection {
-    flex: 1 0 10%;
-    min-width: 150px;
-    margin-bottom: 0;
-}
-
-section#buttons subsection.double {
-    flex: 2 0 40%;
 }
 
 section#textareas subsection span.up {
@@ -84,23 +79,24 @@ section.indent subsection h4 {
     padding-left: 2em;
 }
 
-section.buttons,
-subsection.buttons {
-    text-align:center;
-    align-content: space-around;
-    align-items: center;
-    justify-content: center;
-}
-
 subsubsection {
     align-content: space-around;
     align-items: center;
     justify-content: center;
 }
 
-section#header subsubsection span.nw {
+subsubsection h4.nw,
+subsubsection span.nw {
     display:inline-block;
     min-width: 360px;
+}
+
+section#buttons,
+section#buttons subsubsection {
+    text-align:center;
+    align-content: space-around;
+    align-items: center;
+    justify-content: center;
 }
 
 .cpIcon {
@@ -122,10 +118,6 @@ img.icon {
     height:55px;
     margin-bottom:-7px;
     margin-right:5px;
-}
-
-#buttons img.icon {
-    height:45px;
 }
 
 textarea {
@@ -276,4 +268,10 @@ h4 {
     height: 4em;
     border-radius: 0.25rem;
     background-image: url('fabric_plaid.png');
+}
+
+/* Highlight header row of csv. */
+#cpCSV .cm-s-ambiance .CodeMirror-code div:first-child pre .cm-variable-2 {
+    text-decoration: underline;
+    color: #ffb795;
 }
