@@ -18,7 +18,6 @@
 // General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
 // add UI layout options (E m backwards E)?
 // Remove BGG toggle and possibly replace with verification.
-// add/define euro poker size https://www.thegamecrafter.com/publish/product/EuroPokerDeck 63 x 88mm
 
 //init
 //form
