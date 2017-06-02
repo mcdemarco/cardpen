@@ -212,7 +212,7 @@ The **Show All** button next to the card sizes will show you all the built-in ca
 
 * When in doubt, the size is poker.
 * Sometimes poker size is described as "Standard Game" or "Standard Card Game", and bridge size as "Standard American" or "American Board Game" for the purposes of sleeving, but these are not to be confused with the actual panoply of weird "game" sizes.
-* Magic the Gathering cards are poker size.
+* Magic the Gathering cards are Euro Poker size.  They're sometimes described as poker size, but that's just a rounding error.  The original ("Alpha") printing may have actually been poker sized.
 * Euro Mini (44mm x 67mm) is sometimes listed in US sizes as 1.73" x 2.64".
 * *Skinny Mini* is a nickname for the Fantasy Flight/DriveThruCards size of 1 5/8" x 2 1/2", also known as Mini American; more commonly Mini means 1 3/4" x 2 1/2" instead.  (Bicycle claims "mini" is actually 1 11/16" x 2 3/8", but no one prints that size.)
 * *Cow Mini* is a nickname for ArtsCow's weird mini size (h/t [this BGG thread](https://boardgamegeek.com/thread/759945/artscow-mini-playing-cards-size-vs-ideal-image-siz) about some old typos at ArtsCow).
@@ -230,7 +230,7 @@ Not all card printing services accept PNG files, but many do.
 ### Card Printing Services
 
 * [ArtsCow](http://www.artscow.com/) prints a handful of card sizes and shapes.  (Beware their weird minis!)   Not all their offerings let you set up more than one back, and some come with a pre-configured suit that you will probably need to remove from the cards.  On the bright side, they have enticing sale prices and they also print memo pads, which may be useful for scorepads.  [Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.
-* [The Game Crafter](https://www.thegamecrafter.com)'s card sizes are listed [here](http://help.thegamecrafter.com/article/85-cards)
+* [The Game Crafter](https://www.thegamecrafter.com)'s card sizes are listed [here](http://help.thegamecrafter.com/article/85-cards).  They recently added [Euro Poker](https://www.thegamecrafter.com/publish/product/EuroPokerDeck) size.
 * [Make Playing Cards](http://www.makeplayingcards.com/)' card sizes and prices are [here](http://www.makeplayingcards.com/low-price-for-bulk.aspx); they also make custom poker chips.
 * [Printer's Studio](http://www.printerstudio.com/)'s card sizes are listed [here](http://www.printerstudio.com/unique-ideas/blank-playing-cards.html).  They also make a large variety of game mats.
 * [Superior Pod](http://www.superiorpod.com/) doesn't have a single list, but their sizes seem to be poker, bridge, mini, question, 3.5" square and tarot.  Their submission requirements are [somewhat unclear](http://support.superiorpod.com/customer/en/portal/articles/2727142-file-submission-guidelines-for-card-decks) but seem to include a zip file of individual image files.  There's a [long BGG thread](https://boardgamegeek.com/thread/427619/superior-pod-thread/) about them you might want to read first.
