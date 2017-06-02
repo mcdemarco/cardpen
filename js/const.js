@@ -123,8 +123,8 @@
 	};
 
 	var idkForm = {
-"name": "IDKWDYWTP Example",
-		notes: "This is a set of ten preloaded games to show you how your own collection will look. Fill in your username and click the Get Games button (possibly twice), then Generate HTML to see your own games here.",
+"name": "BGG (IDKWDYWTP) Example",
+		notes: "This is a set of ten preloaded games to show you how your own collection will look. Fill in your username and click the Get Games button (possibly twice)  to see your own games here.",
 		dpi: 300,
 		live: true,
 		psize: "letter",

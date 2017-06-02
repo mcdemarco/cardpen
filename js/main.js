@@ -17,7 +17,7 @@
 // rebrand:  Change icon to a pen or stylus on a card.
 // General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
 // add UI layout options (E m backwards E)?
-// Rename IDK section to Games
+// Remove BGG toggle and possibly replace with verification.
 // add/define euro poker size https://www.thegamecrafter.com/publish/product/EuroPokerDeck 63 x 88mm
 
 //init
@@ -360,7 +360,7 @@ context.idk = (function () {
 	};
 
 	function toggle() {
-		//For showing the IDKWDYWTP form.
+		//For showing the BGG/IDKWDYWTP form.
 		var form = document.getElementById("idkSection");
 		if (form.style.display == "none") {
 			stored();

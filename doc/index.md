@@ -52,7 +52,7 @@ To change your current project, click one of the buttons under Project (at the t
 * **New** resets the editor to an empty project with some popular defaults.
 * **Saved** loads the last project you edited.
 * **Example** loads the Pico example.
-* **IDKWDYWTP** loads the I Don't Know, What Do You Want to Play? example.
+* **BGG** loads the BoardGameGeek API example (a deck of *I Don't Know, What Do You Want to Play?* cards).
 * **Load** opens an input for loading an existing project file.
 
 By default, CardPen will load your last project, or if you haven't used it before, the Pico example.
@@ -96,7 +96,7 @@ In the Pico example, there are only two columns in the CSV file, named *Number* 
 
 There is a built-in Mustache tag that you can use to change your template based on whether you are generating cards as HTML or as images: `{{cardImage}}`.  To turn a section of the template on when you are generating card images, put it between two tags `{{#cardImage}}` and `{{/cardImage}}`.  To turn a section off, put it between `{{^cardImage}}` and `{{/cardImage}}`.
 
-For an example of using this tag, click the IDKWDYWTP button and scroll down to the bottom of that template.  The template uses the tag to add a proxy to the BoardGameGeek image URL when generating images (because BGG is not set up correctly for CORS).  You can also use these tags to compensate for unexpected differences between your HTML and image output.
+For an example of using this tag, click the **BGG** button and scroll down to the bottom of that template.  The template uses the tag to add a proxy to the BoardGameGeek image URL when generating images (because BGG is not set up correctly for CORS).  You can also use these tags to compensate for unexpected differences between your HTML and image output.
 
 For more hints on how to set up your Mustache template, see the additional examples, [the examples from hccd](https://github.com/vaemendis/hccd/tree/master/examples), and/or [the Mustache documentation](https://mustache.github.io/mustache.5.html).
 
@@ -144,20 +144,20 @@ Read more about corners at [Dreadful Games](http://dreadfulgames.com/rounders-yo
 
 You can include URLs for background images in your CSS, and trigger different ones using classes in your template.  (This is done in all the Scottish Sleuth card examples.)
 
-For foreground images, you can include the URLs as part of the card list and put the url into an *img* tag in your template.  (See the IDKWDYWTP example for a foreground image.)  If your foreground image never changes, you can put it into your template directly instead.
+For foreground images, you can include the URLs as part of the card list and put the url into an *img* tag in your template.  (See the BGG example for a foreground image.)  If your foreground image never changes, you can put it into your template directly instead.
 
 CardPen needs to be able to find your images "online".
 You can use public URLs of images that are already available online
-or that you've uploaded to an image hosting site like [Google Photos](https://www.google.com/photos/about/) or [Unsee](https://unsee.cc), but note that some public images may not work with CardPen due to CORS issues.  (Click the `IDKWDYWTP` button for an example of using a CORS proxy to work around CORS issues.)
+or that you've uploaded to an image hosting site like [Google Photos](https://www.google.com/photos/about/) or [Unsee](https://unsee.cc), but note that some public images may not work with CardPen due to CORS issues.  (Click the `BGG` button for an example of using a CORS proxy to work around CORS issues.)
 
 If you need lots of images or if you're having CORS issues, you should run CardPen locally.
 Put your images in the images directory and refer to them as the examples do.
-(See `IDKWDYWTPLocalImages.json` for an example.)
+(See `BGGLocalImages.json` for an example.)
 
-#### IDKWDYWTP
+#### BGG
 
-CardPen can generate a special card list from your [BoardGameGeek](https://boardgamegeek.com) game collection.
-To generate the list, click the **IDKWDYWTP** ([I Don't Know, What Do You Want to Play?](https://boardgamegeek.com/boardgame/28567/i-dont-know-what-do-you-want-play)) button under Project.  Optionally, edit the sample template and CSS to set up the cards the way you want.
+CardPen can generate a special card list from your [BoardGameGeek](https://boardgamegeek.com) game collection for making an [I Don't Know, What Do You Want to Play?](https://boardgamegeek.com/boardgame/28567/i-dont-know-what-do-you-want-play) deck or for similar purposes.
+To generate the list, click the **BGG** button under Project.  Optionally, edit the sample template and CSS to set up the cards the way you want.
 
 Next, open the Advanced view and enter your own username in the **BGG username** field.  Click the **Get Games** button; this will replace the sample card list with one based on your own game collection.
 
