@@ -14,7 +14,6 @@
 // em dashes not converted for help (smartypants option?) (marked cli can't pass options known issue #110)
 // replace +/- card buttons with icons
 // Write images to "server"?
-// rebrand:  Change icon to a pen or stylus on a card.
 // General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
 // add UI layout options (E m backwards E)?
 // Remove BGG toggle and possibly replace with verification.
@@ -56,28 +55,31 @@ context.init = (function () {
 	//private
 	function activate() {
 		//Set up the buttons.
+		//Individual buttons.
 		var buttons = {
 			addCard: cardpen.form.addCard,
 			removeCard: cardpen.form.removeCard,
 			export: cardpen.util.exporter,
 			idkFetch: cardpen.idk.fetch,
-			generate: cardpen.form.generate,
-			imagine: cardpen.form.generate,
-			loadToggle: cardpen.form.loadToggle,
-			print: cardpen.form.generate
+			loadToggle: cardpen.form.loadToggle
 		};
 		_.each(buttons, function(value, key) {
 			document.getElementById(key).addEventListener('click',value);
 		});
-		_.each(document.getElementsByClassName('load'), function(el) {
-			//clear, eg, idkToggle, stored.
-			el.addEventListener('click', cardpen.form.load);
-		});
-		_.each(document.getElementsByClassName('view'), function(el) {
-			//cardsView, editorView, settingsView
-			el.addEventListener('click', cardpen.form.view);
+
+		//Button groups.
+		var buttonClasses = {
+			load: cardpen.form.load,       //clear, eg, idkToggle, stored.
+			format: cardpen.form.generate, //images, html, print
+			view: cardpen.form.view	       //cardsView, editorView, settingsView
+		};
+		_.each(buttonClasses, function(value, key) {
+			_.each(document.getElementsByClassName(key), function(el) {
+				el.addEventListener('click',value);
+			});
 		});
 
+		//HTML5 load buttons are weird.
 		_.each(document.getElementsByClassName('upload'), function(el) { 
 			el.addEventListener('change', cardpen.util.file);
 		});
@@ -201,16 +203,19 @@ context.form = (function () {
 	function generate(e) {
 		//A wrapper that translates the event into the appropriate format setting.
 		//(See write.massage() for the reasons.)
-		var format;
+		var newFormat;
 		if (e && e.target) {
-			if (e.target.getAttribute("id") == "imagine")
-				format = "image";
-			if (e.target.getAttribute("id") == "print")
-				format = "print";
+			newFormat = e.target.getAttribute("data-format");
+			if (e.target.getAttribute("data-view") == "cardsView") {
+				//Restores the pre-help output selection.
+				newFormat = getSelected("format");
+			}
 		}
-		context.write.generate(get(),format);
-		if (format == "print")
+		context.write.generate(get(),newFormat);
+		if (newFormat == "print" && !(e.target && e.target.getAttribute("data-view") == "cardsView")) {
+			//If restoring, don't try to print again.
 			context.util.printFrame();
+		}
 	}
 
 	function get() {
@@ -220,6 +225,15 @@ context.form = (function () {
 			data[key] = mirrObj.getValue();
 		});
 		return data;
+	}
+
+	function getSelected(classData) {
+		//Figure out the current selected type (for a corner case).
+		var elt = document.querySelectorAll("button." + classData + ".selected");
+		if (elt.length > 0)
+			return elt[0].getAttribute("data-" + classData);
+		else
+			return "";
 	}
 
 	function load(e) {
@@ -314,6 +328,7 @@ context.form = (function () {
 		//Change the layout from a UI button.
 		if (e && e.target) {
 			//Remove the old selected class and add the new one.
+			var oldView = getSelected("view");
 			unselect("view");
 			var newView = e.target.getAttribute("data-view");
 			select("view",newView);
@@ -332,6 +347,7 @@ context.form = (function () {
 				break;
 
 				case "cardsView":
+				context.form.generate((oldView == "help" ? e : null));
 				toggle("off");
 				break;
 
@@ -1034,16 +1050,16 @@ context.write = (function () {
 		var forImages = (format == "image");
 		
 		//Set format in UI.
-		context.form.unselect("output");
+		context.form.unselect("format");
 		switch (format) {
 			case "print":
-			context.form.select("output","print");
+			context.form.select("format","print");
 			break;
 			case "image":
-			context.form.select("output","imagine");
+			context.form.select("format","image");
 			break;
 			default:
-			context.form.select("output","html");
+			context.form.select("format","html");
 			break;
 		}
 
@@ -1111,8 +1127,7 @@ context.write = (function () {
 	function help() {
 		//Show the help.
 		document.getElementById("cpOutput").src = "doc/index.html";
-		//Unselect all other outputs.
-		context.form.unselect("output");
+		//Stopped unselecting other outputs so we can restore the previous one.
 	}
 
 	function massage(data,format) {
