@@ -161,9 +161,9 @@ To generate the list, click the **BGG** button under Project.  Optionally, edit 
 
 Next, open the Advanced view and enter your own username in the **BGG username** field.  Click the **Get Games** button; this will replace the sample card list with one based on your own game collection.
 
-### Output
+### Output Format
 
-You have three card generation options under Output:
+You have three card generation options under Format:
 
 * The **HTML** button generates an HTML preview.
 * The **Print** button prints the HTML page (for DIY cards).
@@ -190,7 +190,7 @@ The **cutline** checkbox (in the Advanced view) is for adding a cut line when pr
 
 Due to browser security settings affecting the library that CardPen uses to generate images, not all browsers will generate cards as images.  Safari will not, nor will any iOS browser; Chrome generally will.
 
-When generating images, choose an adequate DPI (300 is the default and is most printers' minimum), then click the **Images** button under Output.  The images will appear in the output section of the page, with a **Zip Images** button above them.  To download the images as a zip file, click the button.
+When generating images, choose an adequate DPI (300 is the default and is most printers' minimum), then click the **Images** button under Format.  The images will appear in the output section of the page, with a **Zip Images** button above them.  To download the images as a zip file, click the button.
 The images inside the zip file will be named after your project and numbered sequentially.
 
 Some browsers will display the images at a strangely small resolution; in that case, right-click on an image to open it in a new tab (then, additionally, zoom in if your browser is zoomed out) in order to see the image at its real pixel size.  (You don't need to do anything special to zip such images.)
