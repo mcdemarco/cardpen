@@ -13,6 +13,8 @@
   "ccircle": false,
   "gsize": 1,
   "gunit": "mm",
+  "msize": 0.5,
+  "munit": "in",
   "blsize": 0.12,
   "blunit": "in",
   "ssize": 0.12,

@@ -9,7 +9,6 @@
 // add bleed/safe to card size view (too difficult? only selected size?)
 // Refactor/make optional the bleed/safe wrappers?
 // Load project from url?
-// Add margin to page/fix print sizing margin issue (dance deck)
 // Handle printing backs like PnPDeliver?
 // em dashes not converted for help (smartypants option?) (marked cli can't pass options known issue #110)
 // replace +/- card buttons with icons
@@ -589,6 +588,7 @@ context.size = (function () {
 		double: double,
 		grid: grid,
 		gutter: gutter,
+		margin: margin,
 		orient: orient,
 		page: page,
 		pixels: pixels,
@@ -655,26 +655,36 @@ context.size = (function () {
 
 	function gutter(data) {
 		//Get sizing for the gutters.
-		var marginSize = data.gsize/2;
-		return [marginSize,marginSize,data.gunit];
+		var gutterSize = data.gsize/2;
+		return [gutterSize,gutterSize,data.gunit];
 	}
 
 	function grid(data) {
 		//Get the number of rows and columns at the current card/page size: [r,c]
-		//needs margin?
 		var cardSize = card(data,true); //with bleed
 		var pageSize = page(data);
 		var gutterSize = gutter(data);
+		var marginSize = margin(data);
 		//If everything is not in same units, convert it all to mms.
-		if (!(cardSize[2] == pageSize[2] && cardSize[2] == gutterSize[2])) {
+		if (!(cardSize[2] == pageSize[2] && cardSize[2] == gutterSize[2] && cardSize[2] == marginSize[2])) {
 			cardSize = convert2mm(cardSize);
 			pageSize = convert2mm(pageSize);
 			gutterSize = convert2mm(gutterSize);
+			marginSize = convert2mm(marginSize);
 		}
+		marginSize = double(marginSize);
+
+		//Subtract the margins.
 		var rolms = _.map([0,1], function(idx) {
-			return Math.floor(pageSize[idx]/(cardSize[idx] + gutterSize[idx]));
+			return Math.floor((pageSize[idx] - marginSize[idx])/(cardSize[idx] + gutterSize[idx]));
 		});
 		return rolms;
+	}
+
+	function margin(data) {
+		//Get sizing for the margins.
+		var marginSize = data.msize;
+		return [marginSize,marginSize,data.munit];
 	}
 
 	function orient(sizeArray,landtrait) {
@@ -933,8 +943,9 @@ context.style = (function () {
 	function page(data,forImages) {
 		var style = [];
 		var rolms = context.size.grid(data);
+		var marginSize = context.size.margin(data);
 		style.push("* {box-sizing: border-box;}");
-		style.push("body {");
+		style.push("body {margin:0;");
 		if (!forImages && rolms[0] > 0 && rolms[1] > 0) {
 			//Only restrict the page size when it's harmless to do so.
 			var pageSize = context.size.page(data);
@@ -942,7 +953,8 @@ context.style = (function () {
 		}
 		style.push("background-color:#cecece;}");
 		style.push("@media print {body {background-color:white;}}");
-		style.push("page {margin-top: 15mm;border: 0;page-break-after: always;");
+		style.push("page {margin: " + marginSize[0] + marginSize[2] + ";");
+		style.push("border: 0;page-break-after: always;");
 		style.push("display:flex;flex-direction:row;flex-wrap:wrap;align-items: center;justify-content: center;}");
 		return style.join("\n");
 	}
@@ -1256,6 +1268,8 @@ context.write = (function () {
 		'data.ccircle': '#ccircle',
 		'data.gsize': '#gsize',
 		'data.gunit': 'input[name=gunit]',
+		'data.msize': '#msize',
+		'data.munit': 'input[name=munit]',
 		'data.blsize': '#blsize',
 		'data.blunit': 'input[name=blunit]',
 		'data.ssize': '#ssize',
