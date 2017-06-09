@@ -1055,7 +1055,7 @@ context.write = (function () {
 	}
 
 	function generate(realData,format) {
-		var cards, cardsParsed;
+		var cards, cardsParsed, cardsTemp;
 		var externalLink = "";
 		var templateOutput = "";
 		var fullOutput = "";
@@ -1079,10 +1079,17 @@ context.write = (function () {
 		var data = massage(realData,format);
 
 		//Parse csv.
-		cardsParsed = Papa.parse(data.csv, {
+		cardsTemp = Papa.parse(data.csv, {
 			header: true,
 			skipEmptyLines: true
 		});
+
+		//Massage the csv.
+		if (data.rscount && data.rscount > 1) {
+			cardsParsed = restructure(data.rscount, data.rsstyle, cardsTemp);
+		} else {
+			cardsParsed = cardsTemp;
+		}
 
 		//Summon the goog.
 		if (data.extCSS)
@@ -1154,6 +1161,48 @@ context.write = (function () {
 			massageData.cutline = false;
 		}
 		return massageData;
+	};
+
+	function restructure(count, style, cardStructure) {
+		var cards = cardStructure.data;
+		var newCards = [];
+		switch (style) {
+			case "random":
+			cards = _.shuffle(cards);
+			//Fall through to buncher, which is simpler than the cycler.
+
+			case "bunch":
+			cards.reverse();
+			while (cards.length > 0) {
+				var temp = [];
+				for (var co = 0; co < count; co++) {
+					var popped = cards.pop();
+					if (popped)
+						temp.push(popped);
+				}
+				newCards.push({rowset: temp});
+			}
+			break;
+
+			case "cycle":
+			for (var i = 0; i < Math.ceil(cards.length / count) + 0; i++) { //group count 3 (total 12 +): 0 1 2
+				var temp = [];
+				for (var co = 0; co <= count; co++) { // row count in group = 4
+					var unpopped = cards[co + co*count + i];  //cards should be: 0, 3, 6, 9
+					if (unpopped)
+						temp.push(unpopped);
+				}
+				newCards.push({rowset: temp});
+			}
+			break;
+
+			default:
+			newCards = cards;
+			break;
+		}
+debugger;
+		cardStructure.data = newCards;
+		return cardStructure;
 	};
 
 	function sizes() {
@@ -1230,7 +1279,7 @@ context.write = (function () {
 				}
 				formatted += '<page>\n';
 			}
-			formatted += Mustache.to_html(templateA + (c+1) + templateB, {cardpen: cards[c]});
+			formatted += Handlebars.compile(templateA + (c+1) + templateB)({cardpen: cards[c]});
 		}
 		formatted += '</page></page>\n';
 		return formatted;
@@ -1282,7 +1331,9 @@ context.write = (function () {
 		'data.css': '#css',
 		'data.csv': '#csv',
 		'data.mustache': '#mustache',
-		'data.cardClass': '#cardClass'
+		'data.cardClass': '#cardClass',
+		'data.rscount': '#rscount',
+		'data.rsstyle': 'input[name=rsstyle]'
 	});
 
 })(cardpen);

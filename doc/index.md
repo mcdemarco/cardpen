@@ -40,7 +40,7 @@ See the end of this file for some alternatives to CardPen.
 
 ## How
 
-Your cards are assembled from a card list, a Mustache template, and optional CSS styles.
+Your cards are assembled from a card list, a Mustache/Handlebars template, and optional CSS styles.
 You edit these and other settings in the upper half of the CardPen window,
 while the cards themselves appear in the bottom half of the CardPen window (as does this help file).
 
@@ -85,20 +85,27 @@ To use the **Card classes** setting, switch to the Advanced view and put the exa
 
 There is also a built-in card class, *cardN*, for the nth card of your current list.
 
+###### Rowsets
+
+The **Rowsets** setting lets you use more than one row from your card list make a single card.  To use the **Rowsets** setting, switch to the Advanced view and put the number of rows you want to group together into the field.  Then choose whether you want rows to be picked from your list at random (without reuse), in order (in bunches), or equidistantly (cycling through the whole list).
+
+To iterate over the rows individually in your template, use the `{{#rowset}}` and  `{{/rowset}}` tags.  In addition to the normal columns, the particular `{{@index}}` of your row within the rowset is also available.
+(See the Zendo and RPG examples for more details.)
+
 ##### Your Template
 
-You can upload a Mustache template or enter it manually.
+You can upload a Mustache or Handlebars template, or enter one manually.
 
 The template is mostly plain HTML laying out a single card from your set.
-To insert card-specific information, use Mustache braces around one of your column titles from your card list:  `{{YourColumnNameHere}}`.
+To insert card-specific information, use Mustache-style braces around one of your column titles from your card list:  `{{YourColumnNameHere}}`.
 
 In the Pico example, there are only two columns in the CSV file, named *Number* and *Score*.  The card's number is inserted in five places on the card: the center and the four corners.  The card's score is used as part of a CSS class that inserts the scoring pips.
 
-There is a built-in Mustache tag that you can use to change your template based on whether you are generating cards as HTML or as images: `{{cardImage}}`.  To turn a section of the template on when you are generating card images, put it between two tags `{{#cardImage}}` and `{{/cardImage}}`.  To turn a section off, put it between `{{^cardImage}}` and `{{/cardImage}}`.
+There is a built-in tag that you can use to change your template based on whether you are generating cards as HTML or as images: `{{cardImage}}`.  To turn a section of the template on when you are generating card images, put it between two tags `{{#cardImage}}` and `{{/cardImage}}`.  To turn a section off, put it between `{{^cardImage}}` and `{{/cardImage}}`.
 
 For an example of using this tag, click the **BGG** button and scroll down to the bottom of that template.  The template uses the tag to add a proxy to the BoardGameGeek image URL when generating images (because BGG is not set up correctly for CORS).  You can also use these tags to compensate for unexpected differences between your HTML and image output.
 
-For more hints on how to set up your Mustache template, see the additional examples, [the examples from hccd](https://github.com/vaemendis/hccd/tree/master/examples), and/or [the Mustache documentation](https://mustache.github.io/mustache.5.html).
+For more hints on how to set up your Mustache/Handlebars template, see the additional examples, [the examples from hccd](https://github.com/vaemendis/hccd/tree/master/examples), the [Mustache documentation](https://mustache.github.io/mustache.5.html), or the [Handlebars docs](http://handlebarsjs.com).
 
 ##### Your Styles
 
