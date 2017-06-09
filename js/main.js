@@ -1169,10 +1169,22 @@ context.write = (function () {
 		switch (style) {
 			case "random":
 			cards = _.shuffle(cards);
-			//Fall through to buncher, which is simpler than the cycler.
+			//Fall through to buncher (after some unnecessary cycling).
+
+			case "cycle":
+			//Check for excess cards that won't fit the permutation.
+			var remainder = cards.length % count;
+			//Need to how many full rowsets we'll end up with.
+			var rowsetCount = Math.floor(cards.length / count);
+			var leftover = _.last(cards, remainder);
+			//Reorder the array as cycled (by sorting on the index mod the rowset size).
+			cards = _.chain(_.initial(cards,remainder)).sortBy(function(elt, idx) {return idx % rowsetCount;}).concat(leftover).value();
+			//Fall through to buncher.
 
 			case "bunch":
+			//Reverse the array because we're popping it now.
 			cards.reverse();
+			//Lodash has a chunker that could do this, but _ doesn't.
 			while (cards.length > 0) {
 				var temp = [];
 				for (var co = 0; co < count; co++) {
@@ -1184,23 +1196,12 @@ context.write = (function () {
 			}
 			break;
 
-			case "cycle":
-			for (var i = 0; i < Math.ceil(cards.length / count) + 0; i++) { //group count 3 (total 12 +): 0 1 2
-				var temp = [];
-				for (var co = 0; co <= count; co++) { // row count in group = 4
-					var unpopped = cards[co + co*count + i];  //cards should be: 0, 3, 6, 9
-					if (unpopped)
-						temp.push(unpopped);
-				}
-				newCards.push({rowset: temp});
-			}
-			break;
-
 			default:
+			//This case should not occur.
 			newCards = cards;
 			break;
 		}
-debugger;
+
 		cardStructure.data = newCards;
 		return cardStructure;
 	};
