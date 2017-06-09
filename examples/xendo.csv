@@ -68,7 +68,7 @@ Rating	Nature
 3	it has no white flat pieces
 3	it has two non-white pieces
 3	it has two pieces of the same size, and two pieces of the same color
-3	no large pieces point at white pieces (…equal to black if a large points at a white…)
+3	no large pieces point at white pieces (equivalent to black if a large points at a white)
 3	none of the medium pieces are white
 3	the majority of the pieces are clear
 3	the number of purple pieces equals the number of clear pieces
@@ -90,7 +90,7 @@ Rating	Nature
 4	exactly half of the pip count comes from clear
 4	exactly one-third of the pieces are purple
 4	it has a blue piece pointing at something and a white piece being pointed at
-4	it has a blue piece which points at, but does not touch, a small piec
+4	it has a blue piece which points at, but does not touch, a small piece
 4	it has a flat piece and no purple pieces
 4	it has a clear piece, or both a white piece and a blue piece
 4	it has a large piece and a different piece which is upright
@@ -110,7 +110,7 @@ Rating	Nature
 4	it has an ungrounded large touching a small
 4	it has an upright piece pointing at something
 4	it has an upright piece with its pip-count number of pieces pointing at it
-4	it has at least one piece which points at no other pieces (…equal to black if all pieces point at something…)
+4	it has at least one piece which points at no other pieces (equivalent to black if all pieces point at something)
 4	it has at least two blue pieces or at least two small pieces
 4	it has exactly 4 pips of weird
 4	it has exactly eight pips
@@ -184,7 +184,7 @@ Rating	Nature
 7	the number of flat pieces equals the number of weird pips
 7	the total pip count is less than 4 or greater than 7
 7	the total pip count is seven, with flat pieces counting double
-8	it has two pieces of the same color xor has two pieces of the same size
+8	it has two pieces of the same color XOR has two pieces of the same size
 8	the total pip count is prime
 9	the pip count of the pieces pointing at no other pieces is three
 9	the total non-blue pip count is prime
