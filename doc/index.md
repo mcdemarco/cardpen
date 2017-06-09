@@ -205,6 +205,20 @@ Some browsers will display the images at a strangely small resolution; in that c
 Image generation is a dark art that sometimes goes wrong;
 if something else looks awry or if you get a failure message, try again.
 
+##### Rotating Images
+
+If you need to rotate your landscape cards back to portrait to upload to a printer, I recommend using [ImageMagick](https://www.imagemagick.org/script/index.php).  The relevant command is:
+
+`convert -rotate "90" <filename>.png <newfilename.png>`
+
+You probably want to rotate the back in the opposite direction:
+
+`convert -rotate "-90" <filename>.png <newfilename.png>`
+
+It's easier to just edit the files in place (as long as you've saved your project and can regenerate them if something goes wrong):
+
+`mogrify -rotate "90" *.png`
+
 #### Saving
 
 CardPen stores your current card edits in your browser's local storage, so you can come back to it in the same browser later on (but not forever, and not if you overwrite it with another set of cards).
