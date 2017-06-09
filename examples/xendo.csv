@@ -1,0 +1,190 @@
+Rating	Nature
+1	it has a white piece and a blue piece
+1	it has a white piece pointing at a white piece
+1	it has an ungrounded purple medium
+1	it has at least two purple pieces
+1	it has exactly one purple flat piece
+1	it has exactly two white pieces
+2	all of the upright pieces are grounded, and there exists an upright piece
+2	it has a purple or a clear piece
+2	it has an equal number of white and blue pieces
+2	it has an ungrounded weird piece
+2	it has at least one weird piece
+2	it has exactly one upright piece
+2	it has is at least one color with two or more pieces
+2	it has no medium pieces
+2	it has no more than one piece of each color
+2	it has no upright pieces
+3	all flat pieces point at upright pieces, and there exists at least one flat piece
+3	all of the flat pieces point at upright pieces
+3	all of the white pieces are upright, and there exists at least one white piece
+3	all the pieces are flat, ignoring white pieces
+3	all the small pieces are white, all the medium pieces are clear, and all the large pieces are blue
+3	all the upright pieces are the same size
+3	all weird pieces are ungrounded, and there exists at least one weird piece
+3	exactly half of the pips are from large pieces
+3	it has a blue piece or a weird piece
+3	it has a blue piece pointing at a flat piece
+3	it has a flat large piece and an upright small piece
+3	it has a flat pointed at a non-flat
+3	it has a grounded clear piece or ungrounded purple piece
+3	it has a grounded weird piece
+3	it has a medium upright piece between two other upright pieces, all in a stack
+3	it has a non-upright white piece
+3	it has a piece pointed at a smaller piece
+3	it has a piece that is pointing at, but not touching, a white piece
+3	it has a piece touching a piece of its own size
+3	it has a piece which points at a piece of a different color
+3	it has a white piece pointing at a large piece
+3	it has a small purple upright on top of a medium white upright, and nothing else
+3	it has a three-piece tower that contains a white piece
+3	it has a weird blue piece
+3	it has an even number of colors represented
+3	it has an odd number of medium pieces
+3	it has an ungrounded blue piece pointing at a weird piece
+3	it has an ungrounded flat piece
+3	it has an ungrounded large, and no other large pieces
+3	it has an upright clear piece
+3	it has an upright piece touching a flat piece
+3	it has an upright tower where the top piece is larger than all the other pieces in the tower
+3	it has at least one flat and no weirds
+3	it has at least one piece of every size
+3	it has at least two colors with two or more pieces
+3	it has at least two pieces of the same color
+3	it has exactly one piece of every size
+3	it has exactly one ungrounded large, and no other larges
+3	it has exactly three non-purple pieces
+3	it has exactly three pieces, none of which are blue
+3	it has exactly three towers
+3	it has exactly two non-large pieces
+3	it has more blue pieces than any other color, considewhite individually
+3	it has more medium pieces than large pieces
+3	it has more small pieces than large pieces
+3	it has no blue pieces and no small pieces
+3	it has no clear pieces pointing at something
+3	it has no medium upright pieces
+3	it has no pieces pointing at any other piece
+3	it has no pieces that both point at, and touch, another single piece
+3	it has no white flat pieces
+3	it has two non-white pieces
+3	it has two pieces of the same size, and two pieces of the same color
+3	no large pieces point at white pieces (…equal to black if a large points at a white…)
+3	none of the medium pieces are white
+3	the majority of the pieces are clear
+3	the number of purple pieces equals the number of clear pieces
+3	the total pip count is a multiple of 3
+3	the total pip count is less than or equal to 4
+3	the total white pip count is even and non-zero
+4	a medium piece touches a flat piece
+4	a piece points at exactly two other pieces
+4	a white piece points at a large piece
+4	a white piece points at a weird piece
+4	a white piece touches a weird piece
+4	all flat pieces point at upright pieces
+4	all of the flat pieces are small, and there exists at least one flat piece
+4	all of the clear pieces are upright, or there are no clear pieces
+4	all of the weird pieces are medium, and there exists at least one medium piece
+4	every piece in the koan touches exactly one other piece, which is of a different color
+4	exactly half of the pieces are medium
+4	exactly half of the pieces are upright
+4	exactly half of the pip count comes from clear
+4	exactly one-third of the pieces are purple
+4	it has a blue piece pointing at something and a white piece being pointed at
+4	it has a blue piece which points at, but does not touch, a small piec
+4	it has a flat piece and no purple pieces
+4	it has a clear piece, or both a white piece and a blue piece
+4	it has a large piece and a different piece which is upright
+4	it has a medium ungrounded piece or a blue piece
+4	it has a non-blue medium piece or a blue piece
+4	it has a piece pointing at a single blue piece and not pointing at any other pieces
+4	it has a piece touching a piece of its own orientation
+4	it has a piece which points at a piece of a different size
+4	it has a white or clear piece pointing at another piece
+4	it has a small piece touching a medium piece
+4	it has a small piece touching a weird piece
+4	it has a small white and an ungrounded weird piece
+4	it has a weird piece but no flat pieces
+4	it has a weird piece touching a blue piece
+4	it has a purple touching a non-purple
+4	it has an equal number of white and clear pips
+4	it has an ungrounded large touching a small
+4	it has an upright piece pointing at something
+4	it has an upright piece with its pip-count number of pieces pointing at it
+4	it has at least one piece which points at no other pieces (…equal to black if all pieces point at something…)
+4	it has at least two blue pieces or at least two small pieces
+4	it has exactly 4 pips of weird
+4	it has exactly eight pips
+4	it has exactly two orientations represented
+4	it has five grounded pips
+4	it has no pieces pointed at any other piece
+4	it has six pips of large, or six pips of medium, or six pips of small
+4	no two pieces are of the same color
+4	none of the medium pieces are purple, and there are purple pieces
+4	the number of purple pips equals the number of clear pips
+4	the total pip count is between 4 and 7
+4	the total white pip count is even
+4	the total white pip count is odd
+5	every piece is pointing at an even number of pieces
+5	exactly half of the pieces are weird
+5	it has a flat piece which points at two other pieces
+5	it has a large piece which touches, but does not point at, a medium piece
+5	it has a piece being pointed at and a piece not being pointed at
+5	it has a piece pointing at any part of a tower containing a piece of the same size
+5	it has a piece pointing at two or more different colors
+5	it has a piece which points at two other pieces
+5	it has a white piece or a small piece or an upright piece
+5	it has a white piece, and has fewer white pieces than non-white pieces
+5	it has a set of contiguously touching pieces with a total pip-count of five
+5	it has a purple XOR a clear
+5	it has a purple flat piece, or a small piece
+5	it has an ungrounded large, and no other pieces other than smalls
+5	it has at least one piece which is both pointing at another piece and being pointed at
+5	it has at least two more purple pips than blue pips
+5	it has exactly one more blue piece than purple pieces
+5	it has exactly one piece touching nothing
+5	it has exactly two colors touching the table
+5	it has exactly two sizes and exactly two colors
+5	it has more blue pips than clear pips
+5	it has more flat pieces than purple pieces
+5	it has more pips of flat than of upright
+5	it has more purple pieces than flat pieces
+5	the number of white plus blue pieces equals the number of clear plus purple pieces
+5	the pip count of the purple pieces and blue pieces adds to exactly five
+5	the total pip count is even
+5	the total pip count is not a multiple of 3
+5	the total pip count is odd
+5	the total pip count of non-purple pieces is exactly 5
+5	the total white pip count is a multiple of 3
+6	any piece is touching at least two other pieces
+6	each orientation represented has the same number of pieces
+6	exactly one-third of the pips are from white
+6	it cannot have two pieces of the same size, color, or orientation
+6	it has a large XOR a small
+6	it has a medium piece which points at, but does not touch, a flat piece
+6	it has a medium piece which points at, but does not touch, a small piece
+6	it has a piece that points at another, and all the pieces that point at other pieces do not touch their targets
+6	it has a small piece which touches, but does not point at, an upright piece
+6	it has any piece entirely nested within another piece
+6	it has exactly four or seven pips
+6	it has exactly two colors or exactly two sizes
+6	it has more pieces being pointed at than pieces not being pointed at
+6	it has only one piece not touching any other pieces
+6	it has pieces of two different colors touching
+6	no pieces are touching a piece that has the same size, color, or orientation
+6	the blue pieces plus flat pieces is three, where blue flat pieces count twice
+6	the number of mediums pieces plus the number of white pieces equals three
+6	the number of pieces pointing at something equals the number of pieces not pointing at anything
+6	the total of purple pips plus blue pips is 4
+7	it has a piece that is touching as many other pieces as it has pips
+7	it has a piece with any part of itself inside another piece
+7	it has exactly one piece which is pointing at exactly one piece
+7	it has exactly three upright pieces that are not medium
+7	it has more small pieces than flat pieces, ignore blue pieces
+7	the number of flat pieces equals the number of upright pips
+7	the number of flat pieces equals the number of weird pips
+7	the total pip count is less than 4 or greater than 7
+7	the total pip count is seven, with flat pieces counting double
+8	it has two pieces of the same color xor has two pieces of the same size
+8	the total pip count is prime
+9	the pip count of the pieces pointing at no other pieces is three
+9	the total non-blue pip count is prime

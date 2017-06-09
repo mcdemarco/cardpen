@@ -90,7 +90,7 @@ There is also a built-in card class, *cardN*, for the nth card of your current l
 The **Rowsets** setting lets you use more than one row from your card list make a single card.  To use the **Rowsets** setting, switch to the Advanced view and put the number of rows you want to group together into the field.  Then choose whether you want rows to be picked from your list at random (without reuse), in order (in bunches), or equidistantly (cycling through the whole list).
 
 To iterate over the rows individually in your template, use the `{{#rowset}}` and  `{{/rowset}}` tags.  In addition to the normal columns, the particular `{{@index}}` of your row within the rowset is also available.
-(See the Zendo and RPG examples for more details.)
+(See the Xendo and RGB examples for more details.)
 
 ##### Your Template
 
