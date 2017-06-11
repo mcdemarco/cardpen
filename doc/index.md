@@ -77,6 +77,9 @@ Each remaining line should have the same number of columns and should describe o
 
 The **+** button will add a duplicate card to the end of your list.  The **-** button will remove the last card from your list.
 
+Note that card list is optional; if you only want one card (such as for a card back, score pad, game box or the like), you don't need to fill anything in here.
+
+
 ###### Card Classes
 
 The **Card classes** setting turns one or more columns from your card list into CSS classes on each card, which is especially useful for adding background images when doing card bleeds.  (Because the card wrapper element itself, `card`, does not appear in your Mustache template, you can't put a CSS class on it directly.)
@@ -97,7 +100,7 @@ To iterate over the rows individually in your template, use the `{{#rowset}}` an
 You can upload a Mustache or Handlebars template, or enter one manually.
 
 The template is mostly plain HTML laying out a single card from your set.
-To insert card-specific information, use Mustache-style braces around one of your column titles from your card list:  `{{YourColumnNameHere}}`.
+To insert card-specific information, use Mustache-style braces around one of your column titles from your card list:  `{{YourColumnNameHere}}`.  (If you have HTML in your column that you want parsed, use three braces when referring to it instead of two:  `{{{YourColumnNameHere}}}`.)
 
 In the Pico example, there are only two columns in the CSV file, named *Number* and *Score*.  The card's number is inserted in five places on the card: the center and the four corners.  The card's score is used as part of a CSS class that inserts the scoring pips.
 
@@ -251,10 +254,10 @@ Not all card printing services accept PNG files, but many do.
 ### Card Printing Services
 
 * [ArtsCow](http://www.artscow.com/) prints a handful of card sizes and shapes.  (Beware their weird minis!)   Not all their offerings let you set up more than one back, and some come with a pre-configured suit that you will probably need to remove from the cards.  On the bright side, they have enticing sale prices and they also print memo pads, which may be useful for scorepads.  [Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.
-* [The Game Crafter](https://www.thegamecrafter.com)'s card sizes are listed [here](http://help.thegamecrafter.com/article/85-cards).  They recently added [Euro Poker](https://www.thegamecrafter.com/publish/product/EuroPokerDeck) size.
+* [The Game Crafter](https://www.thegamecrafter.com)'s card sizes are listed [here](http://help.thegamecrafter.com/article/85-cards); they recently added [Euro Poker](https://www.thegamecrafter.com/publish/product/EuroPokerDeck) size.  They also print everything you might need for an entire board game: score pads, boxes, boards, etc. and sell non-customized bits, too.  (You need to register and create a game to buy most of them.)
 * [Make Playing Cards](http://www.makeplayingcards.com/)' card sizes and prices are [here](http://www.makeplayingcards.com/low-price-for-bulk.aspx); they also make custom poker chips.
 * [Printer's Studio](http://www.printerstudio.com/)'s card sizes are listed [here](http://www.printerstudio.com/unique-ideas/blank-playing-cards.html).  They also make a large variety of game mats.
-* [Superior Pod](http://www.superiorpod.com/) doesn't have a single list, but their sizes seem to be poker, bridge, mini, question, 3.5" square and tarot.  Their submission requirements are [somewhat unclear](http://support.superiorpod.com/customer/en/portal/articles/2727142-file-submission-guidelines-for-card-decks) but seem to include a zip file of individual image files.  There's a [long BGG thread](https://boardgamegeek.com/thread/427619/superior-pod-thread/) about them you might want to read first.
+* [Superior Pod](http://www.superiorpod.com/) doesn't have a single card size list, but their sizes seem to be poker, bridge, mini, question, 3.5" square and tarot.  Their submission requirements are [somewhat unclear](http://support.superiorpod.com/customer/en/portal/articles/2727142-file-submission-guidelines-for-card-decks) but seem to include a zip file of individual image files.  There's a [long BGG thread](https://boardgamegeek.com/thread/427619/superior-pod-thread/) about them you might want to read first.
 
 Although they print the rare Skinny Mini, [DriveThruCards](http://www.drivethrucards.com) doesn't actually seem to accept image files, only PDFs.  For the record, their card sizes and costs are listed [here](https://onebookshelfpublisherservice.zendesk.com/hc/en-us/articles/227867627-Printed-Card-Formats-Costs).
 
