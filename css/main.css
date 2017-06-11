@@ -136,7 +136,8 @@ input#cardClass {
     max-width:33%;
 }
 
-input#extCSS {
+input#extCSS, 
+input#oURL {
     width:80%;
 }
 

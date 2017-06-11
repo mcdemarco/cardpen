@@ -183,10 +183,13 @@
 						(<span id="expectedSize" title="Size of generated images in pixels."></span>)
 					</span>
 				</h4>
-				<h4>
+				<h4 title="An opacity of 1 is solid, 0 is transparent.">
 					<input type="checkbox" id="overlay"> Overlay 
 					&nbsp; &nbsp; &nbsp; 
-					<input type="checkbox" id="live"><label title="Update HTML rendering as you type."> Live HTML</label>
+					Opacity: <input type="text" id="oopa" size="4" value=""/> 
+				</h4>
+				<h4 title="The URL of a template image to be overlaid over each card. Reduce opacity as necessary.">
+					URL: <input type="text" id="oURL" value=""/>
 				</h4>
 			</subsection>
 			<subsection>
@@ -203,7 +206,8 @@
 						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
 						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
 					</span>
-					&nbsp; &nbsp; &nbsp; 
+				</h4>
+				<h4>
 					<input type="checkbox" id="cutline"> Cut line
 				</h4>
 			</subsection>
@@ -222,6 +226,9 @@
 							<label for="plandscape">Landscape</label>
 						</span>
 					</span>
+				</h4>
+				<h4>
+					<input type="checkbox" id="live"><label title="Update HTML rendering as you type."> Live HTML</label>
 				</h4>
 			</subsection>
 		</section>
