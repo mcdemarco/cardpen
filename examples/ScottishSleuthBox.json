@@ -25,6 +25,8 @@
   "bradius": 0,
   "brunit": "in",
   "overlay": true,
+  "oopa": 0.5,
+  "oURL": "/overlays/small-pro-box-top.png",
   "extCSS": "https://fonts.googleapis.com/css?family=Cabin|Amarante",
   "css": "body {\n  font-family:Raleway,sans-serif;\n  font-size: 14pt;\n}\n\nh1 {\n  font-family: RennieMackintoshITC, Amarante, Cabin, sans-serif;\n  font-size: 50pt;\n}\n\ndiv {\n \tdisplay:flex;\n  \tjustify-content: center;\n    align-items: center;\n  \theight:100%;\n  flex-direction: column;\n}\n\np {\n\tfont-family: Cabin, sans-serif;\n  \tfont-style: italic;\n    max-width: 30%;\n  text-align:center;\n}\n\n.card1 {\n  background-image: url(images/ssbacks_1.jpg);\n  background-size: 100mm 100mm; \n  background-position: 20mm 34mm;\n}\nbleed {  \n  background-image:  url(images/ssbacks_glass1.svg);\n  background-repeat: no-repeat;\n  background-position: -5mm 30mm;\n}\n.card2 bleed {\n\tbackground-image: url(images/ssbacks_glass2.svg);\n}",
   "csv": "Text\n\"<h1>Scottish Sleuth</h1> <p>a game of dancing and deduction</p>\"\n\"<p>Scottish Sleuth is deduction game for 3&ndash;7 players ages 10 and up, much like Clue/Cluedo but without the board.</p>\"",
