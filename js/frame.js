@@ -6,14 +6,14 @@ var cards = [];
 window.onload = function() {
 	var nodes = document.getElementsByTagName("card");
 	for (var n = 0; n < nodes.length; n++) {
-		imaginer(nodes[n]);
+		imaginer(nodes[n],n);
 	}
 }
 
-function imaginer(node) {
+function imaginer(node,n) {
 	//Need to pass height and width due to an issue with oversized transparent canvases (#50).
 	domtoimage.toPng(node, { height: height, width: width, dpi: dpi }).then(function (dataUrl) {
-		cards.push(dataUrl);
+		cards[n] = dataUrl;
 		var img = new Image();
 		img.src = dataUrl;
 		document.getElementById("cpImages").appendChild(img);
