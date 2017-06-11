@@ -16,7 +16,7 @@
 		<script src="mode/markdown/markdown.js"></script>
 		<script src="mode/spreadsheet/spreadsheet.js"></script>
 		<script src="lib/FileSaver.min.js"></script>
-    <script src="lib/mustache.min.js"></script>
+    <script src="lib/handlebars.min.js"></script>
     <script src="lib/papaparse.min.js"></script>
     <script src="lib/underscore-min.js"></script>
 		<link href="css/codemirror.css" rel="stylesheet">
@@ -109,7 +109,7 @@
 			<subsection>
 				<h4 id="csizeWrapper" class="indent">Card size: 
 					<select id="csize" style="width:50%;"></select>
-					<button type="button" class="small view sizes" data-view="sizes" id="viewSizes">Show all</button>
+					<button type="button" class="small view sizes" data-view="sizes" id="viewSizes">View sizes</button>
 					<span class="nw" id="customize" style="display:none;">
 						<input id="cwidth" placeholder="width" type="text" size="6"> x <input id="cheight" placeholder="height" type="text" size="6">
 						<input type="radio" id="cin" value="in" name="cunit"><label for="cin">in</label>
@@ -132,6 +132,14 @@
 				</h4>
 				<h4 class="indent">Card classes:
 					<input type="text" id="cardClass" value=""/>
+				</h4>
+				<h4 class="indent" title="Optionally make single cards out of more than one spreadsheet line.">
+					Rowsets of <input type="text" id="rscount" style="width:2em;" maxlength="3" value="" title="row(s)/card"/>
+					<span style="nw">
+						<input type="radio" id="rBunch" name="rsstyle" value="bunch"/> <label for="rBunch" title="(1 2 3) (4 5 6) (7 8 9)">bunch</label>
+						<input type="radio" id="rCycle" name="rsstyle" value="cycle"/> <label for="rCycle" title="(1 4 7) (2 5 8) (3 6 9)">cycle</label>
+						<input type="radio" id="rRandom" name="rsstyle" value="random"/> <label for="rRandom" title="(4 9 7) (2 1 6) (5 3 8)">random</label>
+					</span>
 				</h4>
 			</subsection>
 		</section>
