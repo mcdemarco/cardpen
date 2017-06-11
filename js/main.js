@@ -1086,17 +1086,21 @@ context.write = (function () {
 
 		//Massage the csv.
 		if (data.rscount && data.rscount > 1) {
-			cardsParsed = restructure(data.rscount, data.rsstyle, cardsTemp);
+			cardsParsed = restructure(data.rscount, data.rsstyle, cardsTemp).data;
 		} else {
-			cardsParsed = cardsTemp;
+			cardsParsed = cardsTemp.data;
 		}
 
+		//Handle the noop case automatically, so the user doesn't have to fill it in.
+		if (cardsParsed.length == 0)
+			cardsParsed = [{noop: 1}];
+			
 		//Summon the goog.
 		if (data.extCSS)
 			externalLink = '\t<link href="' + data.extCSS +'" rel="stylesheet">';
 
 		//Alter cardset to include image tags for mustache.
-		cards = _.map(cardsParsed.data, function(val, idx) {
+		cards = _.map(cardsParsed, function(val, idx) {
 			val.cardImage = (forImages ? true : false);
 			//don't really need this b/c mustache has negation
 			//val.cardHTML = (forImages ? false : true);
@@ -1226,9 +1230,11 @@ context.write = (function () {
 			value = context.size.orient(value, data.cori);
 			cardSizeArray.push([key, value]);
 		});
-		var sortedSizes = _.sortBy(cardSizeArray, function(subArray) {
+		var sortedSizes = _(cardSizeArray).chain().sortBy(function(subArray) {
+			return context.size.convert2mm(subArray[1])[1];
+		}).sortBy(function(subArray) {
 			return context.size.convert2mm(subArray[1])[0];
-		});
+		}).value();
 		_.each(sortedSizes,function(nestyArray) {
 			var key = nestyArray[0];
 			var value = nestyArray[1];
