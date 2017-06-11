@@ -1055,7 +1055,7 @@ context.write = (function () {
 	}
 
 	function generate(realData,format) {
-		var cards, cardsParsed;
+		var cards, cardsParsed, cardsTemp;
 		var externalLink = "";
 		var templateOutput = "";
 		var fullOutput = "";
@@ -1079,17 +1079,28 @@ context.write = (function () {
 		var data = massage(realData,format);
 
 		//Parse csv.
-		cardsParsed = Papa.parse(data.csv, {
+		cardsTemp = Papa.parse(data.csv, {
 			header: true,
 			skipEmptyLines: true
 		});
 
+		//Massage the csv.
+		if (data.rscount && data.rscount > 1) {
+			cardsParsed = restructure(data.rscount, data.rsstyle, cardsTemp).data;
+		} else {
+			cardsParsed = cardsTemp.data;
+		}
+
+		//Handle the noop case automatically, so the user doesn't have to fill it in.
+		if (cardsParsed.length == 0)
+			cardsParsed = [{noop: 1}];
+			
 		//Summon the goog.
 		if (data.extCSS)
 			externalLink = '\t<link href="' + data.extCSS +'" rel="stylesheet">';
 
 		//Alter cardset to include image tags for mustache.
-		cards = _.map(cardsParsed.data, function(val, idx) {
+		cards = _.map(cardsParsed, function(val, idx) {
 			val.cardImage = (forImages ? true : false);
 			//don't really need this b/c mustache has negation
 			//val.cardHTML = (forImages ? false : true);
@@ -1156,6 +1167,49 @@ context.write = (function () {
 		return massageData;
 	};
 
+	function restructure(count, style, cardStructure) {
+		var cards = cardStructure.data;
+		var newCards = [];
+		switch (style) {
+			case "random":
+			cards = _.shuffle(cards);
+			//Fall through to buncher (after some unnecessary cycling).
+
+			case "cycle":
+			//Check for excess cards that won't fit the permutation.
+			var remainder = cards.length % count;
+			//Need to how many full rowsets we'll end up with.
+			var rowsetCount = Math.floor(cards.length / count);
+			var leftover = _.last(cards, remainder);
+			//Reorder the array as cycled (by sorting on the index mod the rowset size).
+			cards = _.chain(_.initial(cards,remainder)).sortBy(function(elt, idx) {return idx % rowsetCount;}).concat(leftover).value();
+			//Fall through to buncher.
+
+			case "bunch":
+			//Reverse the array because we're popping it now.
+			cards.reverse();
+			//Lodash has a chunker that could do this, but _ doesn't.
+			while (cards.length > 0) {
+				var temp = [];
+				for (var co = 0; co < count; co++) {
+					var popped = cards.pop();
+					if (popped)
+						temp.push(popped);
+				}
+				newCards.push({rowset: temp});
+			}
+			break;
+
+			default:
+			//This case should not occur.
+			newCards = cards;
+			break;
+		}
+
+		cardStructure.data = newCards;
+		return cardStructure;
+	};
+
 	function sizes() {
 		//The page of card sizes.
 		var fullOutput = "";
@@ -1176,9 +1230,11 @@ context.write = (function () {
 			value = context.size.orient(value, data.cori);
 			cardSizeArray.push([key, value]);
 		});
-		var sortedSizes = _.sortBy(cardSizeArray, function(subArray) {
+		var sortedSizes = _(cardSizeArray).chain().sortBy(function(subArray) {
+			return context.size.convert2mm(subArray[1])[1];
+		}).sortBy(function(subArray) {
 			return context.size.convert2mm(subArray[1])[0];
-		});
+		}).value();
 		_.each(sortedSizes,function(nestyArray) {
 			var key = nestyArray[0];
 			var value = nestyArray[1];
@@ -1230,7 +1286,7 @@ context.write = (function () {
 				}
 				formatted += '<page>\n';
 			}
-			formatted += Mustache.to_html(templateA + (c+1) + templateB, {cardpen: cards[c]});
+			formatted += Handlebars.compile(templateA + (c+1) + templateB)({cardpen: cards[c]});
 		}
 		formatted += '</page></page>\n';
 		return formatted;
@@ -1282,7 +1338,9 @@ context.write = (function () {
 		'data.css': '#css',
 		'data.csv': '#csv',
 		'data.mustache': '#mustache',
-		'data.cardClass': '#cardClass'
+		'data.cardClass': '#cardClass',
+		'data.rscount': '#rscount',
+		'data.rsstyle': 'input[name=rsstyle]'
 	});
 
 })(cardpen);

@@ -51,6 +51,9 @@
 		heart: [3,3.25,ins],
 		smallMemo: [3.75,3.75,ins],
 		largeMemo: [5.5,4.125,ins],
+		smallScorePad: [5.5,3.5,ins],
+		mediumScorePad: [8,4.5,ins],
+		largeScorePad: [10,8,ins],
 		letter: [11,8.5,ins],
 		a4: [297,210,mms],
 		legal: [14,8.5,ins],
@@ -91,7 +94,9 @@
 		css: '',
 		csv: '',
 		mustache: '',
-		cardClass: ''
+		cardClass: '',
+		rscount: '1',
+		rsstyle: 'bunch'
 	};
 
 	var exampleForm = {
@@ -123,7 +128,9 @@
 		css: ".wrapper {\n\tdisplay: flex;\n\tflex: 1;\n\tflex-direction: column;\n\tjustify-content: space-between;\n\tfont-family: Raleway, sans-serif;\n\tfont-size: 14pt;\n\twidth: 100%;\n\theight: 100%;\n}\n\n.corner {\n\tdisplay: flex;\n\talign-items: flex-start;\n\tflex-direction: row;\n\tfont-weight: 600;\n\tpadding: 5pt 7pt;\n}\n.score {\n\tcolor:red;\n\ttext-align:center;\n\twidth: 90%;\n\tfont-size: 24pt;\n\tpadding: 0pt;\n\tmargin-top: -7pt;\n}\n\n.score1::before {content: \" \\25CF \";} \n.score2::before {content: \" \\25CF \\25CF \";}  \n.score3::before {content: \" \\25CF \\25CF \\25CF \";}\n.score4::before {content: \" \\25CF \\25CF \\25CF \\25CF \";}\n\n.reversed {\n\ttransform: rotate(180deg);}\n.main {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: flex-start;\n\tflex-direction: column;\n\tjustify-content: space-between;\n\tfont-family: 'Delius Swash Caps', sans-serif;\n\tfont-size: 48pt;\n}",
 		csv: 'Number,Score\n2,1\n3,1\n4,2\n5,2\n6,2\n7,2\n8,3\n9,3\n10,3\n13,3\n16,4',
 		mustache: "<div class=\"wrapper\">\n\t<div class=\"corner\">{{Number}}<div class=\"score score{{Score}}\"></div>{{Number}}</div>\n\t<div class=\"main font-effect-shadow-multiple\">\n\t\t<div>{{Number}}</div>\n\t</div>\n\t<div class=\"corner reversed\">{{Number}}<div class=\"score score{{Score}}\"></div>{{Number}}</div>\n</div>",
-		cardClass: ''
+		cardClass: '',
+		rscount: '1',
+		rsstyle: 'bunch'
 	};
 
 	var idkForm = {
@@ -155,5 +162,7 @@
 		css: ".wrapper {\n\tdisplay: flex;\n\tflex: 1;\n\tflex-direction: column;\n\tjustify-content: space-between;\n\tfont-family: Raleway, sans-serif;\n\tfont-size: 11pt;\n\twidth: 100%;\n\theight: 100%;\n\toverflow: hidden;\n}\n\n.corner {\n\tfont-size: 13pt;\n\tfont-weight: 600;\n\twhite-space:nowrap;\n\ttransform: rotate(90deg) translateX(84%);\n\ttransform-origin: 90% 90%;\n}\n.corner.reversed {\n\ttransform: rotate(270deg) translateX(-8%);\n\ttransform-origin: 0 0;\n\tborder: 0\n}\n\ntable {\n\tbackground-color: #eee;\n\tpadding:3pt;\n\tborder-radius: 2pt;\n\tborder: 2px solid gray;\t\n}\nth {text-align: right;}\ntd {text-align: left;}\n\n.info {\n\tdisplay: flex;\n\tflex: 1;\n\tjustify-content: center;\n\talign-elements: center;\n\tmargin-top: -12pt;\n}\n\n.main {\n\tdisplay: flex;\n\tflex: 2;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: flex-end;\n\tmargin-bottom: -12pt;\n}\n\nimg {\n\tmax-height: 145pt;\n\tmax-width: 125pt;\n\tborder-radius: 2pt;\n}\n.cardImage img {\n\tmax-height: 135pt;\n}\n\n#thing159143 img {\n\tborder: 1px solid #bbb; /* for hue */\n}",
 		csv: "thing\tname\tyear\tsrc\tminplayers\tmaxplayers\tplayers\tminplaytime\tmaxplaytime\tplaytime\trating\taverage\tbayesaverage\trank\n478\tCitadels\t2007\t//cf.geekdo-images.com/images/pic557411.jpg\t2\t8\t2&ndash;8\t20\t60\t20&ndash;60\t8\t7.1\t7.1\t279\n36218\tDominion\t2008\t//cf.geekdo-images.com/images/pic394356.jpg\t2\t4\t2&ndash;4\t30\t30\t30\t9\t7.7\t7.6\t56\n43015\tHansa Teutonica\t2009\t//cf.geekdo-images.com/images/pic839090.jpg\t2\t5\t2&ndash;5\t45\t90\t45&ndash;90\t8\t7.6\t7.4\t97\n63888\tInnovation\t2011\t//cf.geekdo-images.com/images/pic1440811.jpg\t2\t4\t2&ndash;4\t45\t60\t45&ndash;60\t\t7.3\t7.1\t245\n176494\tIsle of Skye: From Chieftain to King\t2015\t//cf.geekdo-images.com/images/pic2524838.jpg\t2\t5\t2&ndash;5\t30\t50\t30&ndash;50\t\t7.5\t7.3\t144\n163412\tPatchwork\t2014\t//cf.geekdo-images.com/images/pic2270442.jpg\t2\t2\t2\t15\t30\t15&ndash;30\t8\t7.8\t7.7\t43\n8217\tSan Juan\t2004\t//cf.geekdo-images.com/images/pic174174.jpg\t2\t4\t2&ndash;4\t45\t60\t45&ndash;60\t7\t7.3\t7.2\t194\n13\tThe Settlers of Catan\t2003\t//cf.geekdo-images.com/images/pic2730.jpg\t3\t4\t3&ndash;4\t60\t120\t60&ndash;120\t7\t7.3\t7.1\t233\n215\tTichu\t2007\t//cf.geekdo-images.com/images/pic577980.jpg\t3\t10\t3&ndash;10\t60\t60\t60\t8\t7.6\t7.4\t103\n9209\tTicket to Ride\t2004\t//cf.geekdo-images.com/images/pic38668.jpg\t2\t5\t2&ndash;5\t30\t60\t30&ndash;60\t8\t7.5\t7.4\t109",
 		mustache: "<div class=\"wrapper\" id=\"thing{{thing}}\">\n\t<div class=\"corner\">{{name}}</div>\n\t<div class=\"info\">\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Players:</th><td>{{{players}}}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<th>Time:</th><td>{{{playtime}}} min</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<th>Rating:</th><td>{{average}}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<th>Rank:</th><td>{{rank}}</td>\n\t\t\t</tr>\n\t\t</table>\n\t</div>\n\t<div class=\"main\">\n\t\t<img src=\"{{#cardImage}}" + corsProxy + "https:{{/cardImage}}{{src}}\">\n\t</div>\n\t<div class=\"corner reversed\">{{year}}</div>\n</div>",
-		cardClass: ''
+		cardClass: '',
+		rscount: '1',
+		rsstyle: 'bunch'
 	};
