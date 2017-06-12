@@ -136,6 +136,16 @@ You can add a bleed outside the card proper (which increases the size of your ca
 
 To visualize your bleed and safe areas, check the **overlay** checkbox.  The overlay only appears in the HTML view; it will not print out or be included in your card images.
 
+###### Overlay Templates
+
+You can overlay an entire template image in place of the bleed and safe lines.  This is particularly useful for laying out unusual shapes.  Enter the image URL in the URL field under Overlay.  (If it's a local image and you're running locally, you can put it in the overlays directory and refer to it as `/overlays/my-overlay-filename.png` in the URL field.)
+
+Load the Scottish Sleuth Box example to see an overlay image in action.
+
+If you need to rotate a template to match your rotated cards, follow the directions below for rotating image output,
+and use your rotated template as the overlay URL.
+Once you've produced your images, follow the same directions to rotate your image output back (to match the original direction of the template).
+
 ##### Fonts
 
 You can add Google Fonts or other fonts (*e.g.*, [FontAwesome](https://www.bootstrapcdn.com/fontawesome/)) using the **External Stylesheet** setting.  [FontCDN](http://fontcdn.org) is a handy way to search for Google Fonts.  The Pico example also uses a [Google font effect](https://developers.google.com/fonts/docs/getting_started#enabling_font_effects_beta) for the text shadow.  (If you don't see it, you may not be using a browser that supports their font effects.)
