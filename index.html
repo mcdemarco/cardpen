@@ -134,10 +134,14 @@
 					<input type="text" id="cardClass" value=""/>
 				</h4>
 				<h4 class="indent" title="Optionally make single cards out of more than one spreadsheet line.">
-					Rowsets of <input type="text" id="rscount" style="width:2em;" maxlength="3" value="" title="row(s)/card"/>
-					<span style="nw">
+					Rowsets: <input type="text" id="rscount" style="width:2em;" maxlength="3" value="" title="row(s)/card"/>
+					<span class="nw">
 						<input type="radio" id="rBunch" name="rsstyle" value="bunch"/> <label for="rBunch" title="(1 2 3) (4 5 6) (7 8 9)">bunch</label>
+					</span>
+					<span class="nw">
 						<input type="radio" id="rCycle" name="rsstyle" value="cycle"/> <label for="rCycle" title="(1 4 7) (2 5 8) (3 6 9)">cycle</label>
+					</span>
+					<span class="nw">
 						<input type="radio" id="rRandom" name="rsstyle" value="random"/> <label for="rRandom" title="(4 9 7) (2 1 6) (5 3 8)">random</label>
 					</span>
 				</h4>
