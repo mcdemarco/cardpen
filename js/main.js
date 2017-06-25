@@ -270,6 +270,7 @@ context.form = (function () {
 			section.style.display = "";
 		} else {
 			section.style.display = "none";
+			document.getElementById("loadForm").reset();
 		}
 	}
 
