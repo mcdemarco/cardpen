@@ -1,6 +1,6 @@
 {
-  "name": "Scottish Sleuth Scorepad BW",
-  "notes": "A small scorepad for a retheme of Sleuth, along the lines of https://boardgamegeek.com/image/184197/sleuth",
+  "name": "Scottish Sleuth Scorepad (BW)",
+  "notes": "A scorepad for a retheme of Sleuth, along the lines of https://boardgamegeek.com/image/184197/sleuth, made small and black and white for printing at The Game Crafter.",
   "dpi": 300,
   "live": false,
   "psize": "letter",

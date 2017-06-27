@@ -1,8 +1,8 @@
 {
   "rscount": "1",
   "rsstyle": "bunch",
-  "name": "Scottish Sleuth Scorepad Simple",
-  "notes": "A small scorepad for a retheme of Sleuth, along the lines of https://boardgamegeek.com/image/184197/sleuth",
+  "name": "Scottish Sleuth Scorepad (Simple)",
+  "notes": "A simplified scorepad for a retheme of Sleuth, along the lines of the original.",
   "dpi": 300,
   "live": false,
   "psize": "letter",
