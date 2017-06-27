@@ -270,6 +270,7 @@ context.form = (function () {
 			section.style.display = "";
 		} else {
 			section.style.display = "none";
+			document.getElementById("loadForm").reset();
 		}
 	}
 
@@ -833,6 +834,7 @@ context.style = (function () {
 		var bleedSize = context.size.bleed(data);
 		var safeSize = context.size.safe(data);
 		var brSize = context.size.radius(data,true);
+		var opacity = data.oopa;
 		var style = "card {\n" +
 					"\tdisplay: block;\n" +
 					"\tmargin: " + flatten(gutterSize,0) + ";\n" +
@@ -850,37 +852,44 @@ context.style = (function () {
 		//Style the outer margin of the overlay.
 		var zeroSize = [0,0,cardSize[2]];
 		var outerBorder;
-		if (data.overlay)
+		if (data.overlay) 
 			outerBorder = "2px dotted gray";
 		if (data.cutline)
 			outerBorder = "0.8mm solid black"; //Should be configurable?
 			
-		if (outerBorder) {
-			style += overlay(cardSize,zeroSize,"Bleed",outerBorder,brSize);
+		if (data.oURL) {
+			//Style the overlay image only (inserted elsewhere).
+			style += overlay(cardSize,zeroSize,"Bleed",0,brSize,opacity);
+		} else {
+			//Write and style the usual overlay borders.
+			if (outerBorder) {
+				style += overlay(cardSize,zeroSize,"Bleed",outerBorder,brSize,(data.overlay ? opacity : undefined));
+			}
+
+			//Style the (inside) bleed margin of the overlay.
+			cardSize = context.size.card(data,false); //unbleed.
+			brSize = context.size.radius(data,false); //unbleed.
+			style += overlay(cardSize,bleedSize,"Cut","2px solid red",brSize,opacity);
+			
+			//Style the safe zone of the overlay.
+			cardSize = context.size.trim(cardSize,safeSize); //subtract the safe margin.
+			var shiftSize = context.size.add(bleedSize,safeSize);
+			style += overlay(cardSize,shiftSize,"Safe","2px dashed teal",brSize,opacity);
 		}
-
-		//Style the (inside) bleed margin of the overlay.
-		cardSize = context.size.card(data,false); //unbleed.
-		brSize = context.size.radius(data,false); //unbleed.
-		style += overlay(cardSize,bleedSize,"Cut","2px solid red",brSize);
-
-		//Style the safe zone of the overlay.
-		cardSize = context.size.trim(cardSize,safeSize); //subtract the safe margin.
-		var shiftSize = context.size.add(bleedSize,safeSize);
-		style += overlay(cardSize,shiftSize,"Safe","2px dashed teal",brSize);
-
+	
 		return style;
 	}
 
-	function overlay(cardSize,shiftSize,name,borderStyle,radiusSize) {
+	function overlay(cardSize,shiftSize,name,borderStyle,radiusSize,opacity) {
 		var oStyle =  "overlay.cardpen" + name + " {\n" +
-					"\tposition: absolute;\n" +
-					"\ttop:" + flatten(shiftSize,0) + ";\n" +
-					"\tleft:" + flatten(shiftSize,1) + ";\n" +
-					"\t" + flatten(cardSize) + "\n" +
-					"\tborder: " + borderStyle + ";\n" + 
-					"\tborder-radius: " + flatten(radiusSize,0) + ";\n" +
-					"}\n";
+				"\tposition: absolute;\n" +
+				"\ttop:" + flatten(shiftSize,0) + ";\n" +
+				"\tleft:" + flatten(shiftSize,1) + ";\n" +
+				"\t" + flatten(cardSize) + "\n" +
+				"\tborder: " + borderStyle + ";\n" + 
+				"\tborder-radius: " + flatten(radiusSize,0) + ";\n" +
+				(typeof opacity == "undefined" ? "" : "\topacity: " + opacity + ";\n") +
+				"}\n";
 		return oStyle;
 	}
 
@@ -1270,9 +1279,12 @@ context.write = (function () {
 		templateA +=	(data.cardClass ? ' {{' + data.cardClass + '}}' : '') + ' card'; //Card # goes here
 		var templateB = '">\n\t<bleed>\n\t\t<cut>\n\t\t\t<safe>';
 		templateB += data.mustache + "\n\t\t\t</safe>\n\t\t</cut>\n\t</bleed>";
-		if (data.overlay || data.cutline)
-			templateB += '\n\t<overlay class="cardpenBleed"></overlay>';
-		if (data.overlay)
+		if (data.overlay || data.cutline) {
+			templateB += '\n\t<overlay class="cardpenBleed">'; 
+			templateB += (data.oURL ? "<img style='height:100%;' src='" + data.oURL + "'/>" : "");
+			templateB += '</overlay>';
+		}
+		if (data.overlay && !data.oURL)
 			templateB += '<overlay class="cardpenCut"></overlay><overlay class="cardpenSafe"></overlay>';
 		templateB += "\n</card>{{/cardpen}}";
 		var rolms = context.size.grid(data);
@@ -1334,6 +1346,8 @@ context.write = (function () {
 		'data.bradius': '#bradius',
 		'data.brunit': 'input[name=brunit]',
 		'data.overlay': '#overlay',
+		'data.oURL': '#oURL',
+		'data.oopa': '#oopa',
 		'data.extCSS': '#extCSS',
 		'data.css': '#css',
 		'data.csv': '#csv',

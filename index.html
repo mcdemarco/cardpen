@@ -53,10 +53,12 @@
 							<button type="button" class="small load" id="idkToggle" title="Example game list using the BoardGameGeek API">BGG</button>
 							<button type="button" class="small load" id="loadToggle">Load</button>
 						</span>
-						<span class="nw up" id="loadSubsubsection" style="display:none;">
-							Load project file:
-							<input type="file" id="import" class="upload" data-type="import">
-						</span>
+						<form id="loadForm">
+							<span class="nw up" id="loadSubsubsection" style="display:none;">
+								Load project file:
+								<input type="file" id="import" class="upload" data-type="import">
+							</span>
+						</form>
 					</h4>
 				</subsubsection>
 			</subsection>
@@ -134,10 +136,14 @@
 					<input type="text" id="cardClass" value=""/>
 				</h4>
 				<h4 class="indent" title="Optionally make single cards out of more than one spreadsheet line.">
-					Rowsets of <input type="text" id="rscount" style="width:2em;" maxlength="3" value="" title="row(s)/card"/>
-					<span style="nw">
+					Rowsets: <input type="text" id="rscount" style="width:2em;" maxlength="3" value="" title="row(s)/card"/>
+					<span class="nw">
 						<input type="radio" id="rBunch" name="rsstyle" value="bunch"/> <label for="rBunch" title="(1 2 3) (4 5 6) (7 8 9)">bunch</label>
+					</span>
+					<span class="nw">
 						<input type="radio" id="rCycle" name="rsstyle" value="cycle"/> <label for="rCycle" title="(1 4 7) (2 5 8) (3 6 9)">cycle</label>
+					</span>
+					<span class="nw">
 						<input type="radio" id="rRandom" name="rsstyle" value="random"/> <label for="rRandom" title="(4 9 7) (2 1 6) (5 3 8)">random</label>
 					</span>
 				</h4>
@@ -183,10 +189,13 @@
 						(<span id="expectedSize" title="Size of generated images in pixels."></span>)
 					</span>
 				</h4>
-				<h4>
+				<h4 title="An opacity of 1 is solid, 0 is transparent.">
 					<input type="checkbox" id="overlay"> Overlay 
 					&nbsp; &nbsp; &nbsp; 
-					<input type="checkbox" id="live"><label title="Update HTML rendering as you type."> Live HTML</label>
+					Opacity: <input type="text" id="oopa" size="4" value=""/> 
+				</h4>
+				<h4 title="The URL of a template image to be overlaid over each card. Reduce opacity as necessary.">
+					URL: <input type="text" id="oURL" value=""/>
 				</h4>
 			</subsection>
 			<subsection>
@@ -203,7 +212,8 @@
 						<input type="radio" id="gin" value="in" name="gunit"><label for="gin">in</label>
 						<input type="radio" id="gmm" value="mm" name="gunit"><label for="gmm">mm</label>
 					</span>
-					&nbsp; &nbsp; &nbsp; 
+				</h4>
+				<h4>
 					<input type="checkbox" id="cutline"> Cut line
 				</h4>
 			</subsection>
@@ -222,6 +232,9 @@
 							<label for="plandscape">Landscape</label>
 						</span>
 					</span>
+				</h4>
+				<h4>
+					<input type="checkbox" id="live"><label title="Update HTML rendering as you type."> Live HTML</label>
 				</h4>
 			</subsection>
 		</section>
