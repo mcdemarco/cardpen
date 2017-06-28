@@ -7,9 +7,7 @@
   },
   "license": "GPL-3.0",
   "scripts": {
-    "build:markdown": "marked doc/index.md -o util/2-body.html",
-    "build:html": "concat util/*.html -o doc/index.html",
-    "build": "npm run build:markdown && npm run build:html",
+    "build": "marked doc/about.md -o util/2-body.html; concat util/*.html -o doc/index.html; marked doc/howto.md -o util/2-body.html; concat util/*.html -o doc/howto.html; marked doc/examples.md -o util/2-body.html; concat util/*.html -o doc/examples.html",
     "server": "http-server -a localhost",
     "all": "npm run build && npm run server"
   },
