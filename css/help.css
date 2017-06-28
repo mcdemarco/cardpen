@@ -21,7 +21,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+div.TOC {
   font-family: Raleway, sans-serif;
   color: #656565;
   font-weight: bold;
@@ -37,13 +38,13 @@ h1 {
   background-repeat: no-repeat;
   height:55px;
   line-height: 55px;
-  padding-left: 50px;
+  padding-left: 60px;
   text-align:left;
 }
 
 h2 {
   font-size: 1.8em;
-  border-bottom: solid 0.1rem #656565;
+  border-bottom: 0.1rem solid #656565;
 }
 
 h3 {
@@ -132,6 +133,40 @@ a:hover {
   text-decoration: underline;
   background: #f0f0f0;
   font-size: 1em;
+}
+
+div#TOC {
+  float:right;
+  width:7rem;
+  line-height: 1;
+  margin-top:.5rem;
+}
+
+div.TOC a,
+div.TOC a:visited,
+div.TOC a:hover,
+div.TOC a:active {
+    color: #656565;
+    font-weight:bold;
+}
+
+div#TOC ul {
+  list-style-type: none;
+  border-left: 0.1rem solid #656565;
+}
+
+div#TOC li {
+  list-style-type: none;
+}
+
+div#FOOt ul {
+    text-align:center;
+    border-top: 0.1rem solid #656565;
+}
+
+div#FOOt li {
+  display:inline-block;
+  padding: 1em;
 }
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {
