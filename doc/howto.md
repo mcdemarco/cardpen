@@ -1,5 +1,8 @@
 # How To Use CardPen
 
+Your cards are assembled from a card list, a Mustache/Handlebars template, and optional CSS styles.
+You edit these and other settings in the upper half of the CardPen window,
+while the cards themselves appear in the bottom half of the CardPen window (as does this documentation).
 
 ## Projects
 

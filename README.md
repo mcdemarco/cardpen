@@ -21,7 +21,7 @@ running
 
 Although it is possible to open CardPen in your browser as an html file (`index.html`), it really should be served by a webserver, due to various browser security issues.  There is a public server at [cardpen.mcdemarco.net](http://cardpen.mcdemarco.net)).
 
-To make it easier to work with your own image files, you can run CardPen on your own computer (instead of using the public install at  Check out CardPen locally, and, if you have your own webserver, just stick CardPen under it somewhere; it doesn't need to be at the root.  If you don't already have a webserver, you can use a node webserver included with the package.  To set it up, [install npm](https://www.npmjs.com/get-npm) (the Node.js package manager), then, at the command line in the CardPen directory, run the following two commands:
+To make it easier to work with your own image files, you can run CardPen on your own computer (instead of using the public install).  Check out CardPen locally, and, if you have your own webserver, just stick CardPen under it somewhere; it doesn't need to be at the root.  If you don't already have a webserver, you can use a node webserver included with the package.  To set it up, [install npm](https://www.npmjs.com/get-npm) (the Node.js package manager), then, at the command line in the CardPen directory, run the following two commands:
 
 > `npm install`
 > `npm run server`
