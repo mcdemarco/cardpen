@@ -1279,12 +1279,12 @@ context.write = (function () {
 		templateA +=	(data.cardClass ? ' {{' + data.cardClass + '}}' : '') + ' card'; //Card # goes here
 		var templateB = '">\n\t<bleed>\n\t\t<cut>\n\t\t\t<safe>';
 		templateB += data.mustache + "\n\t\t\t</safe>\n\t\t</cut>\n\t</bleed>";
-		if (data.overlay || data.cutline) {
+		if (!forImages && (data.overlay || data.cutline)) {
 			templateB += '\n\t<overlay class="cardpenBleed">'; 
 			templateB += (data.oURL ? "<img style='height:100%;' src='" + data.oURL + "'/>" : "");
 			templateB += '</overlay>';
 		}
-		if (data.overlay && !data.oURL)
+		if (!forImages && (data.overlay && !data.oURL))
 			templateB += '<overlay class="cardpenCut"></overlay><overlay class="cardpenSafe"></overlay>';
 		templateB += "\n</card>{{/cardpen}}";
 		var rolms = context.size.grid(data);
