@@ -49,20 +49,51 @@ There are two examples: one with the images hosted locally at CardPen, and one t
 
 ## Scottish Sleuth
 
-Scottish Sleuth is a collection of pieces of a rethemed game I published privately, mostly through [The Game Crafter](https://www.thegamecrafter.com/publish/products) though I printed the cards through ArtsCow.  They show more complicated (but still mostly text-based) cards and backs, how to make a box using overlays, various sizes of scorepad (requiring rotation), and a set of rules.
+Scottish Sleuth is a collection of pieces of a rethemed game I published privately, mostly through [The Game Crafter](https://www.thegamecrafter.com/publish/products) though I printed the prototype cards through ArtsCow.  This example shows more complicated (but still mostly text-based) cards and backs, how to make a box using overlays, various sizes of scorepad (requiring rotation), and a set of rules.
+
+![Scottish Sleuth](../images/ScottishSleuthAll.png)
 
 ### Cards and Backs
 
 The Scottish Sleuth card backs use two background images, one for the plaid (on the *card* element) and one for the magnifying glass (on the *bleed* element).
-The card faces are similar, but without the plaid background.
+The Clue Deck faces are similar, but without the plaid background, while the Dance Deck faces are simpler text, laid out something like the Pico example cards.
 
 ### Box
 
+The box is an example of a Small Pro Box from The Game Crafter, and uses their overlays.  Note that I put both boxes into the same project, which means you need to switch overlays manually to get the correct one.  Most of the box uses the same graphics as the rest of the game, just laid out in different sizes, except for the player/age/time icons.  I made SVGs for those in another program (mostly Boxy with some hand editing), and the text on them came out a bit too small in the prototype print run (pictured above).
+
+Note that there are registration (overlay) marks on the prototype boxes that were made with a beta version of CardPen; the current version doesn't support leaving the overlay on any generated images, though you can do it with HTML.
+
 ### Scorepads
+
+There's a variety of scorepad examples for several reasons.  I made them in color at first thinking I'd print them at ArtsCow, but then switched to The Game Crafter which only supports black and white.  I printed different sizes:  small to fit in the Small Pro Box and a medium pad for playtesting.  I also printed different text: the standard Sleuth layout (adapted to my retheme), and a cleverer layout that I [found at BGG](https://boardgamegeek.com/image/184197/sleuth).  Because The Game Crafter allows different fronts and backs on scorepads, I was able to combine both options on one pad.  I only did so on the smaller pads, where it seemed that the extra space of the simpler layout would be more useful.
+
+None of the scorepads converted to images well, probably because it's a big table.  They all bled into the bleed section once converted to 300 DPI images, though they had looked fine as HTML.  In other examples where such problems arose I figured out the issue (generally web fonts or CSS units) and fixed it, but in this case I used the `.cardImage` built-in class as part of my styles in order to hack the thing down to the right size by eyeballing the difference.
+
+### Rules
+
+CardPen is not intended for making rulebooks, but I needed one so I made one with it anyway.
+I started by writing the rules in Markdown.  Once they seemed ready, I converted them to HTML,
+then put them into a card list to eyeball them.
+(Note that putting HTML into a card list requires the triple-brace tag syntax to parse the HTML:
+`{{{Text}}}` is the tag used in my final rules template.)
+
+I had a few choices of rulebook (booklet) sizes from The Game Crafter,
+but it's more economical if you end up with multiples of four pages
+so I picked the size that seemed most likely to do so.  After that, I did a lot of tweaking of the rules
+to get them to come out in page-sized chunks that I thought would be easier to understand.
+I tweaked directly in the `json` (export) file and reloaded it each time to see how things were going.
+For an easier time of it, I would recommend tweaking a CSV file and reloading that,
+and possibly using the rowsets functionality to break it down into more manageable chunks.
 
 ### Credits
 
 * BGG entry for [Sleuth](https://boardgamegeek.com/boardgame/594/sleuth)
 
-The magnifying glass SVG is originally from [Game-icons.net](http://game-icons.net); I edited it manually.
-I also made the player count/age/time icons on the box, partly manually and partly in [Boxy SVG](https://boxy-svg.com), an SVG editor for the Mac.  The main tartan (darker blue) is registered to the RSCDS; the alternate (lighter blue) tartan is Bell of the Borders.  Dances were collected from [the Scottish Country Dance Database](https://my.strathspey.org/dd/index/).
+The magnifying glass is an SVG originally from [Game-icons.net](http://game-icons.net);
+I edited it manually.
+I also made the player count/age/time icons on the box,
+partly manually and partly in [Boxy SVG](https://boxy-svg.com), an SVG editor for the Mac.
+The main tartan (darker blue) is registered to the RSCDS;
+the alternate (lighter blue) tartan is Bell of the Borders.
+Dances were collected from [the Scottish Country Dance Database](https://my.strathspey.org/dd/index/).
