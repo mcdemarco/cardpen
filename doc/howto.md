@@ -164,6 +164,8 @@ When printing, be sure to uncheck or undo any scaling
 and remove any headers/footers that the browser might add.
 Some browsers will not detect your choice of landscape or portrait for your page layout,
 so you may need to set that manually in the print dialog before printing.
+You may also need to turn background images on in your browser's print settings
+if you have them on your cards.
 
 #### Cut Lines
 
@@ -187,17 +189,23 @@ if something else looks awry or if you get a failure message, try again.
 
 If you need to rotate your landscape cards back to portrait to upload to a printer, I recommend using [ImageMagick](https://www.imagemagick.org/).  The relevant command is:
 
-`convert -rotate "90" <filename>.png <newfilename.png>`
+`convert -rotate "90" filename.png newfilename.png`
 
 You probably want to rotate the back in the opposite direction:
 
-`convert -rotate "-90" <filename>.png <newfilename.png>`
+`convert -rotate "-90" filename.png newfilename.png`
 
-It's easier to just edit the files in place (as long as you've saved your project and can regenerate them if something goes wrong):
+Often it's easier just to edit the all files in place (as long as you've saved your project and can regenerate them if something goes wrong):
 
 `mogrify -rotate "90" *.png`
 
 If you want to use a GUI instead of the command line, Preview on MacOS X or Photos on Windows 10 (among others) will let you rotate images.
+
+To flip an image, use "180" instead of "90":
+
+`convert -rotate "180" filename.png newfilename.png`
+
+
 
 ### Saving
 
