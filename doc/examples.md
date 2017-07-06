@@ -18,7 +18,7 @@ Pico is an out-of-print mini game by Doris & Frank.  I picked it for the basic C
 
 Xendo is an example of cards using the **Rowsets** functionality (in sets of 3), where you can use more than one line from your "card" list on each card, as well as the `{{@index}}` tag to add a different bullet-type image next to each line.  The example uses the **cycle** setting for **Rowsets** in order to get three rules of increasing difficulty onto the cards.  The **random** setting for **Rowsets** would have made the difficulty unpredictable, while the **bunch** setting would have grouped rules of similar difficulty on each card.
 
-There's also a separate, simple Xendo card back example.
+There's also a separate, simple Xendo card back example (which uses an empty cardlist).
 
 ![Xendo Cards](../images/XendoCards.png)
 
@@ -57,6 +57,9 @@ Scottish Sleuth is a collection of pieces of a rethemed game I published private
 
 The Scottish Sleuth card backs use two background images, one for the plaid (on the *card* element) and one for the magnifying glass (on the *bleed* element).
 The Clue Deck faces are similar, but without the plaid background, while the Dance Deck faces are simpler text, laid out something like the Pico example cards.
+
+Note that the logic of the Clue Deck is more complicated than that of the Dance Deck; the Clue Deck card list has many blank fields,
+and it uses Mustache instead of Handlebars for its template.
 
 ### Box
 

@@ -27,9 +27,10 @@
   "oURL": "",
   "extCSS": "https://fonts.googleapis.com/css?family=Raleway|Kaushan+Script",
   "css": ".wrapper {\n\tdisplay: flex;\n\tflex: 1;\n\tflex-direction: column;\n  \talign-items: center;\n\tjustify-content: center;\n\tfont-family: \"Kaushan Script\", cursive;\n\tfont-size: 50pt;\n\twidth: 100%;\n\theight: 100%;\n  \tpadding-left:2pt;\n  \tcolor:white;\n}\n\ncard {\n \tbackground-color:#9334C2; \n}\n",
-  "csv": "Noop\n1",
+  "csv": "",
   "mustache": "<div class=\"wrapper\">\n  XENDO\n</div>",
+  "useMustache": false,
   "cardClass": "",
-  "rscount": "1",
+  "rscount": 1,
   "rsstyle": "bunch"
 }

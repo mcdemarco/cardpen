@@ -29,7 +29,8 @@
   "css": "body {\n  font-family:Raleway,sans-serif;\n  font-size: 11pt;\n}\n\nh1, .sideTitle {\n  font-family: RennieMackintoshITC, Amarante, Cabin, sans-serif;\n  font-size: 26pt;\n  margin:0;\n  padding:0;\n}\n\ndiv.wrapper {\n \tdisplay:flex;\n  \tjustify-content: center;\n    align-items: center;\n  \theight:100%;\n    flex-direction: column;\n}\n\np {\n\tfont-family: Cabin, sans-serif;\n  \tfont-style: italic;\n  text-align:center;\n  margin:0;\n  padding:0;\n}\n\n.card2 p {\n \tpadding-bottom: 12pt; \n}\n.card1 {\n  background-image: url(images/ssbacks_1.jpg);\n  background-size: 100mm 100mm; \n  background-position: 20mm 34mm;\n}\nbleed {  \n  background-image:  url(images/ssbacks_glass1.svg);\n  background-repeat: no-repeat;\n  background-size: 50% 50%;\n  background-position: 55mm 72mm;\n}\n.card2 bleed {\n\tbackground-image: url(images/ssbacks_glass2.svg);\n}\n\ndiv.info {\n  position:absolute;\n  top:170mm;\n  right:77mm;\n}\ndiv.info div img {\n  border-radius: 2pt;\n  height:18mm;\n  margin-left:5pt;\n}\ndiv.sideTitle {\n  position:absolute;\n  top:111mm;\n  left:112mm;\n  transform: translate(90mm, 0mm) rotate(270deg);\n  border: 2pt solid white;\n  margin:0;\n  padding:7pt 5pt 0 5pt;\n  background-color: black;\n  color:white;\n  border-radius: 5pt;\n}",
   "csv": "Text\n\"<div><h1>Scottish Sleuth</h1> <p>a game of dancing and deduction</p></div><div class='info'><div> <img src='/images/ScotPlayers.svg'/> <img src='/images/ScotAges.svg'/> <img src='/images/ScotTime.svg'/></div></div><div class='sideTitle'>Scottish Sleuth</div>\"\n\"<p>Scottish Sleuth is a deduction game<br/>for 3&ndash;7 players ages 10 and up,</br>like Clue/Cluedo without the board.</p>\"",
   "mustache": "<div class=\"wrapper\">\n  {{{Text}}}\n</div>",
+  "useMustache": false,
   "cardClass": "",
-  "rscount": "1",
+  "rscount": 1,
   "rsstyle": "bunch"
 }
