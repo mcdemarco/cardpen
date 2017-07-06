@@ -2,13 +2,10 @@
 // a pure-js playing card generator
 
 //TODO: 
-// better weird card sizes (hex, heart) 
 // test firefox
-// Switch to handlebars?
 // Set up my own cors proxy for bgg?
 // add bleed/safe to card size view (too difficult? only selected size?)
 // Refactor/make optional the bleed/safe wrappers?
-// Load project from url?
 // Handle printing backs like PnPDeliver?
 // em dashes not converted for help (smartypants option?) (marked cli can't pass options known issue #110)
 // replace +/- card buttons with icons
@@ -16,6 +13,7 @@
 // General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
 // add UI layout options (E m backwards E)?
 // Remove BGG toggle and possibly replace with verification.
+// Issue loading clue deck example.
 
 //init
 //form
@@ -59,8 +57,7 @@ context.init = (function () {
 			addCard: cardpen.form.addCard,
 			removeCard: cardpen.form.removeCard,
 			export: cardpen.util.exporter,
-			idkFetch: cardpen.idk.fetch,
-			loadToggle: cardpen.form.loadToggle
+			idkFetch: cardpen.idk.fetch
 		};
 		_.each(buttons, function(value, key) {
 			document.getElementById(key).addEventListener('click',value);
@@ -82,6 +79,8 @@ context.init = (function () {
 		_.each(document.getElementsByClassName('upload'), function(el) { 
 			el.addEventListener('change', cardpen.util.file);
 		});
+
+		document.getElementById("exampleList").addEventListener('change', cardpen.util.web);
 	}
 
 	function select() {
@@ -94,6 +93,11 @@ context.init = (function () {
 		options = paperSizes;
 		selElt = document.getElementById("psize");
 		populate(selElt,options);
+
+		//Examples
+		options = _.first(exampleFiles,12);
+		selElt = document.getElementById("exampleList");
+		populate2(selElt,options);
 	}
 
 	function populate(selElt,options) {
@@ -109,6 +113,15 @@ context.init = (function () {
 		});
 	}
 
+	function populate2(selElt,options) {
+		_.each(options, function(val,idx) {
+			var opt = document.createElement('option');
+			opt.value = val;
+			opt.innerHTML = val;
+			selElt.appendChild(opt);
+		});
+	}
+
 })();
 
 context.form = (function () {
@@ -119,11 +132,10 @@ context.form = (function () {
 		change: change,
 		changeCode: changeCode,
 		customSize: customSize,
-		example: example,
 		generate: generate,
 		get: get,
 		load: load,
-		loadToggle: loadToggle,
+		projectToggle: projectToggle,
 		refresh: refresh,
 		select: select,
 		set: set,
@@ -192,11 +204,6 @@ context.form = (function () {
 		} else {
 			document.getElementById("customize").style.display = "none";
 		}
-	};
-
-	function example() {
-		set(exampleForm);
-		generate();
 	}
 
 	function generate(e) {
@@ -241,13 +248,15 @@ context.form = (function () {
 			//Remove the old selected class and add the new one.
 			unselect("load");
 			e.target.classList.add("selected");
-			switch (e.target.getAttribute("id")) {
+			var currentId = e.target.getAttribute("id");
+			switch (currentId) {
 				case "clear":
 				clear();
 				break;
 
 				case "eg":
-				example();
+				case "load":
+				projectToggle(currentId);
 				break;
 
 				case "idkToggle":
@@ -263,15 +272,23 @@ context.form = (function () {
 		context.write.expectedSize(cardForm.data);
 	}
 
-	function loadToggle() {
-		//For toggling the settings with the button.
-		var section = document.getElementById("loadSubsubsection");
+	function projectToggle(id) {
+		//For toggling the load/example forms using some of the project buttons.
+		var section = document.getElementById(id + "Subsubsection");
 		if (section.style.display == "none") {
+			//Hide the other toggle too.
+			_.each(document.querySelectorAll(".projectToggle"), function(el) {
+				el.style.display = "none";
+			});
 			section.style.display = "";
 		} else {
 			section.style.display = "none";
-			document.getElementById("loadForm").reset();
 		}
+
+		if (id == "load" && section.style.display == "none")
+			document.getElementById("loadForm").reset();
+		else if (id == "eg")
+			context.util.web();
 	}
 
 	function refresh() {
@@ -319,8 +336,10 @@ context.form = (function () {
 			//Handle the settings subcase.
 			var settingsSections = document.getElementsByClassName("settings");
 			_.each(settingsSections, function(elt) {
-				elt.style.display = (what == "on" ? "flex" : "none");
+				//Now includes special handling for the Mustache span.
+				elt.style.display = (what == "on" ? (elt.tagName.toLowerCase() == "span" ? "inline" : "flex") : "none");
 			});
+			
 		}
 	}
 
@@ -978,7 +997,9 @@ context.util = (function () {
 		exporter: exporter,
 		file: file,
 		printFrame: printFrame,
-		sanitize: sanitize
+		sanitize: sanitize,
+		web: web,
+		webCallback: webCallback
 	};
 
 	function exporter(e) {
@@ -1000,7 +1021,7 @@ context.util = (function () {
 			if (type == "import") {
 				//Will eventually need version control.
 				context.form.set(JSON.parse(reader.result));
-				context.form.loadToggle();
+				context.form.projectToggle("load");
 			} else {
 				//Should eliminate first row?
 				cardForm.data[type] = reader.result;
@@ -1027,6 +1048,30 @@ context.util = (function () {
 		if (cleanName.length === 0)
 				cleanName = "project" + Date.now().getUnixTime();
 		return cleanName;
+	}
+
+	function web() {
+		//Load an example file from the web by its title.
+		var slug = document.getElementById("exampleList").value;
+		var fileToLoad = "/examples/" + sanitize(slug) + ".json";
+
+		//xhr for loading the json examples.
+    var xhr = new XMLHttpRequest();
+    xhr.overrideMimeType("application/json");
+    xhr.open('GET', fileToLoad, true);
+    xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4 && xhr.status == "200") {
+				context.util.webCallback(xhr.responseText);
+      } else {
+				context.write.frame("<html>Unable to load example.</html>");
+			}
+    };
+    xhr.send(null);
+ }
+
+	function webCallback(responseText) {
+		context.form.set(JSON.parse(responseText));
+		context.form.generate();
 	}
 
 })();
@@ -1094,8 +1139,8 @@ context.write = (function () {
 		});
 
 		//Massage the csv.
-		if (data.rscount && data.rscount > 1) {
-			cardsParsed = restructure(data.rscount, data.rsstyle, cardsTemp).data;
+		if (data.rscount && parseInt(data.rscount) > 1) {
+			cardsParsed = restructure(parseInt(data.rscount), data.rsstyle, cardsTemp).data;
 		} else {
 			cardsParsed = cardsTemp.data;
 		}
@@ -1298,7 +1343,10 @@ context.write = (function () {
 				}
 				formatted += '<page>\n';
 			}
-			formatted += Handlebars.compile(templateA + (c+1) + templateB)({cardpen: cards[c]});
+			if (data.useMustache)
+				formatted += Mustache.to_html(templateA + (c+1) + templateB, {cardpen: cards[c]});
+			else
+				formatted += Handlebars.compile(templateA + (c+1) + templateB)({cardpen: cards[c]});
 		}
 		formatted += '</page></page>\n';
 		return formatted;
@@ -1352,6 +1400,7 @@ context.write = (function () {
 		'data.css': '#css',
 		'data.csv': '#csv',
 		'data.mustache': '#mustache',
+		'data.useMustache': '#useMustache',
 		'data.cardClass': '#cardClass',
 		'data.rscount': '#rscount',
 		'data.rsstyle': 'input[name=rsstyle]'

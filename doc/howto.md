@@ -68,6 +68,8 @@ There is a built-in tag that you can use to change your template based on whethe
 
 For an example of using this tag, click the **BGG** button and scroll down to the bottom of that template.  The template uses the tag to add a proxy to the BoardGameGeek image URL when generating images (because BGG is not set up correctly for CORS).  You can also use these tags (or the related CSS classes) to compensate for unexpected differences between your HTML and image output.
 
+CardPen defaults to using Handlebars to process your template; this usually doesn't make a difference, but if you need Mustache in particular check the *mustache* checkbox above the template area.  (It's visible in the Advanced view.)
+
 For more hints on how to set up your Mustache/Handlebars template, see the additional examples, [the examples from hccd](https://github.com/vaemendis/hccd/tree/master/examples), the [Mustache documentation](https://mustache.github.io/mustache.5.html), or the [Handlebars docs](http://handlebarsjs.com).
 
 #### Your Styles

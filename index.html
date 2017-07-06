@@ -17,6 +17,7 @@
 		<script src="mode/spreadsheet/spreadsheet.js"></script>
 		<script src="lib/FileSaver.min.js"></script>
     <script src="lib/handlebars.min.js"></script>
+    <script src="lib/mustache.min.js"></script>
     <script src="lib/papaparse.min.js"></script>
     <script src="lib/underscore-min.js"></script>
 		<link href="css/codemirror.css" rel="stylesheet">
@@ -51,10 +52,16 @@
 							<button type="button" class="small load" id="stored">Saved</button>
 							<button type="button" class="small load" id="eg">Example</button>
 							<button type="button" class="small load" id="idkToggle" title="Example game list using the BoardGameGeek API">BGG</button>
-							<button type="button" class="small load" id="loadToggle">Load</button>
+							<button type="button" class="small load" id="load">Load</button>
 						</span>
+						<form id="exampleForm">
+							<span class="projectToggle nw up" id="egSubsubsection" style="display:none;">
+								Load example:
+								<select id="exampleList" data-type="example"></select>
+							</span>
+						</form>
 						<form id="loadForm">
-							<span class="nw up" id="loadSubsubsection" style="display:none;">
+							<span class="projectToggle nw up" id="loadSubsubsection" style="display:none;">
 								Load project file:
 								<input type="file" id="import" class="upload" data-type="import">
 							</span>
@@ -173,7 +180,11 @@
 			</subsection>
 			
 			<subsection id="cpTMPL">
-				<h4>Your template</h4>
+				<h4>Your template
+					<span class="settings nw" style="padding-left:20%;display:none;">
+						<input type="checkbox" id="useMustache" title="Use Mustache instead of Handlebars."> mustache
+					</span>
+				</h4>
 				<textarea id="mustache"></textarea>
 				<span class="nw up">Load template:
 					<input type="file" id="mustacheUpload" class="upload" data-type="mustache"> 
