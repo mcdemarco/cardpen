@@ -9,11 +9,9 @@
 // Handle printing backs like PnPDeliver?
 // em dashes not converted for help (smartypants option?) (marked cli can't pass options known issue #110)
 // replace +/- card buttons with icons
-// Write images to "server"?
 // General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
 // add UI layout options (E m backwards E)?
 // Remove BGG toggle and possibly replace with verification.
-// Issue loading clue deck example.
 
 //init
 //form

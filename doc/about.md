@@ -52,7 +52,7 @@ Not all card printing services accept PNG files, but many do.
 
 ### Card Printing Services
 
-* [ArtsCow](http://www.artscow.com/) prints a handful of card sizes and shapes.  (Beware their weird minis!)   Not all their offerings let you set up more than one back, and some come with a pre-configured suit that you will probably need to remove from the cards.  On the bright side, they have enticing sale prices and they also print memo pads, which may be useful for scorepads.  ([Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office (Kinkos) locations.)
+* [ArtsCow](http://www.artscow.com/) prints a handful of card sizes and shapes.  (Beware their weird minis!)   Not all their offerings let you set up more than one back, and some come with a pre-configured suit that you will probably need to remove from the cards.  On the bright side, they have enticing sale prices and they also print memo pads, which may be useful for scorepads.  ([Rumor has it](https://boardgamegeek.com/thread/1760777/how-make-score-pad) that you can also get scorepads printed at some FedEx Office/Kinkos locations.)
 * [The Game Crafter](https://www.thegamecrafter.com)'s card sizes are listed [here](http://help.thegamecrafter.com/article/85-cards); they recently added [Euro Poker](https://www.thegamecrafter.com/publish/product/EuroPokerDeck) size.  They also print everything you might need for an entire board game: score pads, boxes, boards, etc. and sell non-customized bits, too.  (You need to register and create a game to buy most of them.)
 * [Make Playing Cards](http://www.makeplayingcards.com/)' card sizes and prices are [here](http://www.makeplayingcards.com/low-price-for-bulk.aspx); they also make custom poker chips.
 * [Printer's Studio](http://www.printerstudio.com/)'s card sizes are listed [here](http://www.printerstudio.com/unique-ideas/blank-playing-cards.html).  They also make a large variety of game mats.
@@ -113,4 +113,4 @@ CardPen is licensed under the GNU General Public License v3.0.
 
 ### When
 
-&copy; 2017
+This is CardPen version 1.0.1, &copy; 2017

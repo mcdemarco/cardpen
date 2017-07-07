@@ -26,16 +26,18 @@ The pictured cards were printed at ArtsCow; it's not clear from the photo, but t
 
 ### Notes
 
-Xendo is a set of Zendo rule cards for use with Xeno pyramids instead of the traditional Rainbow pyramids.  Zendo is an induction game where the other players try to guess the "rule" chosen by the "master", and Zendo rule cards list possible "rules" for novice players.  The original, long out-of-print edition of Zendo came with rule cards, and they were also sold separately by Looney Labs (until those also went out of print).
+Zendo is an induction game where the other players try to guess the "rule" chosen by the "master", and Zendo rule cards list possible "rules" for novice players.  The original, long out-of-print edition of Zendo came with rule cards, and they were also sold separately by Looney Labs (until those also went out of print).  Xendo is a set of Zendo rule cards for use with Xeno pyramids instead of the traditional Rainbow pyramids.
 
 Although Zendo is out of print, it is easily [reassembled](https://boardgamegeek.com/image/3611977/zendo) out of still-in-print [Looney pyramids](http://www.looneylabs.com/looney-pyramids) and other bits.  Likewise, people have recreated Zendo rule cards, but those usually mention the Rainbow colors so I made this set with Xeno colors.
 
 Xendo is unrelated to a proposed science retheme of Zendo also called [Xendo](http://new.wunderland.com/2013/06/13/introducing-xendo/), which has apparently fallen by the wayside in favor of a planned shape retheme known only as [Zendo 2.0](https://youtu.be/mstV9dc6swA).
 
+### Credits
+
 * [BoardGameGeek entry](https://boardgamegeek.com/boardgame/6830/zendo)
 * I have an old Zendo rules card (as opposed to the Zendo rule cards); rules are also available from publisher Looney Labs ([HTML](http://www.looneylabs.com/rules/zendo) or [IceSheet (PDF)](http://www.looneylabs.com/sites/default/files/rules/Zendo.pdf), and from the devisor, [Kory Heath](http://www.koryheath.com/zendo/)
 
-The rule list I used for the cards is derived from [Jacob Davenport's](http://www.playagaingames.com/games/zendo_some_rules/), a list of Zendo rules in order by difficulty.  I switched the colors before turning the list into a "card" list.  The pyramid images used for bullet points are from [Lou Lessing's Pyramid Arcade Font](http://www.looneylabs.com/other-pyramid-games). 
+The rule list I used for the cards is derived from [Jacob Davenport's](http://www.playagaingames.com/games/zendo_some_rules/) list of Zendo rules ordered by difficulty.  I switched the colors before turning the list into a "card" list.  The pyramid images used for bullet points are from [Lou Lessing's Pyramid Arcade Font](http://www.looneylabs.com/other-pyramid-games). 
 
 ## BGG
 
