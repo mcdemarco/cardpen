@@ -11,8 +11,7 @@ To change your current project, click one of the buttons under Project (at the t
 
 * **New** resets the editor to an empty project with some popular defaults.
 * **Saved** loads the last project you edited.
-* **Example** loads the Pico example.
-* **BGG** loads the BoardGameGeek API example (a deck of *I Don't Know, What Do You Want to Play?* cards).
+* **Examples** loads the Pico example by default, or your choice among the other examples.
 * **Load** opens a form for loading an existing project file from your computer.
 
 By default, CardPen will load your last project, or if you haven't used it before, the Pico example.
@@ -66,7 +65,7 @@ In the Pico example, there are only two columns in the CSV file, named *Number* 
 
 There is a built-in tag that you can use to change your template based on whether you are generating cards as HTML or as images: `{{cardImage}}`.  To turn a section of the template on when you are generating card images, put it between two tags `{{#cardImage}}` and `{{/cardImage}}`.  To turn a section off, put it between `{{^cardImage}}` and `{{/cardImage}}`.
 
-For an example of using this tag, click the **BGG** button and scroll down to the bottom of that template.  The template uses the tag to add a proxy to the BoardGameGeek image URL when generating images (because BGG is not set up correctly for CORS).  You can also use these tags (or the related CSS classes) to compensate for unexpected differences between your HTML and image output.
+For an example of using this tag, open the BGG non-local example and scroll down to the bottom of that template.  The template uses the tag to add a proxy to the BoardGameGeek image URL when generating images (because BGG is not set up correctly for CORS).  You can also use these tags (or the related CSS classes) to compensate for unexpected differences between your HTML and image output.
 
 CardPen defaults to using Handlebars to process your template; this usually doesn't make a difference, but if you need Mustache in particular check the *mustache* checkbox above the template area.  (It's visible in the Advanced view.)
 
@@ -137,15 +136,15 @@ or that you've uploaded to an image hosting site like [Google Photos](https://ww
 If you need lots of images or if you're having CORS issues, you should run CardPen locally.
 Download CardPen [from BitBucket](https://bitbucket.org/mcdemarco/cardpen),
 run it using the instructions there,
-put your images in the images directory, and refer to them as the examples do.
-(Load `BGGLocalImages.json` for an example.)
+put your images in the images directory, and refer to them as the examples do (*e.g.,* the BGG Local Images example.)
 
 ### BGG
 
 CardPen can generate a special card list from your [BoardGameGeek](https://boardgamegeek.com) game collection for making an [I Don't Know, What Do You Want to Play?](https://boardgamegeek.com/boardgame/28567/i-dont-know-what-do-you-want-play) deck or for similar purposes.
-To generate the list, click the **BGG** button under Project.  Optionally, edit the sample template and CSS to set up the cards the way you want.
+Optionally, open a BGG sample template and edit the template and styles to set up the cards the way you want.
 
-Next, open the Advanced view and enter your own username in the **BGG username** field.  Click the **Get Games** button; this will replace the sample card list with one based on your own game collection.
+Next, in the Advanced view enter your own username in the **BGG username** field.
+Click the **Get Games** button; this will replace the sample card list with one based on your own game collection.
 
 ## Output Format
 

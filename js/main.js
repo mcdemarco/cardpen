@@ -11,7 +11,7 @@
 // replace +/- card buttons with icons
 // General issue scaling google fonts to 300 dpi (system fonts ok, toggle the goog)
 // add UI layout options (E m backwards E)?
-// Remove BGG toggle and possibly replace with verification.
+// Replace erstwhile BGG toggle with verification?
 
 //init
 //form
@@ -63,7 +63,7 @@ context.init = (function () {
 
 		//Button groups.
 		var buttonClasses = {
-			load: cardpen.form.load,       //clear, eg, idkToggle, stored.
+			load: cardpen.form.load,       //clear, eg, stored.
 			format: cardpen.form.generate, //images, html, print
 			view: cardpen.form.view	       //cardsView, editorView, settingsView
 		};
@@ -257,10 +257,6 @@ context.form = (function () {
 				projectToggle(currentId);
 				break;
 
-				case "idkToggle":
-				context.idk.toggle();
-				break;
-
 				case "stored":
 				context.project.stored();
 				break;
@@ -387,24 +383,8 @@ context.form = (function () {
 context.idk = (function () {
 
 	return {
-		fetch: fetch,
-		toggle: toggle
+		fetch: fetch
 	};
-
-	function toggle() {
-		//For showing the BGG/IDKWDYWTP form.
-		var form = document.getElementById("idkSection");
-		if (form.style.display == "none") {
-			stored();
-			form.style.display = "block";
-			//Load example.
-			context.form.set(idkForm);
-			//Generate.
-			context.write.generate(context.form.get());
-		} else {
-			form.style.display = "none";
-		}
-	}
 
 	function fetch() {
 		var username = document.getElementById("username").value;
