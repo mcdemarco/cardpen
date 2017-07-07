@@ -24,7 +24,7 @@ Although it is possible to open CardPen in your browser as an html file (`index.
 To make it easier to work with your own image files, you can run CardPen on your own computer (instead of using the public install).  Check out CardPen locally, and, if you have your own webserver, just stick CardPen under it somewhere; it doesn't need to be at the root.  If you don't already have a webserver, you can use a node webserver included with the package.  To set it up, [install npm](https://www.npmjs.com/get-npm) (the Node.js package manager), then, at the command line in the CardPen directory, run the following two commands:
 
 > `npm install`
-> `npm run server`
+> `npm start`
 
 The second command will return the new URL for your local CardPen (most likely [http://localhost:8080](http://localhost:8080)).
 
