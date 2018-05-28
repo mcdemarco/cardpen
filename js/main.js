@@ -565,7 +565,7 @@ context.project = (function () {
 			document.getElementById("stored").classList.add("selected");
 			context.write.tryGenerate();
 		} else if (defaultToEg) {
-			context.form.example();
+			context.form.set(exampleForm);
 			document.getElementById("eg").classList.add("selected");
 			context.write.help();
 		}
