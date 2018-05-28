@@ -102,3 +102,39 @@ partly manually and partly in [Boxy SVG](https://boxy-svg.com), an SVG editor fo
 The main tartan (darker blue) is registered to the RSCDS;
 the alternate (lighter blue) tartan is Bell of the Borders.
 Dances were collected from [the Scottish Country Dance Database](https://my.strathspey.org/dd/index/).
+
+
+## Micropul
+
+I'm making a version of Micropul using Small Square Tile chits from The Game Crafter.  Once again I can't publish my work because Micropul is for personal use only, but you can do the same thing yourself.
+
+I took a Micropul tile image from the Files section at BGG, converted it to PNG (it was a PDF), and used [ImageMagick](http://imagemagick.org/Usage/crop/#crop_spaced) to trim and slice it, then trim the remaining cut lines off the result (and extend or scale down):
+
+`convert -density 300 micropul.pdf micropul.png`  
+`convert -crop 2250x3000+151+121 micropul.png micropul-cropped.png`  
+`convert micropul-cropped.png -crop 6x8-0-0@ +repage +adjoin tile-%d.png`  
+`convert tile-*.png -shave 1x1 tile_shaved-%d.png`
+`convert tile_shaved*.png -background none -gravity center -extent 450x450 tile_shaved_resized-%d.png`
+
+or:
+
+`convert -density 600 micropul.pdf micropul.png`  
+`convert -crop 4500x6000+301+241 micropul.png micropul-cropped.png`  
+`convert micropul-cropped.png -crop 6x8-0-0@ +repage +adjoin tile-%d.png`    
+`convert tile-*.png -shave 2x2 tile_shaved-%d.png`
+`convert tile_shaved-*.png -resize 450x450 tile_shaved_resized-%d.png`
+
+There's a back at BGG that I also used:
+
+`convert -density 600 micropulback.pdf micropulback.png`  
+`convert -crop 750x750+10+10 micropulback.png micropulback-cropped.png`  
+`convert micropulback-cropped.png -resize 450x450 micropulback-cropped-resized.png`
+
+`convert -crop 450x450+10+10 micropulback.png micropulback-start.png`  
+
+### Credits
+
+* The [Micropul](http://neutralbox.com/micropul/) page
+* Micropul [BGG entry](https://boardgamegeek.com/boardgame/10660/micropul)
+* The BGG [files section](https://boardgamegeek.com/boardgame/10660/micropul/files) includes [the high-res version](https://boardgamegeek.com/filepage/127102/high-res-version-original-pnp) of the original PnP game that I used, along with many nice rethemes, including [Carthagnian's redesigns](https://boardgamegeek.com/filepage/34338/carthaginians-redesigns-micropul), most of which can also be sliced up the same way.  (I didn't use them because of bleed concerns.)
+
