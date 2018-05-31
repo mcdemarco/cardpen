@@ -1,5 +1,6 @@
 syntax: glob
 examples/lib
+image/micropul
 index.html
 2-body.html
 doc/examples.html
