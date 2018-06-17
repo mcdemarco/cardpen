@@ -106,7 +106,7 @@ Dances were collected from [the Scottish Country Dance Database](https://my.stra
 
 ## Micropul
 
-I'm making a version of Micropul using Small Square Tile chits from The Game Crafter.  Once again I can't publish my work because Micropul is for personal use only, but you can do the same thing yourself.
+I made a version of Micropul using Small Square Tile chits from The Game Crafter.  Once again I can't publish my work because Micropul is for personal use only, but you can do the same thing yourself.
 
 I took a Micropul tile image from the Files section at BGG, converted it to PNG (it was a PDF), and used [ImageMagick](http://imagemagick.org/Usage/crop/#crop_spaced) to trim and slice it, then trim the remaining cut lines off the result (and extend or scale down):
 
@@ -138,3 +138,14 @@ There's a back at BGG that I also used:
 * Micropul [BGG entry](https://boardgamegeek.com/boardgame/10660/micropul)
 * The BGG [files section](https://boardgamegeek.com/boardgame/10660/micropul/files) includes [the high-res version](https://boardgamegeek.com/filepage/127102/high-res-version-original-pnp) of the original PnP game that I used, along with many nice rethemes, including [Carthagnian's redesigns](https://boardgamegeek.com/filepage/34338/carthaginians-redesigns-micropul), most of which can also be sliced up the same way.  (I didn't use them because of bleed concerns.)
 
+## Pinewoods Paths
+
+Pinewoods Paths is a retheme of Arboretum, which was out of print when I rethemed it but is coming back real soon now (see credits).  It consists of a bridge deck of 10 "suits" of ranks 1--8, plus some player aid cards, a rules sheet, and a tuckbox.  The art is mostly in the public domain, though some was merely free for any use.  However, it was also mostly very large, so only the images that did double duty as box art are available when you load the examples.
+
+Once again I made the rulebook in Cardpen, although I might not have had I realized from the start that The Game Crafter required a PDF for an actual "Document" (a letter-sized single rule sheet, folded up), so I needed to convert the png to a pdf when I was done.
+
+### Credits
+
+* The [new publisher's page](https://www.renegadegamestudios.com/arboretum/)
+* Arboretum [BGG entry](https://boardgamegeek.com/boardgame/140934/arboretum)
+* [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page), where I found most of the images
