@@ -77,10 +77,16 @@
 											"Scottish Sleuth Dance Deck",
 											"Scottish Sleuth Rules",
 											"Scottish Sleuth Scorepad",
+										  "Pinewoods Paths Scoresheet",
 											"Scottish Sleuth Scorepad (BW)",
 											"Scottish Sleuth Scorepad (BW, Med)",
 											"Scottish Sleuth Scorepad (Double)",
-											"Scottish Sleuth Scorepad (Simple)"];
+											"Scottish Sleuth Scorepad (Simple)",
+										  "Pinewoods Paths Back",
+										  "Pinewoods Paths Cards",
+										  "Pinewoods Paths Player Aids",
+										  "Pinewoods Paths Rules Document",
+										  "Pinewoods Paths Tuck Box"];
 
 	var blankForm = {
 		name: '',
