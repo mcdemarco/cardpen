@@ -5,3 +5,5 @@ index.html
 2-body.html
 doc/examples.html
 doc/howto.html
+node_modules
+.DS_Store
