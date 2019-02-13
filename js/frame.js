@@ -30,6 +30,10 @@ function zipper() {
 	var cardZip = zip.folder(projectName);
 	
 	for (var c = 0; c < cards.length; c++) {
+		if (typeof cards[c] == "undefined") {
+			console.log("No card found at index " + c);
+			continue;
+		}
 		var commaIdx = cards[c].indexOf(",");
 		//Zero fill for the file name, and add one because CardPen indexes from 1.
 		var zerofillplus = ('000'+(c+1)).slice(-3);
