@@ -1318,7 +1318,12 @@ context.write = (function () {
 
 	function formatter(data,cards,forImages) {
 		var templateA = '{{#cardpen}}<card class="' + (forImages ? 'cardImage' : 'cardHTML');
-		templateA +=	(data.cardClass ? ' {{' + data.cardClass + '}}' : '') + ' card'; //Card # goes here
+		if (data.cardClass) {
+			var cc = data.cardClass.split(" ");
+			for (var c = 0; c < cc.length; c++)
+				templateA += ' {{' + cc[c] + '}}';
+		}
+		templateA += ' card'; //Card # goes here
 		var templateB = '">\n\t<bleed>\n\t\t<cut>\n\t\t\t<safe>';
 		templateB += data.mustache + "\n\t\t\t</safe>\n\t\t</cut>\n\t</bleed>";
 		if (!forImages && (data.overlay || data.cutline)) {
