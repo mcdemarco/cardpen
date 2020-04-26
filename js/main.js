@@ -1163,10 +1163,9 @@ context.write = (function () {
 				'</script>\n';
 			fullOutput += "<style>#cpOutput {display: block;}\n";
 			fullOutput += "#cpError {padding:5px;color:red;}</style>\n";
-		} else {
-			fullOutput += "<style>\n" + context.style.page(data,forImages) + "</style>\n";
 		}
-			fullOutput += "<style>\n" + context.style.card(data) + "</style>\n";
+		fullOutput += "<style>\n" + context.style.page(data,forImages) + "</style>\n";
+		fullOutput += "<style>\n" + context.style.card(data) + "</style>\n";
 		fullOutput += "<style>\n" + data.css + "</style>\n</head>\n<body>\n";
 		if (forImages) {
 			fullOutput += "<div id='cpError'></div>\n";
