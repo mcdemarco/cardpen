@@ -1,7 +1,7 @@
 CardPen
 ========
 
-CardPen is a web-only playing card generator intended to generate PNG images at any DPI, or printable HTML pages of playing cards from a spreadsheet of card descriptions, CSS, and a simple Mustache or Handlebars template.  CardPenalso includes support for Google or other web fonts, adjustable card bleed, various page sizes, and any card size.
+CardPen is a web-only playing card generator intended to generate PNG images at any DPI, or printable HTML pages of playing cards from a spreadsheet of card descriptions, CSS, and a simple Mustache or Handlebars template.  CardPen also includes support for Google or other web fonts, adjustable card bleed, various page sizes, and any card size.
 
 usage
 --------
@@ -40,7 +40,10 @@ building
 -----------
 
 CardPen doesn't have much of a build process; it uses simple npm scripts instead of a build tool.
-The build command, `npm run build`, just converts the docs from markdown to html.
+The build command, `npm run build`, just converts the docs from markdown to html:
+
+> `npm install`
+> `npm run build`
 
 credits
 ---------

@@ -1050,7 +1050,7 @@ context.util = (function () {
 			return;
 		}
 
-		var fileToLoad = "/examples/" + sanitize(slug) + ".json";
+		var fileToLoad = "examples/" + sanitize(slug) + ".json";
 
 		//xhr for loading the json examples.
     var xhr = new XMLHttpRequest();

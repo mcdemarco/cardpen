@@ -140,7 +140,7 @@ There's a back at BGG that I also used:
 
 ## Pinewoods Paths
 
-Pinewoods Paths is a retheme of Arboretum, which was out of print when I rethemed it but is coming back real soon now (see credits).  It consists of a bridge deck of 10 "suits" of ranks 1--8, plus some player aid cards, a rules sheet, and a tuckbox.  The art is mostly in the public domain, though some was merely free for any use.  However, it was also mostly very large, so only the images that did double duty as box art are available when you load the examples.
+Pinewoods Paths is a retheme of Arboretum, which was out of print when I rethemed it but is back in print now (see credits).  It consists of a bridge deck of 10 "suits" of ranks 1--8, plus some player aid cards, a rules sheet, and a tuckbox.  The art is mostly in the public domain, though some was merely free for any use.  However, it was also mostly very large, so only the images that did double duty as box art are available when you load the examples.
 
 Once again I made the rulebook in Cardpen, although I might not have had I realized from the start that The Game Crafter required a PDF for an actual "Document" (a letter-sized single rule sheet, folded up), so I needed to convert the png to a pdf when I was done.
 
