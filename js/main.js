@@ -29,8 +29,19 @@ var cardpen = {};
 context.init = (function () {
 
 	return {
+		more: more,
 		start: start
 	};
+
+	function more() {
+		//Load more examples, as in the private ui.select function.
+		var options = _.sortBy(exampleFiles);
+		var selElt = document.getElementById("exampleList");
+		options = _.chain(options).reverse().push([""]).reverse().value();
+		selElt.innerHTML = "";
+		populate2(selElt,options);
+	}
+
 
 	function start() {
 		//Set up the UI.
@@ -82,7 +93,9 @@ context.init = (function () {
 	}
 
 	function select() {
-		//Populate the selects with sizes.
+		//Populate the selects.
+
+		//Card sizes.
 		var options = _.keys(cardSizes);
 		var selElt = document.getElementById("csize");
 		populate(selElt,options);
@@ -93,7 +106,8 @@ context.init = (function () {
 		populate(selElt,options);
 
 		//Examples
-		options = _.first(exampleFiles,12);
+		options = _.first(exampleFiles,13);
+		options.push("more...");
 		selElt = document.getElementById("exampleList");
 		populate2(selElt,options);
 	}
@@ -565,7 +579,7 @@ context.project = (function () {
 			document.getElementById("stored").classList.add("selected");
 			context.write.tryGenerate();
 		} else if (defaultToEg) {
-			context.form.example();
+			context.form.set(exampleForm);
 			document.getElementById("eg").classList.add("selected");
 			context.write.help();
 		}
@@ -1031,6 +1045,11 @@ context.util = (function () {
 	function web() {
 		//Load an example file from the web by its title.
 		var slug = document.getElementById("exampleList").value;
+		if (slug == "more...") {
+			context.init.more();
+			return;
+		}
+
 		var fileToLoad = "/examples/" + sanitize(slug) + ".json";
 
 		//xhr for loading the json examples.
@@ -1298,7 +1317,12 @@ context.write = (function () {
 
 	function formatter(data,cards,forImages) {
 		var templateA = '{{#cardpen}}<card class="' + (forImages ? 'cardImage' : 'cardHTML');
-		templateA +=	(data.cardClass ? ' {{' + data.cardClass + '}}' : '') + ' card'; //Card # goes here
+		if (data.cardClass) {
+			var cc = data.cardClass.split(" ");
+			for (var c = 0; c < cc.length; c++)
+				templateA += ' {{' + cc[c] + '}}';
+		}
+		templateA += ' card'; //Card # goes here
 		var templateB = '">\n\t<bleed>\n\t\t<cut>\n\t\t\t<safe>';
 		templateB += data.mustache + "\n\t\t\t</safe>\n\t\t</cut>\n\t</bleed>";
 		if (!forImages && (data.overlay || data.cutline)) {
